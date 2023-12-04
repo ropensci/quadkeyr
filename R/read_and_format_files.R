@@ -1,0 +1,134 @@
+#' Read all the .csv files in a folder and format the data.
+#'
+#' @description This function reads all the .csv files in a particular folder.
+#' These files consistently contain identical columns, with variations
+#' only in location, day, and time. As a result, we can uniformly apply
+#' specific formatting to columns across these files."
+#'
+#' @param path_to_csvs Path to the folder where the .csv files are stored
+#'
+#' @seealso \code{\link{format_data}}
+#'
+#' @return A dataframe with the information of all the files.
+#' @export
+#'
+#' @examples
+#'
+#' 
+#' # read_all_files(path_to_csvs = 'data/')
+#'
+read_all_files <- function(path_to_csvs = path_to_csvs){
+
+
+
+  # This data always have the same format
+
+  fnames <- list.files(path = path_to_csvs,
+                       pattern = "\\.csv$")
+
+  fnames <- paste0(path_to_csvs,
+                   fnames)
+
+  data <- purrr::map_dfr(fnames,
+                     readr::read_csv,
+                     col_names = TRUE,
+                     col_types = "dddcTcccccddc")
+
+
+  data <- format_data(data)
+
+  if (nrow(missing_combinations(data)) > 0) {
+    warning("These combinations of days and times are missing in the dataset")
+    print(missing_combinations(data))
+  }else{
+    message("There are not missing dates or times")
+  }
+
+  data
+
+}
+
+
+#' Format the data
+#'
+#' @description This function modifies the format of three columns the provided
+#' data.
+#'
+#' @param data A dataframe with a quadkey, date_time, country columns and other numeric variables
+#'
+#' @return A dataframe.
+#' @export
+#'
+#' @seealso \code{\link{read_all_files}}
+#'
+#' @examples
+#'
+#' #data(onefile)
+#' #format_data(data = onefile)
+#'
+format_data <- function(data){
+
+  # remove scientific notation
+  data$quadkey <- format(data$quadkey,
+                         scientific = FALSE)
+
+  # change date format
+  data$day <- lubridate::date(data$date_time)
+
+  data$time <- as.numeric(format(as.POSIXct(data$date_time, 
+                                            format = "%Y-%m-%d %H%M"), 
+                                 format = "%H"))
+
+  # replace \\N with NA
+  data <- data |>
+    dplyr::mutate(across(-c(date_time, day),
+                  ~ ifelse(. == "\\N", NA, .))) |> 
+    dplyr::mutate(across(-c(date_time, day, quadkey),
+               as.numeric))
+     
+  data
+}
+
+#' Detects dates and times missing
+#'
+#' @description Facebook mobility data is reported daily at 3 different times
+#' (0, 8, 16).
+#' This function reads the data extracted from the current files and detects
+#' if any day or time is missing.
+#'
+#' @param data A dataframe with a day and time column.
+#'
+#' @return A dataframe with the missing days and times, if any.
+#' @export
+#'
+#' @examples
+#'
+#' # Sample dataset
+#' data <- data.frame(
+#'  day = c("2023-01-01", "2023-01-03", "2023-01-05"),
+#'  time = c(0, 8, 16)
+#' )
+#'
+#' missing_combinations(data)
+#'
+missing_combinations <- function(data) {
+
+  data <- data |> dplyr::mutate(day = as.Date(day))
+  
+  # Generate all combinations of days and times
+  all_combinations <- expand.grid(
+    day = seq(from = min(as.Date(data$day)),
+              to = max(as.Date(data$day)),
+              by = 'days'),
+    time = c(0, 8, 16)
+  )
+
+  # Select the dates not present on the dataset
+  missing_combinations <- dplyr::anti_join(all_combinations,
+                                    data,
+                                    by = c("day", "time"))
+
+  return(missing_combinations)
+}
+
+

@@ -1,0 +1,134 @@
+---
+title: "quadkey_conversion"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{quadkey_conversion}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, echo = FALSE, message=FALSE, warning=FALSE}
+library(quadkeyr)
+```
+
+# Bing Maps Tile System functions
+
+These functions are the R version of the ones described in [Bing Maps Tile System webpage](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system).
+
+### 1. If you have map coordinates, convert them to QuadKey numbers
+
+#### 1.1 Convert lat/long coordinates to pixel XY coordinates
+
+```{r lltp}
+lltp <- latlong_to_pixelXY(latitude = -25, 
+                           longitude = -53, 
+                           level = 4)
+lltp
+
+```
+
+#### 1.2 Convert pixel XY coordinates into tile XY coordinates
+
+```{r ptt}
+ptt <- pixelXY_to_tileXY(pixelX = lltp$pixelX,
+                  pixelY = lltp$pixelY)
+ptt
+```
+
+
+#### 1.3 Convert tile XY coordinates into a QuadKey number
+
+Ththis function returns the QuadKey number as a string. Since we are estimating 
+level 4, the number consists of 4 digits
+
+```{r ttq}
+tileXY_to_quadkey(tileX = ptt$tileX,
+                  tileY = ptt$tileY,
+                  level = 4)
+```
+
+
+### 2. If you have QuadKeys, convert them to map coordinates
+
+Let's attempt the reverse route.
+
+#### 2.1 Convert a QuadKey number into tile XY coordinates 
+
+```{r qtt}
+qtt <- quadkey_to_tileXY("2103")
+qtt
+```
+
+
+#### 2.2 Convert tile XY coordinates into pixel XY coordinates 
+
+```{r ttp}
+
+ttp <- tileXY_to_pixelXY(tileX = qtt$tileX,
+                         tileY = qtt$tileY)
+ttp
+```
+
+
+#### 2.3 Convert pixel XY coordinates into lat/long coordinates 
+
+```{r ptll}
+ptll <- pixelXY_to_latlong(pixelX = ttp$pixelX,
+                          pixelY = ttp$pixelY,
+                          level = 4)
+
+ptll
+```
+
+
+### 3. Understanding the Process of Converting Coordinates
+
+Given the process of converting coordinates between pixel XY, tile XY, QuadKey, 
+and latitude/longitude, one might expect that the conversion back to 
+latitude/longitude coordinates (as in section 2.3) would yield the same values
+as the original input in section 1.
+
+However, this isn't the case, as evidenced by the behavior of the 
+functions `pixelXY_to_tileXY` and `tileXY_to_pixel_XY`
+
+When choosing latitude/longitude coordinates in the initial function, 
+they were within a specific tile represented by unique tile XY coordinates and
+a QuadKey number. The conversion back from QuadKey to latitude/longitude 
+coordinates does not directly result in the same initial values.
+
+This discrepancy arises because `tileXY_to_pixel_XY` provides the pixel XY
+coordinates for the upper-left corner of the tile, not the exact coordinates 
+chosen initially.
+
+Hence, converting latitude/longitude coordinates into a QuadKey and then back
+to latitude/longitude won't yield identical values, unless the original
+latitude/longitude coordinates correspond to the upper-left pixel of the tile 
+at the same level of detail.
+
+To validate this, consider the coordinates obtained in section 2.3
+(lat = -21.94305, lon = -67.5) and rerun all functions. 
+You'll observe that obtaining the original input values is unlikely unless 
+the initial coordinates correspond to the upper-left pixel of the tile.
+
+Understanding this distinction is crucial for the accurate use of these functions
+in coordinate conversions.
+
+
+### 4. QuadKey map visualizer app
+
+You can visualize the QuadKey location in the map using the app included in this
+package.
+
+```{r eval = FALSE}
+qkmap_app()
+```
+
+![](qkmap_qk.png)
+
