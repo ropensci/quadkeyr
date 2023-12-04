@@ -134,7 +134,7 @@ qkmap_app <- function(...) {
 
      if(nrow(grid$data) > 2000){
 
-       showNotification(
+       shiny::showNotification(
          "The grid you want to create have more than 2000 polygons and could take considerable time to run",
          type = "message"
        )
@@ -150,7 +150,7 @@ qkmap_app <- function(...) {
 
     output$mapgrid <- leaflet::renderLeaflet({
 
-      req(polygrid())
+      shiny::req(polygrid())
 
       leaflet::leaflet() |>
         leaflet::addTiles() |>
@@ -172,4 +172,4 @@ qkmap_app <- function(...) {
 
     }
 
-  shinyApp(ui, server) }
+  shiny::shinyApp(ui, server) }
