@@ -58,7 +58,14 @@
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
 </form>
 
-      <ul class="navbar-nav"></ul>
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/Fernandez-Lab-WSU/quadkeyr/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 
     
@@ -73,7 +80,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>get_grid_from_quadkeys</h1>
             
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/Fernandez-Lab-WSU/quadkeyr/blob/HEAD/vignettes/get_grid_from_quadkeys.Rmd" class="external-link"><code>vignettes/get_grid_from_quadkeys.Rmd</code></a></small>
       <div class="d-none name"><code>get_grid_from_quadkeys.Rmd</code></div>
     </div>
 
@@ -95,7 +102,9 @@ the QuadKey grid creation.</p>
 <p>For this example, we have selected <code>xmin</code> = -59,
 <code>xmax</code> = -57, <code>ymin</code> = -35, <code>ymax</code> =
 -34. Let’s plot them as points.</p>
-<p><img src="get_grid_from_quadkeys_files/figure-html/unnamed-chunk-2-1.png" width="672"></p>
+<div class="float">
+<img src="figure/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"><div class="figcaption">plot of chunk unnamed-chunk-2</div>
+</div>
 </div>
 <div class="section level5">
 <h5 id="select-the-level-of-detail">1.2 Select the level of detail<a class="anchor" aria-label="anchor" href="#select-the-level-of-detail"></a>
@@ -150,10 +159,10 @@ grid.</p></li>
 <span><span class="co">#&gt; 6  1376  2468 210321300200 POINT (-59.0625 -34.59704)</span></span></code></pre></div>
 <p>We can visualize the points in the map to understand better the
 results.</p>
-<p><img src="get_grid_from_quadkeys_files/figure-html/unnamed-chunk-3-1.png" width="672">
-We have a grid of points representing the QuadKeys. Remember that these
-points represent the upper-left corner of each QuadKey, which might give
-the impression that they do not precisely cover the entire area.</p>
+<p><img src="figure/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"> We have a grid of points
+representing the QuadKeys. Remember that these points represent the
+upper-left corner of each QuadKey, which might give the impression that
+they do not precisely cover the entire area.</p>
 </div>
 <div class="section level5">
 <h5 id="conversion-to-polygons">1.4 Conversion to polygons<a class="anchor" aria-label="anchor" href="#conversion-to-polygons"></a>
@@ -174,7 +183,9 @@ the impression that they do not precisely cover the entire area.</p>
 <span><span class="co">#&gt; 4 210321132331 POLYGON ((-57.04102 -34.234...</span></span>
 <span><span class="co">#&gt; 5 210321132333 POLYGON ((-57.04102 -34.307...</span></span>
 <span><span class="co">#&gt; 6 210321310111 POLYGON ((-57.04102 -34.379...</span></span></code></pre></div>
-<p><img src="get_grid_from_quadkeys_files/figure-html/unnamed-chunk-4-1.png" width="672"></p>
+<div class="float">
+<img src="figure/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4"><div class="figcaption">plot of chunk unnamed-chunk-4</div>
+</div>
 <p>It worked! As you can see here, the coordinates we randomly selected
 as a starting point are situated within the polygons, but not at a
 specific position inside each polygon. This was expected.</p>
@@ -245,7 +256,9 @@ join to be executed correctly.</p>
 <span><span class="co"># In case you want to save it:</span></span>
 <span><span class="co"># write_stars(obj = raster,</span></span>
 <span><span class="co">#             dsn = "raster.tif")</span></span></code></pre></div>
-<p><img src="get_grid_from_quadkeys_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>
+<div class="float">
+<img src="figure/unnamed-chunk-8-1.png" alt="plot of chunk unnamed-chunk-8"><div class="figcaption">plot of chunk unnamed-chunk-8</div>
+</div>
 </div>
 </div>
 </div>

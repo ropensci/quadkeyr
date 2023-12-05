@@ -7,7 +7,7 @@ cff-version: 1.2.0
 message: 'To cite package "quadkeyr" in publications use:'
 type: software
 license: MIT
-title: 'quadkeyr: Tools to convert QuadKeys utilized in Microsoft''s Bing Maps Tile
+title: 'quadkeyr: Tools for converting QuadKeys used in Microsoft''s Bing Maps Tile
   System into raster images'
 version: 0.0.0.9000
 abstract: quadkeyr enables the generation of raster images based on QuadKeys, facilitating
@@ -87,6 +87,18 @@ references:
     given-names: Richard
     email: rich@posit.co
     orcid: https://orcid.org/0000-0003-3925-190X
+  year: '2023'
+- type: software
+  title: shinytest2
+  abstract: 'shinytest2: Testing for Shiny Applications'
+  notes: Suggests
+  url: https://rstudio.github.io/shinytest2/
+  repository: https://CRAN.R-project.org/package=shinytest2
+  authors:
+  - family-names: Schloerke
+    given-names: Barret
+    email: barret@posit.co
+    orcid: https://orcid.org/0000-0001-9986-114X
   year: '2023'
 - type: software
   title: testthat
