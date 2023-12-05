@@ -91,8 +91,8 @@ Maps Tile System webpage</a>.</p>
 <h5 id="convert-latlong-coordinates-to-pixel-xy-coordinates">1.1 Convert lat/long coordinates to pixel XY coordinates<a class="anchor" aria-label="anchor" href="#convert-latlong-coordinates-to-pixel-xy-coordinates"></a>
 </h5>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">lltp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/latlong_to_pixelXY.html">latlong_to_pixelXY</a></span><span class="op">(</span>latitude <span class="op">=</span> <span class="op">-</span><span class="fl">25</span>, </span>
-<span>                           longitude <span class="op">=</span> <span class="op">-</span><span class="fl">53</span>, </span>
+<code class="sourceCode R"><span><span class="va">lltp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/latlong_to_pixelXY.html">latlong_to_pixelXY</a></span><span class="op">(</span>lat <span class="op">=</span> <span class="op">-</span><span class="fl">25</span>, </span>
+<span>                           lon <span class="op">=</span> <span class="op">-</span><span class="fl">53</span>, </span>
 <span>                           level <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
 <span><span class="va">lltp</span></span>
 <span><span class="co">#&gt; $pixelX</span></span>
@@ -124,6 +124,39 @@ estimating level 4, the number consists of 4 digits</p>
 <span>                  tileY <span class="op">=</span> <span class="va">ptt</span><span class="op">$</span><span class="va">tileY</span>,</span>
 <span>                  level <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "2103"</span></span></code></pre></div>
+<p>The function <code>latlong_to_quadkey</code> can convert map
+coordinates to QuadKeys in</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/latlong_to_quadkey.html">latlong_to_quadkey</a></span><span class="op">(</span>lat <span class="op">=</span> <span class="op">-</span><span class="fl">25</span>,</span>
+<span>                   lon <span class="op">=</span> <span class="op">-</span><span class="fl">53</span>,</span>
+<span>                   level <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   lat lon level pixelX pixelY tileY tileX quadkey</span></span>
+<span><span class="co">#&gt; 1 -25 -53     4   1445   2342     9     5    2103</span></span>
+<span><span class="co">#&gt; Simple feature collection with 1 feature and 1 field</span></span>
+<span><span class="co">#&gt; Geometry type: POINT</span></span>
+<span><span class="co">#&gt; Dimension:     XY</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: -53 ymin: -25 xmax: -53 ymax: -25</span></span>
+<span><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
+<span><span class="co">#&gt;   quadkey        geometry</span></span>
+<span><span class="co">#&gt; 1    2103 POINT (-53 -25)</span></span></code></pre></div>
+<p>This function also work for multiple coordinates</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/latlong_to_quadkey.html">latlong_to_quadkey</a></span><span class="op">(</span>lat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">4</span>, <span class="op">-</span><span class="fl">25.33</span>, <span class="op">-</span><span class="fl">25.66</span><span class="op">)</span>,</span>
+<span>                   lon <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">53</span>, <span class="op">-</span><span class="fl">60.33</span>, <span class="op">-</span><span class="fl">70.66</span><span class="op">)</span>,</span>
+<span>                   level <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      lat    lon level pixelX pixelY tileY tileX quadkey</span></span>
+<span><span class="co">#&gt; 1  -4.00 -53.00     4   1445   2094     8     5    2101</span></span>
+<span><span class="co">#&gt; 2 -25.33 -60.33     4   1362   2346     9     5    2103</span></span>
+<span><span class="co">#&gt; 3 -25.66 -70.66     4   1244   2350     9     4    2102</span></span>
+<span><span class="co">#&gt; Simple feature collection with 3 features and 1 field</span></span>
+<span><span class="co">#&gt; Geometry type: POINT</span></span>
+<span><span class="co">#&gt; Dimension:     XY</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: -70.66 ymin: -25.66 xmax: -53 ymax: -4</span></span>
+<span><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
+<span><span class="co">#&gt;   quadkey              geometry</span></span>
+<span><span class="co">#&gt; 1    2101        POINT (-53 -4)</span></span>
+<span><span class="co">#&gt; 2    2103 POINT (-60.33 -25.33)</span></span>
+<span><span class="co">#&gt; 3    2102 POINT (-70.66 -25.66)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level4">
@@ -133,7 +166,7 @@ estimating level 4, the number consists of 4 digits</p>
 <div class="section level5">
 <h5 id="convert-a-quadkey-number-into-tile-xy-coordinates">2.1 Convert a QuadKey number into tile XY coordinates<a class="anchor" aria-label="anchor" href="#convert-a-quadkey-number-into-tile-xy-coordinates"></a>
 </h5>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">qtt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quadkey_to_tileXY.html">quadkey_to_tileXY</a></span><span class="op">(</span><span class="st">"2103"</span><span class="op">)</span></span>
 <span><span class="va">qtt</span></span>
 <span><span class="co">#&gt; $tileX</span></span>
@@ -148,7 +181,7 @@ estimating level 4, the number consists of 4 digits</p>
 <div class="section level5">
 <h5 id="convert-tile-xy-coordinates-into-pixel-xy-coordinates">2.2 Convert tile XY coordinates into pixel XY coordinates<a class="anchor" aria-label="anchor" href="#convert-tile-xy-coordinates-into-pixel-xy-coordinates"></a>
 </h5>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">ttp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tileXY_to_pixelXY.html">tileXY_to_pixelXY</a></span><span class="op">(</span>tileX <span class="op">=</span> <span class="va">qtt</span><span class="op">$</span><span class="va">tileX</span>,</span>
 <span>                         tileY <span class="op">=</span> <span class="va">qtt</span><span class="op">$</span><span class="va">tileY</span><span class="op">)</span></span>
@@ -162,7 +195,7 @@ estimating level 4, the number consists of 4 digits</p>
 <div class="section level5">
 <h5 id="convert-pixel-xy-coordinates-into-latlong-coordinates">2.3 Convert pixel XY coordinates into lat/long coordinates<a class="anchor" aria-label="anchor" href="#convert-pixel-xy-coordinates-into-latlong-coordinates"></a>
 </h5>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ptll</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pixelXY_to_latlong.html">pixelXY_to_latlong</a></span><span class="op">(</span>pixelX <span class="op">=</span> <span class="va">ttp</span><span class="op">$</span><span class="va">pixelX</span>,</span>
 <span>                           pixelY <span class="op">=</span> <span class="va">ttp</span><span class="op">$</span><span class="va">pixelY</span>,</span>
 <span>                           level <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
@@ -175,7 +208,7 @@ estimating level 4, the number consists of 4 digits</p>
 <span><span class="co">#&gt; [1] -67.5</span></span></code></pre></div>
 <p>You can also use the function <code>quadkey_to_latlong</code> if you
 want to apply all the steps together.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/quadkey_to_latlong.html">quadkey_to_latlong</a></span><span class="op">(</span><span class="st">"2103"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Simple feature collection with 1 feature and 1 field</span></span>
 <span><span class="co">#&gt; Geometry type: POINT</span></span>
@@ -220,7 +253,7 @@ these functions in coordinate conversions.</p>
 </h4>
 <p>You can visualize the QuadKey location in the map using the app
 included in this package.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">qkmap_app</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="qkmap_qk.png"></p>
 </div>

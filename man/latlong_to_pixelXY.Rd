@@ -4,12 +4,12 @@
 \alias{latlong_to_pixelXY}
 \title{Converts lat/long coordinates to pixel XY coordinates}
 \usage{
-latlong_to_pixelXY(latitude, longitude, level)
+latlong_to_pixelXY(lat, lon, level)
 }
 \arguments{
-\item{latitude}{Latitude of the point, in degrees.}
+\item{lat}{Latitude of the point, in degrees.}
 
-\item{longitude}{Longitude of the point, in degrees.}
+\item{lon}{Longitude of the point, in degrees.}
 
 \item{level}{Level of detail, from 1 (lowest detail) to 23 (highest detail).}
 }
@@ -22,8 +22,8 @@ For further information, refer to the Microsoft Bing Maps Tile System documentat
 }
 \examples{
 
-latlong_to_pixelXY(latitude = -35,
-                 longitude = -50,
-                 level = 6)
+latlong_to_pixelXY(lat = -35,
+                   lon = -50,
+                   level = 6)
 
 }

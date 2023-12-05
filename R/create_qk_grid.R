@@ -31,7 +31,7 @@ create_qk_grid <- function(xmin, xmax, ymin, ymax, level){
     stop("The level of detail should be an integer between 1 and 23")
   }
 
-  # Values in Microsoft Bing Documentation
+  # Values in Microsoft Bing Tile System Documentation
   min_latitude = -85.05112878
   max_latitude = 85.05112878
   min_longitude = -180
@@ -47,8 +47,8 @@ create_qk_grid <- function(xmin, xmax, ymin, ymax, level){
   }
 
   # x - Convert lat/long coordinates to tile XY coords
-  pixs = latlong_to_pixelXY(latitude = ymin,
-                            longitude = xmin,
+  pixs = latlong_to_pixelXY(lat = ymin,
+                            lon = xmin,
                             level = level)
   
   tilesmn = pixelXY_to_tileXY(pixelX = pixs$pixelX,
@@ -56,8 +56,8 @@ create_qk_grid <- function(xmin, xmax, ymin, ymax, level){
 
 
   # y - Convert lat/long coordinates to tile XY coords
-  pixs = latlong_to_pixelXY(latitude = ymax,
-                            longitude = xmax,
+  pixs = latlong_to_pixelXY(lat = ymax,
+                            lon = xmax,
                             level = level)
   
   tilesmx = pixelXY_to_tileXY(pixelX = pixs$pixelX,

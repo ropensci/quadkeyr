@@ -27,8 +27,8 @@ These functions are the R version of the ones described in [Bing Maps Tile Syste
 #### 1.1 Convert lat/long coordinates to pixel XY coordinates
 
 ```{r lltp}
-lltp <- latlong_to_pixelXY(latitude = -25, 
-                           longitude = -53, 
+lltp <- latlong_to_pixelXY(lat = -25, 
+                           lon = -53, 
                            level = 4)
 lltp
 
@@ -54,6 +54,20 @@ tileXY_to_quadkey(tileX = ptt$tileX,
                   level = 4)
 ```
 
+The function `latlong_to_quadkey` can convert map coordinates to QuadKeys in 
+
+```{r}
+latlong_to_quadkey(lat = -25,
+                   lon = -53,
+                   level = 4)
+```
+This function also work for multiple coordinates
+
+```{r}
+latlong_to_quadkey(lat = c(-4, -25.33, -25.66),
+                   lon = c(-53, -60.33, -70.66),
+                   level = 4)
+```
 
 ### 2. If you have QuadKeys, convert them to map coordinates
 

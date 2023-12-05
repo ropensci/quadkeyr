@@ -3,8 +3,8 @@
 #' @description Converts a point from latitude/longitude WGS-84 coordinates (in degrees) into pixel XY coordinates at a specified level of detail.
 #' For further information, refer to the Microsoft Bing Maps Tile System documentation.
 #'
-#' @param latitude Latitude of the point, in degrees.
-#' @param longitude Longitude of the point, in degrees.
+#' @param lat Latitude of the point, in degrees.
+#' @param lon Longitude of the point, in degrees.
 #' @param level Level of detail, from 1 (lowest detail) to 23 (highest detail).
 #'
 #' @return A list returning pixel X and pixel Y coordinates.
@@ -12,11 +12,11 @@
 #'
 #' @examples
 #'
-#' latlong_to_pixelXY(latitude = -35,
-#'                  longitude = -50,
-#'                  level = 6)
+#' latlong_to_pixelXY(lat = -35,
+#'                    lon = -50,
+#'                    level = 6)
 #'
-latlong_to_pixelXY <- function(latitude, longitude, level) {
+latlong_to_pixelXY <- function(lat, lon, level) {
 
   if (level < 0 | level > 23 | (level %% 1) != 0){
     stop("The level of detail should be an integer between 1 and 23")
@@ -24,8 +24,8 @@ latlong_to_pixelXY <- function(latitude, longitude, level) {
 
   # These values were extracted from Microsoft Bing Maps Tile System documentation
 
-  latitude <- clip(latitude, -85.05112878, 85.05112878)  # Clip latitude within bounds
-  longitude <- clip(longitude, -180, 180)  # Clip longitude within bounds
+  latitude <- clip(lat, -85.05112878, 85.05112878)  # Clip latitude within bounds
+  longitude <- clip(lon, -180, 180)  # Clip longitude within bounds
 
   x <- (longitude + 180) / 360
 
@@ -37,7 +37,7 @@ latlong_to_pixelXY <- function(latitude, longitude, level) {
 
   pixelX <- as.integer(clip(x * mapsize + 0.5, 0,
                             mapsize - 1))  # Clip and convert to integer
-  pixelY <- as.integer(clip(y * mapsize + 0.5, 0,
+  pixelY <- as.integer(clip(y * mapsize + 0.5, 0, 
                             mapsize - 1))  # Clip and convert to integer
 
   return(list(pixelX = pixelX, pixelY = pixelY))
@@ -116,15 +116,24 @@ tileXY_to_quadkey <- function(tileX, tileY, level) {
 }
 
 #' Convert latitude/longitude coordinates into QuadKeys
+#' 
+#' @description Converts a point from latitude/longitude WGS-84 coordinates (in degrees)
+#' into a Quadkey at a specified level of detail.
+#' For further information, refer to the Microsoft Bing Maps Tile System documentation.
 #'
-#' @param lat
-#' @param lon
-#' @param level 
+#' @param lat Latitude of the point, in degrees.
+#' @param lon Longitude of the point, in degrees.
+#' @param level Level of detail, from 1 (lowest detail) to 23 (highest detail).
 #'
-#' @return
+#' @return A dataframe with latitude (lat), longitude (lon), level of detail (level)
+#' and the QuadKey number as a string (quadkey). 
 #' @export
 #'
 #' @examples
+#'
+#'latlong_to_quadkey(lat = 35.63051, 
+#'                   lon = 139.69116,
+#'                   level = 20)
 latlong_to_quadkey <- function(lat, lon, level) {
   
   if (level < 0 | level > 23 | (level %% 1) != 0) {
@@ -145,10 +154,10 @@ latlong_to_quadkey <- function(lat, lon, level) {
     data[i, 'tileY'] = pixelXY_to_tileXY(data$pixelX[i], data$pixelY[i])$tileY
     data[i, 'tileX'] = pixelXY_to_tileXY(data$pixelX[i], data$pixelY[i])$tileX
     data[i, 'quadkey'] = tileXY_to_quadkey(data$tileX[i], data$tileY[i], level = data$level[i])
-    
 
-  }
-
+}
+   
+   print(data)
   data_sf <-  data |>
     dplyr::select("lat", "lon", "quadkey") |> #tidyselect
     sf::st_as_sf(coords = c("lon", "lat"),
