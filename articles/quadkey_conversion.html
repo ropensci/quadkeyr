@@ -106,7 +106,7 @@ Maps Tile System webpage</a>.</p>
 </h5>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ptt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pixelXY_to_tileXY.html">pixelXY_to_tileXY</a></span><span class="op">(</span>pixelX <span class="op">=</span> <span class="va">lltp</span><span class="op">$</span><span class="va">pixelX</span>,</span>
-<span>                  pixelY <span class="op">=</span> <span class="va">lltp</span><span class="op">$</span><span class="va">pixelY</span><span class="op">)</span></span>
+<span>                         pixelY <span class="op">=</span> <span class="va">lltp</span><span class="op">$</span><span class="va">pixelY</span><span class="op">)</span></span>
 <span><span class="va">ptt</span></span>
 <span><span class="co">#&gt; $tileX</span></span>
 <span><span class="co">#&gt; [1] 5</span></span>
@@ -164,8 +164,8 @@ estimating level 4, the number consists of 4 digits</p>
 </h5>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ptll</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pixelXY_to_latlong.html">pixelXY_to_latlong</a></span><span class="op">(</span>pixelX <span class="op">=</span> <span class="va">ttp</span><span class="op">$</span><span class="va">pixelX</span>,</span>
-<span>                          pixelY <span class="op">=</span> <span class="va">ttp</span><span class="op">$</span><span class="va">pixelY</span>,</span>
-<span>                          level <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
+<span>                           pixelY <span class="op">=</span> <span class="va">ttp</span><span class="op">$</span><span class="va">pixelY</span>,</span>
+<span>                           level <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">ptll</span></span>
 <span><span class="co">#&gt; $lat</span></span>
@@ -173,6 +173,17 @@ estimating level 4, the number consists of 4 digits</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $lon</span></span>
 <span><span class="co">#&gt; [1] -67.5</span></span></code></pre></div>
+<p>You can also use the function <code>quadkey_to_latlong</code> if you
+want to apply all the steps together.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/quadkey_to_latlong.html">quadkey_to_latlong</a></span><span class="op">(</span><span class="st">"2103"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Simple feature collection with 1 feature and 1 field</span></span>
+<span><span class="co">#&gt; Geometry type: POINT</span></span>
+<span><span class="co">#&gt; Dimension:     XY</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: -67.5 ymin: -21.94305 xmax: -67.5 ymax: -21.94305</span></span>
+<span><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
+<span><span class="co">#&gt;   quadkey                geometry</span></span>
+<span><span class="co">#&gt; 1    2103 POINT (-67.5 -21.94305)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level4">
@@ -209,7 +220,7 @@ these functions in coordinate conversions.</p>
 </h4>
 <p>You can visualize the QuadKey location in the map using the app
 included in this package.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">qkmap_app</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="qkmap_qk.png"></p>
 </div>
