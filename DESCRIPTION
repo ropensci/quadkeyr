@@ -17,6 +17,7 @@ RoxygenNote: 7.2.1
 Suggests: 
     knitr,
     rmarkdown,
+    shinytest2,
     testthat (>= 3.1.10)
 VignetteBuilder: knitr
 Depends: 

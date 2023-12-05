@@ -11,3 +11,5 @@
 ^pkgdown
 ^CODE_OF_CONDUCT\.md$
 ^CITATION\.cff$
+_\.new\.png$
+^codemeta\.json$
