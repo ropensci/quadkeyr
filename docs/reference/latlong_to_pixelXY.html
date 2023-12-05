@@ -34,7 +34,13 @@ For further information, refer to the Microsoft Bing Maps Tile System documentat
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
-      <ul class="navbar-nav"></ul></div>
+      <ul class="navbar-nav"><li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/Fernandez-Lab-WSU/quadkeyr/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul></div>
 
     
   </div>
@@ -42,7 +48,7 @@ For further information, refer to the Microsoft Bing Maps Tile System documentat
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Converts lat/long coordinates to pixel XY coordinates</h1>
-      
+      <small class="dont-index">Source: <a href="https://github.com/Fernandez-Lab-WSU/quadkeyr/blob/HEAD/R/latlong_to_qk_functions.R" class="external-link"><code>R/latlong_to_qk_functions.R</code></a></small>
       <div class="d-none name"><code>latlong_to_pixelXY.Rd</code></div>
     </div>
 
@@ -58,16 +64,16 @@ For further information, refer to the Microsoft Bing Maps Tile System documentat
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>level</dt>
-<dd><p>Level of detail, from 1 (lowest detail) to 23 (highest detail).</p></dd>
-
-
-<dt>latitude</dt>
+    <dl><dt>lat</dt>
 <dd><p>Latitude of the point, in degrees.</p></dd>
 
 
-<dt>longitude</dt>
+<dt>lon</dt>
 <dd><p>Longitude of the point, in degrees.</p></dd>
+
+
+<dt>level</dt>
+<dd><p>Level of detail, from 1 (lowest detail) to 23 (highest detail).</p></dd>
 
 </dl></div>
     <div class="section level2">
