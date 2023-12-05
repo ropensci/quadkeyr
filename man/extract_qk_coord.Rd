@@ -13,8 +13,6 @@ extract_qk_coord(data)
 A spatial dataframe (sf) containing the tiles XY coordinates
 (tileX, tileY), the QuadKey number (quadkey), and a column for POINT
 geometry.
-
-#' @export
 }
 \description{
 Reads the QuadKey number as a string to extract the

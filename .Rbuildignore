@@ -9,3 +9,5 @@
 ^_pkgdown.yml
 ^hexlogo_transparent.png
 ^pkgdown
+^CODE_OF_CONDUCT\.md$
+^CITATION\.cff$

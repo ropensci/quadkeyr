@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 
 <!-- badges: start -->
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental) [![test-coverage](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/test-coverage.yaml) [![R-CMD-check](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-standard.yaml) [![Codecov](https://img.shields.io/codecov/c/github/Fernandez-Lab-WSU/quadkeyr)](https://codecov.io/gh/Fernandez-Lab-WSU/quadkeyr)
 <!-- badges: end -->
 
 ⚠️ This package is under review
@@ -57,6 +57,11 @@ You can install the development version of `quadkeyr` from [GitHub](https://gith
 devtools::install_github("Fernandez-Lab-WSU/quadkeyr")
 ```
 
+## Code of Conduct
+
+Please note that the `quadkeyr` project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
+
+### How to cite this package?
 
 ### References
 - [Bing Maps Tile Systems - Microsoft](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system)

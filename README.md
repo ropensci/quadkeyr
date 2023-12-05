@@ -7,6 +7,9 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![test-coverage](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/test-coverage.yaml)
+[![R-CMD-check](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-standard.yaml)
+[![Codecov](https://img.shields.io/codecov/c/github/Fernandez-Lab-WSU/quadkeyr)](https://codecov.io/gh/Fernandez-Lab-WSU/quadkeyr)
 <!-- badges: end -->
 
 ⚠️ This package is under review
@@ -24,10 +27,10 @@ data](https://dataforgood.facebook.com/).
 
 The goal of `quadkeyr` is to:
 
-1.  [**Bing Maps Tile System
+1.  [**Provide Bing Maps Tile System
     functions**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_conversion.html)
-    Provide functions in R to convert geographical coordinates to and
-    from QuadKeys as described in the [official
+    R functions to convert geographical coordinates to and from QuadKeys
+    as described in the [official
     documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system)
 
 2.  [**Create rasters based on
@@ -53,6 +56,15 @@ You can install the development version of `quadkeyr` from
 # install.packages("devtools")
 devtools::install_github("Fernandez-Lab-WSU/quadkeyr")
 ```
+
+## Code of Conduct
+
+Please note that the `quadkeyr` project is released with a [Contributor
+Code of
+Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
+
+### How to cite this package?
 
 ### References
 

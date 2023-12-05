@@ -13,7 +13,7 @@
 #' (tileX, tileY), the QuadKey number (quadkey), and a column for POINT
 #' geometry.
 #'
-#'#' @export
+#' @export
 #'
 #' @examples
 #'
@@ -42,7 +42,7 @@ extract_qk_coord <- function(data){
     data$qk_tileY[i] <- qktot$tileY
 
     ttop <- tileXY_to_pixelXY(tileX = data$qk_tileX[i],
-                             tileY = data$qk_tileY[i])
+                              tileY = data$qk_tileY[i])
 
     data$tl_pxx[i] <- ttop$pixelX
     data$tl_pxy[i] <- ttop$pixelY

@@ -9,6 +9,8 @@ Authors@R:
            comment = c(ORCID = "0000-0002-0041-097X"))
 Description: quadkeyr enables the generation of raster images based on QuadKeys, facilitating efficient integration of Bing Maps data into R workflows. In particular, quadkeyr provides support to process and analyze Facebook mobility datasets within the R environment.
 License: MIT + file LICENSE
+URL: https://fernandez-lab-wsu.github.io/quadkeyr/, https://github.com/Fernandez-Lab-WSU/quadkeyr
+BugReports: https://github.com/Fernandez-Lab-WSU/quadkeyr/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
