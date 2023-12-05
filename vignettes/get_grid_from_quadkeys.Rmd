@@ -7,7 +7,16 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE, 
+  message = FALSE, 
+  fig.width=7, 
+  fig.height=7
+)
+```
 
 
 
@@ -17,7 +26,14 @@ vignette: >
 
 #### 1.1 Define the area
 
-
+```{r setup, echo = FALSE}
+library(quadkeyr)
+library(sf)
+library(rnaturalearth)
+library(ggplot2)
+library(dplyr)
+library(stars)
+```
 
 First, we should define the `xmin`, `xmax`, `ymin` and `ymax` that will delimit 
 the area for the QuadKey grid creation.
@@ -25,7 +41,25 @@ the area for the QuadKey grid creation.
 For this example, we have selected `xmin` = -59, `xmax` = -57, `ymin` = -35,
 `ymax` = -34. Let's plot them as points.
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png)
+```{r echo=FALSE}
+
+
+ggplot() + 
+  geom_sf(data = ne_countries(returnclass = 'sf'),
+          fill = 'beige') +
+  geom_point(aes(x = -59, y = -35 ), color = 'purple') +
+  geom_point(aes(x = -57, y = -34), color = 'purple') +
+  coord_sf(xlim = c(-60, -56),
+            ylim = c(-36, -33), expand = FALSE) +
+    theme_minimal()  +
+  theme(panel.background = element_rect(fill = "lightblue"),
+        panel.ontop = FALSE,
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank()) +
+  ylab("Latitude") + 
+  xlab("Longitude")
+
+```
 
 #### 1.2 Select the level of detail
 
@@ -41,8 +75,7 @@ each element of the grid
   
 3. `grid$num_cols` the number of columns of the grid.
 
-
-```r
+```{r cqg}
 grid <-  create_qk_grid(
                xmin = -59,
                xmax = -57,
@@ -50,13 +83,7 @@ grid <-  create_qk_grid(
                ymax = -34,
                level = 12)
 head(grid$data)
-#>   tileX tileY      quadkey
-#> 1  1376  2473 210321302002
-#> 2  1376  2472 210321302000
-#> 3  1376  2471 210321300222
-#> 4  1376  2470 210321300220
-#> 5  1376  2469 210321300202
-#> 6  1376  2468 210321300200
+
 ```
 
 #### 1.3 Get the grid coordinates from the QuadKeys
@@ -64,26 +91,34 @@ head(grid$data)
 The coordinates are extracted from the QuadKeys 
 using the function `extract_qk_coords()`
 
-
-```r
+```{r grid}
 grid_coords <- extract_qk_coord(data = grid$data)
 head(grid_coords)
-#> Simple feature collection with 6 features and 3 fields
-#> Geometry type: POINT
-#> Dimension:     XY
-#> Bounding box:  xmin: -59.0625 ymin: -34.958 xmax: -59.0625 ymax: -34.59704
-#> Geodetic CRS:  WGS 84
-#>   tileX tileY      quadkey                   geometry
-#> 1  1376  2473 210321302002   POINT (-59.0625 -34.958)
-#> 2  1376  2472 210321302000 POINT (-59.0625 -34.88593)
-#> 3  1376  2471 210321300222  POINT (-59.0625 -34.8138)
-#> 4  1376  2470 210321300220 POINT (-59.0625 -34.74161)
-#> 5  1376  2469 210321300202 POINT (-59.0625 -34.66936)
-#> 6  1376  2468 210321300200 POINT (-59.0625 -34.59704)
 ```
 We can visualize the points in the map to understand better the results.
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png)
+```{r echo = FALSE}
+
+
+min =st_sfc(st_point(c(-59,-35)), crs = 4326)
+max = st_sfc(st_point(c(-57,-34)), crs = 4326)
+ggplot() + 
+  geom_sf(data = ne_countries(returnclass = 'sf'),
+          fill = 'beige') +
+
+  geom_sf(data = min, color = 'purple') +
+  geom_sf(data = max, color = 'purple') +
+    geom_sf(data = grid_coords, alpha = 0.5, size = 0.5) +
+  coord_sf(xlim = c(-60, -56),
+            ylim = c(-36, -33), expand = FALSE) +
+  theme_minimal()  +
+  theme(panel.background = element_rect(fill = "lightblue"),
+        panel.ontop = FALSE,
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank()) +
+  ylab("Latitude") + 
+  xlab("Longitude")
+```
 We have a grid of points representing the QuadKeys. Remember that these points 
 represent the upper-left corner of each QuadKey, which might give the impression
 that they do not precisely cover the entire area. 
@@ -92,24 +127,34 @@ that they do not precisely cover the entire area.
 #### 1.4 Conversion to polygons
 Now, let's proceed to create the polygons.
 
-
-```r
+```{r poly}
 polygrid = grid_to_polygon(grid_coords)
 head(polygrid)
-#> Simple feature collection with 6 features and 1 field
-#> Geometry type: POLYGON
-#> Dimension:     XY
-#> Bounding box:  xmin: -57.04102 ymin: -34.37971 xmax: -56.95312 ymax: -33.94336
-#> Geodetic CRS:  WGS 84
-#>        quadkey                       geometry
-#> 1 210321132133 POLYGON ((-57.04102 -34.016...
-#> 2 210321132311 POLYGON ((-57.04102 -34.089...
-#> 3 210321132313 POLYGON ((-57.04102 -34.161...
-#> 4 210321132331 POLYGON ((-57.04102 -34.234...
-#> 5 210321132333 POLYGON ((-57.04102 -34.307...
-#> 6 210321310111 POLYGON ((-57.04102 -34.379...
+
 ```
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png)
+```{r echo = FALSE}
+
+min =st_sfc(st_point(c(-59,-35)), crs = 4326)
+max = st_sfc(st_point(c(-57,-34)), crs = 4326)
+ggplot() + 
+  geom_sf(data = ne_countries(returnclass = 'sf'),
+          fill = 'beige') +
+
+  geom_sf(data = min, color = 'purple') +
+  geom_sf(data = max, color = 'purple') +
+    geom_sf(data = polygrid, alpha = 0.5, 
+            size = 0.5, fill = NA, color = 'red') +
+  coord_sf(xlim = c(-60, -56),
+            ylim = c(-36, -33), expand = FALSE) +
+  theme_minimal()  +
+  theme(panel.background = element_rect(fill = "lightblue"),
+        panel.ontop = FALSE,
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank()) +
+  ylab("Latitude") + 
+  xlab("Longitude")
+
+```
 
 It worked! As you can see here, the coordinates we randomly selected as 
 a starting point are situated within the polygons, but not at a 
@@ -117,8 +162,7 @@ specific position inside each polygon. This was expected.
 
 If you want to see the grid, you can also check the app:
 
-
-```r
+```{r eval = FALSE}
 
 qkmap_app()
 
@@ -133,17 +177,10 @@ Let's generate the raster. The `data_provided` dataset consists of QuadKeys
 linked to a variable value. While this dataset contains QuadKeys within our
 defined study area and detail level, not all grid QuadKeys are present.
 
-
-```r
+```{r}
 data('data_provided')
 head(data_provided)
-#>        quadkey variable
-#> 1 210321132133     0.22
-#> 2 210321132311     0.56
-#> 3 210321132313     0.27
-#> 4 210321132331     0.06
-#> 5 210321132333     0.88
-#> 6 210321310111     0.22
+
 ```
 
 
@@ -151,31 +188,18 @@ I merge `polygrid` and `data_provided` using QuadKey as the key.
 Please note that `data_provided` shouldn't be an `sf` dataset with a geometry 
 column for this join to be executed correctly.
 
-
-```r
+```{r dp}
 
 data_raster <-  polygrid |>
   dplyr::inner_join(data_provided, 
                     by = c('quadkey'))
 
 head(data_raster)
-#> Simple feature collection with 6 features and 2 fields
-#> Geometry type: POLYGON
-#> Dimension:     XY
-#> Bounding box:  xmin: -57.04102 ymin: -34.37971 xmax: -56.95312 ymax: -33.94336
-#> Geodetic CRS:  WGS 84
-#>        quadkey variable                       geometry
-#> 1 210321132133     0.22 POLYGON ((-57.04102 -34.016...
-#> 2 210321132311     0.56 POLYGON ((-57.04102 -34.089...
-#> 3 210321132313     0.27 POLYGON ((-57.04102 -34.161...
-#> 4 210321132331     0.06 POLYGON ((-57.04102 -34.234...
-#> 5 210321132333     0.88 POLYGON ((-57.04102 -34.307...
-#> 6 210321310111     0.22 POLYGON ((-57.04102 -34.379...
+
 ```
 Now, we can use the dataframe to create the raster.
 
-
-```r
+```{r}
 raster <-  create_raster(template = data_raster,
               nx = grid$num_cols +1,
               ny = grid$num_rows +1,
@@ -183,20 +207,39 @@ raster <-  create_raster(template = data_raster,
               var = 'variable')
 
 raster
-#> stars object with 2 dimensions and 1 attribute
-#> attribute(s):
-#>           Min. 1st Qu. Median      Mean 3rd Qu. Max.
-#> variable     0    0.22   0.49 0.5028611    0.76    1
-#> dimension(s):
-#>   from to offset    delta refsys point x/y
-#> x    1 24 -59.06  0.08789 WGS 84 FALSE [x]
-#> y    1 15 -33.94 -0.07244 WGS 84 FALSE [y]
 
 # In case you want to save it:
 # write_stars(obj = raster,
 #             dsn = "raster.tif")
+
 ```
 
 
-![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8-1.png)
+```{r echo = FALSE}
 
+
+min =st_sfc(st_point(c(-59,-35)), crs = 4326)
+max = st_sfc(st_point(c(-57,-34)), crs = 4326)
+p = ggplot() + 
+  geom_sf(data = ne_countries(returnclass = 'sf'),
+          fill = 'beige') +
+
+  geom_sf(data = min, color = 'purple') +
+  geom_sf(data = max, color = 'purple') +
+  geom_stars(data = raster, alpha = 0.5) +
+    geom_sf(data = polygrid, alpha = 0.5,
+            size = 0.5, color = 'red', fill = NA) +
+  coord_sf(xlim = c(-60, -56),
+            ylim = c(-36, -33), expand = FALSE) +
+  viridis::scale_fill_viridis() +
+  theme_minimal()  +
+  theme(panel.background = element_rect(fill = "lightblue"),
+        panel.ontop = FALSE,
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank()) +
+  ylab("Latitude") + 
+  xlab("Longitude")
+
+p
+
+```
