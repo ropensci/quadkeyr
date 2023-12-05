@@ -78,7 +78,7 @@ qkmap_app <- function(...) {
 
     output$qkvalues <- DT::renderDT({
 
-      req(input$search)
+        shiny::req(input$search)
 
         dataqk <- t(data.frame(c('TileX',
                                  qk_results()$tileX),

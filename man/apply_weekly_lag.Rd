@@ -19,7 +19,7 @@ for quadkeys without NAs.
 }
 \examples{
 
-data <- result_read_all_files
+data <- result_read_all_files[1:500,]
 apply_weekly_lag(data)
 
 }

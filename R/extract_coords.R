@@ -58,8 +58,9 @@ extract_qk_coord <- function(data){
   }
 
   data = data |>
-    dplyr::select(tileX, tileY, quadkey, pxy_lon, pxy_lat) |>
-    sf::st_as_sf(coords = c('pxy_lon', 'pxy_lat'), crs = 4326)
+    dplyr::select("tileX", "tileY", "quadkey",
+                  "pxy_lon", "pxy_lat") |> # tidyselect
+    sf::st_as_sf(coords = c("pxy_lon", "pxy_lat"), crs = 4326)
 
   return(data)
 
@@ -119,7 +120,8 @@ extract_tile_coord <- function(data, level){
 
   # I have to keep the quadkeys for later use
   data = data |>
-    dplyr::select(tileX, tileY, quadkey, pxy_lon, pxy_lat) |>
+    dplyr::select("tileX", "tileY", "quadkey",
+                  "pxy_lon", "pxy_lat") |> # tidyselect
     sf::st_as_sf(coords = c('pxy_lon', 'pxy_lat'), crs = 4326)
 
   return(data)

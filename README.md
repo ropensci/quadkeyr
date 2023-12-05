@@ -6,9 +6,10 @@
 <!-- badges: start -->
 
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental) [![R-CMD-check](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-standard.yaml) [![test-coverage](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/test-coverage.yaml) [![codecov](https://codecov.io/gh/Fernandez-Lab-WSU/quadkeyr/main/graph/badge.svg)](https://codecov.io/gh/Fernandez-Lab-WSU/quadkeyr)
-
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
+
+⚠️ This package is under review
 
 The `quadkeyr` R package presents a comprehensive toolkit tailored for
 generating raster images from QuadKeys within [Microsoft’s Bing Maps
@@ -25,8 +26,8 @@ The goal of `quadkeyr` is to:
 
 1.  [**Bing Maps Tile System
     functions**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_conversion.html)
-    Provide functions in R to convert QuadKeys to coordinates and vice
-    versa, as described in the [official
+    Provide functions in R to convert geographical coordinates to and
+    from QuadKeys as described in the [official
     documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system)
 
 2.  [**Create rasters based on
@@ -57,5 +58,12 @@ devtools::install_github("Fernandez-Lab-WSU/quadkeyr")
 
 - [Bing Maps Tile Systems -
   Microsoft](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system)
-- [`slippymath`: Slippy Map Tile
+- [R - `slippymath`: Slippy Map Tile
   Tools](https://cran.r-project.org/web/packages/slippymath/index.html)
+- [Python - `pyquadkey2`](https://docs.muetsch.io/pyquadkey2/)
+- [Python - `python-quadkey`](https://github.com/CartoDB/python-quadkey)
+- [Python - `mercantile`](https://pypi.org/project/mercantile/)
+- [Rust - `geo-quadkey-rs`](https://lib.rs/crates/geo-quadkey-rs)
+- [TypeScript -
+  `quadkey-tilemath`](https://github.com/glassonion1/quadkey-tilemath)
+- [GeoCode Map viewer](https://tools.9revolution9.com/geo/geocode/)

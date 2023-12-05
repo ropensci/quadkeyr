@@ -115,3 +115,44 @@ tileXY_to_quadkey <- function(tileX, tileY, level) {
   return(paste(qk, collapse = ''))
 }
 
+#' Convert latitude/longitude coordinates into QuadKeys
+#'
+#' @param lat
+#' @param lon
+#' @param level 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+latlong_to_quadkey <- function(lat, lon, level) {
+  
+  if (level < 0 | level > 23 | (level %% 1) != 0) {
+    stop("The level of detail should be an integer between 1 and 23")
+  }
+  
+  
+   data <- data.frame(lat = lat,
+                      lon = lon,
+                      level = level)
+  
+
+  for(i in 1:nrow(data)){
+
+    
+    data[i, 'pixelX'] = latlong_to_pixelXY(data$lat[i], data$lon[i], data$level[i])$pixelX
+    data[i, 'pixelY'] = latlong_to_pixelXY(data$lat[i], data$lon[i], data$level[i])$pixelY
+    data[i, 'tileY'] = pixelXY_to_tileXY(data$pixelX[i], data$pixelY[i])$tileY
+    data[i, 'tileX'] = pixelXY_to_tileXY(data$pixelX[i], data$pixelY[i])$tileX
+    data[i, 'quadkey'] = tileXY_to_quadkey(data$tileX[i], data$tileY[i], level = data$level[i])
+    
+
+  }
+
+  data_sf <-  data |>
+    dplyr::select("lat", "lon", "quadkey") |> #tidyselect
+    sf::st_as_sf(coords = c("lon", "lat"),
+                 crs = 4326)
+  return(data_sf)
+  
+}

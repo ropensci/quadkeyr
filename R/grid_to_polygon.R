@@ -44,13 +44,14 @@ complete_grid_for_polygons <- function(data){
   textY = max(data$tileY) + 1
   level = unique(nchar(data$quadkey))
 
-  extragrid =  rbind(data.frame(
+  extragrid =  rbind(
+    data.frame(
     tileX = seq(min(data$tileX),
-                textX),
+                         textX),
     tileY = textY),
     data.frame(tileX = textX,
                tileY = seq(min(data$tileY),
-                           textY -1))) |>
+                                    textY -1))) |> # there should be -1 to not duplicate the point in the corner
     dplyr::mutate(quadkey = NA) # I am adding this points to fill the grid, the qk value is not important here
 
 }
@@ -86,7 +87,6 @@ complete_grid_for_polygons <- function(data){
 #'
 #'                       polygrid = grid_to_polygon(grid_coords)
 #'                       polygrid
-
 grid_to_polygon <- function(data){
 
   if (!("sf" %in% class(data))) {
@@ -102,7 +102,7 @@ grid_to_polygon <- function(data){
 
   db = c() #https://github.com/r-spatial/sf/issues/354
 
-  subdata = subset(data, !is.na(quadkey))
+  subdata = subset(data, !is.na(data$quadkey))
 
   for(i in 1:nrow(subdata)){
 
@@ -113,24 +113,24 @@ grid_to_polygon <- function(data){
 
   # This point will always exists
   a = data |>
-    dplyr::filter(tileX == x & tileY == y)
+    dplyr::filter(.data$tileX == x & .data$tileY == y)
 
   b = data |>
-    dplyr::filter(tileX == x & tileY == (y + 1))
+    dplyr::filter(.data$tileX == x & .data$tileY == (y + 1))
 
   c = data |>
-    dplyr::filter(tileX == x + 1  & tileY == y)
+    dplyr::filter(.data$tileX == x + 1  & .data$tileY == y)
 
   d = data |>
-    dplyr::filter(tileX == x +1 & tileY == y + 1)
+    dplyr::filter(.data$tileX == x + 1 & .data$tileY == y + 1)
 
   pixel = rbind(a, b, c, d) |>
         sf::st_bbox() |>
         sf::st_as_sfc()
 
    grid_px =  sf::st_sf(quadkey = subdata[i, ]$quadkey,
-                    geometry = pixel,
-               sf_column_name = 'geometry')
+                        geometry = pixel,
+                        sf_column_name = 'geometry')
 
    db = rbind(grid_px, db)
   #st_write(pixel, 'pixel.gpkg', append = TRUE)

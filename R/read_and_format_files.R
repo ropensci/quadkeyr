@@ -81,9 +81,9 @@ format_data <- function(data){
 
   # replace \\N with NA
   data <- data |>
-    dplyr::mutate(across(-c(date_time, day),
+    dplyr::mutate(dplyr::across(-c("date_time", "day"), #tidyselect
                   ~ ifelse(. == "\\N", NA, .))) |> 
-    dplyr::mutate(across(-c(date_time, day, quadkey),
+    dplyr::mutate(dplyr::across(-c("date_time", "day", "quadkey"),
                as.numeric))
      
   data
@@ -113,7 +113,7 @@ format_data <- function(data){
 #'
 missing_combinations <- function(data) {
 
-  data <- data |> dplyr::mutate(day = as.Date(day))
+  data <- data |> dplyr::mutate(day = as.Date(.data$day))
   
   # Generate all combinations of days and times
   all_combinations <- expand.grid(

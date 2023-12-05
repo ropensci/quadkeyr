@@ -165,8 +165,8 @@ quadkey_to_latlong <- function(quadkeys){
   }
 
   data_sf <-  datacoords |>
-    dplyr::select(quadkey, lat, lon) |>
-    sf::st_as_sf(coords = c('lon', 'lat'),
+    dplyr::select("quadkey", "lat", "lon") |> #tidyselect
+    sf::st_as_sf(coords = c("lon", "lat"),
              crs = 4326)
 
   return(data_sf)

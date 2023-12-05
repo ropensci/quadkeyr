@@ -38,7 +38,7 @@ lltp
 
 ```{r ptt}
 ptt <- pixelXY_to_tileXY(pixelX = lltp$pixelX,
-                  pixelY = lltp$pixelY)
+                         pixelY = lltp$pixelY)
 ptt
 ```
 
@@ -81,10 +81,16 @@ ttp
 
 ```{r ptll}
 ptll <- pixelXY_to_latlong(pixelX = ttp$pixelX,
-                          pixelY = ttp$pixelY,
-                          level = 4)
+                           pixelY = ttp$pixelY,
+                           level = 4)
 
 ptll
+```
+You can also use the function `quadkey_to_latlong` if you want to apply all the 
+steps together.
+
+```{r}
+quadkey_to_latlong("2103")
 ```
 
 

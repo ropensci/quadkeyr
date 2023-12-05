@@ -45,7 +45,7 @@ for(p in c(0, 8, 16)){
 
   # is this iteration a missing file?
   no_data <- mc |>
-    filter(day ==  as.Date(i, origin = "1970-01-01") & time == p)
+            dplyr::filter(.data$day ==  as.Date(i, origin = "1970-01-01") & .data$time == p)
 
   # if it is, skip it
   if (nrow(no_data) > 0) {
@@ -54,7 +54,7 @@ for(p in c(0, 8, 16)){
 
 
   data <- data |>
-    filter(day ==  as.Date(i, origin = "1970-01-01") & time == p)
+            dplyr::filter(.data$day ==  as.Date(i, origin = "1970-01-01") & .data$time == p)
 
   file <-  create_raster(template = template,
                 nx = nx,
@@ -62,8 +62,8 @@ for(p in c(0, 8, 16)){
                 data = data,
                 var = variable )
 
-          write_stars(obj = file,
-                      dsn = paste0(path, filename,
+          stars::write_stars(obj = file,
+                             dsn = paste0(path, filename,
                                             "_",
                                    as.Date(i, origin = "1970-01-01"),
                                             "_",

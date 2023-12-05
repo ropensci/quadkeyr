@@ -59,14 +59,14 @@ data.</p>
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>data</dt>
-<dd><p>A dataframe with a quadkey, date_time and n_crisis column</p></dd>
+<dd><p>A dataframe with a quadkey, date_time, country columns and other numeric variables</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A dataframe with a quadkey, date_time and n_crisis column</p>
+<p>A dataframe.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -76,26 +76,10 @@ data.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">files</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">format_data</span><span class="op">(</span>data <span class="op">=</span> <span class="va">files</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2,376 × 15</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      lat   lon quadkey          country date_time           n_baseline  n_crisis</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> -<span style="color: #BB0000;">34.6</span> -<span style="color: #BB0000;">58.6</span> 2103213001233203 AR      2020-04-26 <span style="color: #949494;">00:00:00</span> 194.068757…     212.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> -<span style="color: #BB0000;">34.5</span> -<span style="color: #BB0000;">58.5</span> 2103213001320201 AR      2020-04-26 <span style="color: #949494;">00:00:00</span> 228.062894…     259.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> -<span style="color: #BB0000;">34.6</span> -<span style="color: #BB0000;">58.6</span> 2103213003010110 AR      2020-04-26 <span style="color: #949494;">00:00:00</span> 112.048163…     123.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> -<span style="color: #BB0000;">34.6</span> -<span style="color: #BB0000;">58.5</span> 2103213001320232 AR      2020-04-26 <span style="color: #949494;">00:00:00</span> 229.542625…     254.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> -<span style="color: #BB0000;">34.5</span> -<span style="color: #BB0000;">58.5</span> 2103213001213323 AR      2020-04-26 <span style="color: #949494;">00:00:00</span> 162.857403…     178.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> -<span style="color: #BB0000;">34.6</span> -<span style="color: #BB0000;">58.6</span> 2103213001230322 AR      2020-04-26 <span style="color: #949494;">00:00:00</span> 266.097529…     295.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> -<span style="color: #BB0000;">34.6</span> -<span style="color: #BB0000;">58.5</span> 2103213001322200 AR      2020-04-26 <span style="color: #949494;">00:00:00</span> 176.749991…     188.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> -<span style="color: #BB0000;">34.6</span> -<span style="color: #BB0000;">58.5</span> 2103213001233103 AR      2020-04-26 <span style="color: #949494;">00:00:00</span> 201.299289…     214.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> -<span style="color: #BB0000;">34.5</span> -<span style="color: #BB0000;">58.5</span> 2103213001302202 AR      2020-04-26 <span style="color: #949494;">00:00:00</span> 145.319203…     145.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> -<span style="color: #BB0000;">34.5</span> -<span style="color: #BB0000;">58.5</span> 2103213001320100 AR      2020-04-26 <span style="color: #949494;">00:00:00</span> 153.561163…     178.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 2,366 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 8 more variables: n_difference &lt;chr&gt;, density_baseline &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   density_crisis &lt;chr&gt;, percent_change &lt;dbl&gt;, clipped_z_score &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ds &lt;chr&gt;, day &lt;date&gt;, time &lt;dbl&gt;</span></span>
+<span class="r-in"><span><span class="co">#data(onefile)</span></span></span>
+<span class="r-in"><span><span class="co">#format_data(data = onefile)</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

@@ -46,22 +46,22 @@ create_qk_grid <- function(xmin, xmax, ymin, ymax, level){
                "Longitude must be between -180 and 180."))
   }
 
-
-
   # x - Convert lat/long coordinates to tile XY coords
   pixs = latlong_to_pixelXY(latitude = ymin,
-                          longitude = xmin,
-                          level = level)
+                            longitude = xmin,
+                            level = level)
+  
   tilesmn = pixelXY_to_tileXY(pixelX = pixs$pixelX,
-                          pixelY = pixs$pixelY)
+                              pixelY = pixs$pixelY)
 
 
   # y - Convert lat/long coordinates to tile XY coords
   pixs = latlong_to_pixelXY(latitude = ymax,
-                          longitude = xmax,
-                          level = level)
+                            longitude = xmax,
+                            level = level)
+  
   tilesmx = pixelXY_to_tileXY(pixelX = pixs$pixelX,
-                          pixelY = pixs$pixelY)
+                              pixelY = pixs$pixelY)
 
   # How many tile XY coordinates conform the grid?
   resy = tilesmx$tileY - tilesmn$tileY
@@ -85,10 +85,11 @@ create_qk_grid <- function(xmin, xmax, ymin, ymax, level){
     for(r in 0:num_rows){
 
      grid = data.frame(tileX = tilesmn$tileX + (c * sign(resx)),
-                 tileY = tilesmn$tileY + (r * sign(resy))) |>
-                   dplyr::mutate(quadkey = tileXY_to_quadkey(tileX = tileX,
-                                           tileY = tileY,
-                                           level = level))
+                       tileY = tilesmn$tileY + (r * sign(resy))) |>
+                       dplyr::mutate(quadkey = tileXY_to_quadkey(
+                                                            tileX = tileX,
+                                                            tileY = tileY,
+                                                            level = level))
 
      data = rbind(data, grid)
 

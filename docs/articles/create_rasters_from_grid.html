@@ -176,9 +176,7 @@ of columns and rows, we will use this data to create the raster.</p>
 <h4 id="step-4-create-the-polygons">Step 4: Create the polygons<a class="anchor" aria-label="anchor" href="#step-4-create-the-polygons"></a>
 </h4>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span></span>
-<span><span class="co"># Now we can transform the quadkeys into polygons</span></span>
+<code class="sourceCode R"><span><span class="co"># Now we can transform the quadkeys into polygons</span></span>
 <span><span class="va">polygrid</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/grid_to_polygon.html">grid_to_polygon</a></span><span class="op">(</span><span class="va">regular_grid</span><span class="op">$</span><span class="va">data</span><span class="op">)</span></span>
 <span><span class="va">polygrid</span></span>
 <span><span class="co">#&gt; Simple feature collection with 396 features and 1 field</span></span>
@@ -205,7 +203,7 @@ can select the variables that will be part of the analysis and also
 create new variables if needed.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">polyvar</span> <span class="op">&lt;-</span> <span class="va">files</span> <span class="op">|&gt;</span></span>
-<span>        <span class="fu">select</span><span class="op">(</span><span class="va">day</span>, <span class="va">time</span>, <span class="va">quadkey</span>, <span class="va">percent_change</span>, <span class="va">n_crisis</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>        <span class="fu">select</span><span class="op">(</span><span class="va">day</span>, <span class="va">time</span>, <span class="va">quadkey</span>, <span class="va">n_crisis</span>, <span class="va">percent_change</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>        <span class="fu">inner_join</span><span class="op">(</span><span class="va">polygrid</span>, by <span class="op">=</span> <span class="st">'quadkey'</span> <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/apply_weekly_lag.html">apply_weekly_lag</a></span><span class="op">(</span><span class="op">)</span> </span>
 <span></span>
@@ -223,7 +221,7 @@ days and times missing.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span> </span>
 <span><span class="co"># variable 1</span></span>
-<span><span class="fu"><a href="../reference/polygon_to_raster.html">polygon_to_raster</a></span><span class="op">(</span>qk_data_sp <span class="op">=</span> <span class="va">polyvar</span>,</span>
+<span><span class="fu"><a href="../reference/polygon_to_raster.html">polygon_to_raster</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">polyvar</span>,</span>
 <span>                  nx <span class="op">=</span> <span class="va">grid</span><span class="op">$</span><span class="va">num_cols</span> <span class="op">+</span><span class="fl">1</span> ,</span>
 <span>                  ny <span class="op">=</span> <span class="va">grid</span><span class="op">$</span><span class="va">num_rows</span> <span class="op">+</span><span class="fl">1</span> ,</span>
 <span>                  template <span class="op">=</span> <span class="va">polyvar</span>,</span>
@@ -233,7 +231,7 @@ days and times missing.</p>
 <span>                  <span class="op">)</span></span>
 <span></span>
 <span><span class="co"># variable 2</span></span>
-<span><span class="fu"><a href="../reference/polygon_to_raster.html">polygon_to_raster</a></span><span class="op">(</span>qk_data_sp <span class="op">=</span> <span class="va">polyvar7</span>,</span>
+<span><span class="fu"><a href="../reference/polygon_to_raster.html">polygon_to_raster</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">polyvar7</span>,</span>
 <span>                  nx <span class="op">=</span> <span class="va">grid</span><span class="op">$</span><span class="va">num_cols</span> <span class="op">+</span><span class="fl">1</span> ,</span>
 <span>                  ny <span class="op">=</span> <span class="va">grid</span><span class="op">$</span><span class="va">num_rows</span> <span class="op">+</span><span class="fl">1</span> ,</span>
 <span>                  template <span class="op">=</span> <span class="va">polyvar7</span>,</span>

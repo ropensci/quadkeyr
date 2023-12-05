@@ -46,6 +46,9 @@
     <loc>/reference/create_raster.html</loc>
   </url>
   <url>
+    <loc>/reference/data_provided.html</loc>
+  </url>
+  <url>
     <loc>/reference/data_to_qk_grid.html</loc>
   </url>
   <url>
@@ -113,6 +116,9 @@
   </url>
   <url>
     <loc>/reference/regular_qk_grid.html</loc>
+  </url>
+  <url>
+    <loc>/reference/result_read_all_files.html</loc>
   </url>
   <url>
     <loc>/reference/tileXY_to_pixelXY.html</loc>
