@@ -61,8 +61,6 @@ devtools::install_github("Fernandez-Lab-WSU/quadkeyr")
 
 Please note that the `quadkeyr` project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
 
-### How to cite this package?
-
 ### References
 - [Bing Maps Tile Systems - Microsoft](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system)
 - [R - `slippymath`: Slippy Map Tile Tools](https://cran.r-project.org/web/packages/slippymath/index.html)
