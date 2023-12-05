@@ -34,9 +34,6 @@
     <loc>/index.html</loc>
   </url>
   <url>
-    <loc>/reference/MinLatitude.html</loc>
-  </url>
-  <url>
     <loc>/reference/apply_weekly_lag.html</loc>
   </url>
   <url>
@@ -53,9 +50,6 @@
   </url>
   <url>
     <loc>/reference/data_provided.html</loc>
-  </url>
-  <url>
-    <loc>/reference/data_to_qk_grid.html</loc>
   </url>
   <url>
     <loc>/reference/extract_qk_coord.html</loc>
@@ -76,9 +70,6 @@
     <loc>/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/latlong_to_pixel.html</loc>
-  </url>
-  <url>
     <loc>/reference/latlong_to_pixelXY.html</loc>
   </url>
   <url>
@@ -91,9 +82,6 @@
     <loc>/reference/mapsize.html</loc>
   </url>
   <url>
-    <loc>/reference/min_latitude.html</loc>
-  </url>
-  <url>
     <loc>/reference/missing_combinations.html</loc>
   </url>
   <url>
@@ -103,19 +91,10 @@
     <loc>/reference/pixelXY_to_tileXY.html</loc>
   </url>
   <url>
-    <loc>/reference/pixel_to_latlong.html</loc>
-  </url>
-  <url>
-    <loc>/reference/pixel_to_tile.html</loc>
-  </url>
-  <url>
     <loc>/reference/polygon_to_raster.html</loc>
   </url>
   <url>
     <loc>/reference/quadkey_to_latlong.html</loc>
-  </url>
-  <url>
-    <loc>/reference/quadkey_to_tile.html</loc>
   </url>
   <url>
     <loc>/reference/quadkey_to_tileXY.html</loc>
@@ -134,11 +113,5 @@
   </url>
   <url>
     <loc>/reference/tileXY_to_quadkey.html</loc>
-  </url>
-  <url>
-    <loc>/reference/tile_to_pixel.html</loc>
-  </url>
-  <url>
-    <loc>/reference/tile_to_quadkey.html</loc>
   </url>
 </urlset>
