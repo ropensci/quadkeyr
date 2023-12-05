@@ -1,12 +1,13 @@
 #' Create a stars raster
 #'
-#' @description The use of a template enables the creation of an accurate raster,
-#' even in the presence of NAs.
+#' @description The use of a template enables the creation of an accurate 
+#' raster, even in the presence of NAs.
 #'
 #' @param template A spatial dataset (sf) with the polygon grid used as template
 #' @param nx Integer; number of cells in x direction.
 #' @param ny Integer; number of cells in y direction.
-#' @param data A spatial dataframe (sf) with the variable we want to represent in the raster.
+#' @param data A spatial dataframe (sf) with the variable we want to represent 
+#' in the raster.
 #' @param var The column name of the variable to plot.
 #'
 #' @seealso \code{\link{st_as_stars}}, \code{\link{st_rasterize}}
@@ -50,7 +51,7 @@ raster_tmplt <- stars::st_as_stars(sf::st_bbox(template),
                                    ny = ny,
                                    nx = nx)
 
-r = stars::st_rasterize(data[,as.character(var)],
+r <- stars::st_rasterize(data[,as.character(var)],
                  template = raster_tmplt)
 
 return(r)

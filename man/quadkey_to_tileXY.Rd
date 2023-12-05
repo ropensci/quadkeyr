@@ -10,10 +10,12 @@ quadkey_to_tileXY(qk)
 \item{qk}{The QuadKey number as a string.}
 }
 \value{
-A list returning the tile X, tile Y coordinates and the level of detail.
+A list returning the tile X, tile Y coordinates and
+the level of detail.
 }
 \description{
-For further information, refer to the Microsoft Bing Maps Tile System documentation.
+For further information, refer to the
+Microsoft Bing Maps Tile System documentation.
 }
 \examples{
 

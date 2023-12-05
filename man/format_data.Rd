@@ -7,7 +7,8 @@
 format_data(data)
 }
 \arguments{
-\item{data}{A dataframe with a quadkey, date_time, country columns and other numeric variables}
+\item{data}{A dataframe with a quadkey, date_time, country columns and
+other numeric variables}
 }
 \value{
 A dataframe.

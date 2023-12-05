@@ -10,13 +10,15 @@ quadkey_to_latlong(quadkeys)
 \item{quadkeys}{A vector with unique QuadKey numbers.}
 }
 \value{
-A spatial data frame of class sf with a quadkey column and POINT geometry.
+A spatial data frame of class sf with a quadkey column
+and POINT geometry.
 The coordinates represent the upper-left corner of the QuadKey.
 }
 \description{
 This function converts Quadkeys to
 latitude/longitude WGS-84 coordinates (in degrees).
-For further information, refer to the Microsoft Bing Maps Tile System documentation.
+For further information, refer to the Microsoft Bing Maps Tile System
+documentation.
 }
 \examples{
 

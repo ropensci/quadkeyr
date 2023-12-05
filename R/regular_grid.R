@@ -46,7 +46,7 @@ regular_qk_grid <- function(data){
   data <- rbind(grid_coords, data)
 
   # I will need the tiles for grid_to_polygon
-  for(i in 1:nrow(data)){
+  for(i in seq_len(nrow(data))){
   data[i, 'tileX'] = quadkey_to_tileXY(data$quadkey[i])$tileX
   data[i, 'tileY'] = quadkey_to_tileXY(data$quadkey[i])$tileY
   }

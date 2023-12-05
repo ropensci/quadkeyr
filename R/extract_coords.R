@@ -10,10 +10,10 @@
 #' @seealso \code{\link{pixelXY_to_latlong}}
 #'
 #' @return A spatial dataframe (sf) containing the tiles XY coordinates
-#' (tileX, tileY), the QuadKey number (quadkey), and a column for POINT geometry.
+#' (tileX, tileY), the QuadKey number (quadkey), and a column for POINT
+#' geometry.
 #'
-#'
-#' @export
+#'#' @export
 #'
 #' @examples
 #'
@@ -26,14 +26,13 @@
 #' grid_coords <- extract_qk_coord(data = grid$data)
 #'
 #' plot(grid_coords)
-
 extract_qk_coord <- function(data){
 
   if (!"quadkey" %in% colnames(data)) {
     stop("Please ensure that the dataset contains a column named 'quadkey'.")
   }
 
-  for(i in 1:nrow(data)){
+  for(i in seq_len(nrow(data))){
     # check that the data has the correct dimensions for this analysis
     level = nchar(data$quadkey[i])
 
@@ -42,22 +41,22 @@ extract_qk_coord <- function(data){
     data$qk_tileX[i] <-  qktot$tileX
     data$qk_tileY[i] <- qktot$tileY
 
-    ttop = tileXY_to_pixelXY(tileX = data$qk_tileX[i],
-                         tileY = data$qk_tileY[i])
+    ttop <- tileXY_to_pixelXY(tileX = data$qk_tileX[i],
+                             tileY = data$qk_tileY[i])
 
     data$tl_pxx[i] <- ttop$pixelX
     data$tl_pxy[i] <- ttop$pixelY
 
-    ptoll = pixelXY_to_latlong(pixelX = data$tl_pxx[i],
-                             pixelY = data$tl_pxy[i],
-                             level = level)
+    ptoll <- pixelXY_to_latlong(pixelX = data$tl_pxx[i],
+                               pixelY = data$tl_pxy[i],
+                               level = level)
 
     data$pxy_lat[i] <- ptoll$lat
     data$pxy_lon[i] <- ptoll$lon
 
   }
 
-  data = data |>
+  data <- data |>
     dplyr::select("tileX", "tileY", "quadkey",
                   "pxy_lon", "pxy_lat") |> # tidyselect
     sf::st_as_sf(coords = c("pxy_lon", "pxy_lat"), crs = 4326)
@@ -98,28 +97,29 @@ extract_qk_coord <- function(data){
 extract_tile_coord <- function(data, level){
 
   if (!any(c('tileX', 'tileY') %in% colnames(data))) {
-    stop("Please ensure that the dataset contains columns named 'tileX' and 'tileY'")
+    stop(paste("Please ensure that the dataset contains columns named 'tileX'",
+               "and 'tileY'"))
   }
 
-  for(i in 1:nrow(data)){
+  for(i in seq_len(nrow(data))){
 
-    ttop = tileXY_to_pixelXY(tileX = data$tileX[i],
-                         tileY = data$tileY[i])
+    ttop <- tileXY_to_pixelXY(tileX = data$tileX[i],
+                             tileY = data$tileY[i])
 
     data$tl_pxx[i] <- ttop$pixelX
     data$tl_pxy[i] <- ttop$pixelY
 
-    ptoll = pixelXY_to_latlong(pixelX = data$tl_pxx[i],
-                             pixelY = data$tl_pxy[i],
-                             level = level)
-
+    ptoll <- pixelXY_to_latlong(pixelX = data$tl_pxx[i],
+                               pixelY = data$tl_pxy[i],
+                               level = level)
+ 
     data$pxy_lat[i] <- ptoll$lat
     data$pxy_lon[i] <- ptoll$lon
 
   }
 
   # I have to keep the quadkeys for later use
-  data = data |>
+  data <- data |>
     dplyr::select("tileX", "tileY", "quadkey",
                   "pxy_lon", "pxy_lat") |> # tidyselect
     sf::st_as_sf(coords = c('pxy_lon', 'pxy_lat'), crs = 4326)

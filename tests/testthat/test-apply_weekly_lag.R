@@ -6,7 +6,8 @@ test_that("Check if column 'var_n_percent_7' exists", {
   expect_true("percent_change_7" %in% colnames(output),
               info = "Column 'percent_change_7' should exist in the output")
 
-  expect_equal(nrow(output), sum(!is.na(result_read_all_files[1:100,]$n_crisis)),
+  expect_equal(nrow(output), 
+               sum(!is.na(result_read_all_files[1:100,]$n_crisis)),
                info = "The output is analysing the exact number of quadkeys")
 })
 

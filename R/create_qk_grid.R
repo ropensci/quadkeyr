@@ -32,40 +32,40 @@ create_qk_grid <- function(xmin, xmax, ymin, ymax, level){
   }
 
   # Values in Microsoft Bing Tile System Documentation
-  min_latitude = -85.05112878
-  max_latitude = 85.05112878
-  min_longitude = -180
-  max_longitude = 180
+  min_latitude <- -85.05112878
+  max_latitude <- 85.05112878
+  min_longitude <- -180
+  max_longitude <- 180
 
 
    # this variables were defined in the function ground_res
   if (ymin < min_latitude || ymax > max_latitude ||
       xmin < min_longitude || xmax > max_longitude) {
-    stop(paste("At least one of the provided coordinates are outside the valid range.",
-               "Latitude must be between -85.05112878 and 85.05112878.",
-               "Longitude must be between -180 and 180."))
+    stop(paste("At least one of the provided coordinates are outside",
+               "the valid range. Latitude must be between -85.05112878",
+               "and 85.05112878. Longitude must be between -180 and 180."))
   }
 
   # x - Convert lat/long coordinates to tile XY coords
-  pixs = latlong_to_pixelXY(lat = ymin,
+  pixs <- latlong_to_pixelXY(lat = ymin,
                             lon = xmin,
                             level = level)
   
-  tilesmn = pixelXY_to_tileXY(pixelX = pixs$pixelX,
+  tilesmn <- pixelXY_to_tileXY(pixelX = pixs$pixelX,
                               pixelY = pixs$pixelY)
 
 
   # y - Convert lat/long coordinates to tile XY coords
-  pixs = latlong_to_pixelXY(lat = ymax,
+  pixs <- latlong_to_pixelXY(lat = ymax,
                             lon = xmax,
                             level = level)
   
-  tilesmx = pixelXY_to_tileXY(pixelX = pixs$pixelX,
+  tilesmx <- pixelXY_to_tileXY(pixelX = pixs$pixelX,
                               pixelY = pixs$pixelY)
 
   # How many tile XY coordinates conform the grid?
-  resy = tilesmx$tileY - tilesmn$tileY
-  resx = tilesmx$tileX - tilesmn$tileX
+  resy <- tilesmx$tileY - tilesmn$tileY
+  resx <- tilesmx$tileX - tilesmn$tileX
 
   if(resx == 0 | resy == 0){
     stop(paste(
@@ -80,18 +80,18 @@ create_qk_grid <- function(xmin, xmax, ymin, ymax, level){
   num_cols <- abs(resx)
 
   # create the grid with all the possible combination of tile XY coordinates
-  data = c()
+  data <- c()
   for(c in 0:num_cols){ # I consider 0 as the point provided should be included
     for(r in 0:num_rows){
 
-     grid = data.frame(tileX = tilesmn$tileX + (c * sign(resx)),
+     grid <- data.frame(tileX = tilesmn$tileX + (c * sign(resx)),
                        tileY = tilesmn$tileY + (r * sign(resy))) |>
                        dplyr::mutate(quadkey = tileXY_to_quadkey(
                                                             tileX = tileX,
                                                             tileY = tileY,
                                                             level = level))
 
-     data = rbind(data, grid)
+     data <- rbind(data, grid)
 
     }}
 

@@ -32,8 +32,8 @@ the processing of [Facebook Mobility data](https://dataforgood.facebook.com/).
 
 The goal of `quadkeyr` is to:  
   
-1. [**Bing Maps Tile System functions**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_conversion.html)
-Provide functions in R to convert geographical coordinates 
+1. [**Provide Bing Maps Tile System functions**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_conversion.html)
+R functions to convert geographical coordinates 
 to and from QuadKeys as described in the [official documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system)  
   
 2. [**Create rasters based on QuadKeys**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/get_grid_from_quadkeys.html)

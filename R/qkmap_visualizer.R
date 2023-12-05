@@ -1,18 +1,13 @@
-library(shiny)
-library(bslib)
-library(leaflet)
-library(sf)
-library(dplyr)
-library(DT)
-
 qkmap_app <- function(...) {
   ui <- bslib::page_navbar(
     title = "QuadKey Map Visualizer",
     bg = "#ffffff",
     theme = bslib::bs_theme(version = 5,
                             bootswatch = "simplex",
-                            base_font = bslib::font_google("Raleway", wght = "400"),
-                            heading_font = bslib::font_google("Raleway", wght = "200")),
+                            base_font = bslib::font_google("Raleway", 
+                                                           wght = "400"),
+                            heading_font = bslib::font_google("Raleway",
+                                                              wght = "200")),
     bslib::nav_panel(title = 'Quadkey',
               bslib::layout_sidebar(class = 'p-0',
                      sidebar = bslib::sidebar(width = 300,
@@ -47,7 +42,9 @@ qkmap_app <- function(...) {
                     value = 6),
         shiny::actionButton('grid', 'Create Grid'),
         shiny::hr(),
-        shiny::p("Note that for higher levels of detail, smaller areas are preferable to prevent long processing times.")
+        shiny::p(paste("Note that for higher levels of detail,",
+                       "smaller areas are preferable to prevent",
+                       "long processing times."))
 
       ),
       #autoWaiter(),
@@ -59,10 +56,10 @@ qkmap_app <- function(...) {
 
    qk_results <-  shiny::eventReactive(input$search,{
 
-    tile = quadkey_to_tileXY(input$qk)
-    pixel = tileXY_to_pixelXY(tile$tileX,
+    tile <- quadkey_to_tileXY(input$qk)
+    pixel <- tileXY_to_pixelXY(tile$tileX,
                           tile$tileY)
-    coords = pixelXY_to_latlong(pixel$pixelX,
+    coords <- pixelXY_to_latlong(pixel$pixelX,
                               pixel$pixelY,
                               level = tile$level)
 
@@ -98,9 +95,10 @@ qkmap_app <- function(...) {
         colnames(dataqk) <- c('',as.character(input$qk))
 
         DT::datatable(dataqk,
-                      rownames= FALSE,
+                      rownames = FALSE,
                       options = list(ordering = FALSE,
-                                     dom = 't'), # remove table interactive default options
+                                     dom = 't'), 
+                      # remove table interactive default options
                       colnames = rep("", ncol(dataqk))) # remove column names
 
     })
@@ -126,16 +124,17 @@ qkmap_app <- function(...) {
     polygrid <- shiny::eventReactive(input$grid,{
 
      grid <- create_qk_grid(xmin = as.numeric(input$xmin),
-                                xmax = as.numeric(input$xmax),
-                                ymin = as.numeric(input$ymin),
-                                ymax = as.numeric(input$ymax),
-                                level = as.numeric(input$levelofdetail))
+                            xmax = as.numeric(input$xmax),
+                            ymin = as.numeric(input$ymin),
+                            ymax = as.numeric(input$ymax),
+                            level = as.numeric(input$levelofdetail))
 
 
      if(nrow(grid$data) > 2000){
 
        shiny::showNotification(
-         "The grid you want to create have more than 2000 polygons and could take considerable time to run",
+         paste("The grid you want to create have more than 2000 polygons",
+               "and could take considerable time to run"),
          type = "message"
        )
      }
@@ -159,15 +158,7 @@ qkmap_app <- function(...) {
                     layerId = ~as.character(quadkey),
                     group = 'qks',
                     popup = ~quadkey)
-        # addMarkers(data = qk_results(),
-        #            lat = ~lat,
-        #            lng = ~lng,
-        #            popup = ~paste(qk_results()$lat, qk_results()$lng),
-        #            label =  ~as.character(input$qk)) |>
-        # setView(zoom = 6,
-        #         lat = qk_results()$lat,
-        #         lng = qk_results()$lng)
-
+   
     })
 
     }

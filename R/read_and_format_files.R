@@ -54,7 +54,8 @@ read_all_files <- function(path_to_csvs = path_to_csvs){
 #' @description This function modifies the format of three columns the provided
 #' data.
 #'
-#' @param data A dataframe with a quadkey, date_time, country columns and other numeric variables
+#' @param data A dataframe with a quadkey, date_time, country columns and 
+#' other numeric variables
 #'
 #' @return A dataframe.
 #' @export

@@ -15,17 +15,20 @@ polygon_to_raster(
 )
 }
 \arguments{
-\item{data}{A spatial dataframe (sf) with the variable we want to represent in the raster.}
+\item{data}{A spatial dataframe (sf) with the variable we want to represent
+in the raster.}
 
 \item{nx}{Integer; number of cells in x direction.}
 
 \item{ny}{Integer; number of cells in y direction.}
 
-\item{template}{A spatial dataset (sf) with the polygon grid used as template}
+\item{template}{A spatial dataset (sf) with the polygon grid used as
+template}
 
 \item{variable}{The column name of the variable to plot.}
 
-\item{filename}{Select a name for the file. The date and time will be included automatically in the name.}
+\item{filename}{Select a name for the file. The date and time will
+be included automatically in the name.}
 
 \item{path}{Path where the files should be stored.}
 }
@@ -33,7 +36,8 @@ polygon_to_raster(
 as many .tif files as dates and times in the dataset
 }
 \description{
-Creates one raster by each date and time reported and saves it as a .tif.
+Creates one raster by each date and time reported and
+saves it as a .tif.
 }
 \examples{
 

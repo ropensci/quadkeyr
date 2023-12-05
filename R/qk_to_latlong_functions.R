@@ -1,10 +1,12 @@
 #' Converts a QuadKey into tile XY coordinates.
 #'
-#' @description  For further information, refer to the Microsoft Bing Maps Tile System documentation.
+#' @description  For further information, refer to the 
+#' Microsoft Bing Maps Tile System documentation.
 #'
 #' @param qk The QuadKey number as a string.
 #'
-#' @return A list returning the tile X, tile Y coordinates and the level of detail.
+#' @return A list returning the tile X, tile Y coordinates and 
+#' the level of detail.
 #' @export
 #'
 #' @examples
@@ -22,14 +24,14 @@ quadkey_to_tileXY <- function(qk){
   }
 
   # Serparo los digitos del quadkey e invierto el orden
-  digits = rev(strsplit(qk,"")[[1]])
+  digits <- rev(strsplit(qk,"")[[1]])
 
   # La cantidad de digitos corresponde al nivel de zoom
-  i = length(digits)
+  i <- length(digits)
 
-  masks = 2**(0:(i-1))
-  xt = sum(masks[digits=="1" | digits=="3"])
-  yt = sum(masks[digits=="2" | digits=="3"])
+  masks <- 2**(0:(i-1))
+  xt <- sum(masks[digits=="1" | digits=="3"])
+  yt <- sum(masks[digits=="2" | digits=="3"])
 
   return(list(tileX = xt,
               tileY = yt,
@@ -39,8 +41,10 @@ quadkey_to_tileXY <- function(qk){
 
 #' Convert tile XY coordinates into pixel XY coordinates
 #'
-#' @description  Converts tile XY coordinates into pixel XY coordinates of the upper-left pixel of the specified tile.
-#' For further information, refer to the Microsoft Bing Maps Tile System documentation.
+#' @description  Converts tile XY coordinates into pixel XY coordinates of
+#'  the upper-left pixel of the specified tile.
+#' For further information, refer to the Microsoft Bing Maps Tile System 
+#' documentation.
 #'
 #' @param tileX Tile X coordinate.
 #' @param tileY Tile Y coordinate.
@@ -68,7 +72,8 @@ tileXY_to_pixelXY <- function(tileX, tileY) {
 #'
 #' @description Converts a pixel from pixel XY coordinates at a specified level
 #' of detail into latitude/longitude WGS-84 coordinates (in degrees).
-#' For further information, refer to the Microsoft Bing Maps Tile System documentation.
+#' For further information, refer to the 
+#' Microsoft Bing Maps Tile System documentation.
 #'
 #' @param pixelX X coordinate of the point, in pixels.
 #' @param pixelY Y coordinates of the point, in pixels.
@@ -111,7 +116,8 @@ pixelXY_to_latlong <- function(pixelX, pixelY, level) {
 #'
 #' @description This function converts Quadkeys to
 #' latitude/longitude WGS-84 coordinates (in degrees).
-#' For further information, refer to the Microsoft Bing Maps Tile System documentation.
+#' For further information, refer to the Microsoft Bing Maps Tile System 
+#' documentation.
 #'
 #' @param quadkeys A vector with unique QuadKey numbers.
 #'
@@ -120,7 +126,8 @@ pixelXY_to_latlong <- function(pixelX, pixelY, level) {
 #' @seealso \code{\link{pixelXY_to_latlong}}
 #'
 #'
-#' @return A spatial data frame of class sf with a quadkey column and POINT geometry.
+#' @return A spatial data frame of class sf with a quadkey column 
+#' and POINT geometry.
 #' The coordinates represent the upper-left corner of the QuadKey.
 #'
 #' @export
@@ -152,15 +159,19 @@ quadkey_to_latlong <- function(quadkeys){
   for(i in seq_along(quadkeys)){
 
 
-    data[i, 'quadkey'] = quadkeys[i]
-    data[i, 'tileX'] = quadkey_to_tileXY(quadkeys[i])$tileX
-    data[i, 'tileY'] = quadkey_to_tileXY(quadkeys[i])$tileY
-    data[i, 'pixelX'] = tileXY_to_pixelXY(data$tileX[i], data$tileY[i])$pixelX
-    data[i, 'pixelY'] = tileXY_to_pixelXY(data$tileX[i], data$tileY[i])$pixelY
-    data[i, 'lat'] = pixelXY_to_latlong(data$pixelX[i], data$pixelY[i], level = level)$lat
-    data[i, 'lon'] = pixelXY_to_latlong(data$pixelX[i], data$pixelY[i], level = level)$lon
+    data[i, 'quadkey'] <- quadkeys[i]
+    data[i, 'tileX'] <- quadkey_to_tileXY(quadkeys[i])$tileX
+    data[i, 'tileY'] <- quadkey_to_tileXY(quadkeys[i])$tileY
+    data[i, 'pixelX'] <- tileXY_to_pixelXY(data$tileX[i],
+                                           data$tileY[i])$pixelX
+    data[i, 'pixelY'] <- tileXY_to_pixelXY(data$tileX[i],
+                                           data$tileY[i])$pixelY
+    data[i, 'lat'] <- pixelXY_to_latlong(data$pixelX[i], 
+                                         data$pixelY[i], level = level)$lat
+    data[i, 'lon'] <- pixelXY_to_latlong(data$pixelX[i], 
+                                         data$pixelY[i], level = level)$lon
 
-    datacoords = rbind(data[i,], datacoords)
+    datacoords <- rbind(data[i,], datacoords)
 
   }
 

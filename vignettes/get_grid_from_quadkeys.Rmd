@@ -142,7 +142,8 @@ ggplot() +
 
   geom_sf(data = min, color = 'purple') +
   geom_sf(data = max, color = 'purple') +
-    geom_sf(data = polygrid, alpha = 0.5, size = 0.5, fill = NA, color = 'red') +
+    geom_sf(data = polygrid, alpha = 0.5, 
+            size = 0.5, fill = NA, color = 'red') +
   coord_sf(xlim = c(-60, -56),
             ylim = c(-36, -33), expand = FALSE) +
   theme_minimal()  +
@@ -226,7 +227,8 @@ p = ggplot() +
   geom_sf(data = min, color = 'purple') +
   geom_sf(data = max, color = 'purple') +
   geom_stars(data = raster, alpha = 0.5) +
-    geom_sf(data = polygrid, alpha = 0.5, size = 0.5, color = 'red', fill = NA) +
+    geom_sf(data = polygrid, alpha = 0.5,
+            size = 0.5, color = 'red', fill = NA) +
   coord_sf(xlim = c(-60, -56),
             ylim = c(-36, -33), expand = FALSE) +
   viridis::scale_fill_viridis() +

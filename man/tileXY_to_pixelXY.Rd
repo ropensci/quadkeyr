@@ -15,8 +15,10 @@ tileXY_to_pixelXY(tileX, tileY)
 A list returning the pixel X and pixel Y coordinates.
 }
 \description{
-Converts tile XY coordinates into pixel XY coordinates of the upper-left pixel of the specified tile.
-For further information, refer to the Microsoft Bing Maps Tile System documentation.
+Converts tile XY coordinates into pixel XY coordinates of
+the upper-left pixel of the specified tile.
+For further information, refer to the Microsoft Bing Maps Tile System
+documentation.
 }
 \examples{
 

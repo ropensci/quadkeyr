@@ -1,4 +1,4 @@
-test_that("mapsize function can reproduce values reported in Bing Maps Documentation", {
+test_that("mapsize can reproduce values reported in the Documentation", {
   expect_equal(mapsize(level = 6),
                16384)
 })
@@ -18,14 +18,14 @@ test_that("clip function logic works", {
                 5)
 })
 
-test_that("ground_res function can reproduce values reported in Bing Maps Documentation", {
+test_that("ground_res can reproduce values reported in the Documentation", {
   expect_equal(round(ground_res(latitude = 0,
                                 level = 6),
                digits = 3), # there are minor issues with decimals
                2445.985)
 })
 
-test_that("mapscale function can reproduce values reported in Bing Maps Documentation", {
+test_that("mapscale can reproduce values reported in the Documentation", {
   expect_equal(mapscale(latitude = 0,
                         level = 6,
                         screen_dpi = 96),

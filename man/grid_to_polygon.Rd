@@ -14,10 +14,12 @@ A spatial dataset (sf) with the quadkey and POLYGON column.
 }
 \description{
 The main argument of this function, the grid of QuadKeys points
-representing lat/long WG84 coordinates specifically indicate the upper-left corner of the QuadKey.
+representing lat/long WG84 coordinates specifically indicate the upper-left
+corner of the QuadKey.
 To transform these coordinates into square polygons, the function
-supplements the grid by adding a row and column of tiles. This completion of the
-grid addresses QuadKeys located at the border of the area (complete_grid_for_polygons).
+supplements the grid by adding a row and column of tiles. These points
+introduce QuadKeys located at the border of the area
+(complete_grid_for_polygons).
 The function constructs the polygons using all the points of the grid.
 Note that it's possible to associate each QuadKey with its square polygon.
 }

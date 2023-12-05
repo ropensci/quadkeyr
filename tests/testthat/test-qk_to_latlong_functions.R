@@ -34,21 +34,24 @@ test_that("Check level detail - Negative level", {
   expect_error(pixelXY_to_latlong(pixelX = 768,
                                   pixelY = 1280,
                                   level = -3),
-               regexp = "The level of detail should be an integer between 1 and 23")
+               regexp = paste("The level of detail should be",
+                              "an integer between 1 and 23"))
 })
 
 test_that("Check level detail - Greater than 23", {
   expect_error(pixelXY_to_latlong(pixelX = 768,
                                   pixelY = 1280,
                                   level = 44),
-               regexp = "The level of detail should be an integer between 1 and 23")
+               regexp = paste("The level of detail should be",
+                              "an integer between 1 and 23"))
 })
 
 test_that("Check level detail - Use of decimals", {
   expect_error(pixelXY_to_latlong(pixelX = 768,
                                   pixelY = 1280,
                                   level = 4.7),
-               regexp = "The level of detail should be an integer between 1 and 23")
+               regexp = paste("The level of detail should be",
+                              "an integer between 1 and 23"))
 })
 
 # Test cases for quadkey_to_latlong function

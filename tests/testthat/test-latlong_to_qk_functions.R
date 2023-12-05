@@ -27,24 +27,27 @@ test_that("tiles_to_quadkeys is giving correct results", {
 # Check that errors appear in the correct cases - latlong_to_pixelXY
 
 test_that("Check level detail - Negative level", {
-  expect_error(latlong_to_pixelXY(latitude = -35,
-                                  longitude = -57,
+  expect_error(latlong_to_pixelXY(lat = -35,
+                                  lon = -57,
                                   level = -5),
-               regexp = "The level of detail should be an integer between 1 and 23")
+               regexp = paste("The level of detail should be an integer",
+                              "between 1 and 23"))
 })
 
 test_that("Check level detail - Greater than 23", {
-  expect_error(latlong_to_pixelXY(latitude = -35,
-                                  longitude = -57,
+  expect_error(latlong_to_pixelXY(lat = -35,
+                                  lon = -57,
                                   level = 32),
-               regexp = "The level of detail should be an integer between 1 and 23")
+               regexp = paste("The level of detail should be an integer",
+                              "between 1 and 23"))
 })
 
 test_that("Check level detail - Use of decimals", {
-  expect_error(latlong_to_pixelXY(latitude = -35,
-                                  longitude = -57,
+  expect_error(latlong_to_pixelXY(lat = -35,
+                                  lon = -57,
                                   level = 5.2),
-               regexp = "The level of detail should be an integer between 1 and 23")
+               regexp = paste("The level of detail should be an integer",
+                              "between 1 and 23"))
 })
 
 # Check that errors appear in the correct cases - tileXY_to_quadkey
@@ -53,21 +56,24 @@ test_that("Check level detail - Negative level", {
   expect_error(tileXY_to_quadkey(tileX = 23,
                                  tileY = 38,
                                  level = -6),
-               regexp = "The level of detail should be an integer between 1 and 23")
+               regexp = paste("The level of detail should be an integer",
+                              "between 1 and 23"))
 })
 
 test_that("Check level detail - Greater than 23", {
   expect_error(tileXY_to_quadkey(tileX = 23,
                                  tileY = 38,
                                  level = 77),
-               regexp = "The level of detail should be an integer between 1 and 23")
+               regexp = paste("The level of detail should be an integer",
+                              "between 1 and 23"))
 })
 
 test_that("Check level detail - Use of decimals", {
   expect_error(tileXY_to_quadkey(tileX = 23,
                                  tileY = 38,
                                  level = 7.2),
-               regexp = "The level of detail should be an integer between 1 and 23")
+               regexp = paste("The level of detail should be an integer",
+                              "between 1 and 23"))
 })
 
 # latlong_to_quadkey
@@ -80,9 +86,13 @@ test_that("I got the correct QuadKey with latlong_to_quadkey", {
 })
 
 test_that("I got the correct coordinates with quadkey_to_latlong", {
-  expect_equal(sf::st_coordinates(quadkey_to_latlong('13300211230321211111')$geometry), 
+  
+  qk <- '13300211230321211111'
+  
+  expect_equal(sf::st_coordinates(quadkey_to_latlong(qk)$geometry), 
                matrix(c(139.6908, 35.63051),
                       nrow = 1, 
                       byrow = TRUE, 
-                      dimnames = list(NULL, c("X", "Y"))), tolerance = 1.04e-05)
+                      dimnames = list(NULL, c("X", "Y"))), 
+               tolerance = 1.04e-05)
 })

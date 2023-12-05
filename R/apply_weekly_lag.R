@@ -28,8 +28,10 @@ for(i in unique(data$quadkey)){
 
     quadkey_lag <- inter |>
       dplyr::group_by(.data$quadkey, .data$time) |>
-      dplyr::mutate(n_crisis_lag_7 = dplyr::lag(as.numeric(.data$n_crisis), n = 7)) |>
-      dplyr::mutate(percent_change_7 = ((.data$n_crisis_lag_7 - .data$n_crisis)/.data$n_crisis) * 100)
+      dplyr::mutate(n_crisis_lag_7 = dplyr::lag(as.numeric(.data$n_crisis),
+                                                n = 7)) |>
+      dplyr::mutate(percent_change_7 = ((.data$n_crisis_lag_7 - .data$n_crisis)/
+                                          .data$n_crisis) * 100)
 
     out_data <- rbind(out_data, quadkey_lag)
 

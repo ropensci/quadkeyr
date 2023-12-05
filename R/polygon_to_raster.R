@@ -1,13 +1,17 @@
 #' Create and save raster images for different dates and times
 #'
-#' @description Creates one raster by each date and time reported and saves it as a .tif.
+#' @description Creates one raster by each date and time reported and
+#'  saves it as a .tif.
 #'
-#' @param template A spatial dataset (sf) with the polygon grid used as template
+#' @param template A spatial dataset (sf) with the polygon grid used as
+#'  template
 #' @param nx Integer; number of cells in x direction.
 #' @param ny Integer; number of cells in y direction.
-#' @param data A spatial dataframe (sf) with the variable we want to represent in the raster.
+#' @param data A spatial dataframe (sf) with the variable we want to represent 
+#' in the raster.
 #' @param variable The column name of the variable to plot.
-#' @param filename Select a name for the file. The date and time will be included automatically in the name.
+#' @param filename Select a name for the file. The date and time will
+#'  be included automatically in the name.
 #' @param path Path where the files should be stored.
 #'
 #' @seealso \code{\link{st_as_stars}}, \code{\link{st_rasterize}}
@@ -45,7 +49,9 @@ for(p in c(0, 8, 16)){
 
   # is this iteration a missing file?
   no_data <- mc |>
-            dplyr::filter(.data$day ==  as.Date(i, origin = "1970-01-01") & .data$time == p)
+            dplyr::filter(.data$day ==  as.Date(i, 
+                                                origin = "1970-01-01") &
+                            .data$time == p)
 
   # if it is, skip it
   if (nrow(no_data) > 0) {
@@ -54,7 +60,9 @@ for(p in c(0, 8, 16)){
 
 
   data <- data |>
-            dplyr::filter(.data$day ==  as.Date(i, origin = "1970-01-01") & .data$time == p)
+            dplyr::filter(.data$day ==  as.Date(i, 
+                                                origin = "1970-01-01") & 
+                            .data$time == p)
 
   file <-  create_raster(template = template,
                 nx = nx,

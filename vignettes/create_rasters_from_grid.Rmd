@@ -150,7 +150,8 @@ polygrid
 ggplot() + 
   geom_sf(data = ne_countries(returnclass = 'sf'),
           fill = 'beige') +
-  geom_sf(data = polygrid, alpha = 0.5, size = 0.1, color = 'red', alpha = 0.5) +
+  geom_sf(data = polygrid, alpha = 0.5, size = 0.1, 
+          color = 'red', alpha = 0.5) +
   coord_sf(xlim = c(-58.65, -58.45),
             ylim = c(-34.65, -34.45), expand = TRUE) +
   theme_minimal()  +
@@ -222,7 +223,8 @@ ggplot() +
   geom_stars(data = output_raster) +
    ggplot2::scale_fill_viridis_c(option = "C",
                         na.value = "transparent") +
-  geom_sf(data = polygrid, alpha = 0.5, size = 0.1, color = 'red', alpha = 0.5) +
+  geom_sf(data = polygrid, alpha = 0.5, 
+          size = 0.1, color = 'red', alpha = 0.5) +
   coord_sf(xlim = c(-58.65, -58.45),
             ylim = c(-34.65, -34.45), expand = TRUE) +
   theme_minimal()  +

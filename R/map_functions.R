@@ -61,11 +61,11 @@ clip <- function(n, min_value, max_value) {
 ground_res <- function(latitude, level) {
 
   # Values in Microsoft Bing Documentation
-  min_latitude = -85.05112878
-  max_latitude = 85.05112878
-  min_longitude = -180
-  max_longitude = 180
-  earth_radius = 6378137
+  min_latitude <- -85.05112878
+  max_latitude <- 85.05112878
+  min_longitude <- -180
+  max_longitude <- 180
+  earth_radius <- 6378137
 
   latitude <- clip(latitude, min_latitude, max_latitude)
   mapsize <- mapsize(level)

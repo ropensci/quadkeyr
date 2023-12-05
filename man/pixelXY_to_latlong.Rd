@@ -19,7 +19,8 @@ A list with the longitude and latitude.
 \description{
 Converts a pixel from pixel XY coordinates at a specified level
 of detail into latitude/longitude WGS-84 coordinates (in degrees).
-For further information, refer to the Microsoft Bing Maps Tile System documentation.
+For further information, refer to the
+Microsoft Bing Maps Tile System documentation.
 }
 \examples{
 

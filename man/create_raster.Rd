@@ -13,7 +13,8 @@ create_raster(template, nx, ny, data, var)
 
 \item{ny}{Integer; number of cells in y direction.}
 
-\item{data}{A spatial dataframe (sf) with the variable we want to represent in the raster.}
+\item{data}{A spatial dataframe (sf) with the variable we want to represent
+in the raster.}
 
 \item{var}{The column name of the variable to plot.}
 }
@@ -21,8 +22,8 @@ create_raster(template, nx, ny, data, var)
 A stars object
 }
 \description{
-The use of a template enables the creation of an accurate raster,
-even in the presence of NAs.
+The use of a template enables the creation of an accurate
+raster, even in the presence of NAs.
 }
 \examples{
 

@@ -14,7 +14,8 @@ test_that("Check existence of 'quadkey' column", {
 
   # Test case where 'quadkey' column is missing
   expect_error(extract_qk_coord(df_missing_column),
-               regexp = "Please ensure that the dataset contains a column named 'quadkey'.")
+               regexp = paste("Please ensure that the dataset contains",
+                              "a column named 'quadkey'."))
 
   # Create a dataframe with 'quadkey' column
   df_with_column <- data.frame(quadkey = c("abc", "def", "ghi"))
@@ -30,7 +31,8 @@ test_that("Check existence of 'tileX' and 'tileY' columns", {
 
   # Test case where 'tileX' and 'tileY' columns are missing
   expect_error(extract_tile_coord(df_missing_columns, level = 6),
-               regexp = "Please ensure that the dataset contains columns named 'tileX' and 'tileY'")
+               regexp = paste("Please ensure that the dataset contains",
+                              "columns named 'tileX' and 'tileY'"))
 
   # Test case where 'tileX' and 'tileY' columns are present
   expect_silent(extract_tile_coord(grid$data, level = 12))
@@ -39,7 +41,8 @@ test_that("Check existence of 'tileX' and 'tileY' columns", {
 # Both
 test_that("Check output dimensions", {
 
-  # the number of points in the grid is equal to the product of the number of columns and rows
+  # the number of points in the grid is equal to the product of the
+  # number of columns and rows
   # calculated when the grid was generated
 
   # +1 is because I started counting by 0 the first element

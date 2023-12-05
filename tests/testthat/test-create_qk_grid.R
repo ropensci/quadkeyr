@@ -6,9 +6,10 @@ test_that("Does the error message appears when inputs are incorrect?", {
                               ymax = -38,
                               level = 6),
                regexp = paste(
-                 "The selected inputs fail to generate a grid due to the limited area",
-                 "for this level of detail. Consider adjusting the level of detail",
-                 "or modifying the xmin, xmax, ymin, or ymax values."
+                 "The selected inputs fail to generate a grid due to",
+                 "the limited area for this level of detail.",
+                 "Consider adjusting the level of detail or modifying",
+                 "the xmin, xmax, ymin, or ymax values."
                ))
 
   # Test case where ymin and ymax are identical (no area)
@@ -18,11 +19,12 @@ test_that("Does the error message appears when inputs are incorrect?", {
                               ymax = -34,
                               level = 6),
                regexp = paste(
-                 "The selected inputs fail to generate a grid due to the limited area",
-                 "for this level of detail. Consider adjusting the level of detail",
-                 "or modifying the xmin, xmax, ymin, or ymax values."
+                 "The selected inputs fail to generate a grid due to",
+                 "the limited area for this level of detail.",
+                 "Consider adjusting the level of detail or modifying",
+                 "the xmin, xmax, ymin, or ymax values."
                ))
-
+  
 
   # Test case where all the values are identical (no area)
   expect_error(create_qk_grid(xmin = 0,
@@ -31,9 +33,10 @@ test_that("Does the error message appears when inputs are incorrect?", {
                               ymax = 0,
                               level = 6),
                regexp = paste(
-                 "The selected inputs fail to generate a grid due to the limited area",
-                 "for this level of detail. Consider adjusting the level of detail",
-                 "or modifying the xmin, xmax, ymin, or ymax values."
+                 "The selected inputs fail to generate a grid due to",
+                 "the limited area for this level of detail.",
+                 "Consider adjusting the level of detail or modifying",
+                 "the xmin, xmax, ymin, or ymax values."
                ))
 
 
@@ -44,9 +47,10 @@ test_that("Does the error message appears when inputs are incorrect?", {
                               ymax = -35,
                               level = 1),
                regexp = paste(
-                 "The selected inputs fail to generate a grid due to the limited area",
-                 "for this level of detail. Consider adjusting the level of detail",
-                 "or modifying the xmin, xmax, ymin, or ymax values."
+                 "The selected inputs fail to generate a grid due to",
+                 "the limited area for this level of detail.",
+                 "Consider adjusting the level of detail or modifying",
+                 "the xmin, xmax, ymin, or ymax values."
                ))
 
   # Test a case where the area is small but the level of detail is appropriate
@@ -66,7 +70,8 @@ test_that("Check level detail - Negative level", {
                               ymin = -34,
                               ymax = -35,
                               level = -12),
-               regexp = "The level of detail should be an integer between 1 and 23")
+               regexp = paste("The level of detail should be an integer",
+                              "between 1 and 23"))
 })
 
 test_that("Check level detail - Greater than 23", {
@@ -75,7 +80,8 @@ test_that("Check level detail - Greater than 23", {
                               ymin = -34,
                               ymax = -35,
                               level = 24),
-               regexp = "The level of detail should be an integer between 1 and 23")
+               regexp = paste("The level of detail should be an integer",
+                              "between 1 and 23"))
 })
 
 test_that("Check level detail - Use of decimals", {
@@ -84,20 +90,23 @@ test_that("Check level detail - Use of decimals", {
                               ymin = -34,
                               ymax = -35,
                               level = 12.3),
-               regexp = "The level of detail should be an integer between 1 and 23")
+               regexp = paste("The level of detail should be an integer",
+                              "between 1 and 23"))
 })
 
-# The area shouldn't be outside the possible map values (Microsoft Bing Tile System Documentation)
+# The area shouldn't be outside the possible map values
+# (Microsoft Bing Tile System Documentation)
 
 test_that("Check coordinate validation", {
   # Test case where ymin is below the minimum latitude
-  expect_error( create_qk_grid(xmin = -59,
-                               xmax = -40,
-                               ymin = -86,
-                               ymax = -20,
-                               level = 6),
-               regexp = paste("At least one of the provided coordinates are outside the valid range.",
-                              "Latitude must be between -85.05112878 and 85.05112878.",
+  expect_error(create_qk_grid(xmin = -59,
+                              xmax = -40,
+                              ymin = -86,
+                              ymax = -20,
+                              level = 6),
+               regexp = paste("At least one of the provided coordinates",
+                              "are outside the valid range. Latitude must be",
+                              "between -85.05112878 and 85.05112878.",
                               "Longitude must be between -180 and 180."))
 
   # Test case where ymax is above the maximum latitude
@@ -106,8 +115,9 @@ test_that("Check coordinate validation", {
                               ymin = -38,
                               ymax = 86,
                               level = 6),
-               regexp = paste("At least one of the provided coordinates are outside the valid range.",
-                              "Latitude must be between -85.05112878 and 85.05112878.",
+               regexp = paste("At least one of the provided coordinates",
+                              "are outside the valid range. Latitude must be",
+                              "between -85.05112878 and 85.05112878.",
                               "Longitude must be between -180 and 180."))
 
   # Test case where xmin is below the minimum longitude
@@ -116,8 +126,9 @@ test_that("Check coordinate validation", {
                                ymin = -38,
                                ymax = -20,
                                level = 6),
-                regexp = paste("At least one of the provided coordinates are outside the valid range.",
-                               "Latitude must be between -85.05112878 and 85.05112878.",
+                regexp = paste("At least one of the provided coordinates",
+                               "are outside the valid range. Latitude must be",
+                               "between -85.05112878 and 85.05112878.",
                                "Longitude must be between -180 and 180."))
 
   # Test case where xmax is above the maximum longitude
@@ -126,8 +137,9 @@ test_that("Check coordinate validation", {
                                ymin = -38,
                                ymax = -20,
                                level = 6),
-                regexp = paste("At least one of the provided coordinates are outside the valid range.",
-                               "Latitude must be between -85.05112878 and 85.05112878.",
+                regexp = paste("At least one of the provided coordinates",
+                               "are outside the valid range. Latitude must be",
+                               "between -85.05112878 and 85.05112878.",
                                "Longitude must be between -180 and 180."))
 
   # Test case where all coordinates are within valid range

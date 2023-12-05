@@ -51,8 +51,12 @@ complete_grid_for_polygons <- function(data){
     tileY = textY),
     data.frame(tileX = textX,
                tileY = seq(min(data$tileY),
-                                    textY -1))) |> # there should be -1 to not duplicate the point in the corner
-    dplyr::mutate(quadkey = NA) # I am adding this points to fill the grid, the qk value is not important here
+                                    textY -1))) |> 
+    # the -1 is to avoid
+    # duplicating the the point in the corner
+    dplyr::mutate(quadkey = NA) 
+    # I am adding this points to fill the grid, 
+    # the quadkey value is not important here 
 
 }
 
@@ -60,10 +64,12 @@ complete_grid_for_polygons <- function(data){
 #' Convert a grid of QuadKeys to square polygons
 #'
 #' @description The main argument of this function, the grid of QuadKeys points
-#' representing lat/long WG84 coordinates specifically indicate the upper-left corner of the QuadKey.
+#' representing lat/long WG84 coordinates specifically indicate the upper-left 
+#' corner of the QuadKey.
 #' To transform these coordinates into square polygons, the function
-#' supplements the grid by adding a row and column of tiles. This completion of the
-#' grid addresses QuadKeys located at the border of the area (complete_grid_for_polygons).
+#' supplements the grid by adding a row and column of tiles. These points
+#' introduce QuadKeys located at the border of the area 
+#' (complete_grid_for_polygons).
 #' The function constructs the polygons using all the points of the grid.
 #' Note that it's possible to associate each QuadKey with its square polygon.
 #'
@@ -95,44 +101,46 @@ grid_to_polygon <- function(data){
 
   extragrid <- complete_grid_for_polygons(data)
 
-  extragrid <- extract_tile_coord(extragrid, level = unique(nchar(data$quadkey)))
+  extragrid <- extract_tile_coord(extragrid, 
+                                  level = unique(nchar(data$quadkey)))
 
-   # combines the new data with the extended grid oof points
+  # combines the new data with the extended grid of points
   data = rbind(data, extragrid)
 
   db = c() #https://github.com/r-spatial/sf/issues/354
-
+ 
+  # The quadkeys of interest are the ones that are not NA
+  # The original quadkeys of the grid
   subdata = subset(data, !is.na(data$quadkey))
 
-  for(i in 1:nrow(subdata)){
+  for(i in seq_len(nrow(subdata))){
 
-    # podria probar que tengo todos los tiles que necesito y si no los deberia crear
+  x <- subdata[i, ]$tileX
+  y <- subdata[i, ]$tileY
 
-    x = subdata[i, ]$tileX
-    y =  subdata[i, ]$tileY
-
-  # This point will always exists
-  a = data |>
+  # This point will always be a quadkey in the dataframe
+  a <- data |>
     dplyr::filter(.data$tileX == x & .data$tileY == y)
 
-  b = data |>
+  # b, c and d can be part of the extended grid
+  b <- data |>
     dplyr::filter(.data$tileX == x & .data$tileY == (y + 1))
 
-  c = data |>
+  c <- data |>
     dplyr::filter(.data$tileX == x + 1  & .data$tileY == y)
 
-  d = data |>
+  d <- data |>
     dplyr::filter(.data$tileX == x + 1 & .data$tileY == y + 1)
 
-  pixel = rbind(a, b, c, d) |>
+  pixel <- rbind(a, b, c, d) |>
         sf::st_bbox() |>
         sf::st_as_sfc()
 
-   grid_px =  sf::st_sf(quadkey = subdata[i, ]$quadkey,
+   grid_px <-  sf::st_sf(quadkey = subdata[i, ]$quadkey,
                         geometry = pixel,
                         sf_column_name = 'geometry')
 
-   db = rbind(grid_px, db)
+   db <- rbind(grid_px, db)
   #st_write(pixel, 'pixel.gpkg', append = TRUE)
 
   }
@@ -153,7 +161,8 @@ grid_to_polygon <- function(data){
 #
 #     # elijo los 4 mas cercanos
 #     pol = data[i,] |>
-#       st_is_within_distance(data, dist = ratio) #2500 para baires y 750 para amba
+#       st_is_within_distance(data, dist = ratio) #2500 para baires y
+#       750 para amba
 #
 #
 #

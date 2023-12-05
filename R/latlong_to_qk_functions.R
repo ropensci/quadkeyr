@@ -146,22 +146,22 @@ latlong_to_quadkey <- function(lat, lon, level) {
                       level = level)
   
 
-  for(i in 1:nrow(data)){
+  for(i in seq_len(nrow(data))){
 
     
-    data[i, 'pixelX'] = latlong_to_pixelXY(data$lat[i], data$lon[i], data$level[i])$pixelX
-    data[i, 'pixelY'] = latlong_to_pixelXY(data$lat[i], data$lon[i], data$level[i])$pixelY
-    data[i, 'tileY'] = pixelXY_to_tileXY(data$pixelX[i], data$pixelY[i])$tileY
-    data[i, 'tileX'] = pixelXY_to_tileXY(data$pixelX[i], data$pixelY[i])$tileX
-    data[i, 'quadkey'] = tileXY_to_quadkey(data$tileX[i], data$tileY[i], level = data$level[i])
+    data[i, 'pixelX'] <- latlong_to_pixelXY(data$lat[i], data$lon[i], data$level[i])$pixelX
+    data[i, 'pixelY']  <-  latlong_to_pixelXY(data$lat[i], data$lon[i], data$level[i])$pixelY
+    data[i, 'tileY']  <-  pixelXY_to_tileXY(data$pixelX[i], data$pixelY[i])$tileY
+    data[i, 'tileX']  <-  pixelXY_to_tileXY(data$pixelX[i], data$pixelY[i])$tileX
+    data[i, 'quadkey']  <-  tileXY_to_quadkey(data$tileX[i], data$tileY[i], level = data$level[i])
 
 }
    
-   print(data)
   data_sf <-  data |>
     dplyr::select("lat", "lon", "quadkey") |> #tidyselect
     sf::st_as_sf(coords = c("lon", "lat"),
                  crs = 4326)
+  
   return(data_sf)
   
 }
