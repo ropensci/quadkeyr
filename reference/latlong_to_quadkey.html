@@ -36,7 +36,13 @@ For further information, refer to the Microsoft Bing Maps Tile System documentat
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
-      <ul class="navbar-nav"></ul></div>
+      <ul class="navbar-nav"><li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/Fernandez-Lab-WSU/quadkeyr/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul></div>
 
     
   </div>
@@ -44,7 +50,7 @@ For further information, refer to the Microsoft Bing Maps Tile System documentat
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Convert latitude/longitude coordinates into QuadKeys</h1>
-      
+      <small class="dont-index">Source: <a href="https://github.com/Fernandez-Lab-WSU/quadkeyr/blob/HEAD/R/latlong_to_qk_functions.R" class="external-link"><code>R/latlong_to_qk_functions.R</code></a></small>
       <div class="d-none name"><code>latlong_to_quadkey.Rd</code></div>
     </div>
 
@@ -87,10 +93,6 @@ and the QuadKey number as a string (quadkey).</p>
 <span class="r-in"><span><span class="fu">latlong_to_quadkey</span><span class="op">(</span>lat <span class="op">=</span> <span class="fl">35.63051</span>, </span></span>
 <span class="r-in"><span>                  lon <span class="op">=</span> <span class="fl">139.69116</span>,</span></span>
 <span class="r-in"><span>                  level <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        lat      lon level    pixelX    pixelY  tileY  tileX</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 35.63051 139.6912    20 238379006 105750530 413088 931167</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                quadkey</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 13300211230321211111</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Simple feature collection with 1 feature and 1 field</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Geometry type: POINT</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Dimension:     XY</span>
