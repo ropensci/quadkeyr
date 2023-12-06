@@ -9,8 +9,6 @@
 #' @param colnames Columns to include in the results (as character).
 #' For more information go to readr::read_csv() 
 #' documentation.
-#' @param coltypes Column specifications. For more information go to 
-#' readr::read_csv() documentation.
 #'  
 #' @seealso \code{\link{format_data}}
 #' @seealso \code{\link[readr]{read_csv}}
@@ -27,8 +25,7 @@
 #' #                 coltypes = "dddTcc")
 #'
 read_all_files <- function(path_to_csvs, 
-                           colnames,
-                           coltypes){
+                           colnames){
 
   
 
@@ -44,8 +41,9 @@ read_all_files <- function(path_to_csvs,
 
   data <- purrr::map_dfr(fnames,
                      readr::read_csv,
-                     col_names = colnames,
-                     col_types = coltypes)
+                     col_select = dplyr::all_of(colnames), # tidyselect
+                     col_names = TRUE, # header
+                     show_col_types = FALSE) # don't print messages
 
 
   data <- format_data(data)
