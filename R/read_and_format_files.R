@@ -8,6 +8,8 @@
 #' @param path_to_csvs Path to the folder where the .csv files are stored
 #' @param colnames Columns to include in the results (as character).
 #' For more information go to readr::read_csv() 
+#' @param coltypes Column specifications (as character).
+#' See vignette("readr") for more details.
 #' documentation.
 #'  
 #' @seealso \code{\link{format_data}}
@@ -32,7 +34,8 @@
 #'  #                                percent_change = 'c'))
 #'
 read_all_files <- function(path_to_csvs, 
-                           colnames){
+                           colnames, 
+                           coltypes){
 
   
 
