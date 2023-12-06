@@ -136,8 +136,8 @@ format_data <- function(data){
 #'
 missing_combinations <- function(data) {
 
-  data[, "day"] <- as.Date(data[, "day"], 
-                           format = "%Y-%m-%d")
+  data <- data |> 
+    dplyr::mutate(day = as.Date(.data$day))
   
   # Generate all combinations of days and times
   all_combinations <- expand.grid(
