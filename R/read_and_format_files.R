@@ -30,27 +30,29 @@ read_all_files <- function(path_to_csvs,
                            colnames,
                            coltypes){
 
-
+  
 
   # This data always have the same format
-
   fnames <- list.files(path = path_to_csvs,
                        pattern = "\\.csv$")
 
   fnames <- paste0(path_to_csvs,
                    fnames)
+  
+  # There could be empty files, let's remove them
+  fnames <- fnames[file.info(fnames)$size != 0]
 
   data <- purrr::map_dfr(fnames,
                      readr::read_csv,
-                     col_select = colnames,
-                     col_names = TRUE,
+                     col_names = colnames,
                      col_types = coltypes)
 
 
   data <- format_data(data)
 
   if (nrow(missing_combinations(data)) > 0) {
-    message("These combinations of days and times are missing in the dataset")
+    message(paste("The files with the following combinations of",
+                  "days and times are not present or have 0KB"))
     print(missing_combinations(data))
   }else{
     message("There aren't missing dates or times")
@@ -126,12 +128,12 @@ format_data <- function(data){
 #'
 missing_combinations <- function(data) {
 
-  data <- data |> dplyr::mutate(day = as.Date(.data$day))
+  data[, "day"] <- as.Date(data[, "day"])
   
   # Generate all combinations of days and times
   all_combinations <- expand.grid(
-    day = seq(from = min(as.Date(data$day)),
-              to = max(as.Date(data$day)),
+    day = seq(from = min(data$day),
+              to = max(data$day),
               by = 'days'),
     time = c(0, 8, 16)
   )

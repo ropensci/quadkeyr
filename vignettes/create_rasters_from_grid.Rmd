@@ -43,7 +43,10 @@ change.
 
 ```{r eval=FALSE, include=TRUE}
 
-files <- read_all_files("../geocovid/data/rasters/city/")
+files <- read_all_files(path_to_csvs = "../geocovid/data/rasters/city/",
+                        colnames = c("lat", "lon", "quadkey", "date_time", 
+                                     "n_crisis", "percent_change"),
+                        coltypes = "dddTcc")
 
 files
 
@@ -169,12 +172,11 @@ that will be part of the analysis and also create new variables if needed.
 
 ```{r}
 polyvar <- files |>
-        select(day, time, quadkey, n_crisis, percent_change) |>
-        inner_join(polygrid, by = 'quadkey' ) |>
-  apply_weekly_lag() 
+            dplyr::inner_join(polygrid, by = 'quadkey' ) |>
+            apply_weekly_lag() 
 
 polyvar7 <-  polyvar |>
-  drop_na(percent_change_7)
+               drop_na(percent_change_7)
 ```
 
 
