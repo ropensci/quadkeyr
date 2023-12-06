@@ -4,10 +4,17 @@
 \alias{read_all_files}
 \title{Read all the .csv files in a folder and format the data.}
 \usage{
-read_all_files(path_to_csvs = path_to_csvs)
+read_all_files(path_to_csvs, colnames, coltypes)
 }
 \arguments{
 \item{path_to_csvs}{Path to the folder where the .csv files are stored}
+
+\item{colnames}{Columns to include in the results (as character).
+For more information go to readr::read_csv()
+documentation.}
+
+\item{coltypes}{Column specifications. For more information go to
+readr::read_csv() documentation.}
 }
 \value{
 A dataframe with the information of all the files.
@@ -21,9 +28,14 @@ specific formatting to columns across these files."
 \examples{
 
 
-# read_all_files(path_to_csvs = 'data/')
+# read_all_files(path_to_csvs = 'data/',
+#                 colnames = c("lat", "lon", "quadkey", "date_time", 
+#                              "n_crisis", "percent_change"),
+#                 coltypes = "dddTcc")
 
 }
 \seealso{
 \code{\link{format_data}}
+
+\code{\link[readr]{read_csv}}
 }

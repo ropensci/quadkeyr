@@ -6,8 +6,14 @@
 #' specific formatting to columns across these files."
 #'
 #' @param path_to_csvs Path to the folder where the .csv files are stored
-#'
+#' @param colnames Columns to include in the results (as character).
+#' For more information go to readr::read_csv() 
+#' documentation.
+#' @param coltypes Column specifications. For more information go to 
+#' readr::read_csv() documentation.
+#'  
 #' @seealso \code{\link{format_data}}
+#' @seealso \code{\link[readr]{read_csv}}
 #'
 #' @return A dataframe with the information of all the files.
 #' @export
@@ -15,9 +21,14 @@
 #' @examples
 #'
 #' 
-#' # read_all_files(path_to_csvs = 'data/')
+#' # read_all_files(path_to_csvs = 'data/',
+#' #                 colnames = c("lat", "lon", "quadkey", "date_time", 
+#' #                              "n_crisis", "percent_change"),
+#' #                 coltypes = "dddTcc")
 #'
-read_all_files <- function(path_to_csvs = path_to_csvs){
+read_all_files <- function(path_to_csvs, 
+                           colnames,
+                           coltypes){
 
 
 
@@ -31,17 +42,18 @@ read_all_files <- function(path_to_csvs = path_to_csvs){
 
   data <- purrr::map_dfr(fnames,
                      readr::read_csv,
+                     col_select = colnames,
                      col_names = TRUE,
-                     col_types = "dddcTcccccddc")
+                     col_types = coltypes)
 
 
   data <- format_data(data)
 
   if (nrow(missing_combinations(data)) > 0) {
-    warning("These combinations of days and times are missing in the dataset")
+    message("These combinations of days and times are missing in the dataset")
     print(missing_combinations(data))
   }else{
-    message("There are not missing dates or times")
+    message("There aren't missing dates or times")
   }
 
   data
