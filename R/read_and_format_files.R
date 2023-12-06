@@ -20,9 +20,16 @@
 #'
 #' 
 #' # read_all_files(path_to_csvs = 'data/',
-#' #                 colnames = c("lat", "lon", "quadkey", "date_time", 
+#' #                 colnames = c("lat", "lon", 
+#' #                              "quadkey", "date_time", 
 #' #                              "n_crisis", "percent_change"),
-#' #                 coltypes = "dddTcc")
+#' #                 coltypes = list(
+#'  #                                lat = 'd',
+#'  #                                lon = 'd',
+#'  #                                quadkey = 'd',
+#'  #                                date_time = 'T',
+#'  #                               n_crisis = 'c',
+#'  #                                percent_change = 'c'))
 #'
 read_all_files <- function(path_to_csvs, 
                            colnames){
@@ -43,7 +50,7 @@ read_all_files <- function(path_to_csvs,
                      readr::read_csv,
                      col_select = dplyr::all_of(colnames), # tidyselect
                      col_names = TRUE, # header
-                     show_col_types = FALSE) # don't print messages
+                     col_types = coltypes)
 
 
   data <- format_data(data)

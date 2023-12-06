@@ -26,9 +26,16 @@ specific formatting to columns across these files."
 
 
 # read_all_files(path_to_csvs = 'data/',
-#                 colnames = c("lat", "lon", "quadkey", "date_time", 
+#                 colnames = c("lat", "lon", 
+#                              "quadkey", "date_time", 
 #                              "n_crisis", "percent_change"),
-#                 coltypes = "dddTcc")
+#                 coltypes = list(
+ #                                lat = 'd',
+ #                                lon = 'd',
+ #                                quadkey = 'd',
+ #                                date_time = 'T',
+ #                               n_crisis = 'c',
+ #                                percent_change = 'c'))
 
 }
 \seealso{

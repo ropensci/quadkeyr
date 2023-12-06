@@ -97,9 +97,16 @@ documentation.</p></dd>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># read_all_files(path_to_csvs = 'data/',</span></span></span>
-<span class="r-in"><span><span class="co">#                 colnames = c("lat", "lon", "quadkey", "date_time", </span></span></span>
+<span class="r-in"><span><span class="co">#                 colnames = c("lat", "lon", </span></span></span>
+<span class="r-in"><span><span class="co">#                              "quadkey", "date_time", </span></span></span>
 <span class="r-in"><span><span class="co">#                              "n_crisis", "percent_change"),</span></span></span>
-<span class="r-in"><span><span class="co">#                 coltypes = "dddTcc")</span></span></span>
+<span class="r-in"><span><span class="co">#                 coltypes = list(</span></span></span>
+<span class="r-in"><span> <span class="co">#                                lat = 'd',</span></span></span>
+<span class="r-in"><span> <span class="co">#                                lon = 'd',</span></span></span>
+<span class="r-in"><span> <span class="co">#                                quadkey = 'd',</span></span></span>
+<span class="r-in"><span> <span class="co">#                                date_time = 'T',</span></span></span>
+<span class="r-in"><span> <span class="co">#                               n_crisis = 'c',</span></span></span>
+<span class="r-in"><span> <span class="co">#                                percent_change = 'c'))</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"></span>
 </code></pre></div>

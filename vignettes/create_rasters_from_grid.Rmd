@@ -46,7 +46,14 @@ change.
 files <- read_all_files(path_to_csvs = "../geocovid/data/rasters/city/",
                         colnames = c("lat", "lon", 
                                      "quadkey", "date_time", 
-                                     "n_crisis", "percent_change"))
+                                     "n_crisis", "percent_change"),
+                        coltypes = list(
+                         lat = 'd',
+                         lon = 'd',
+                         quadkey = 'i',
+                         date_time = 'T',
+                         n_crisis = 'c',
+                         percent_change = 'c')) 
 
 files
 
