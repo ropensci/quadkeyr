@@ -87,8 +87,8 @@ create_qk_grid <- function(xmin, xmax, ymin, ymax, level){
      grid <- data.frame(tileX = tilesmn$tileX + (c * sign(resx)),
                        tileY = tilesmn$tileY + (r * sign(resy))) |>
                        dplyr::mutate(quadkey = tileXY_to_quadkey(
-                                                            tileX = tileX,
-                                                            tileY = tileY,
+                                                            tileX = .data$tileX,
+                                                            tileY = .data$tileY,
                                                             level = level))
 
      data <- rbind(data, grid)

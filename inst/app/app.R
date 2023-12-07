@@ -8,11 +8,11 @@ qkmap_app <- function(...) {
                                                            wght = "400"),
                             heading_font = bslib::font_google("Raleway",
                                                               wght = "200")),
-    bslib::nav_panel(title = 'Quadkey',
+     bslib::nav_panel(title = 'Quadkey',
               bslib::layout_sidebar(class = 'p-0',
                      sidebar = bslib::sidebar(width = 300,
         shiny::textInput('qk',
-                  'Please, insert the QuadKey',
+                  'Visualize the upper-left coordinate of the QuadKey',
                   placeholder = "complete and click search"),
         shiny::actionButton('search', 'Search'),
         shiny::hr(),
@@ -47,21 +47,29 @@ qkmap_app <- function(...) {
                        "long processing times."))
 
       ),
-      #autoWaiter(),
       leaflet::leafletOutput('mapgrid')))
 
 
   )
   server <- function(input, output, session) {
 
-   qk_results <-  shiny::eventReactive(input$search,{
+   qk_results <-  shiny::eventReactive(input$search,
+                                       ignoreNULL = FALSE,{
+                            
+                                         
+      shiny::validate(
+         shiny::need(input$qk,
+              "Please, write a QuadKey number and press 'Search'")
+              )
+                                         
+    tile <- quadkeyr::quadkey_to_tileXY(as.character(input$qk))
 
-    tile <- quadkey_to_tileXY(input$qk)
-    pixel <- tileXY_to_pixelXY(tile$tileX,
-                          tile$tileY)
-    coords <- pixelXY_to_latlong(pixel$pixelX,
-                              pixel$pixelY,
-                              level = tile$level)
+    pixel <- quadkeyr::tileXY_to_pixelXY(tileX = tile$tileX,
+                                         tileY = tile$tileY)
+
+    coords <- quadkeyr::pixelXY_to_latlong(pixelX = pixel$pixelX,
+                                           pixelY = pixel$pixelY,
+                                           level = tile$level)
 
 
       return(list(tileX = tile$tileX ,
@@ -74,8 +82,6 @@ qkmap_app <- function(...) {
     })
 
     output$qkvalues <- DT::renderDT({
-
-        shiny::req(input$search)
 
         dataqk <- t(data.frame(c('TileX',
                                  qk_results()$tileX),
@@ -105,7 +111,7 @@ qkmap_app <- function(...) {
 
     output$mapqk <- leaflet::renderLeaflet({
 
-
+      
 
       leaflet::leaflet() |>
         leaflet::addTiles() |>
@@ -121,17 +127,28 @@ qkmap_app <- function(...) {
     })
 
 
-    polygrid <- shiny::eventReactive(input$grid,{
+    polygrid <- shiny::eventReactive(input$grid,
+                                     ignoreNULL = FALSE,{
 
-     grid <- create_qk_grid(xmin = as.numeric(input$xmin),
-                            xmax = as.numeric(input$xmax),
-                            ymin = as.numeric(input$ymin),
-                            ymax = as.numeric(input$ymax),
-                            level = as.numeric(input$levelofdetail))
+                                       
+       shiny::validate(
+                 shiny::need(input$xmin != '' && 
+                               input$ymin != '' &&
+                             input$xmax != '' && 
+                               input$ymax != '',   
+                 "Please, complete the fields and press 'Search'")
+                 )
+                                       
+
+     grid <- quadkeyr::create_qk_grid(xmin = as.numeric(input$xmin),
+                                      xmax = as.numeric(input$xmax),
+                                      ymin = as.numeric(input$ymin),
+                                      ymax = as.numeric(input$ymax),
+                                      level = as.numeric(input$levelofdetail))
 
 
      if(nrow(grid$data) > 2000){
-
+       
        shiny::showNotification(
          paste("The grid you want to create have more than 2000 polygons",
                "and could take considerable time to run"),
@@ -139,15 +156,17 @@ qkmap_app <- function(...) {
        )
      }
 
-      grid_coords <- extract_qk_coord(data = grid$data)
+      grid_coords <- quadkeyr::extract_qk_coord(data = grid$data)
 
-      polygrid <-  grid_to_polygon(grid_coords)
+      polygrid <-  quadkeyr::grid_to_polygon(grid_coords)
 
       polygrid
 
     })
 
+    
     output$mapgrid <- leaflet::renderLeaflet({
+      
 
       shiny::req(polygrid())
 
@@ -163,4 +182,10 @@ qkmap_app <- function(...) {
 
     }
 
-  shiny::shinyApp(ui, server) }
+  
+  shiny::shinyApp(ui = ui, server = server)
+  
+}
+
+qkmap_app()
+
