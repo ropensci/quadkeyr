@@ -34,9 +34,9 @@ extract_qk_coord <- function(data){
 
   for(i in seq_len(nrow(data))){
     # check that the data has the correct dimensions for this analysis
-    level = nchar(data$quadkey[i])
+    level  <-  nchar(data$quadkey[i])
 
-    qktot = quadkey_to_tileXY(data$quadkey[i])
+    qktot  <-  quadkey_to_tileXY(data$quadkey[i])
 
     data$qk_tileX[i] <-  qktot$tileX
     data$qk_tileY[i] <- qktot$tileY

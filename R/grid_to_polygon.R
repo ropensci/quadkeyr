@@ -16,7 +16,7 @@
 #'
 #' @examples
 #'
-#' grid = create_qk_grid(xmin = -59,
+#' grid  <-  create_qk_grid(xmin = -59,
 #'                       xmax = -57,
 #'                       ymin = -35,
 #'                       ymax = -34,
@@ -36,15 +36,15 @@ complete_grid_for_polygons <- function(data){
     stop("The dataset should be of class 'sf'")
   }
 
-  # I should add one row and one column to grid. To create the polygons I am using
-  # other quadkeys (4 in total). I. must complete the grid to can convert the
-  # quadkeys in the last line and last row to polygons
+  # I should add one row and one column to grid. To create the polygons 
+  # I am using other quadkeys (4 in total). I must complete the grid to can 
+  # convert the QuadKeys in the last line and last row to polygons
 
-  textX = max(data$tileX) + 1
-  textY = max(data$tileY) + 1
-  level = unique(nchar(data$quadkey))
+  textX  <-  max(data$tileX) + 1
+  textY  <-  max(data$tileY) + 1
+  level  <-  unique(nchar(data$quadkey))
 
-  extragrid =  rbind(
+  extragrid  <- rbind(
     data.frame(
     tileX = seq(min(data$tileX),
                          textX),
@@ -82,7 +82,7 @@ complete_grid_for_polygons <- function(data){
 #' @export
 #'
 #' @examples
-#' grid = create_qk_grid(xmin = -59,
+#' grid  <-  create_qk_grid(xmin = -59,
 #'                       xmax = -57,
 #'                       ymin = -35,
 #'                       ymax = -34,
@@ -91,7 +91,7 @@ complete_grid_for_polygons <- function(data){
 #'                       grid_coords <- extract_qk_coord(data = grid$data)
 #'                       grid_coords
 #'
-#'                       polygrid = grid_to_polygon(grid_coords)
+#'                       polygrid  <-  grid_to_polygon(grid_coords)
 #'                       polygrid
 grid_to_polygon <- function(data){
 
@@ -105,9 +105,9 @@ grid_to_polygon <- function(data){
                                   level = unique(nchar(data$quadkey)))
 
   # combines the new data with the extended grid of points
-  data = rbind(data, extragrid)
+  data  <-  rbind(data, extragrid)
 
-  db = c() #https://github.com/r-spatial/sf/issues/354
+  db  <-  c() #https://github.com/r-spatial/sf/issues/354
  
   # The quadkeys of interest are the ones that are not NA
   # The original quadkeys of the grid

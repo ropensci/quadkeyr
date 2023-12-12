@@ -17,8 +17,10 @@ tileXY_to_quadkey(tileX, tileY, level)
 The quadkey number as a string.
 }
 \description{
-Converts tile XY coordinates into a QuadKey at a specified level of detail.
-For further information, refer to the Microsoft Bing Maps Tile System documentation.
+Converts tile XY coordinates into a QuadKey at a specified
+level of detail.
+For further information, refer to the Microsoft Bing Maps Tile System
+documentation.
 }
 \examples{
 

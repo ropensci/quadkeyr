@@ -9,3 +9,8 @@ qkmap_app()
 \description{
 This function launches the Shiny app.
 }
+\examples{
+\dontrun{
+qkmap_app() 
+} 
+}

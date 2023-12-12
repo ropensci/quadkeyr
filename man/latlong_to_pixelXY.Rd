@@ -17,8 +17,10 @@ latlong_to_pixelXY(lat, lon, level)
 A list returning pixel X and pixel Y coordinates.
 }
 \description{
-Converts a point from latitude/longitude WGS-84 coordinates (in degrees) into pixel XY coordinates at a specified level of detail.
-For further information, refer to the Microsoft Bing Maps Tile System documentation.
+Converts a point from latitude/longitude WGS-84 coordinates
+(in degrees) into pixel XY coordinates at a specified level of detail.
+For further information, refer to the Microsoft Bing Maps Tile System
+documentation.
 }
 \examples{
 

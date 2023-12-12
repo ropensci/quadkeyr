@@ -22,7 +22,7 @@ This function is called internally by grid_to_polygon.
 }
 \examples{
 
-grid = create_qk_grid(xmin = -59,
+grid  <-  create_qk_grid(xmin = -59,
                       xmax = -57,
                       ymin = -35,
                       ymax = -34,

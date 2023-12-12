@@ -14,13 +14,14 @@ latlong_to_quadkey(lat, lon, level)
 \item{level}{Level of detail, from 1 (lowest detail) to 23 (highest detail).}
 }
 \value{
-A dataframe with latitude (lat), longitude (lon), level of detail (level)
-and the QuadKey number as a string (quadkey).
+A dataframe with latitude (lat), longitude (lon), level of detail
+(level) and the QuadKey number as a string (quadkey).
 }
 \description{
-Converts a point from latitude/longitude WGS-84 coordinates (in degrees)
-into a Quadkey at a specified level of detail.
-For further information, refer to the Microsoft Bing Maps Tile System documentation.
+Converts a point from latitude/longitude WGS-84 coordinates
+(in degrees) into a Quadkey at a specified level of detail.
+For further information, refer to the Microsoft Bing Maps Tile
+System documentation.
 }
 \examples{
 

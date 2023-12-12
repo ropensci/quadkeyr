@@ -15,8 +15,10 @@ pixelXY_to_tileXY(pixelX, pixelY)
 A list returning the tile X and tile Y coordinates.
 }
 \description{
-Converts pixel XY coordinates into tile XY coordinates of the tile containing the specified pixel.
-For further information, refer to the Microsoft Bing Maps Tile System documentation.
+Converts pixel XY coordinates into tile XY coordinates of the
+tile containing the specified pixel.
+For further information, refer to the Microsoft Bing Maps
+Tile System documentation.
 }
 \examples{
 
