@@ -10,8 +10,9 @@
 #' 
 qkmap_app <- function() {
   # Get the path to the Shiny app directory
-  shiny_app_path <- system.file("app", package = "quadkeyr")
+  shiny_app_path <- system.file("app",
+                                package = "quadkeyr")
   
   # Launch the Shiny app
-  shiny::runApp(shiny_app_path)
+  shiny::runApp(appDir = "inst/app/")
 }
