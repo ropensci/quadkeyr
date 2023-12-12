@@ -6,6 +6,9 @@
 \usage{
 qkmap_app()
 }
+\value{
+This function does not return any value. It launches the Shiny app.
+}
 \description{
 This function launches the Shiny app.
 }

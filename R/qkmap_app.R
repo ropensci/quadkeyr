@@ -2,6 +2,8 @@
 #'
 #' @description This function launches the Shiny app.
 #' 
+#' @return This function does not return any value. It launches the Shiny app.
+#' 
 #' @export
 #' 
 #' @examples 
