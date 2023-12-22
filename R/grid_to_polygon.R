@@ -11,6 +11,8 @@
 #'
 #' @param data A spatial dataset (sf) with the columns tileX, tileY and quadkey.
 #'
+#' @importFrom rlang .data
+#'  
 #' @return A spatial dataset (sf) with the columns tileX, tileY and quadkey.
 #' @export
 #'

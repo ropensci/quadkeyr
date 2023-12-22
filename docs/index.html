@@ -14,8 +14,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Tools for converting QuadKeys used in Microsoft's Bing Maps Tile System into raster images">
 <meta property="og:description" content="quadkeyr enables the generation of raster images based on QuadKeys, facilitating efficient integration of Bing Maps data into R workflows. In particular, quadkeyr provides support to process and analyze Facebook mobility datasets within the R environment.">
@@ -74,13 +74,25 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header">
-<img src="logo.png" class="logo" alt=""><h1 id="quadkeyr-">quadkeyr <a class="anchor" aria-label="anchor" href="#quadkeyr-"></a>
+<img src="logo.png" class="logo" alt=""><h1 id="quadkeyr-">
+<code>quadkeyr</code> <a class="anchor" aria-label="anchor" href="#quadkeyr-"></a>
 </h1>
 </div>
 <!-- badges: start -->
 
 <p>⚠️ This package is under review</p>
-<p>The <code>quadkeyr</code> R package presents a comprehensive toolkit tailored for generating raster images from QuadKeys within <a href="https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system" class="external-link">Microsoft’s Bing Maps Tile System</a>. Designed to integrate Bing Maps data into R workflows, this package facilitates the creation of QuadKey grids and rasters and introduces specialized functions for the processing of <a href="https://dataforgood.facebook.com/" class="external-link">Facebook Mobility data</a>.</p>
+<div class="section level3">
+<h3 id="what-are-quadkeys-in-tile-maps">What are QuadKeys in Tile Maps?<a class="anchor" aria-label="anchor" href="#what-are-quadkeys-in-tile-maps"></a>
+</h3>
+<p>Tile maps divide the Earth’s surface into a grid of tiles, with each tile corresponding to a specific geographic area at various zoom levels. Different zoom levels in a tile map display varying levels of detail.</p>
+<p>QuadKeys represent a location on a map by encoding its hierarchical spatial position as a sequence of characters. They provide an efficient method to address and retrieve specific map tiles, facilitating rapid display within mapping applications such as <a href="https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system" class="external-link">Microsoft Bing Maps</a>.</p>
+<p><img src="quadkeys.jpg"></p>
+<p><em>The QuadKey of any tile starts with the QuadKey of its parent tile (the containing tile at the previous level). Image extracted from Microsoft’s Bing Maps Tile System webpage.</em></p>
+</div>
+<div class="section level3">
+<h3 id="what-can-this-package-do-for-you">What can this package do for you?<a class="anchor" aria-label="anchor" href="#what-can-this-package-do-for-you"></a>
+</h3>
+<p>The <code>quadkeyr</code> R package presents a comprehensive toolkit tailored for generating raster images from data reported by QuadKeys within <a href="https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system" class="external-link">Microsoft’s Bing Maps Tile System</a>. Designed to integrate Bing Maps data into R workflows, this package facilitates the creation of QuadKey grids and raster images and introduces specialized functions for the processing of <a href="https://dataforgood.facebook.com/" class="external-link">Facebook Mobility data</a>.</p>
 <hr>
 <p>The goal of <code>quadkeyr</code> is to:</p>
 <ol style="list-style-type: decimal">
@@ -89,6 +101,7 @@
 <li><p><a href="https://fernandez-lab-wsu.github.io/quadkeyr/articles/create_rasters_from_grid.html" class="external-link"><strong>Generate rasters from Facebook mobility data</strong></a> Adapt the functions described in points 1 and 2 to effectively process and analyze Facebook mobility data.</p></li>
 <li><p>Introduce a QuadKey map application enabling users to validate function outcomes and offering tools for visualizing the generated data.</p></li>
 </ol>
+</div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>

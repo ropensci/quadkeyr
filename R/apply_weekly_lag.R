@@ -5,7 +5,9 @@
 #' for quadkeys without NAs.
 #'
 #' @param data A dataset
-#'
+#' 
+#' @importFrom rlang .data
+#' 
 #' @return A dataframe with the extra colums n_crisis_lag_7 and n_crisis_percent_7
 #' @export
 #'

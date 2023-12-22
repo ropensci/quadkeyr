@@ -17,6 +17,8 @@
 #' @seealso \code{\link{st_as_stars}}, \code{\link{st_rasterize}}
 #' @seealso \code{\link{missing_combinations}}
 #'
+#' @importFrom rlang .data
+#'  
 #' @return as many .tif files as dates and times in the dataset
 #' @export
 #'

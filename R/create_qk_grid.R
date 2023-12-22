@@ -11,6 +11,8 @@
 #' @param ymax Maximum value in the Y axis (latitude)
 #' @param level Level of detail, from 1 (lowest detail) to 23 (highest detail).
 #'
+#' @importFrom rlang .data
+#'  
 #' @return A list returning the QuadKeys as a dataframe (data),
 #' the number of rows (num_rows)
 #' and columns (num_cols) of the grid.

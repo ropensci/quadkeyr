@@ -14,8 +14,10 @@ test_that("{shinytest2} recording: qkmap_app_tests", {
                  allow_no_input_binding_ = TRUE)
   app$set_inputs(qkvalues_rows_all = c(1, 2, 3, 4, 5, 6, 7),
                  allow_no_input_binding_ = TRUE)
-  app$set_inputs(qkvalues_state = c(1701982608460, 0, 10, "", TRUE, FALSE, TRUE, 
-      c(TRUE, "", TRUE, FALSE, TRUE), c(TRUE, "", TRUE, FALSE, TRUE)),
+  app$set_inputs(qkvalues_state = 
+      c(1701982608460, 0, 10, "", TRUE, FALSE, TRUE, 
+      c(TRUE, "", TRUE, FALSE, TRUE), 
+      c(TRUE, "", TRUE, FALSE, TRUE)),
       allow_no_input_binding_ = TRUE)
   app$expect_values()
   app$expect_screenshot()

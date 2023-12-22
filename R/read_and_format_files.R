@@ -121,6 +121,8 @@ format_data <- function(data){
 #'
 #' @param data A dataframe with a day and time column.
 #'
+#' @importFrom rlang .data
+#' 
 #' @return A dataframe with the missing days and times, if any.
 #' @export
 #'

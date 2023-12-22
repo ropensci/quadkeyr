@@ -2,6 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
+.DS_Store
 /doc/
 /Meta/
 # {shinytest2}: Ignore new debug snapshots for `$expect_values()`
