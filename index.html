@@ -74,13 +74,25 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header">
-<img src="logo.png" class="logo" alt=""><h1 id="quadkeyr-">quadkeyr <a class="anchor" aria-label="anchor" href="#quadkeyr-"></a>
+<img src="logo.png" class="logo" alt=""><h1 id="quadkeyr-">
+<code>quadkeyr</code> <a class="anchor" aria-label="anchor" href="#quadkeyr-"></a>
 </h1>
 </div>
 <!-- badges: start -->
 
 <p>⚠️ This package is under review</p>
-<p>The <code>quadkeyr</code> R package presents a comprehensive toolkit tailored for generating raster images from QuadKeys within <a href="https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system" class="external-link">Microsoft’s Bing Maps Tile System</a>. Designed to integrate Bing Maps data into R workflows, this package facilitates the creation of QuadKey grids and rasters and introduces specialized functions for the processing of <a href="https://dataforgood.facebook.com/" class="external-link">Facebook Mobility data</a>.</p>
+<div class="section level3">
+<h3 id="what-are-quadkeys-in-tile-maps">What are QuadKeys in Tile Maps?<a class="anchor" aria-label="anchor" href="#what-are-quadkeys-in-tile-maps"></a>
+</h3>
+<p>Tile maps divide the Earth’s surface into a grid of tiles, with each tile corresponding to a specific geographic area at various zoom levels. Different zoom levels in a tile map display varying levels of detail.</p>
+<p>QuadKeys represent a location on a map by encoding its hierarchical spatial position as a sequence of characters. They provide an efficient method to address and retrieve specific map tiles, facilitating rapid display within mapping applications such as <a href="https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system" class="external-link">Microsoft Bing Maps</a>.</p>
+<p><img src="quadkeys.jpg"></p>
+<p><em>The QuadKey of any tile starts with the QuadKey of its parent tile (the containing tile at the previous level). Image extracted from Microsoft’s Bing Maps Tile System webpage.</em></p>
+</div>
+<div class="section level3">
+<h3 id="what-can-this-package-do-for-you">What can this package do for you?<a class="anchor" aria-label="anchor" href="#what-can-this-package-do-for-you"></a>
+</h3>
+<p>The <code>quadkeyr</code> R package presents a comprehensive toolkit tailored for generating raster images from data reported by QuadKeys within <a href="https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system" class="external-link">Microsoft’s Bing Maps Tile System</a>. Designed to integrate Bing Maps data into R workflows, this package facilitates the creation of QuadKey grids and raster images and introduces specialized functions for the processing of <a href="https://dataforgood.facebook.com/" class="external-link">Facebook Mobility data</a>.</p>
 <hr>
 <p>The goal of <code>quadkeyr</code> is to:</p>
 <ol style="list-style-type: decimal">
@@ -89,6 +101,7 @@
 <li><p><a href="https://fernandez-lab-wsu.github.io/quadkeyr/articles/create_rasters_from_grid.html" class="external-link"><strong>Generate rasters from Facebook mobility data</strong></a> Adapt the functions described in points 1 and 2 to effectively process and analyze Facebook mobility data.</p></li>
 <li><p>Introduce a QuadKey map application enabling users to validate function outcomes and offering tools for visualizing the generated data.</p></li>
 </ol>
+</div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -159,7 +172,7 @@
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/pkgcheck.yaml" class="external-link"><img src="https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/pkgcheck.yaml/badge.svg" alt="pkgcheck"></a></li>
+<li><a href="https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/test-coverage.yaml" class="external-link"><img src="https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/test-coverage.yaml/badge.svg" alt="test-coverage"></a></li>
 <li><a href="https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-standard.yaml" class="external-link"><img src="https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-standard.yaml/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://codecov.io/gh/Fernandez-Lab-WSU/quadkeyr" class="external-link"><img src="https://img.shields.io/codecov/c/github/Fernandez-Lab-WSU/quadkeyr" alt="Codecov"></a></li>
 </ul>
