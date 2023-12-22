@@ -26,7 +26,7 @@ method to address and retrieve specific map tiles, facilitating rapid
 display within mapping applications such as [Microsoft Bing
 Maps](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system).
 
-![](quadkeys.jpg)
+<img src="man/figures/quadkeys.jpg" width="100%" style="display: block; margin: auto;" />
 
 *The QuadKey of any tile starts with the QuadKey of its parent tile (the
 containing tile at the previous level). Image extracted from Microsoft’s
