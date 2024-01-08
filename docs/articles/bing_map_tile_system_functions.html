@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="quadkeyr">
-<title>quadkey_conversion • quadkeyr</title>
+<title>Bing Maps Tile System functions • quadkeyr</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -17,7 +17,7 @@
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="quadkey_conversion">
+<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Bing Maps Tile System functions">
 <meta property="og:description" content="quadkeyr">
 <meta property="og:image" content="/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -48,10 +48,13 @@
 <li class="active nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/create_rasters_from_grid.html">create_rasters_from_grid</a>
-    <a class="dropdown-item" href="../articles/get_grid_from_quadkeys.html">get_grid_from_quadkeys</a>
-    <a class="dropdown-item" href="../articles/quadkey_conversion.html">quadkey_conversion</a>
+    <a class="dropdown-item" href="../articles/bing_map_tile_system_functions.html">Bing Maps Tile System functions</a>
+    <a class="dropdown-item" href="../articles/from_facebook_quadkey_data_to_raster.html">Converting Facebook QuadKeys Data into Raster Images</a>
+    <a class="dropdown-item" href="../articles/from_quadkey_data_to_raster.html">Converting QuadKeys Data into Raster Images</a>
   </div>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
 </li>
       </ul>
 <form class="form-inline my-2 my-lg-0" role="search">
@@ -77,26 +80,23 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="../logo.png" class="logo" alt=""><h1>quadkey_conversion</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Bing Maps Tile System functions</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/Fernandez-Lab-WSU/quadkeyr/blob/HEAD/vignettes/quadkey_conversion.Rmd" class="external-link"><code>vignettes/quadkey_conversion.Rmd</code></a></small>
-      <div class="d-none name"><code>quadkey_conversion.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/Fernandez-Lab-WSU/quadkeyr/blob/HEAD/vignettes/bing_map_tile_system_functions.Rmd" class="external-link"><code>vignettes/bing_map_tile_system_functions.Rmd</code></a></small>
+      <div class="d-none name"><code>bing_map_tile_system_functions.Rmd</code></div>
     </div>
 
     
     
-<div class="section level2">
-<h2 id="bing-maps-tile-system-functions">Bing Maps Tile System functions<a class="anchor" aria-label="anchor" href="#bing-maps-tile-system-functions"></a>
-</h2>
 <p>These functions are the R version of the ones described in <a href="https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system" class="external-link">Bing
 Maps Tile System webpage</a>.</p>
+<div class="section level3">
+<h3 id="if-you-have-map-coordinates-convert-them-to-quadkey-numbers">1. If you have map coordinates, convert them to QuadKey numbers<a class="anchor" aria-label="anchor" href="#if-you-have-map-coordinates-convert-them-to-quadkey-numbers"></a>
+</h3>
 <div class="section level4">
-<h4 id="if-you-have-map-coordinates-convert-them-to-quadkey-numbers">1. If you have map coordinates, convert them to QuadKey numbers<a class="anchor" aria-label="anchor" href="#if-you-have-map-coordinates-convert-them-to-quadkey-numbers"></a>
+<h4 id="convert-latlong-coordinates-to-pixel-xy-coordinates">1.1 Convert lat/long coordinates to pixel XY coordinates<a class="anchor" aria-label="anchor" href="#convert-latlong-coordinates-to-pixel-xy-coordinates"></a>
 </h4>
-<div class="section level5">
-<h5 id="convert-latlong-coordinates-to-pixel-xy-coordinates">1.1 Convert lat/long coordinates to pixel XY coordinates<a class="anchor" aria-label="anchor" href="#convert-latlong-coordinates-to-pixel-xy-coordinates"></a>
-</h5>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lltp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/latlong_to_pixelXY.html">latlong_to_pixelXY</a></span><span class="op">(</span>lat <span class="op">=</span> <span class="op">-</span><span class="fl">25</span>, </span>
 <span>                           lon <span class="op">=</span> <span class="op">-</span><span class="fl">53</span>, </span>
@@ -108,9 +108,9 @@ Maps Tile System webpage</a>.</p>
 <span><span class="co">#&gt; $pixelY</span></span>
 <span><span class="co">#&gt; [1] 2342</span></span></code></pre></div>
 </div>
-<div class="section level5">
-<h5 id="convert-pixel-xy-coordinates-into-tile-xy-coordinates">1.2 Convert pixel XY coordinates into tile XY coordinates<a class="anchor" aria-label="anchor" href="#convert-pixel-xy-coordinates-into-tile-xy-coordinates"></a>
-</h5>
+<div class="section level4">
+<h4 id="convert-pixel-xy-coordinates-into-tile-xy-coordinates">1.2 Convert pixel XY coordinates into tile XY coordinates<a class="anchor" aria-label="anchor" href="#convert-pixel-xy-coordinates-into-tile-xy-coordinates"></a>
+</h4>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ptt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pixelXY_to_tileXY.html">pixelXY_to_tileXY</a></span><span class="op">(</span>pixelX <span class="op">=</span> <span class="va">lltp</span><span class="op">$</span><span class="va">pixelX</span>,</span>
 <span>                         pixelY <span class="op">=</span> <span class="va">lltp</span><span class="op">$</span><span class="va">pixelY</span><span class="op">)</span></span>
@@ -121,9 +121,9 @@ Maps Tile System webpage</a>.</p>
 <span><span class="co">#&gt; $tileY</span></span>
 <span><span class="co">#&gt; [1] 9</span></span></code></pre></div>
 </div>
-<div class="section level5">
-<h5 id="convert-tile-xy-coordinates-into-a-quadkey-number">1.3 Convert tile XY coordinates into a QuadKey number<a class="anchor" aria-label="anchor" href="#convert-tile-xy-coordinates-into-a-quadkey-number"></a>
-</h5>
+<div class="section level4">
+<h4 id="convert-tile-xy-coordinates-into-a-quadkey-number">1.3 Convert tile XY coordinates into a QuadKey number<a class="anchor" aria-label="anchor" href="#convert-tile-xy-coordinates-into-a-quadkey-number"></a>
+</h4>
 <p>Ththis function returns the QuadKey number as a string. Since we are
 estimating level 4, the number consists of 4 digits</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -160,13 +160,13 @@ coordinates to QuadKeys in</p>
 <span><span class="co">#&gt; 3    2102 POINT (-70.66 -25.66)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level4">
-<h4 id="if-you-have-quadkeys-convert-them-to-map-coordinates">2. If you have QuadKeys, convert them to map coordinates<a class="anchor" aria-label="anchor" href="#if-you-have-quadkeys-convert-them-to-map-coordinates"></a>
-</h4>
+<div class="section level3">
+<h3 id="if-you-have-quadkeys-convert-them-to-map-coordinates">2. If you have QuadKeys, convert them to map coordinates<a class="anchor" aria-label="anchor" href="#if-you-have-quadkeys-convert-them-to-map-coordinates"></a>
+</h3>
 <p>Let’s attempt the reverse route.</p>
-<div class="section level5">
-<h5 id="convert-a-quadkey-number-into-tile-xy-coordinates">2.1 Convert a QuadKey number into tile XY coordinates<a class="anchor" aria-label="anchor" href="#convert-a-quadkey-number-into-tile-xy-coordinates"></a>
-</h5>
+<div class="section level4">
+<h4 id="convert-a-quadkey-number-into-tile-xy-coordinates">2.1 Convert a QuadKey number into tile XY coordinates<a class="anchor" aria-label="anchor" href="#convert-a-quadkey-number-into-tile-xy-coordinates"></a>
+</h4>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">qtt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quadkey_to_tileXY.html">quadkey_to_tileXY</a></span><span class="op">(</span><span class="st">"2103"</span><span class="op">)</span></span>
 <span><span class="va">qtt</span></span>
@@ -179,9 +179,9 @@ coordinates to QuadKeys in</p>
 <span><span class="co">#&gt; $level</span></span>
 <span><span class="co">#&gt; [1] 4</span></span></code></pre></div>
 </div>
-<div class="section level5">
-<h5 id="convert-tile-xy-coordinates-into-pixel-xy-coordinates">2.2 Convert tile XY coordinates into pixel XY coordinates<a class="anchor" aria-label="anchor" href="#convert-tile-xy-coordinates-into-pixel-xy-coordinates"></a>
-</h5>
+<div class="section level4">
+<h4 id="convert-tile-xy-coordinates-into-pixel-xy-coordinates">2.2 Convert tile XY coordinates into pixel XY coordinates<a class="anchor" aria-label="anchor" href="#convert-tile-xy-coordinates-into-pixel-xy-coordinates"></a>
+</h4>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">ttp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tileXY_to_pixelXY.html">tileXY_to_pixelXY</a></span><span class="op">(</span>tileX <span class="op">=</span> <span class="va">qtt</span><span class="op">$</span><span class="va">tileX</span>,</span>
@@ -193,9 +193,9 @@ coordinates to QuadKeys in</p>
 <span><span class="co">#&gt; $pixelY</span></span>
 <span><span class="co">#&gt; [1] 2304</span></span></code></pre></div>
 </div>
-<div class="section level5">
-<h5 id="convert-pixel-xy-coordinates-into-latlong-coordinates">2.3 Convert pixel XY coordinates into lat/long coordinates<a class="anchor" aria-label="anchor" href="#convert-pixel-xy-coordinates-into-latlong-coordinates"></a>
-</h5>
+<div class="section level4">
+<h4 id="convert-pixel-xy-coordinates-into-latlong-coordinates">2.3 Convert pixel XY coordinates into lat/long coordinates<a class="anchor" aria-label="anchor" href="#convert-pixel-xy-coordinates-into-latlong-coordinates"></a>
+</h4>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ptll</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pixelXY_to_latlong.html">pixelXY_to_latlong</a></span><span class="op">(</span>pixelX <span class="op">=</span> <span class="va">ttp</span><span class="op">$</span><span class="va">pixelX</span>,</span>
 <span>                           pixelY <span class="op">=</span> <span class="va">ttp</span><span class="op">$</span><span class="va">pixelY</span>,</span>
@@ -220,9 +220,9 @@ want to apply all the steps together.</p>
 <span><span class="co">#&gt; 1    2103 POINT (-67.5 -21.94305)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level4">
-<h4 id="understanding-the-process-of-converting-coordinates">3. Understanding the Process of Converting Coordinates<a class="anchor" aria-label="anchor" href="#understanding-the-process-of-converting-coordinates"></a>
-</h4>
+<div class="section level3">
+<h3 id="understanding-the-process-of-converting-coordinates">3. Understanding the Process of Converting Coordinates<a class="anchor" aria-label="anchor" href="#understanding-the-process-of-converting-coordinates"></a>
+</h3>
 <p>Given the process of converting coordinates between pixel XY, tile
 XY, QuadKey, and latitude/longitude, one might expect that the
 conversion back to latitude/longitude coordinates (as in section 2.3)
@@ -249,15 +249,14 @@ coordinates correspond to the upper-left pixel of the tile.</p>
 <p>Understanding this distinction is crucial for the accurate use of
 these functions in coordinate conversions.</p>
 </div>
-<div class="section level4">
-<h4 id="quadkey-map-visualizer-app">4. QuadKey map visualizer app<a class="anchor" aria-label="anchor" href="#quadkey-map-visualizer-app"></a>
-</h4>
+<div class="section level3">
+<h3 id="quadkey-map-visualizer-app">4. QuadKey map visualizer app<a class="anchor" aria-label="anchor" href="#quadkey-map-visualizer-app"></a>
+</h3>
 <p>You can visualize the QuadKey location in the map using the app
 included in this package.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/qkmap_app.html">qkmap_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="qkmap_qk.png"></p>
-</div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>

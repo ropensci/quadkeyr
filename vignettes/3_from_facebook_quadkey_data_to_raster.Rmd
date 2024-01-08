@@ -1,8 +1,8 @@
 ---
-title: "create_rasters_from_grid"
+title: "Converting Facebook QuadKey's Data into Raster Images"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{create_rasters_from_grid}
+  %\VignetteIndexEntry{Converting Facebook QuadKeys Data into Raster Images}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -29,7 +29,6 @@ library(stars)
 
 ```
 
-# Generate rasters from Facebook mobility data
 
 This section focuses on creating a raster from QuadKey data formatted as 
 provided by [Facebook Mobility data](https://dataforgood.facebook.com/).

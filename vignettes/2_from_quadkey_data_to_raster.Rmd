@@ -1,8 +1,8 @@
 ---
-title: "get_grid_from_quadkeys"
+title: "Converting QuadKey's Data into Raster Images"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{get_grid_from_quadkeys}
+  %\VignetteIndexEntry{Converting QuadKeys Data into Raster Images}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -20,7 +20,8 @@ knitr::opts_chunk$set(
 
 
 
-# Create a raster from variables reported by Quadkeys for a specified map area and level of detail
+Create a raster from variables reported by Quadkeys for a specified map area
+and level of detail
 
 ### Step 1: Creata a grid of quadkeys
 

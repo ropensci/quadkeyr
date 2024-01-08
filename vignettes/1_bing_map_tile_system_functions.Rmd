@@ -1,8 +1,8 @@
 ---
-title: "quadkey_conversion"
+title: "Bing Maps Tile System functions"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{quadkey_conversion}
+  %\VignetteIndexEntry{Bing Maps Tile System functions}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -18,7 +18,6 @@ knitr::opts_chunk$set(
 library(quadkeyr)
 ```
 
-# Bing Maps Tile System functions
 
 These functions are the R version of the ones described in [Bing Maps Tile System webpage](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system).
 
