@@ -29,6 +29,8 @@ library(stars)
 
 ```
 
+> Please, visit the [README](https://fernandez-lab-wsu.github.io/quadkeyr/) 
+> for general information about this package
 
 This section focuses on creating a raster from QuadKey data formatted as 
 provided by [Facebook Mobility data](https://dataforgood.facebook.com/).

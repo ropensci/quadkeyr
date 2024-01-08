@@ -18,7 +18,8 @@ knitr::opts_chunk$set(
 )
 ```
 
-
+> Please, visit the [README](https://fernandez-lab-wsu.github.io/quadkeyr/) 
+> for general information about this package
 
 Create a raster from variables reported by Quadkeys for a specified map area
 and level of detail

@@ -18,6 +18,8 @@ knitr::opts_chunk$set(
 library(quadkeyr)
 ```
 
+> Please, visit the [README](https://fernandez-lab-wsu.github.io/quadkeyr/) 
+> for general information about this package
 
 These functions are the R version of the ones described in [Bing Maps Tile System webpage](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system).
 
