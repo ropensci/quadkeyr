@@ -89,12 +89,18 @@
 
     
     
+<blockquote>
+<p>Please, visit the <a href="https://fernandez-lab-wsu.github.io/quadkeyr/" class="external-link">README</a> for
+general information about this package</p>
+</blockquote>
 <p>This section focuses on creating a raster from QuadKey data formatted
 as provided by <a href="https://dataforgood.facebook.com/" class="external-link">Facebook
 Mobility data</a>.</p>
+<p>Facebook mobility data for each location and level of detail is
+stored in a separate <code>csv</code> file for each day and time.</p>
 <div class="section level3">
-<h3 id="step-1-read-all-the-csv-files-from-a-folder-and-format-them">Step 1: read all the <code>csv</code> files from a folder and format
-them<a class="anchor" aria-label="anchor" href="#step-1-read-all-the-csv-files-from-a-folder-and-format-them"></a>
+<h3 id="read-all-the-csv-files-from-a-folder-and-format-them">1. read all the <code>csv</code> files from a folder and format
+them<a class="anchor" aria-label="anchor" href="#read-all-the-csv-files-from-a-folder-and-format-them"></a>
 </h3>
 <p>All this files are for the same area and level of detail, but dates
 and times change.</p>
@@ -117,12 +123,12 @@ or times missing.</p>
 <span><span class="va">files</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="step-2-convert-the-quadkey-grid-to-latlong-coordinates">Step 2: Convert the Quadkey grid to lat/long coordinates<a class="anchor" aria-label="anchor" href="#step-2-convert-the-quadkey-grid-to-latlong-coordinates"></a>
+<h3 id="convert-the-quadkey-grid-to-latitudelongitude-coordinates">2. Convert the Quadkey grid to latitude/longitude coordinates<a class="anchor" aria-label="anchor" href="#convert-the-quadkey-grid-to-latitudelongitude-coordinates"></a>
 </h3>
 <p>Even if these files correspond to the same area of analysis, they can
 vary in the number of QuadKeys that are reported.</p>
 <p>That is why we select from all the files all the QuadKeys that have
-data al least once and convert them to coordinates.</p>
+data at least once and convert them to coordinates.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">quadkeys</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">files</span><span class="op">$</span><span class="va">quadkey</span><span class="op">)</span></span>
@@ -150,7 +156,7 @@ data al least once and convert them to coordinates.</p>
 <p><img src="3_from_facebook_quadkey_data_to_raster_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
 </div>
 <div class="section level3">
-<h3 id="step-3-complete-the-grid">Step 3: Complete the grid<a class="anchor" aria-label="anchor" href="#step-3-complete-the-grid"></a>
+<h3 id="complete-the-grid">3. Complete the grid<a class="anchor" aria-label="anchor" href="#complete-the-grid"></a>
 </h3>
 <p>Some of the QuadKeys are missing, we can’t consider this a regular
 grid.</p>
@@ -190,7 +196,7 @@ of columns and rows, we will use this data to create the raster.</p>
 <p><img src="3_from_facebook_quadkey_data_to_raster_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
 </div>
 <div class="section level3">
-<h3 id="step-4-create-the-polygons">Step 4: Create the polygons<a class="anchor" aria-label="anchor" href="#step-4-create-the-polygons"></a>
+<h3 id="create-the-polygons">4. Create the polygons<a class="anchor" aria-label="anchor" href="#create-the-polygons"></a>
 </h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Now we can transform the quadkeys into polygons</span></span>
@@ -227,7 +233,7 @@ create new variables if needed.</p>
 <span>               <span class="fu">drop_na</span><span class="op">(</span><span class="va">percent_change_7</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="step-5-create-the-rasters-for-the-variables-and-data-involved-">Step 5: Create the rasters for the variables and data involved.<a class="anchor" aria-label="anchor" href="#step-5-create-the-rasters-for-the-variables-and-data-involved-"></a>
+<h3 id="create-the-rasters-for-the-variables-and-data-involved-">5. Create the rasters for the variables and data involved.<a class="anchor" aria-label="anchor" href="#create-the-rasters-for-the-variables-and-data-involved-"></a>
 </h3>
 <p>The rasters are going to be created automatically for each day and
 time reported. Each raster will be created as

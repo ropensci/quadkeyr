@@ -89,14 +89,76 @@
 
     
     
-<p>These functions are the R version of the ones described in <a href="https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system" class="external-link">Bing
+<blockquote>
+<p>Please, visit the <a href="https://fernandez-lab-wsu.github.io/quadkeyr/" class="external-link">README</a> for
+general information about this package</p>
+</blockquote>
+<p>Most of the function and arguments names conserved from the
+documentation. <code>quadkeyr</code> functions are the R version of the
+ones described in <a href="https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system" class="external-link">Bing
 Maps Tile System webpage</a>.</p>
+<p>Tile maps are composed of pixels that are grouped into tiles. Later,
+the tiles are converted to QuadKeys to optimize map performance, among
+other benefits described in detail in the documentation.</p>
+<p>Pixels and tiles are expressed as two-dimensional coordinates -
+(<code>pixelX</code>, <code>pixelY</code>) and (<code>tileX</code>,
+<code>tileY</code>) - but Quadkeys are one-dimensional numeric strings.
+This is important to understand how the conversion works.</p>
+<p>Each geographic pair of coordinates (latitude/longitude) will belong
+to a specific pixel referenced by coordinates (<code>pixelX</code>,
+<code>pixelY</code>) for each level of detail. In Fig. 1, you can see
+pixels (0, 0) and (2047, 2047) for level of detail 3. The
+<code>quadkeyr</code> function <code>latlong_to_pixelXY</code>, converts
+geographic coordinates (latitude/longitude) in pixel coordinates for
+each level of detail.</p>
+<div class="figure" style="text-align: center">
+<img src="bing_pixel.jpg" alt="Fig 1. Pixels (0, 0) and (2047, 2047) for a map with level of detail 3. Image extracted from Microsoft's Bing Maps Tile System webpage." width="50%"><p class="caption">
+Fig 1. Pixels (0, 0) and (2047, 2047) for a map with level of detail 3.
+Image extracted from Microsoft’s Bing Maps Tile System webpage.
+</p>
+</div>
+<p>A tile is comprised of 256x256 pixels. The tile coordinates are
+visually represented in Fig. 2. These coordinates will ultimately be
+converted into one-dimensional QuadKeys.</p>
+<p>For instance, a pixel for level of detail 3 represented by the
+coordinates <code>pixelX</code> = 255 and <code>pixelY</code> = 12 is
+part of the tile with coordinates <code>tileX</code> = 0 and
+<code>tileY</code> = 0. The pixel with coordinates (0,0) belongs to tile
+(0,0), and the pixel (2047, 2047) is part of tile (7,7). You can verify
+this using the function <code>pixelXY_to_tileXY</code> and by comparing
+Fig. 1 and Fig. 2.</p>
+<div class="figure" style="text-align: center">
+<img src="bing_tiles.jpg" alt="Fig 2. Tile coordinates. Image extracted from Microsoft's Bing Maps Tile System webpage." width="50%"><p class="caption">
+Fig 2. Tile coordinates. Image extracted from Microsoft’s Bing Maps Tile
+System webpage.
+</p>
+</div>
+<p>To convert from tile XY coordinates to QuadKeys for a particular
+level of detail, you can use the function
+<code>tileXY_to_quadkey</code>. The digits of the QuadKey number will
+correspond to the level of detail of the map. For example, for the tile
+(4, 7) of level of detail 3, the QuadKey number will be
+<code>322</code>.</p>
+<p>This pertains to the conversion from geographic coordinates
+(latitude/longitude) to QuadKeys. However, when converting in the
+opposite direction, from QuadKeys to geographic coordinates
+(latitude/longitude), the final pair of latitude/longitude corresponds
+to the upper-left corner coordinates of the tile and pixel associated
+with your original QuadKey.</p>
+<p>To understand this in more detail, have a look to the functions and
+then read section 3.</p>
 <div class="section level3">
-<h3 id="if-you-have-map-coordinates-convert-them-to-quadkey-numbers">1. If you have map coordinates, convert them to QuadKey numbers<a class="anchor" aria-label="anchor" href="#if-you-have-map-coordinates-convert-them-to-quadkey-numbers"></a>
+<h3 id="if-you-have-geographic-map-coordinates-convert-them-to-quadkey-numbers">1. If you have geographic map coordinates, convert them to QuadKey
+numbers<a class="anchor" aria-label="anchor" href="#if-you-have-geographic-map-coordinates-convert-them-to-quadkey-numbers"></a>
 </h3>
+<p><strong>Geographic coordinates</strong> -&gt; <strong>pixel
+coordinates</strong> -&gt; <strong>tile coordinates</strong> -&gt;
+<strong>QuadKeys</strong></p>
 <div class="section level4">
-<h4 id="convert-latlong-coordinates-to-pixel-xy-coordinates">1.1 Convert lat/long coordinates to pixel XY coordinates<a class="anchor" aria-label="anchor" href="#convert-latlong-coordinates-to-pixel-xy-coordinates"></a>
+<h4 id="convert-latitudelongitude-coordinates-to-pixel-xy-coordinates">1.1 Convert latitude/longitude coordinates to pixel XY
+coordinates<a class="anchor" aria-label="anchor" href="#convert-latitudelongitude-coordinates-to-pixel-xy-coordinates"></a>
 </h4>
+<p>Note: - The latitude and longitude are assumed to be WGS 84.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lltp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/latlong_to_pixelXY.html">latlong_to_pixelXY</a></span><span class="op">(</span>lat <span class="op">=</span> <span class="op">-</span><span class="fl">25</span>, </span>
 <span>                           lon <span class="op">=</span> <span class="op">-</span><span class="fl">53</span>, </span>
@@ -164,6 +226,9 @@ coordinates to QuadKeys in</p>
 <h3 id="if-you-have-quadkeys-convert-them-to-map-coordinates">2. If you have QuadKeys, convert them to map coordinates<a class="anchor" aria-label="anchor" href="#if-you-have-quadkeys-convert-them-to-map-coordinates"></a>
 </h3>
 <p>Let’s attempt the reverse route.</p>
+<p><strong>QuadKeys</strong> -&gt; <strong>tile coordinates</strong>
+-&gt; <strong>pixel coordinates</strong> -&gt; <strong>Geographic
+coordinates</strong></p>
 <div class="section level4">
 <h4 id="convert-a-quadkey-number-into-tile-xy-coordinates">2.1 Convert a QuadKey number into tile XY coordinates<a class="anchor" aria-label="anchor" href="#convert-a-quadkey-number-into-tile-xy-coordinates"></a>
 </h4>
@@ -223,29 +288,37 @@ want to apply all the steps together.</p>
 <div class="section level3">
 <h3 id="understanding-the-process-of-converting-coordinates">3. Understanding the Process of Converting Coordinates<a class="anchor" aria-label="anchor" href="#understanding-the-process-of-converting-coordinates"></a>
 </h3>
-<p>Given the process of converting coordinates between pixel XY, tile
-XY, QuadKey, and latitude/longitude, one might expect that the
-conversion back to latitude/longitude coordinates (as in section 2.3)
-would yield the same values as the original input in section 1.</p>
+<p>Given the process of converting geographic coordinates
+(latitude/longitude) to QuadKeys, one might expect that the conversion
+back to latitude/longitude coordinates (as in section 2.3) would yield
+the same values as the original input in section 1.</p>
 <p>However, this isn’t the case, as evidenced by the behavior of the
 functions <code>pixelXY_to_tileXY</code> and
-<code>tileXY_to_pixel_XY</code></p>
-<p>When choosing latitude/longitude coordinates in the initial function,
-they were within a specific tile represented by unique tile XY
-coordinates and a QuadKey number. The conversion back from QuadKey to
-latitude/longitude coordinates does not directly result in the same
-initial values.</p>
+<code>tileXY_to_pixel_XY</code>.</p>
+<p>When choosing latitude/longitude coordinates in the initial function
+in section 1, they were within a specific pixel represented by unique
+tile coordinates and a QuadKey number. As you can see in the example in
+this vignette, the conversion back from QuadKey to latitude/longitude
+does not directly result in the same initial geographic coordinates.</p>
 <p>This discrepancy arises because <code>tileXY_to_pixel_XY</code>
-provides the pixel XY coordinates for the upper-left corner of the tile,
-not the exact coordinates chosen initially.</p>
+provides the pixel coordinates for the upper-left corner of the tile,
+not the exact coordinates chosen initially. For example, if you run
+<code>tileXY_to_pixelXY</code> for the tile (7, 7), you will see that
+the resulting pixel is (1792, 1792) and no (2047, 2047) the one you
+could see in Fig. 2. As each tile is 256x256 pixels, you can easily
+check that the result is the upper-left pixel of that tile. The same
+will happen for <code>pixelXY_to_latlong</code>.</p>
 <p>Hence, converting latitude/longitude coordinates into a QuadKey and
 then back to latitude/longitude won’t yield identical values, unless the
 original latitude/longitude coordinates correspond to the upper-left
-pixel of the tile at the same level of detail.</p>
-<p>To validate this, consider the coordinates obtained in section 2.3
-(lat = -21.94305, lon = -67.5) and rerun all functions. You’ll observe
-that obtaining the original input values is unlikely unless the initial
-coordinates correspond to the upper-left pixel of the tile.</p>
+pixel of the tile at the same level of detail. You can try this by
+yourself.</p>
+<p>Consider as initial values the coordinates result of the conversion
+from QuadKey to latitude/longitude obtained in section 2.3 (lat =
+-21.94305, lon = -67.5) and rerun all functions from the beginning.
+You’ll proof this way that obtaining the original geographic coordinates
+is unlikely unless the initial coordinates correspond to the upper-left
+pixel of the tile.</p>
 <p>Understanding this distinction is crucial for the accurate use of
 these functions in coordinate conversions.</p>
 </div>
@@ -256,7 +329,7 @@ these functions in coordinate conversions.</p>
 included in this package.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/qkmap_app.html">qkmap_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="qkmap_qk.png"></p>
+<p><img src="qkmap_qk.png" width="50%" style="display: block; margin: auto;"></p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>

@@ -89,20 +89,29 @@
 
     
     
-<p>Create a raster from variables reported by Quadkeys for a specified
-map area and level of detail</p>
+<blockquote>
+<p>Please, visit the <a href="https://fernandez-lab-wsu.github.io/quadkeyr/" class="external-link">README</a> for
+general information about this package</p>
+</blockquote>
+<p>Create a raster from variables reported by QuadKeys for a specified
+map area and level of detail. A detailed explanation of what tile
+coordinates (<code>tileX</code>, <code>tileY</code>) and pixel
+coordinates (<code>pixelX</code>, <code>pixelY</code>) are can be found
+in <code>quadkeyr</code> vignette <a href="https://fernandez-lab-wsu.github.io/quadkeyr/articles/1_bing_map_tile_system_functions.html" class="external-link">Bing
+Maps Tile System Functions</a> and in the <a href="https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system" class="external-link">official
+documentation</a>.</p>
 <div class="section level3">
-<h3 id="step-1-creata-a-grid-of-quadkeys">Step 1: Creata a grid of quadkeys<a class="anchor" aria-label="anchor" href="#step-1-creata-a-grid-of-quadkeys"></a>
+<h3 id="step-1-create-a-grid-of-quadkeys">Step 1: Create a grid of QuadKeys<a class="anchor" aria-label="anchor" href="#step-1-create-a-grid-of-quadkeys"></a>
 </h3>
 <div class="section level4">
 <h4 id="define-the-area">1.1 Define the area<a class="anchor" aria-label="anchor" href="#define-the-area"></a>
 </h4>
-<p>First, we should define the <code>xmin</code>, <code>xmax</code>,
-<code>ymin</code> and <code>ymax</code> that will delimit the area for
+<p>First, we should define the <code>xmin</code>, <code>xmax</code> and
+, <code>ymin</code> and <code>ymax</code> that will delimit the area for
 the QuadKey grid creation.</p>
 <p>For this example, we have selected <code>xmin</code> = -59,
-<code>xmax</code> = -57, <code>ymin</code> = -35, <code>ymax</code> =
--34. Let’s plot them as points.</p>
+<code>xmax</code> = -57 , <code>ymin</code> = -35 and <code>ymax</code>
+= -34. Let’s plot them as points.</p>
 <p><img src="2_from_quadkey_data_to_raster_files/figure-html/pointsplot-1.png" width="672"></p>
 </div>
 <div class="section level4">
@@ -161,7 +170,8 @@ results.</p>
 <p><img src="2_from_quadkey_data_to_raster_files/figure-html/mapgrid-1.png" width="672">
 We have a grid of points representing the QuadKeys. Remember that these
 points represent the upper-left corner of each QuadKey, which might give
-the impression that they do not precisely cover the entire area.</p>
+the impression that they do not precisely cover the entire area defined
+by the initial points.</p>
 </div>
 <div class="section level4">
 <h4 id="conversion-to-polygons">1.4 Conversion to polygons<a class="anchor" aria-label="anchor" href="#conversion-to-polygons"></a>
@@ -185,15 +195,16 @@ the impression that they do not precisely cover the entire area.</p>
 <p><img src="2_from_quadkey_data_to_raster_files/figure-html/map-1.png" width="672"></p>
 <p>It worked! As you can see here, the coordinates we randomly selected
 as a starting point are situated within the polygons, but not at a
-specific position inside each polygon. This was expected.</p>
+specific position inside each polygon. This was expected, you can read
+about Quadkey conversion in the vignette <a href="https://fernandez-lab-wsu.github.io/quadkeyr/articles/1_bing_map_tile_system_functions.html" class="external-link">Bing
+Maps Tile System Functions</a>.</p>
 <p>If you want to see the grid, you can also check the app:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="fu"><a href="../reference/qkmap_app.html">qkmap_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="qkmap_grid.png"></p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/qkmap_app.html">qkmap_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p><img src="qkmap_grid.png" width="50%" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level4">
-<h4 id="raster-creation">1.4 Raster creation<a class="anchor" aria-label="anchor" href="#raster-creation"></a>
+<h4 id="raster-creation">1.5 Raster creation<a class="anchor" aria-label="anchor" href="#raster-creation"></a>
 </h4>
 <p>Let’s generate the raster. The <code>data_provided</code> dataset
 consists of QuadKeys linked to a variable value. While this dataset

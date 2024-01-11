@@ -21,10 +21,13 @@ knitr::opts_chunk$set(
 > Please, visit the [README](https://fernandez-lab-wsu.github.io/quadkeyr/) 
 > for general information about this package
 
-Create a raster from variables reported by Quadkeys for a specified map area
-and level of detail
+Create a raster from variables reported by QuadKeys for a specified map area
+and level of detail. A detailed explanation of what tile coordinates 
+(`tileX`, `tileY`) and pixel coordinates (`pixelX`, `pixelY`) are can be found 
+in `quadkeyr` vignette [Bing Maps Tile System Functions](https://fernandez-lab-wsu.github.io/quadkeyr/articles/1_bing_map_tile_system_functions.html)
+and in the [official documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system).
 
-### Step 1: Creata a grid of quadkeys
+### Step 1: Create a grid of QuadKeys
 
 #### 1.1 Define the area
 
@@ -37,10 +40,10 @@ library(dplyr)
 library(stars)
 ```
 
-First, we should define the `xmin`, `xmax`, `ymin` and `ymax` that will delimit 
-the area for the QuadKey grid creation.
+First, we should define the `xmin`, `xmax` and , `ymin` and `ymax` that will
+delimit the area for the QuadKey grid creation.
 
-For this example, we have selected `xmin` = -59, `xmax` = -57, `ymin` = -35,
+For this example, we have selected `xmin` = -59, `xmax` = -57 , `ymin` = -35 and
 `ymax` = -34. Let's plot them as points.
 
 ```{r pointsplot, echo=FALSE}
@@ -70,12 +73,12 @@ The QuadKey grid can have a level of detail between 1 (less detail) to 23
 
 The function `create_qk_grid` will return three outputs: 
 
-1. `grid$data` a dataframe with `tileX`, `tileY` and the QuadKey value for 
+  1. `grid$data` a dataframe with `tileX`, `tileY` and the QuadKey value for 
 each element of the grid
   
-2. `grid$num_rows` the number of rows and
+  2. `grid$num_rows` the number of rows and
   
-3. `grid$num_cols` the number of columns of the grid.
+  3. `grid$num_cols` the number of columns of the grid.
 
 ```{r cqg}
 grid <-  create_qk_grid(
@@ -123,7 +126,7 @@ ggplot() +
 ```
 We have a grid of points representing the QuadKeys. Remember that these points 
 represent the upper-left corner of each QuadKey, which might give the impression
-that they do not precisely cover the entire area. 
+that they do not precisely cover the entire area defined by the initial points. 
   
   
 #### 1.4 Conversion to polygons
@@ -160,20 +163,22 @@ ggplot() +
 
 It worked! As you can see here, the coordinates we randomly selected as 
 a starting point are situated within the polygons, but not at a 
-specific position inside each polygon. This was expected. 
+specific position inside each polygon. This was expected, you can read about 
+Quadkey conversion in the vignette [Bing Maps Tile System Functions](https://fernandez-lab-wsu.github.io/quadkeyr/articles/1_bing_map_tile_system_functions.html).
 
 If you want to see the grid, you can also check the app:
 
 ```{r eval = FALSE}
-
 qkmap_app()
-
 ```
 
-![](qkmap_grid.png)
+```{r qkmap_grid, echo = FALSE, out.width= "50%", fig.align='center'}
+knitr::include_graphics("qkmap_grid.png")
+```
 
 
-#### 1.4 Raster creation
+
+#### 1.5 Raster creation
 
 Let's generate the raster. The `data_provided` dataset consists of QuadKeys 
 linked to a variable value. While this dataset contains QuadKeys within our
