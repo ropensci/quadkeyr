@@ -12,7 +12,7 @@
 #' See vignette("readr") for more details.
 #' documentation.
 #'  
-#' @seealso \code{\link{format_data}}
+#' @seealso \code{\link{format_fb_data}}
 #' @seealso \code{\link[readr]{read_csv}}
 #'
 #' @return A dataframe with the information of all the files.
@@ -21,7 +21,7 @@
 #' @examples
 #'
 #' 
-#' # read_all_files(path_to_csvs = 'data/',
+#' # read_fb_files(path_to_csvs = 'data/',
 #' #                 colnames = c("lat", "lon", 
 #' #                              "quadkey", "date_time", 
 #' #                              "n_crisis", "percent_change"),
@@ -33,7 +33,7 @@
 #'  #                               n_crisis = 'c',
 #'  #                                percent_change = 'c'))
 #'
-read_all_files <- function(path_to_csvs, 
+read_fb_files <- function(path_to_csvs, 
                            colnames, 
                            coltypes){
 
@@ -56,7 +56,7 @@ read_all_files <- function(path_to_csvs,
                      col_types = coltypes)
 
 
-  data <- format_data(data)
+  data <- format_fb_data(data)
 
   if (nrow(missing_combinations(data)) > 0) {
     message(paste("The files with the following combinations of",
@@ -82,14 +82,14 @@ read_all_files <- function(path_to_csvs,
 #' @return A dataframe.
 #' @export
 #'
-#' @seealso \code{\link{read_all_files}}
+#' @seealso \code{\link{read_fb_files}}
 #'
 #' @examples
 #'
 #' #data(onefile)
-#' #format_data(data = onefile)
+#' #format_fb_data(data = onefile)
 #'
-format_data <- function(data){
+format_fb_data <- function(data){
 
   # remove scientific notation
   data$quadkey <- format(data$quadkey,

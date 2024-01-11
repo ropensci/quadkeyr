@@ -7,7 +7,7 @@ data <- data.frame(
   stringsAsFactors = FALSE
 )
 
-formatted_data <- format_data(data)
+formatted_data <- format_fb_data(data)
 
 # Test cases for format_data function
 test_that("format_data function performs data formatting correctly", {

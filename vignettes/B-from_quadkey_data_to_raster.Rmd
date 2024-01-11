@@ -172,7 +172,7 @@ If you want to see the grid, you can also check the app:
 qkmap_app()
 ```
 
-```{r qkmap_grid, echo = FALSE, out.width= "50%", fig.align='center'}
+```{r qkmap_grid, echo = FALSE, out.width= "90%", fig.align='center'}
 knitr::include_graphics("qkmap_grid.png")
 ```
 
