@@ -19,10 +19,22 @@ test_that("pixelXY_to_tileXYs is giving correct results", {
 
 # test conversion from tile XY coordinates to QuadKeys
 test_that("tiles_to_quadkeys is giving correct results", {
+  # Test with valid level, tileX, and tileY values
+  result_valid <- tileXY_to_quadkey(3, 5, 3)
+  expect_is(result_valid, "character")
+  
   expect_equal(tileXY_to_quadkey(tileX = 699,
                                  tileY = 1236,
                                  level = 11), '21032131211')
+  })
+
+test_that("tileXY_to_quadkey handles invalid tileX and tileY values", {
+  # Test with invalid tileX and tileY values
+  expect_error(tileXY_to_quadkey(-1, 5, 2), "Invalid tileX or tileY values.")
+  expect_error(tileXY_to_quadkey(3, 10, 2), "Invalid tileX or tileY values.")
+  expect_error(tileXY_to_quadkey(3, -5, 2), "Invalid tileX or tileY values.")
 })
+
 
 # Check that errors appear in the correct cases - latlong_to_pixelXY
 

@@ -14,15 +14,16 @@ other numeric variables}
 A dataframe.
 }
 \description{
-This function modifies the format of three columns the provided
-data.
+This function removes unnecessary characters such as \verb{\\\\N}
+and ensures that the format of the date and QuadKeys is correct.
 }
 \examples{
 
-#data(onefile)
-#format_fb_data(data = onefile)
-
+\dontrun{
+fb_mobility_file <-  read.csv("cityA_2020-04-26_0.csv")
+format_fb_data(data = fb_mobility_file)
+}
 }
 \seealso{
-\code{\link{read_fb_files}}
+\code{\link{read_fb_mobility_files}}
 }

@@ -40,8 +40,45 @@ Creates one raster by each date and time reported and
 saves it as a .tif.
 }
 \examples{
+\dontrun{
 
-# TBD
+files <- read_fb_mobility_files(path_to_csvs = "../geocovid/data/rasters/city/",
+ colnames = c("lat", "lon", 
+            "quadkey", "date_time", 
+            "n_crisis", "percent_change"),
+. coltypes = list(
+ lat = 'd',
+ lon = 'd',
+ quadkey = 'i',
+ date_time = 'T',
+ n_crisis = 'c',
+ percent_change = 'c')) 
+
+# Extract unique QuadKey values
+quadkeys <-  unique(files$quadkey)
+
+# Convert QuadKeys to geographic coordinates
+qtll <- quadkey_to_latlong(quadkeys = quadkeys)
+
+# Complete the grid (if necessary)
+regular_grid <- regular_qk_grid(qtll)
+
+# Create polygons
+polygrid  <-  grid_to_polygon(grid_coords)
+
+# Keep only the QuadKeys reported
+polyvar <- files |>
+           dplyr::inner_join(polygrid, by = 'quadkey' )
+
+# Generate the raster files                       
+polygon_to_raster(data = polyvar,
+                  nx = grid$num_cols + 1,
+                  ny = grid$num_rows + 1,
+                  template = polyvar,
+                  variable = 'percent_change',
+                  filename = 'cityA',
+                  path = "data/")
+}
 
 }
 \seealso{

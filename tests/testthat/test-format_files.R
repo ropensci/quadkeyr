@@ -21,9 +21,9 @@ test_that("format_data function performs data formatting correctly", {
   expect_true(class(formatted_data$day) == "Date",
               info = "Date format should be converted in 'day'")
 
-  # Test 3: Check if time format conversion is successful for 'time'
-  expect_equal(formatted_data$time, c(8, 8, 8, 8, 8),
-               info = "Time format should be converted to numeric 'time'")
+  # Test 3: Check if time format conversion is successful for 'hour'
+  expect_equal(formatted_data$hour, c(8, 8, 8, 8, 8),
+               info = "Time format should be converted to numeric 'hour'")
 
   # Test 4: Check if '\N' is replaced by NA except 'date_time' and 'day'
   expect_true(any(is.na(dplyr::select(formatted_data, -date_time, -day))),
@@ -38,7 +38,7 @@ test_that("format_data function performs data formatting correctly", {
 # Sample dataset
 data <- data.frame(
   day = c("2023-01-01", "2023-01-03", "2023-01-05"),
-  time = c(0, 8, 16)
+  hour = c(0, 8, 16)
 )
 
 # Test cases for missing_combinations function
@@ -48,7 +48,7 @@ test_that("Test missing_combinations function", {
   expect_is(missing_combinations(data), "data.frame")
 
   # Test if output columns match expected columns
-  expect_true(all(c("day", "time") %in% names(missing_combinations(data))))
+  expect_true(all(c("day", "hour") %in% names(missing_combinations(data))))
 
   # Test if all missing combinations are identified
   expected_missing <- structure(list(day = structure(c(19359, 19360,
@@ -58,18 +58,19 @@ test_that("Test missing_combinations function", {
                                                        19358, 19359, 
                                                        19360, 19361),
                                                      class = "Date"),
-                                     time = c(0, 0, 0, 0, 8, 8, 8, 8, 
+                                     hour = c(0, 0, 0, 0, 8, 8, 8, 8, 
                                               16, 16, 16, 16)),
                                 out.attrs = list(
-                                dim = c(day = 5L, time = 3L),
+                                dim = c(day = 5L, hour = 3L),
                                 dimnames = list(day = c("day=2023-01-01",
                                                         "day=2023-01-02",
                                                         "day=2023-01-03",
                                                         "day=2023-01-04",
                                                         "day=2023-01-05"
-                                ), time = c("time= 0", "time= 8", "time=16"))),
+                                ), hour = c("hour= 0", "hour= 8", "hour=16"))),
                                 class = "data.frame", row.names = c(NA, -12L))
 
   expect_equal(missing_combinations(data), expected_missing)
 
 })
+

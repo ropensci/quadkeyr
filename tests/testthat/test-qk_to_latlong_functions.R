@@ -26,6 +26,10 @@ test_that("pixelXY_to_latlong is giving correct results", {
   expect_equal(round(pixelXY_to_latlong(pixelX = 768,
                                 pixelY = 1280,
                                 level = 3)$lon, digits = 2), -45)
+  # Test with valid level and pixel values
+  result_valid <- pixelXY_to_latlong(100, 150, 5)
+  expect_is(result_valid, "list")
+  expect_length(result_valid, 2)
 })
 
 # Check that errors appear in the correct cases - pixelXY_to_latlong
@@ -53,6 +57,15 @@ test_that("Check level detail - Use of decimals", {
                regexp = paste("The level of detail should be",
                               "an integer between 1 and 23"))
 })
+
+test_that("pixelXY_to_latlong handles invalid pixelX and pixelY values", {
+  # Test with invalid pixelX and pixelY values
+  expect_error(pixelXY_to_latlong(-1, 20, 3), 
+               "Invalid pixelX or pixelY values.")
+  expect_error(pixelXY_to_latlong(0, 3000, 3),
+               "Invalid pixelX or pixelY values.")
+})
+
 
 # Test cases for quadkey_to_latlong function
 test_that("quadkey_to_latlong function works as expected", {

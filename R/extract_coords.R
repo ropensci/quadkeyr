@@ -38,7 +38,7 @@ extract_qk_coord <- function(data){
 
     qktot  <-  quadkey_to_tileXY(data$quadkey[i])
 
-    data$qk_tileX[i] <-  qktot$tileX
+    data$qk_tileX[i] <- qktot$tileX
     data$qk_tileY[i] <- qktot$tileY
 
     ttop <- tileXY_to_pixelXY(tileX = data$qk_tileX[i],
@@ -102,7 +102,7 @@ extract_tile_coord <- function(data, level){
   }
 
   for(i in seq_len(nrow(data))){
-
+   # conversion from tile coordinates to geographic coordinates
     ttop <- tileXY_to_pixelXY(tileX = data$tileX[i],
                              tileY = data$tileY[i])
 

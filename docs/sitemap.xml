@@ -25,6 +25,15 @@
     <loc>/articles/3_from_facebook_quadkey_data_to_raster.html</loc>
   </url>
   <url>
+    <loc>/articles/A-bing_map_tile_system_functions.html</loc>
+  </url>
+  <url>
+    <loc>/articles/B-from_quadkey_data_to_raster.html</loc>
+  </url>
+  <url>
+    <loc>/articles/C-from_facebook_quadkey_data_to_raster.html</loc>
+  </url>
+  <url>
     <loc>/articles/bing_map_tile_system_functions.html</loc>
   </url>
   <url>
@@ -73,6 +82,9 @@
     <loc>/reference/format_data.html</loc>
   </url>
   <url>
+    <loc>/reference/format_fb_data.html</loc>
+  </url>
+  <url>
     <loc>/reference/grid_to_polygon.html</loc>
   </url>
   <url>
@@ -116,6 +128,9 @@
   </url>
   <url>
     <loc>/reference/read_all_files.html</loc>
+  </url>
+  <url>
+    <loc>/reference/read_fb_files.html</loc>
   </url>
   <url>
     <loc>/reference/regular_qk_grid.html</loc>

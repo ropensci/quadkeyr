@@ -23,7 +23,7 @@ if any day or time is missing.
 # Sample dataset
 data <- data.frame(
  day = c("2023-01-01", "2023-01-03", "2023-01-05"),
- time = c(0, 8, 16)
+ hour = c(0, 8, 16)
 )
 
 missing_combinations(data)

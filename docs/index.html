@@ -48,9 +48,9 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="articles/1_bing_map_tile_system_functions.html">Bing Maps Tile System functions</a>
-    <a class="dropdown-item" href="articles/2_from_quadkey_data_to_raster.html">Converting QuadKey's Data into Raster Images</a>
-    <a class="dropdown-item" href="articles/3_from_facebook_quadkey_data_to_raster.html">Converting Facebook QuadKey's Data into Raster Images</a>
+    <a class="dropdown-item" href="articles/A-bing_map_tile_system_functions.html">Bing Maps Tile System functions</a>
+    <a class="dropdown-item" href="articles/B-from_quadkey_data_to_raster.html">Converting QuadKey's Data into Raster Images</a>
+    <a class="dropdown-item" href="articles/C-from_facebook_quadkey_data_to_raster.html">Converting Facebook QuadKey's Data into Raster Images</a>
   </div>
 </li>
 <li class="nav-item">
@@ -89,8 +89,11 @@
 </h3>
 <p>Tile maps divide the Earth’s surface into a grid of tiles, with each tile corresponding to a specific geographic area at various zoom levels. Different zoom levels in a tile map display varying levels of detail.</p>
 <p>QuadKeys represent a location on a map by encoding its hierarchical spatial position as a sequence of characters. They provide an efficient method to address and retrieve specific map tiles, facilitating rapid display within mapping applications such as <a href="https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system" class="external-link">Microsoft Bing Maps</a>.</p>
-<p><img src="reference/figures/quadkeys.jpg" width="100%" style="display: block; margin: auto;"></p>
-<p><em>The QuadKey of any tile starts with the QuadKey of its parent tile (the containing tile at the previous level). Image extracted from Microsoft’s Bing Maps Tile System webpage.</em></p>
+<div class="figure" style="text-align: center">
+<img src="reference/figures/quadkeys.jpg" alt="The QuadKey of any tile starts with the QuadKey of its parent tile (the containing tile at the previous level). Image extracted from Microsoft's Bing Maps Tile System webpage." width="90%"><p class="caption">
+The QuadKey of any tile starts with the QuadKey of its parent tile (the containing tile at the previous level). Image extracted from Microsoft’s Bing Maps Tile System webpage.
+</p>
+</div>
 </div>
 <div class="section level3">
 <h3 id="what-can-this-package-do-for-you">What can this package do for you?<a class="anchor" aria-label="anchor" href="#what-can-this-package-do-for-you"></a>
@@ -106,12 +109,12 @@
 </ol>
 </div>
 <div class="section level2">
-<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+<h2 id="install-quadkeyr-from-github">Install <code>quadkeyr</code> from GitHub<a class="anchor" aria-label="anchor" href="#install-quadkeyr-from-github"></a>
 </h2>
 <p>You can install the development version of <code>quadkeyr</code> from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"Fernandez-Lab-WSU/quadkeyr"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"Fernandez-Lab-WSU/quadkeyr"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
@@ -175,10 +178,9 @@
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/pkgcheck.yaml" class="external-link"><img src="https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/pkgcheck.yaml/badge.svg" alt="pkgcheck"></a></li>
+<li><a href="https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/test-coverage.yaml" class="external-link"><img src="https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/test-coverage.yaml/badge.svg" alt="test-coverage"></a></li>
 <li><a href="https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-standard.yaml" class="external-link"><img src="https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-standard.yaml/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://codecov.io/gh/Fernandez-Lab-WSU/quadkeyr" class="external-link"><img src="https://img.shields.io/codecov/c/github/Fernandez-Lab-WSU/quadkeyr" alt="Codecov"></a></li>
-<li><a href="https://github.com/ropensci/software-review/issues/619" class="external-link"><img src="https://badges.ropensci.org/619_status.svg" alt="Status at rOpenSci Software Peer Review"></a></li>
 </ul>
 </div>
 
