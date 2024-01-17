@@ -38,8 +38,7 @@ create_qk_grid <- function(xmin, xmax, ymin, ymax, level){
   if (level < 0 | level > 23 | (level %% 1) != 0){
     stop("The level of detail should be an integer between 1 and 23")
   }
-  
-  
+
   # this variables were defined in the function ground_res
   if (ymin < min_latitude || ymax > max_latitude ||
       xmin < min_longitude || xmax > max_longitude) {
@@ -55,7 +54,6 @@ create_qk_grid <- function(xmin, xmax, ymin, ymax, level){
   
   tilesmn <- pixelXY_to_tileXY(pixelX = pixs$pixelX,
                                pixelY = pixs$pixelY)
-  
   
   # y - Convert lat/long coordinates to tile XY coords
   pixs <- latlong_to_pixelXY(lat = ymax,
@@ -81,21 +79,22 @@ create_qk_grid <- function(xmin, xmax, ymin, ymax, level){
   num_rows <- abs(resy)
   num_cols <- abs(resx)
   
-  # create the grid with all the possible combination of tile XY coordinates
-  data <- c()
-  for(c in 0:num_cols){ # I consider 0 as the point provided should be included
-    for(r in 0:num_rows){
-      
-      grid <- data.frame(tileX = tilesmn$tileX + (c * sign(resx)),
-                         tileY = tilesmn$tileY + (r * sign(resy))) |>
-        dplyr::mutate(quadkey = tileXY_to_quadkey(
-          tileX = .data$tileX,
-          tileY = .data$tileY,
-          level = level))
-      
-      data <- rbind(data, grid)
-      
-    }}
+  # create all the possible combinations of columns and rows
+  grid <- expand.grid(c = 0:num_cols, r = 0:num_rows)
+  
+  # calculate tileX and tileY for each combination
+  grid <- grid |> 
+    dplyr::mutate(tileX = tilesmn$tileX + (.data$c * sign(resx)),
+                  tileY = tilesmn$tileY + (.data$r * sign(resy)))
+  
+  # apply tileXY_to_quadkey to each row
+  data <- grid |> 
+    dplyr::rowwise() |> 
+    dplyr::mutate(
+      quadkey = tileXY_to_quadkey(
+      tileX = .data$tileX,
+      tileY = .data$tileY,
+      level = level))
   
   
   return(list(data = data,
