@@ -2,7 +2,7 @@
 title: "Converting Facebook QuadKey's Data into Raster Images"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Converting Facebook QuadKeys Data into Raster Images}
+  %\VignetteIndexEntry{Converting Facebook QuadKey's Data into Raster Images}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -14,8 +14,6 @@ knitr::opts_chunk$set(
   message = FALSE,
   comment = "#>"
 )
-
-data("files.rda")
 ```
 
 ```{r setup, echo = FALSE, message = FALSE, warning=FALSE}

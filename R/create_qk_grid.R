@@ -83,20 +83,18 @@ create_qk_grid <- function(xmin, xmax, ymin, ymax, level){
   grid <- expand.grid(c = 0:num_cols, r = 0:num_rows)
   
   # calculate tileX and tileY for each combination
-  grid <- grid |> 
-    dplyr::mutate(tileX = tilesmn$tileX + (.data$c * sign(resx)),
-                  tileY = tilesmn$tileY + (.data$r * sign(resy)))
-  
-  # apply tileXY_to_quadkey to each row
   data <- grid |> 
+    dplyr::mutate(tileX = tilesmn$tileX + (.data$c * sign(resx)),
+                  tileY = tilesmn$tileY + (.data$r * sign(resy))) |> 
     dplyr::rowwise() |> 
     dplyr::mutate(
       quadkey = tileXY_to_quadkey(
       tileX = .data$tileX,
       tileY = .data$tileY,
-      level = level))
-  
-  
+      level = level)) |> 
+    dplyr::ungroup() |> # remove rowwise grouping
+    dplyr::select(-"c", -"r") # tidyselect
+
   return(list(data = data,
               num_rows =  num_rows,
               num_cols =  num_cols))

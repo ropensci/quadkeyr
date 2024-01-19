@@ -113,7 +113,7 @@ grid_to_polygon <- function(data){
  
   # The quadkeys of interest are the ones that are not NA
   # The original quadkeys of the grid
-  subdata = subset(data, !is.na(data$quadkey))
+  subdata <- subset(data, !is.na(data$quadkey))
 
   for(i in seq_len(nrow(subdata))){
 
@@ -121,18 +121,14 @@ grid_to_polygon <- function(data){
   y <- subdata[i, ]$tileY
 
   # This point will always be a quadkey in the dataframe
-  a <- data |>
-    dplyr::filter(.data$tileX == x & .data$tileY == y)
+  a <- data[data$tileX == x & data$tileY == y, ]
 
   # b, c and d can be part of the extended grid
-  b <- data |>
-    dplyr::filter(.data$tileX == x & .data$tileY == (y + 1))
+  b <-  data[data$tileX == x & data$tileY == (y + 1), ]
 
-  c <- data |>
-    dplyr::filter(.data$tileX == x + 1  & .data$tileY == y)
+  c <- data[data$tileX == x + 1  & data$tileY == y, ]
 
-  d <- data |>
-    dplyr::filter(.data$tileX == x + 1 & .data$tileY == y + 1)
+  d <- data[data$tileX == x + 1 & data$tileY == y + 1, ]
 
   pixel <- rbind(a, b, c, d) |>
         sf::st_bbox() |>

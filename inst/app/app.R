@@ -180,5 +180,5 @@ qkmap_app <- function(...){
     })}
   shiny::shinyApp(ui = ui, server = server)
 }
-
+qkmap_app()
 

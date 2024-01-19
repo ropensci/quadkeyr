@@ -170,14 +170,14 @@ quadkey_to_latlong <- function(quadkeys){
     
     data[i, 'quadkey'] <- quadkeys[i]
     
-    data[i, c('tileX', 'tileY')] <- quadkey_to_tileXY(quadkeys[i])
+    data[i, c('tileX', 'tileY', 'level')] <- quadkey_to_tileXY(quadkeys[i])
     
     data[i, c('pixelX', 'pixelY')] <- tileXY_to_pixelXY(data$tileX[i],
                                                         data$tileY[i])
     
     data[i, c('lat', 'lon')] <- pixelXY_to_latlong(data$pixelX[i], 
                                                    data$pixelY[i], 
-                                                   level = level)
+                                                   level = unique(data$level))
     
     datacoords <- rbind(data[i,], datacoords)
     

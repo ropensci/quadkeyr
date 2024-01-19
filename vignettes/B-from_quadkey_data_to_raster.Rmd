@@ -133,10 +133,11 @@ that they do not precisely cover the entire area defined by the initial points.
 Now, let's proceed to create the polygons.
 
 ```{r poly}
-polygrid = grid_to_polygon(grid_coords)
+polygrid <- grid_to_polygon(grid_coords)
 head(polygrid)
 
 ```
+
 ```{r map, echo = FALSE}
 
 min =st_sfc(st_point(c(-59,-35)), crs = 4326)

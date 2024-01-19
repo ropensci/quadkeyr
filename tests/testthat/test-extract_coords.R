@@ -1,6 +1,6 @@
 
 # example
-grid = create_qk_grid(
+grid <- create_qk_grid(
   xmin = -59,
   xmax = -57,
   ymin = -35,
