@@ -64,7 +64,7 @@ files
 ```{r include = FALSE, eval = TRUE}
 
 # to avoid to use much data only for an example 
-data(result_read_all_files)
+data(result_read_fb_mobility_data)
 # let's simulate a file with less quadkeys
 files <- result_read_all_files |> 
   dplyr::filter(lat < -34.5 & lat > -34.6) |>
@@ -200,8 +200,8 @@ missing.
  
 # variable 1
 polygon_to_raster(data = polyvar,
-                  nx = grid$num_cols +1 ,
-                  ny = grid$num_rows +1 ,
+                  nx = regular_grid$num_cols +1 ,
+                  ny = regular_grid$num_rows +1 ,
                   template = polyvar,
                   variable = 'percent_change',
                   filename = 'cityA',
@@ -210,8 +210,8 @@ polygon_to_raster(data = polyvar,
 
 # variable 2
 polygon_to_raster(data = polyvar7,
-                  nx = grid$num_cols +1 ,
-                  ny = grid$num_rows +1 ,
+                  nx = regular_grid$num_cols +1 ,
+                  ny = regular_grid$num_rows +1 ,
                   template = polyvar7,
                   variable = 'percent_change_7',
                   filename = 'cityA',

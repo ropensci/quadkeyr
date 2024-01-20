@@ -38,7 +38,7 @@ apply_weekly_lag <- function(data){
     if(!is.na(sum(inter$n_crisis))){
       
       quadkey_lag <- inter |>
-        dplyr::group_by(.data$quadkey, .data$time) |>
+        dplyr::group_by(.data$quadkey, .data$hour) |>
         dplyr::mutate(n_crisis_lag_7 = dplyr::lag(as.numeric(.data$n_crisis),
                                                   n = 7)) |>
         dplyr::mutate(percent_change_7 = ((.data$n_crisis_lag_7 - .data$n_crisis)/
