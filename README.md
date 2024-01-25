@@ -14,6 +14,17 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 
 ⚠️ This package is under review
 
+### What can this package do for you?
+
+The `quadkeyr` R package presents a comprehensive toolkit tailored for
+generating raster images from data reported by QuadKeys within
+[Microsoft’s Bing Maps Tile
+System](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system).
+Designed to integrate Bing Maps data into R workflows, this package
+facilitates the creation of QuadKey grids and raster images and
+introduces specialized functions for the processing of [Facebook
+Mobility data](https://dataforgood.facebook.com/).
+
 ### What are QuadKeys in Tile Maps?
 
 Tile maps divide the Earth’s surface into a grid of tiles, with each
@@ -36,17 +47,6 @@ Bing Maps Tile System webpage.
 </p>
 
 </div>
-
-### What can this package do for you?
-
-The `quadkeyr` R package presents a comprehensive toolkit tailored for
-generating raster images from data reported by QuadKeys within
-[Microsoft’s Bing Maps Tile
-System](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system).
-Designed to integrate Bing Maps data into R workflows, this package
-facilitates the creation of QuadKey grids and raster images and
-introduces specialized functions for the processing of [Facebook
-Mobility data](https://dataforgood.facebook.com/).
 
 ------------------------------------------------------------------------
 
