@@ -130,7 +130,9 @@ regular_grid
  `num_cols` and `num_rows` refer to the number of columns and rows, we will use
  this data to create the raster.
  
- Let's see if completing the grid worked:
+The original 150-point grid now has one point per row and cell, resulting in a 
+complete grid of 369 points, as depicted in the plot. The additional points are
+highlighted in orange:
 
 ```{r echo = FALSE}
 
