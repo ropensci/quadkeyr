@@ -37,7 +37,7 @@ mapsize <- function(level) {
 #' @param max_value Maximum allowable value.
 #'
 #' @return The clipped value.
-#' @export
+#' @keywords internal
 #'
 #' @examples
 #'
