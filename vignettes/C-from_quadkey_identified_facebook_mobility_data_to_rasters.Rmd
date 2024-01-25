@@ -1,8 +1,8 @@
 ---
-title: "Converting Facebook QuadKey's Data into Raster Images"
+title: "Converting Facebook Mobility Datasets Identified by Quadkeys into Raster Images"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Converting Facebook QuadKey's Data into Raster Images}
+  %\VignetteIndexEntry{Converting Facebook Mobility Datasets Identified by Quadkeys into Raster Images}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -31,7 +31,9 @@ library(stars)
 > for general information about this package
 
 This section focuses on creating a raster from QuadKey data formatted as 
-provided by [Facebook Mobility data](https://dataforgood.facebook.com/).
+provided by [Facebook Mobility data](https://dataforgood.facebook.com/). 
+If you want to convert other QuadKey-identified datasets you can read
+[the previous vignette.]( https://fernandez-lab-wsu.github.io/quadkeyr/articles/B-from_quadkey_identified_data_to_raster.html)
 
 Facebook mobility data for each location and level of detail is stored in
 a separate `csv` file for each day and time.

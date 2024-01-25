@@ -1,8 +1,8 @@
 ---
-title: "Converting QuadKey's Data into Raster Images"
+title: "Generating a Raster Image from Quadkey-Identified Data"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Converting QuadKeys Data into Raster Images}
+  %\VignetteIndexEntry{Generating a Raster Image from Quadkey-Identified Data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
