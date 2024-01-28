@@ -7,7 +7,10 @@
 grid_to_polygon(data)
 }
 \arguments{
-\item{data}{A spatial dataset (sf) with a quadkey and POINT geometry column.}
+\item{data}{A spatial dataset (sf) with a quadkey and POINT geometry column.
+If the columns tileX and tileY are included in the input dataset,
+they will be used by complete_grid_for_polygons().
+If not, the tile coordinates will be calculated internally.}
 }
 \value{
 A spatial dataset (sf) with the quadkey and POLYGON column.

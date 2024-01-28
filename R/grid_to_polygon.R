@@ -14,6 +14,7 @@
 #' @importFrom rlang .data
 #'  
 #' @return A spatial dataset (sf) with the columns tileX, tileY and quadkey.
+#' 
 #' @export
 #'
 #' @examples
@@ -76,11 +77,14 @@ complete_grid_for_polygons <- function(data){
 #' Note that it's possible to associate each QuadKey with its square polygon.
 #'
 #' @param data A spatial dataset (sf) with a quadkey and POINT geometry column.
-#'
-#'
+#' If the columns tileX and tileY are included in the input dataset,
+#' they will be used by complete_grid_for_polygons().
+#' If not, the tile coordinates will be calculated internally.
+#' 
 #' @seealso \code{\link{complete_grid_for_polygons}}
 #'
 #' @return A spatial dataset (sf) with the quadkey and POLYGON column.
+#' 
 #' @export
 #'
 #' @examples
@@ -100,6 +104,22 @@ grid_to_polygon <- function(data){
     stop("The dataset should be of class 'sf'")
   }
 
+   # Convert the QuadKeys to tile coordinates
+   # if that columns aren't present in the data
+  if (!("tileX" %in% colnames(data) | "tileY" %in% colnames(data))) {
+    message(paste("The 'tileX' and 'tileY' columns have been generated",
+                  "using the 'quadkey_to_tileXY' function."))
+    
+  # In the case that one of this columns is not present, I calculate both again.  
+  data$tileX <- NA
+  data$tileY <- NA
+  
+ data <-  data |> 
+      dplyr::rowwise() |> 
+      dplyr::mutate(tileX = quadkey_to_tileXY(.data$quadkey)$tileX,
+                    tileY = quadkey_to_tileXY(.data$quadkey)$tileY)  
+  }
+  
   extragrid <- complete_grid_for_polygons(data)
 
   extragrid <- get_tile_coord(extragrid, 
@@ -125,7 +145,7 @@ grid_to_polygon <- function(data){
   # b, c and d can be part of the extended grid
   b <-  data[data$tileX == x & data$tileY == (y + 1), ]
 
-  c <- data[data$tileX == x + 1  & data$tileY == y, ]
+  c <- data[data$tileX == x + 1 & data$tileY == y, ]
 
   d <- data[data$tileX == x + 1 & data$tileY == y + 1, ]
 

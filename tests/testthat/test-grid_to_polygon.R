@@ -10,7 +10,7 @@ grid = create_qk_grid(
 grid_coords <- get_qk_coord(data = grid$data)
 grid_coords
 
-polygrid = grid_to_polygon(grid_coords)
+polygrid <- grid_to_polygon(grid_coords)
 polygrid
 
 
@@ -24,4 +24,11 @@ test_that("Dataset is of class 'sf'", {
 
 })
 
-# Test the number of rows
+test_that("tileX and tileY columns are created", {
+  grid_coords_test <- subset(grid_coords,
+                             select = -c(tileX, tileY))
+
+  expect_message(grid_to_polygon(grid_coords_test),
+                 paste("The 'tileX' and 'tileY' columns have been generated",
+                       "using the 'quadkey_to_tileXY' function."))
+})
