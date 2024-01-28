@@ -22,7 +22,8 @@
 #'                        ymin = -38,
 #'                        ymax = -20,
 #'                        level = 6)
-#'
+#'                        
+#' # quadkey column in grid$data converted to geographic coordinates
 #' grid_coords <- extract_qk_coord(data = grid$data)
 #'
 #' plot(grid_coords)
@@ -33,12 +34,8 @@ extract_qk_coord <- function(data){
   }
   
   # initialize columns to avoid warnings
-  data$qk_tileX <- NA
-  data$qk_tileY <- NA
-  data$tl_pxx <- NA
-  data$tl_pxy <- NA
-  data$pxy_lat <- NA
-  data$pxy_lon <- NA
+  data$tileX <- NA
+  data$tileY <- NA
 
   for(i in seq_len(nrow(data))){
     # check that the data has the correct dimensions for this analysis
@@ -46,29 +43,13 @@ extract_qk_coord <- function(data){
 
     qktot  <-  quadkey_to_tileXY(data$quadkey[i])
 
-    data$qk_tileX[i] <- qktot$tileX
-    data$qk_tileY[i] <- qktot$tileY
-
-    ttop <- tileXY_to_pixelXY(tileX = data$qk_tileX[i],
-                              tileY = data$qk_tileY[i])
-
-    data$tl_pxx[i] <- ttop$pixelX
-    data$tl_pxy[i] <- ttop$pixelY
-
-    ptoll <- pixelXY_to_latlong(pixelX = data$tl_pxx[i],
-                               pixelY = data$tl_pxy[i],
-                               level = level)
-
-    data$pxy_lat[i] <- ptoll$lat
-    data$pxy_lon[i] <- ptoll$lon
-
+    data$tileX[i] <- qktot$tileX
+    data$tileY[i] <- qktot$tileY
   }
 
-  data <- data |>
-    dplyr::select("tileX", "tileY", "quadkey",
-                  "pxy_lon", "pxy_lat") |> # tidyselect
-    sf::st_as_sf(coords = c("pxy_lon", "pxy_lat"), crs = 4326)
-
+  data <- extract_tile_coord(data = data,
+                             level = level)
+  
   return(data)
 
 }
@@ -99,6 +80,7 @@ extract_qk_coord <- function(data){
 #'                        ymax = -20,
 #'                        level = 6)
 #'
+#' # tileX and tileY columns in grid$data converted to geographic coordinates
 #' extract_tile_coord(data = grid$data,
 #'                    level = 6)
 #'
@@ -111,33 +93,33 @@ extract_tile_coord <- function(data, level){
 
   
   # initialize columns to avoid warnings
-  data$tl_pxx <- NA
-  data$tl_pxy <- NA
-  data$pxy_lat <- NA
-  data$pxy_lon <- NA
+  data$pixelX <- NA
+  data$pixelY <- NA
+  data$lat <- NA
+  data$lon <- NA
   
   for(i in seq_len(nrow(data))){
    # conversion from tile coordinates to geographic coordinates
     ttop <- tileXY_to_pixelXY(tileX = data$tileX[i],
-                             tileY = data$tileY[i])
+                              tileY = data$tileY[i])
 
-    data$tl_pxx[i] <- ttop$pixelX
-    data$tl_pxy[i] <- ttop$pixelY
+    data$pixelX[i] <- ttop$pixelX
+    data$pixelY[i] <- ttop$pixelY
 
-    ptoll <- pixelXY_to_latlong(pixelX = data$tl_pxx[i],
-                               pixelY = data$tl_pxy[i],
-                               level = level)
+    ptoll <- pixelXY_to_latlong(pixelX = data$pixelX[i],
+                                pixelY = data$pixelY[i],
+                                level = level)
  
-    data$pxy_lat[i] <- ptoll$lat
-    data$pxy_lon[i] <- ptoll$lon
+    data$lat[i] <- ptoll$lat
+    data$lon[i] <- ptoll$lon
 
   }
 
   # I have to keep the quadkeys for later use
   data <- data |>
     dplyr::select("tileX", "tileY", "quadkey",
-                  "pxy_lon", "pxy_lat") |> # tidyselect
-    sf::st_as_sf(coords = c('pxy_lon', 'pxy_lat'), crs = 4326)
+                  "lon", "lat") |> # tidyselect
+    sf::st_as_sf(coords = c('lon', 'lat'), crs = 4326)
 
   return(data)
 
