@@ -13,8 +13,8 @@ grid_to_polygon(data)
 A spatial dataset (sf) with the quadkey and POLYGON column.
 }
 \description{
-The main argument of this function, the grid of QuadKeys points
-representing lat/long WG84 coordinates specifically indicate the upper-left
+The main argument of this function, the grid of
+geographic coordinates (lat/long WG84) represents the upper-left
 corner of the QuadKey.
 To transform these coordinates into square polygons, the function
 supplements the grid by adding a row and column of tiles. These points

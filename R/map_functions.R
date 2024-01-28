@@ -4,6 +4,10 @@
 #' level of detail.
 #' For further information, refer to the Microsoft Bing Maps Tile 
 #' System documentation.
+#' 
+#' @seealso 
+#' \href{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}{
+#' Microsoft Bing Maps Tile System documentation}
 #'
 #' @param level Level of detail, from 1 (lowest detail) to 23 (highest detail).
 #'
@@ -53,8 +57,14 @@ clip <- function(n, min_value, max_value) {
 
 #' Ground resolution at a specified latitude and level of detail
 #'
-#' @description Determines the ground resolution (in meters per pixel) at a specified latitude and level of detail.
-#' For further information, refer to the Microsoft Bing Maps Tile System documentation.
+#' @description Determines the ground resolution (in meters per pixel) at a
+#' specified latitude and level of detail.
+#' For further information, refer to the Microsoft Bing Maps Tile System 
+#' documentation.
+#'
+#' @seealso 
+#' \href{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}{
+#' Microsoft Bing Maps Tile System documentation}
 #'
 #' @param latitude Latitude (in degrees) at which to measure the ground resolution.
 #' @param level Level of detail, from 1 (lowest detail) to 23 (highest detail).
@@ -89,6 +99,10 @@ ground_res <- function(latitude, level) {
 #' level of detail, and screen resolution.
 #' For further information, refer to the Microsoft Bing Maps Tile System 
 #' documentation.
+#'
+#' @seealso 
+#' \href{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}{
+#' Microsoft Bing Maps Tile System documentation}
 #'
 #' @param latitude Latitude (in degrees) at which to measure the map scale.
 #' @param level Level of detail, from 1 (lowest detail) to 23 (highest detail).

@@ -15,12 +15,18 @@ ground_res(latitude, level)
 the ground resolution (meters / pixel)
 }
 \description{
-Determines the ground resolution (in meters per pixel) at a specified latitude and level of detail.
-For further information, refer to the Microsoft Bing Maps Tile System documentation.
+Determines the ground resolution (in meters per pixel) at a
+specified latitude and level of detail.
+For further information, refer to the Microsoft Bing Maps Tile System
+documentation.
 }
 \examples{
 
 ground_res(latitude = 0,
            level = 6)
 
+}
+\seealso{
+\href{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}{
+Microsoft Bing Maps Tile System documentation}
 }

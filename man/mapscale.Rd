@@ -29,3 +29,7 @@ mapscale(latitude = 0,
          screen_dpi = 96)
 
 }
+\seealso{
+\href{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}{
+Microsoft Bing Maps Tile System documentation}
+}

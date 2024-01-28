@@ -29,3 +29,7 @@ latlong_to_quadkey(lat = 35.63051,
                   lon = 139.69116,
                   level = 20)
 }
+\seealso{
+\href{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}{
+Microsoft Bing Maps Tile System documentation}
+}

@@ -4,7 +4,11 @@
 #' (in degrees) into pixel XY coordinates at a specified level of detail.
 #' For further information, refer to the Microsoft Bing Maps Tile System
 #' documentation.
-#'
+#' 
+#' @seealso 
+#' \href{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}{
+#' Microsoft Bing Maps Tile System documentation}
+#' 
 #' @param lat Latitude of the point, in degrees.
 #' @param lon Longitude of the point, in degrees.
 #' @param level Level of detail, from 1 (lowest detail) to 23 (highest detail).
@@ -54,6 +58,10 @@ latlong_to_pixelXY <- function(lat, lon, level) {
 #' tile containing the specified pixel.
 #' For further information, refer to the Microsoft Bing Maps 
 #' Tile System documentation.
+#' 
+#' @seealso 
+#' \href{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}{
+#' Microsoft Bing Maps Tile System documentation}
 #'
 #' @param pixelX Pixel X coordinate.
 #' @param pixelY Pixel Y coordinate.
@@ -85,6 +93,10 @@ pixelXY_to_tileXY <- function(pixelX, pixelY) {
 #' level of detail.
 #' For further information, refer to the Microsoft Bing Maps Tile System
 #' documentation.
+#' 
+#' @seealso 
+#' \href{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}{
+#' Microsoft Bing Maps Tile System documentation}
 #'
 #' @param tileX Tile X coordinate.
 #' @param tileY Tile Y coordinate.
@@ -141,6 +153,10 @@ tileXY_to_quadkey <- function(tileX, tileY, level) {
 #' (in degrees) into a Quadkey at a specified level of detail.
 #' For further information, refer to the Microsoft Bing Maps Tile 
 #' System documentation.
+#' 
+#' @seealso 
+#' \href{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}{
+#' Microsoft Bing Maps Tile System documentation}
 #'
 #' @param lat Latitude of the point, in degrees.
 #' @param lon Longitude of the point, in degrees.

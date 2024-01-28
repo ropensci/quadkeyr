@@ -25,7 +25,8 @@ grid <- create_qk_grid(xmin = -59,
                        ymin = -38,
                        ymax = -20,
                        level = 6)
-
+                       
+# quadkey column in grid$data converted to geographic coordinates
 grid_coords <- extract_qk_coord(data = grid$data)
 
 plot(grid_coords)

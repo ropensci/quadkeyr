@@ -28,6 +28,7 @@ grid <- create_qk_grid(xmin = -59,
                        ymax = -20,
                        level = 6)
 
+# tileX and tileY columns in grid$data converted to geographic coordinates
 extract_tile_coord(data = grid$data,
                    level = 6)
 

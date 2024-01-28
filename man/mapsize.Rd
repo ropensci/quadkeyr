@@ -22,3 +22,7 @@ System documentation.
 
 mapsize(level = 6)
 }
+\seealso{
+\href{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}{
+Microsoft Bing Maps Tile System documentation}
+}
