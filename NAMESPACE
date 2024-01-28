@@ -3,7 +3,7 @@
 export(apply_weekly_lag)
 export(complete_grid_for_polygons)
 export(create_qk_grid)
-export(create_raster)
+export(create_stars_raster)
 export(format_fb_data)
 export(get_qk_coord)
 export(get_tile_coord)

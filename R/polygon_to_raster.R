@@ -105,7 +105,7 @@ polygon_to_raster <- function(data,
                         .data$time == p)
       
       # Create raster using a template to avoid errors
-      file <-  create_raster(template = template,
+      file <-  create_stars_raster(template = template,
                              nx = nx,
                              ny = ny,
                              data = data,

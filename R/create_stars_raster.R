@@ -34,14 +34,14 @@
 #'                    dplyr::inner_join(data_provided,
 #'                     by = c('quadkey' ))
 #'
-#'  raster <-  create_raster(template = data_raster,
-#'                          nx = grid$num_cols + 1,
-#'                          ny = grid$num_rows + 1,
-#'                          data = data_raster,
-#'                          var = 'variable')
+#'  raster <-  create_stars_raster(template = data_raster,
+#'                                 nx = grid$num_cols + 1,
+#'                                 ny = grid$num_rows + 1,
+#'                                 data = data_raster,
+#'                                 var = 'variable')
 #'
 #'
-create_raster <- function(template,
+create_stars_raster <- function(template,
                           nx, ny,
                           data,
                           var){

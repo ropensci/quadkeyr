@@ -208,11 +208,11 @@ head(data_raster)
 Now, we can use the dataframe to create the raster.
 
 ```{r raster}
-raster <-  create_raster(template = data_raster,
-              nx = grid$num_cols +1,
-              ny = grid$num_rows +1,
-              data = data_raster,
-              var = 'variable')
+raster <-  create_stars_raster(template = data_raster,
+                               nx = grid$num_cols +1,
+                               ny = grid$num_rows +1,
+                               data = data_raster,
+                               var = 'variable')
 
 raster
 

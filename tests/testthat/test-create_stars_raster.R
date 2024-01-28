@@ -17,7 +17,7 @@ data = polygrid |>
 
 test_that("create_raster function creates raster as expected", {
   # Test 1: Check if the returned object is a stars object
-  result <- create_raster(data,
+  result <- create_stars_raster(data,
                           nx = grid$num_cols +1,
                           ny = grid$num_rows +1,
                           data,
