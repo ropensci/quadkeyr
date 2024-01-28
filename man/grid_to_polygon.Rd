@@ -30,11 +30,10 @@ grid  <-  create_qk_grid(xmin = -59,
                       ymax = -34,
                       level = 11)
 
-                      grid_coords <- extract_qk_coord(data = grid$data)
-                      grid_coords
+grid_coords <- get_qk_coord(data = grid$data)
 
-                      polygrid  <-  grid_to_polygon(grid_coords)
-                      polygrid
+polygrid  <-  grid_to_polygon(grid_coords)
+polygrid
 }
 \seealso{
 \code{\link{complete_grid_for_polygons}}

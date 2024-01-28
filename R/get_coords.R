@@ -1,4 +1,4 @@
-#' Extract lat/long coordinates from the QuadKey number
+#' Get lat/long coordinates from the QuadKey number
 #'
 #' @description Reads the QuadKey number as a string to extract the
 #' lat/long coordinates of the upper-left corner of the QuadKey.
@@ -24,10 +24,10 @@
 #'                        level = 6)
 #'                        
 #' # quadkey column in grid$data converted to geographic coordinates
-#' grid_coords <- extract_qk_coord(data = grid$data)
+#' grid_coords <- get_qk_coord(data = grid$data)
 #'
 #' plot(grid_coords)
-extract_qk_coord <- function(data){
+get_qk_coord <- function(data){
 
   if (!"quadkey" %in% colnames(data)) {
     stop("Please ensure that the dataset contains a column named 'quadkey'.")
@@ -47,7 +47,7 @@ extract_qk_coord <- function(data){
     data$tileY[i] <- qktot$tileY
   }
 
-  data <- extract_tile_coord(data = data,
+  data <- get_tile_coord(data = data,
                              level = level)
   
   return(data)
@@ -55,7 +55,7 @@ extract_qk_coord <- function(data){
 }
 
 
-#' Extract lat/long coordinates from the tile XY coordinates.
+#' Get lat/long coordinates from the tile XY coordinates.
 #'
 #' @description Reads the tile XY coordinates and extracts the
 #' lat/long coordinates of the upper-left corner of the QuadKey.
@@ -81,10 +81,10 @@ extract_qk_coord <- function(data){
 #'                        level = 6)
 #'
 #' # tileX and tileY columns in grid$data converted to geographic coordinates
-#' extract_tile_coord(data = grid$data,
+#' get_tile_coord(data = grid$data,
 #'                    level = 6)
 #'
-extract_tile_coord <- function(data, level){
+get_tile_coord <- function(data, level){
 
   if (!any(c('tileX', 'tileY') %in% colnames(data))) {
     stop(paste("Please ensure that the dataset contains columns named 'tileX'",

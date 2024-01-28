@@ -44,10 +44,11 @@ mapsize <- function(level) {
 #' @keywords internal
 #'
 #' @examples
-#'
-#'      clip(n = 1,
-#'      min_value = 3,
-#'      max_value = 5)
+#' \dontrun{
+#' quadkeyr::clip(n = 1,
+#'                min_value = 3,
+#'                max_value = 5)
+#'                }
 #'
 
 clip <- function(n, min_value, max_value) {

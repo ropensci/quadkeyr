@@ -68,7 +68,7 @@ files
 # to avoid to use much data only for an example 
 data(result_read_fb_mobility_data)
 # let's simulate a file with less quadkeys
-files <- result_read_all_files |> 
+files <- result_read_fb_mobility_data |> 
   dplyr::filter(lat < -34.5 & lat > -34.6) |>
   dplyr::filter(lon < -58.5 & lon > -58.6)
 

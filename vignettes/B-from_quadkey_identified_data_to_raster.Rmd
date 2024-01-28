@@ -94,10 +94,10 @@ head(grid$data)
 #### 1.3 Get the grid coordinates from the QuadKeys
 
 The coordinates are extracted from the QuadKeys 
-using the function `extract_qk_coords()`
+using the function `get_qk_coords()`
 
 ```{r grid}
-grid_coords <- extract_qk_coord(data = grid$data)
+grid_coords <- get_qk_coord(data = grid$data)
 head(grid_coords)
 ```
 We can visualize the points in the map to understand better the results.

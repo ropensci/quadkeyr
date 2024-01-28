@@ -28,7 +28,7 @@ grid  <-  create_qk_grid(xmin = -59,
                       ymax = -34,
                       level = 11)
 
-grid_coords <- extract_qk_coord(data = grid$data)
+grid_coords <- get_qk_coord(data = grid$data)
 
 
 # You can use grid_to_polygon

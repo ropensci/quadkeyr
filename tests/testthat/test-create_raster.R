@@ -6,7 +6,7 @@ grid = create_qk_grid(
   ymax = -34,
   level = 11)
 
-grid_coords <- extract_qk_coord(data = grid$data)
+grid_coords <- get_qk_coord(data = grid$data)
 grid_coords
 
 polygrid = grid_to_polygon(grid_coords)

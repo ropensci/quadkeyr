@@ -24,7 +24,7 @@
 #'                       ymax = -34,
 #'                       level = 11)
 #'
-#' grid_coords <- extract_qk_coord(data = grid$data)
+#' grid_coords <- get_qk_coord(data = grid$data)
 #'
 #'
 #' # You can use grid_to_polygon
@@ -90,11 +90,10 @@ complete_grid_for_polygons <- function(data){
 #'                       ymax = -34,
 #'                       level = 11)
 #'
-#'                       grid_coords <- extract_qk_coord(data = grid$data)
-#'                       grid_coords
-#'
-#'                       polygrid  <-  grid_to_polygon(grid_coords)
-#'                       polygrid
+#' grid_coords <- get_qk_coord(data = grid$data)
+#' 
+#' polygrid  <-  grid_to_polygon(grid_coords)
+#' polygrid
 grid_to_polygon <- function(data){
 
   if (!("sf" %in% class(data))) {
@@ -103,8 +102,8 @@ grid_to_polygon <- function(data){
 
   extragrid <- complete_grid_for_polygons(data)
 
-  extragrid <- extract_tile_coord(extragrid, 
-                                  level = unique(nchar(data$quadkey)))
+  extragrid <- get_tile_coord(extragrid, 
+                              level = unique(nchar(data$quadkey)))
 
   # combines the new data with the extended grid of points
   data  <-  rbind(data, extragrid)

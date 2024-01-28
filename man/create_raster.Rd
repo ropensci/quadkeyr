@@ -34,7 +34,7 @@ raster, even in the presence of NAs.
                      ymax = -34,
                      level = 12)
 
- grid_coords <- extract_qk_coord(data = grid$data)
+ grid_coords <- get_qk_coord(data = grid$data)
 
  polygrid <- grid_to_polygon(grid_coords)
 

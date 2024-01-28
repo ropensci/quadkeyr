@@ -23,10 +23,11 @@ For further information, refer to the Microsoft Bing Maps Tile System
 documentation.
 }
 \examples{
-
-     clip(n = 1,
-     min_value = 3,
-     max_value = 5)
+\dontrun{
+quadkeyr::clip(n = 1,
+               min_value = 3,
+               max_value = 5)
+               }
 
 }
 \keyword{internal}
