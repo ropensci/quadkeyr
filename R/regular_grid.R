@@ -19,22 +19,25 @@
 #'
 #' regular_qk_grid(qtll)
 #'
-regular_qk_grid <- function(data){
-  
-  bbox <- sf::st_bbox(data)
-  
-  qk_level  <- nchar(data$quadkey[1])
-  
-  grid <- create_qk_grid(xmin = bbox$xmin[[1]],
-                         xmax = bbox$xmax[[1]],
-                         ymin = bbox$ymin[[1]],
-                         ymax = bbox$ymax[[1]],
-                         level = qk_level)
-  
-  
-  if(nrow(grid$data) == nrow(data)){
-    
-    stop("The grid is already complete, this function is not necessary")
+regular_qk_grid <- function(data) {
+  bbox <- sf::st_bbox(data) 
+
+  # I assume that the all the QuadKeys correspond to the same level of detail.
+  qk_level <- nchar(data$quadkey[1])
+
+  # Create the complete grid
+  grid <- create_qk_grid(
+    xmin = bbox$xmin[[1]],
+    xmax = bbox$xmax[[1]],
+    ymin = bbox$ymin[[1]],
+    ymax = bbox$ymax[[1]],
+    level = qk_level
+  )
+
+
+  if (nrow(grid$data) == nrow(data)) {
+    warning("The grid is already complete, this function is not necessary")
+    return(data)
   }
   
   qk_missing <- grid$data |>
