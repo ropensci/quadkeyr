@@ -22,7 +22,7 @@ documentation.
 }
 \examples{
 
-quadkey_to_latlong(c('213', '212', '210'))
+quadkey_to_latlong(c("213", "212", "210"))
 
 }
 \seealso{

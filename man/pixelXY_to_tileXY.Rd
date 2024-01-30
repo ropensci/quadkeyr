@@ -22,8 +22,10 @@ Tile System documentation.
 }
 \examples{
 
-pixelXY_to_tileXY(pixelX = 5916,
-                  pixelY = 9894)
+pixelXY_to_tileXY(
+  pixelX = 5916,
+  pixelY = 9894
+)
 
 }
 \seealso{

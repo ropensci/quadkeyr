@@ -24,10 +24,12 @@ documentation.
 }
 \examples{
 \dontrun{
-quadkeyr::clip(n = 1,
-               min_value = 3,
-               max_value = 5)
-               }
+quadkeyr::clip(
+  n = 1,
+  min_value = 3,
+  max_value = 5
+)
+}
 
 }
 \keyword{internal}

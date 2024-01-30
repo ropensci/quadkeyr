@@ -27,15 +27,17 @@ The function constructs the polygons using all the points of the grid.
 Note that it's possible to associate each QuadKey with its square polygon.
 }
 \examples{
-grid  <-  create_qk_grid(xmin = -59,
-                      xmax = -57,
-                      ymin = -35,
-                      ymax = -34,
-                      level = 11)
+grid <- create_qk_grid(
+  xmin = -59,
+  xmax = -57,
+  ymin = -35,
+  ymax = -34,
+  level = 11
+)
 
 grid_coords <- get_qk_coord(data = grid$data)
 
-polygrid  <-  grid_to_polygon(grid_coords)
+polygrid <- grid_to_polygon(grid_coords)
 polygrid
 }
 \seealso{

@@ -18,9 +18,8 @@ This function removes unnecessary characters such as \verb{\\\\N}
 and ensures that the format of the date and QuadKeys is correct.
 }
 \examples{
-
 \dontrun{
-fb_mobility_file <-  read.csv("cityA_2020-04-26_0.csv")
+fb_mobility_file <- read.csv("cityA_2020-04-26_0.csv")
 format_fb_data(data = fb_mobility_file)
 }
 }

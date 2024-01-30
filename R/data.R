@@ -13,7 +13,7 @@
 #' result_read_fb_mobility_data: Fake dataset
 #'
 #' A data frame similar to a the potential output of read_all_files().
-#' 
+#'
 #' @format ## `result_read_fb_mobility_data`
 #' A data frame with 134,492 rows and 9 columns:
 #' \describe{

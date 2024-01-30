@@ -27,29 +27,32 @@ raster, even in the presence of NAs.
 }
 \examples{
 
- grid = create_qk_grid(
-                     xmin = -59,
-                     xmax = -57,
-                     ymin = -35,
-                     ymax = -34,
-                     level = 12)
+grid <- create_qk_grid(
+  xmin = -59,
+  xmax = -57,
+  ymin = -35,
+  ymax = -34,
+  level = 12
+)
 
- grid_coords <- get_qk_coord(data = grid$data)
+grid_coords <- get_qk_coord(data = grid$data)
 
- polygrid <- grid_to_polygon(grid_coords)
+polygrid <- grid_to_polygon(grid_coords)
 
- data('data_provided')
+data("data_provided")
 
- data_raster <-  polygrid |>
-                   dplyr::inner_join(data_provided,
-                    by = c('quadkey' ))
+data_raster <- polygrid |>
+  dplyr::inner_join(data_provided,
+    by = c("quadkey")
+  )
 
- raster <-  create_stars_raster(template = data_raster,
-                                nx = grid$num_cols + 1,
-                                ny = grid$num_rows + 1,
-                                data = data_raster,
-                                var = 'variable')
-
+raster <- create_stars_raster(
+  template = data_raster,
+  nx = grid$num_cols + 1,
+  ny = grid$num_rows + 1,
+  data = data_raster,
+  var = "variable"
+)
 
 }
 \seealso{

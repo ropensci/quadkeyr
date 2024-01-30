@@ -29,10 +29,12 @@ longitude along with a specified level of detail.
 }
 \examples{
 
-grid = create_qk_grid( xmin = -59,
-                       xmax = -57,
-                       ymin = -35,
-                       ymax = -34,
-                       level = 12)
+grid <- create_qk_grid(
+  xmin = -59,
+  xmax = -57,
+  ymin = -35,
+  ymax = -34,
+  level = 12
+)
 
 }

@@ -24,9 +24,11 @@ documentation.
 }
 \examples{
 
-tileXY_to_quadkey(tileX = 23,
-                  tileY = 38,
-                  level = 6)
+tileXY_to_quadkey(
+  tileX = 23,
+  tileY = 38,
+  level = 6
+)
 
 }
 \seealso{

@@ -26,7 +26,7 @@ This function works only for quadkeys without NAs.
 }
 \examples{
 
-data <- result_read_fb_mobility_data[1:500,]
+data <- result_read_fb_mobility_data[1:500, ]
 apply_weekly_lag(data)
 
 }

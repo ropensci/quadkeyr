@@ -24,9 +24,11 @@ documentation.
 }
 \examples{
 
-latlong_to_pixelXY(lat = -35,
-                   lon = -50,
-                   level = 6)
+latlong_to_pixelXY(
+  lat = -35,
+  lon = -50,
+  level = 6
+)
 
 }
 \seealso{

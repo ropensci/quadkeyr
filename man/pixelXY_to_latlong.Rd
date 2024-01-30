@@ -24,10 +24,11 @@ Microsoft Bing Maps Tile System documentation.
 }
 \examples{
 
-pixelXY_to_latlong(pixelX = 768,
-                   pixelY = 1280,
-                   level = 3)
-
+pixelXY_to_latlong(
+  pixelX = 768,
+  pixelY = 1280,
+  level = 3
+)
 
 }
 \seealso{

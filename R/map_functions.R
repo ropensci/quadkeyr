@@ -2,10 +2,10 @@
 #'
 #' @description  Determines the map width and height (in pixels) at a specified
 #' level of detail.
-#' For further information, refer to the Microsoft Bing Maps Tile 
+#' For further information, refer to the Microsoft Bing Maps Tile
 #' System documentation.
-#' 
-#' @seealso 
+#'
+#' @seealso
 #' \href{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}{
 #' Microsoft Bing Maps Tile System documentation}
 #'
@@ -17,7 +17,7 @@
 #' @examples
 #'
 #' mapsize(level = 6)
-
+#'
 # At the lowest level of detail (level 1), the map is 512 x 512 pixels.
 # At each successive level of detail, the map width and height grow by a
 # factor of 2.
@@ -31,9 +31,9 @@ mapsize <- function(level) {
 
 #' Clips a number to the specified minimum and maximum values.
 #'
-#' @description This function is user internally by latlong_to_pixelXY and 
+#' @description This function is user internally by latlong_to_pixelXY and
 #' pixelXY_to_latlong.
-#' For further information, refer to the Microsoft Bing Maps Tile System 
+#' For further information, refer to the Microsoft Bing Maps Tile System
 #' documentation.
 #'
 #' @param n The number to clip.
@@ -45,14 +45,14 @@ mapsize <- function(level) {
 #'
 #' @examples
 #' \dontrun{
-#' quadkeyr::clip(n = 1,
-#'                min_value = 3,
-#'                max_value = 5)
-#'                }
+#' quadkeyr::clip(
+#'   n = 1,
+#'   min_value = 3,
+#'   max_value = 5
+#' )
+#' }
 #'
-
 clip <- function(n, min_value, max_value) {
-
   return(min(max(n, min_value), max_value))
 }
 
@@ -60,10 +60,10 @@ clip <- function(n, min_value, max_value) {
 #'
 #' @description Determines the ground resolution (in meters per pixel) at a
 #' specified latitude and level of detail.
-#' For further information, refer to the Microsoft Bing Maps Tile System 
+#' For further information, refer to the Microsoft Bing Maps Tile System
 #' documentation.
 #'
-#' @seealso 
+#' @seealso
 #' \href{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}{
 #' Microsoft Bing Maps Tile System documentation}
 #'
@@ -75,10 +75,11 @@ clip <- function(n, min_value, max_value) {
 #'
 #' @examples
 #'
-#' ground_res(latitude = 0,
-#'            level = 6)
+#' ground_res(
+#'   latitude = 0,
+#'   level = 6
+#' )
 #'
-
 ground_res <- function(latitude, level) {
 
   # Values in Microsoft Bing Tile System Documentation
@@ -96,12 +97,12 @@ ground_res <- function(latitude, level) {
 
 #' Map scale (1 : N)
 #'
-#' @description Determines the map scale at a specified latitude, 
+#' @description Determines the map scale at a specified latitude,
 #' level of detail, and screen resolution.
-#' For further information, refer to the Microsoft Bing Maps Tile System 
+#' For further information, refer to the Microsoft Bing Maps Tile System
 #' documentation.
 #'
-#' @seealso 
+#' @seealso
 #' \href{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}{
 #' Microsoft Bing Maps Tile System documentation}
 #'
@@ -114,13 +115,14 @@ ground_res <- function(latitude, level) {
 #'
 #' @examples
 #'
-#' mapscale(latitude = 0,
-#'          level = 6,
-#'          screen_dpi = 96)
+#' mapscale(
+#'   latitude = 0,
+#'   level = 6,
+#'   screen_dpi = 96
+#' )
 #'
-
+#'
 # Values of constants extracted from Microsoft Bing Tile System Documentation
 mapscale <- function(latitude, level, screen_dpi) {
   return(ground_res(latitude, level) * screen_dpi / 0.0254)
 }
-

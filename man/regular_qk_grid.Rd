@@ -18,7 +18,7 @@ box of the data provided.
 }
 \examples{
 
-quadkeys <- c('213', '210', '211')
+quadkeys <- c("213", "210", "211")
 
 qtll <- quadkey_to_latlong(quadkeys = quadkeys)
 

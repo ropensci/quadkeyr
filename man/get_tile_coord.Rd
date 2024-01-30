@@ -22,15 +22,19 @@ lat/long coordinates of the upper-left corner of the QuadKey.
 \examples{
 
 
-grid <- create_qk_grid(xmin = -59,
-                       xmax = -40,
-                       ymin = -38,
-                       ymax = -20,
-                       level = 6)
+grid <- create_qk_grid(
+  xmin = -59,
+  xmax = -40,
+  ymin = -38,
+  ymax = -20,
+  level = 6
+)
 
 # tileX and tileY columns in grid$data converted to geographic coordinates
-get_tile_coord(data = grid$data,
-                   level = 6)
+get_tile_coord(
+  data = grid$data,
+  level = 6
+)
 
 }
 \seealso{

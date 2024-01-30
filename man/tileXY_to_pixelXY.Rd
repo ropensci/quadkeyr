@@ -22,8 +22,10 @@ documentation.
 }
 \examples{
 
-tileXY_to_pixelXY(tileX = 3,
-                  tileY = 5)
+tileXY_to_pixelXY(
+  tileX = 3,
+  tileY = 5
+)
 
 }
 \seealso{

@@ -12,7 +12,7 @@
 #' @param level Level of detail, from 1 (lowest detail) to 23 (highest detail).
 #'
 #' @importFrom rlang .data
-#'  
+#'
 #' @return A list returning the QuadKeys as a dataframe (data),
 #' the number of rows (num_rows)
 #' and columns (num_cols) of the grid.
@@ -21,82 +21,99 @@
 #'
 #' @examples
 #'
-#' grid = create_qk_grid( xmin = -59,
-#'                        xmax = -57,
-#'                        ymin = -35,
-#'                        ymax = -34,
-#'                        level = 12)
+#' grid <- create_qk_grid(
+#'   xmin = -59,
+#'   xmax = -57,
+#'   ymin = -35,
+#'   ymax = -34,
+#'   level = 12
+#' )
 #'
-create_qk_grid <- function(xmin, xmax, ymin, ymax, level){
-  
+create_qk_grid <- function(xmin, xmax, ymin, ymax, level) {
+
   # Values in Microsoft Bing Tile System Documentation
   min_latitude <- -85.05112878
   max_latitude <- 85.05112878
   min_longitude <- -180
   max_longitude <- 180
-  
-  if (level < 0 | level > 23 | (level %% 1) != 0){
+
+  if (level < 0 | level > 23 | (level %% 1) != 0) {
     stop("The level of detail should be an integer between 1 and 23")
   }
 
   # this variables were defined in the function ground_res
   if (ymin < min_latitude || ymax > max_latitude ||
-      xmin < min_longitude || xmax > max_longitude) {
-    stop(paste("At least one of the provided coordinates are outside",
-               "the valid range. Latitude must be between -85.05112878",
-               "and 85.05112878. Longitude must be between -180 and 180."))
+    xmin < min_longitude || xmax > max_longitude) {
+    stop(paste(
+      "At least one of the provided coordinates are outside",
+      "the valid range. Latitude must be between -85.05112878",
+      "and 85.05112878. Longitude must be between -180 and 180."
+    ))
   }
-  
+
   # x - Convert lat/long coordinates to tile XY coords
-  pixs <- latlong_to_pixelXY(lat = ymin,
-                             lon = xmin,
-                             level = level)
-  
-  tilesmn <- pixelXY_to_tileXY(pixelX = pixs$pixelX,
-                               pixelY = pixs$pixelY)
-  
+  pixs <- latlong_to_pixelXY(
+    lat = ymin,
+    lon = xmin,
+    level = level
+  )
+
+  tilesmn <- pixelXY_to_tileXY(
+    pixelX = pixs$pixelX,
+    pixelY = pixs$pixelY
+  )
+
   # y - Convert lat/long coordinates to tile XY coords
-  pixs <- latlong_to_pixelXY(lat = ymax,
-                             lon = xmax,
-                             level = level)
-  
-  tilesmx <- pixelXY_to_tileXY(pixelX = pixs$pixelX,
-                               pixelY = pixs$pixelY)
-  
+  pixs <- latlong_to_pixelXY(
+    lat = ymax,
+    lon = xmax,
+    level = level
+  )
+
+  tilesmx <- pixelXY_to_tileXY(
+    pixelX = pixs$pixelX,
+    pixelY = pixs$pixelY
+  )
+
   # How many tile XY coordinates conform the grid?
   resy <- tilesmx$tileY - tilesmn$tileY
   resx <- tilesmx$tileX - tilesmn$tileX
-  
-  if(resx == 0 | resy == 0){
+
+  if (resx == 0 | resy == 0) {
     stop(paste(
       "The selected inputs fail to generate a grid due to the limited area",
       "for this level of detail. Consider adjusting the level of detail",
       "or modifying the xmin, xmax, ymin, or ymax values."
     ))
   }
-  
+
   # define the dimensions of the matrix
   num_rows <- abs(resy)
   num_cols <- abs(resx)
-  
+
   # create all the possible combinations of columns and rows
   grid <- expand.grid(c = 0:num_cols, r = 0:num_rows)
-  
+
   # calculate tileX and tileY for each combination
-  data <- grid |> 
-    dplyr::mutate(tileX = tilesmn$tileX + (.data$c * sign(resx)),
-                  tileY = tilesmn$tileY + (.data$r * sign(resy))) |> 
-    dplyr::rowwise() |> 
+  data <- grid |>
+    dplyr::mutate(
+      tileX = tilesmn$tileX + (.data$c * sign(resx)),
+      tileY = tilesmn$tileY + (.data$r * sign(resy))
+    ) |>
+    dplyr::rowwise() |>
     dplyr::mutate(
       quadkey = tileXY_to_quadkey(
-      tileX = .data$tileX,
-      tileY = .data$tileY,
-      level = level)) |> 
+        tileX = .data$tileX,
+        tileY = .data$tileY,
+        level = level
+      )
+    ) |>
     dplyr::ungroup() |> # remove rowwise grouping
     dplyr::select(-"c", -"r") # tidyselect
 
-  return(list(data = data,
-              num_rows =  num_rows,
-              num_cols =  num_cols))
-  
+  return(list(
+    data = data,
+    num_rows = num_rows,
+    num_cols = num_cols
+  ))
 }

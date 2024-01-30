@@ -7,25 +7,26 @@
 get_qk_coord(data)
 }
 \arguments{
-\item{data}{A dataframe with a column named quadkey}
+\item{data}{A dataframe with a quadkey column.}
 }
 \value{
 A spatial dataframe (sf) containing the tiles XY coordinates
-(tileX, tileY), the QuadKey number (quadkey), and a column for POINT
-geometry.
+(tileX, tileY), the QuadKey (quadkey), and a POINT geometry column.
 }
 \description{
-Reads the QuadKey number as a string to extract the
+Reads the QuadKey as a string and extracts the
 lat/long coordinates of the upper-left corner of the QuadKey.
 }
 \examples{
 
-grid <- create_qk_grid(xmin = -59,
-                       xmax = -40,
-                       ymin = -38,
-                       ymax = -20,
-                       level = 6)
-                       
+grid <- create_qk_grid(
+  xmin = -59,
+  xmax = -40,
+  ymin = -38,
+  ymax = -20,
+  level = 6
+)
+
 # quadkey column in grid$data converted to geographic coordinates
 grid_coords <- get_qk_coord(data = grid$data)
 

@@ -24,9 +24,12 @@ documentation.
 }
 \examples{
 
-mapscale(latitude = 0,
-         level = 6,
-         screen_dpi = 96)
+mapscale(
+  latitude = 0,
+  level = 6,
+  screen_dpi = 96
+)
+
 
 }
 \seealso{

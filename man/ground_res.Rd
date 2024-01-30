@@ -22,8 +22,10 @@ documentation.
 }
 \examples{
 
-ground_res(latitude = 0,
-           level = 6)
+ground_res(
+  latitude = 0,
+  level = 6
+)
 
 }
 \seealso{
