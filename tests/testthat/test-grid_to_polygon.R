@@ -37,3 +37,9 @@ test_that("tileX and tileY columns are created", {
     )
   )
 })
+
+test_that("quadkey_to_polygon gives the correct output", {
+  polygon <- quadkey_to_polygon('213')
+  expect_s3_class(polygon, "sf")
+  expect_equal(polygon$quadkey, "213")
+})

@@ -121,7 +121,8 @@ grid_to_polygon <- function(data) {
       "using the 'quadkey_to_tileXY' function."
     ))
 
-    # In the case that one of this columns is not present, I calculate both again.
+    # In the case that one of this columns is not present, 
+    # calculate both again.
     data$tileX <- NA
     data$tileY <- NA
 
@@ -144,15 +145,15 @@ grid_to_polygon <- function(data) {
 
   db <- c() # https://github.com/r-spatial/sf/issues/354
 
-  # The quadkeys of interest are the ones that are not NA
-  # The original quadkeys of the grid
+  # The QuadKeys of interest are the ones that are not NA:
+  # the original QuadKeys of the grid
   subdata <- subset(data, !is.na(data$quadkey))
 
   for (i in seq_len(nrow(subdata))) {
-    x <- subdata[i, ]$tileX
-    y <- subdata[i, ]$tileY
+    tileX <- subdata[i, ]$tileX
+    tileY <- subdata[i, ]$tileY
 
-    # This point will always be a quadkey in the dataframe
+    # This point will always be a QuadKey in the dataframe
     a <- data[data$tileX == x & data$tileY == y, ]
 
     # b, c and d can be part of the extended grid
@@ -162,18 +163,66 @@ grid_to_polygon <- function(data) {
 
     d <- data[data$tileX == x + 1 & data$tileY == y + 1, ]
 
-    pixel <- rbind(a, b, c, d) |>
+    polygon <- rbind(a, b, c, d) |>
       sf::st_bbox() |>
       sf::st_as_sfc()
 
     grid_px <- sf::st_sf(
       quadkey = subdata[i, ]$quadkey,
-      geometry = pixel,
+      geometry = polygon,
       sf_column_name = "geometry"
     )
 
     db <- rbind(grid_px, db)
-    # st_write(pixel, 'pixel.gpkg', append = TRUE)
   }
   return(db)
+}
+
+
+
+#' Convert a QuadKey into a square polygon
+#'
+#' This functions creates a sf class polygon from a QuadKey.
+#'
+#' @param quadkey The QuadKey as a string
+#'
+#' @return A spatial dataset (sf) with a quadkey and POLYGON geometry column.
+#' @export
+#'
+#' @examples
+#' 
+#' quadkey_to_polygon('213')
+#' 
+quadkey_to_polygon <- function(quadkey){
+  
+  tileX <- quadkey_to_tileXY(quadkey)$tileX
+  tileY <- quadkey_to_tileXY(quadkey)$tileY
+  
+  # I add the other 3 points I need to complete the polygon
+  # using the upper left coordinates of the closer tiles.
+  polygon <- expand.grid(tileX = c(tileX, tileX+1),
+              tileY = c(tileY, tileY+1)) |> 
+    dplyr::rowwise() |> 
+    dplyr::mutate(pixelX = tileXY_to_pixelXY(.data$tileX, # conversion to coords
+                                      .data$tileY)$pixelX,
+           pixelY = tileXY_to_pixelXY(.data$tileX,
+                                      .data$tileY)$pixelY) |> 
+    dplyr::mutate(lat = pixelXY_to_latlong(.data$pixelX, 
+                                           .data$pixelY,
+                                           nchar(quadkey))$lat,
+           lon = pixelXY_to_latlong(.data$pixelX, 
+                                    .data$pixelY,
+                                    nchar(quadkey))$lon) |> 
+    st_as_sf(coords = c("lon", "lat"), # class sf
+             crs = 4326)
+    
+  # Create polygon https://github.com/r-spatial/sf/issues/243
+ quadkey_polygon <-  polygon |>
+    sf::st_bbox() |>
+    sf::st_as_sfc() |> 
+    sf::st_sf() |> 
+    sf::st_set_geometry("geometry") |> 
+    cbind(quadkey)
+ 
+  return(quadkey_polygon)
 }
