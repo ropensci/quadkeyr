@@ -4,6 +4,10 @@ test_that("quadkey_to_tileXY is giving correct results", {
   expect_equal(quadkey_to_tileXY("213")$tileX, 3)
   expect_equal(quadkey_to_tileXY("213")$tileY, 5)
   expect_equal(quadkey_to_tileXY("213")$level, 3)
+  
+  expect_equal(quadkey_to_tileXY('0313102310')$tileX, 486)
+  expect_equal(quadkey_to_tileXY('0313102310')$tileY, 332)
+  expect_equal(quadkey_to_tileXY('0313102310')$level, 10)
 })
 
 
@@ -96,7 +100,7 @@ test_that("pixelXY_to_latlong handles invalid pixelX and pixelY values", {
 
 # Test cases for quadkey_to_latlong function
 test_that("quadkey_to_latlong function works as expected", {
-  quadkeys <- c("213", "312", "213") # Replace with your test quadkeys
+  quadkeys <- c("213", "312", "213")
 
   # Test 1: Check for duplicated quadkeys
   expect_error(
@@ -121,5 +125,9 @@ test_that("quadkey_to_latlong function works as expected", {
     info = "SF object should have 'quadkey' and 'geometry' columns"
   )
 
-  # Additional tests for specific quadkeys or transformations can be added here
+  # Test 5: Check that quadkey_to_latlong() is giving correct values
+  expect_equal(st_coordinates(quadkey_to_latlong("0313102310"))[1], 
+               -9.140625, tolerance = 1e-06)
+  expect_equal(st_coordinates(quadkey_to_latlong("0313102310"))[2], 
+               53.33087, tolerance = 1e-06)
 })

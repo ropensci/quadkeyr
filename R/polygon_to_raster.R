@@ -9,7 +9,7 @@
 #' @param ny Integer; number of cells in y direction.
 #' @param data A spatial dataframe (sf) with the variable we want to represent 
 #' in the raster.
-#' @param variable The column name of the variable to plot.
+#' @param var The column name of the variable to plot.
 #' @param filename Select a name for the file. The date and time will
 #'  be included automatically in the name.
 #' @param path Path where the files should be stored.
@@ -32,7 +32,7 @@
 #'. coltypes = list(
 #'  lat = 'd',
 #'  lon = 'd',
-#'  quadkey = 'i',
+#'  quadkey = 'c',
 #'  date_time = 'T',
 #'  n_crisis = 'c',
 #'  percent_change = 'c')) 
@@ -66,7 +66,7 @@
 polygon_to_raster <- function(data,
                               nx, ny,
                               template,
-                              variable = 'percent_change',
+                              var = 'percent_change',
                               filename,
                               path){
   
@@ -91,7 +91,7 @@ polygon_to_raster <- function(data,
       no_data <- mc |>
         dplyr::filter(.data$day ==  as.Date(i, 
                                             origin = "1970-01-01") &
-                        .data$time == p)
+                        .data$hour == p)
       
       # If it is, skip this iteration
       if (nrow(no_data) > 0) {
@@ -99,17 +99,17 @@ polygon_to_raster <- function(data,
       }
       
       
-      data <- data |>
+      data_raster <- data |>
         dplyr::filter(.data$day ==  as.Date(i, 
                                             origin = "1970-01-01") & 
-                        .data$time == p)
+                        .data$hour == p)
       
       # Create raster using a template to avoid errors
       file <-  create_stars_raster(template = template,
                              nx = nx,
                              ny = ny,
-                             data = data,
-                             var = variable )
+                             data = data_raster,
+                             var = var )
       
       # Save raster file
       stars::write_stars(obj = file,

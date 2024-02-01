@@ -43,42 +43,27 @@ a separate `csv` file for each day and time.
 All this files are for the same area and level of detail, but dates and times
 change.
 
-`read_all_files` produce a warning in case there are days or times missing.
+`read_fb_mobility_files` produce a warning in case there are days or times missing.
 
-```{r eval=FALSE, include=TRUE}
+```{r read}
 
-files <- read_fb_mobility_files(path_to_csvs = "../geocovid/data/rasters/city/",
+files <- read_fb_mobility_files(path_to_csvs = paste0(system.file("extdata",
+                                                           package = "quadkeyr"), "/"),
                                 colnames = c("lat", "lon", 
                                              "quadkey", "date_time", 
-                                             "n_crisis", "percent_change"),
+                                             "percent_change"),
                                 coltypes = list(
                                   lat = 'd',
                                   lon = 'd',
-                                  quadkey = 'i',
+                                  quadkey = 'c',
                                   date_time = 'T',
-                                  n_crisis = 'c',
                                   percent_change = 'c')) 
 
 files
 
 ```
 
-```{r include = FALSE, eval = TRUE}
-
-# to avoid to use much data only for an example 
-data(result_read_fb_mobility_data)
-# let's simulate a file with less quadkeys
-files <- result_read_fb_mobility_data |> 
-  dplyr::filter(lat < -34.5 & lat > -34.6) |>
-  dplyr::filter(lon < -58.5 & lon > -58.6)
-
-# let's pretend that we have some missing data
-files <- files[1:150,]
-head(files) 
-```
-
-
-### 2. Convert the Quadkey grid to latitude/longitude coordinates
+### 2. Convert the QuadKey grid to latitude/longitude coordinates
 
 Even if these files correspond to the same area of analysis, they can vary in 
 the number of QuadKeys that are reported.
@@ -96,7 +81,10 @@ qtll
 ```
 
 
-Let's plot the grid!
+Let's plot the QuadKey grid.
+
+Keep in mind that in `files` I have data for multiple days and hours, and
+in 
 
 ```{r echo= FALSE}
 
@@ -179,17 +167,15 @@ ggplot() +
   xlab("Longitude")
 ```
 
-Once I have the regular grid of quadkeys for the bounding box and level of detail,
+Once I have the regular grid of QuadKeys for the bounding box and level of detail,
 I combined the information with the data provided. I can select the variables
 that will be part of the analysis and also create new variables if needed.
 
 ```{r}
 polyvar <- files |>
-            dplyr::inner_join(polygrid, by = 'quadkey' ) |>
-            apply_weekly_lag() 
+            dplyr::inner_join(polygrid, by = 'quadkey') 
 
-polyvar7 <-  polyvar |>
-               drop_na(percent_change_7)
+head(polyvar)
 ```
 
 
@@ -201,43 +187,36 @@ The function `polygon_to_raster` will work even if there are some days and times
 missing.
 
 ```{r eval = FALSE, include = TRUE}
- 
-# variable 1
+
 polygon_to_raster(data = polyvar,
                   nx = regular_grid$num_cols +1 ,
                   ny = regular_grid$num_rows +1 ,
                   template = polyvar,
-                  variable = 'percent_change',
+                  var = 'percent_change',
                   filename = 'cityA',
-                  path = "data/"
+                  path = "../inst/extdata/"
                   )
 
-# variable 2
-polygon_to_raster(data = polyvar7,
-                  nx = regular_grid$num_cols +1 ,
-                  ny = regular_grid$num_rows +1 ,
-                  template = polyvar7,
-                  variable = 'percent_change_7',
-                  filename = 'cityA',
-                  path = "data/"
-                  )
 ```
 
 
-This is how one of the rasters can look like. As you can see, the overlapping with
-the polygon grid is perfect:
+Let's plot one of the rasters, `"cityA_2020-04-15_8.tif"`.
+As you can see, the overlapping with the polygon grid is perfect:
 
 ```{r echo=FALSE}
+
+filename <- "cityA_2020-04-15_8.tif"
 output_raster <-  stars::read_stars(system.file("extdata",
-                                                "cityA_2020-04-26_0.tif", 
+                                                filename, 
                                                 package = "quadkeyr"))
 
 ggplot() + 
   geom_sf(data = ne_countries(returnclass = 'sf'),
           fill = 'beige') +
   geom_stars(data = output_raster) +
-   ggplot2::scale_fill_viridis_c(option = "C",
-                        na.value = "transparent") +
+  ggplot2::scale_fill_viridis_c(option = "C",
+                        na.value = "transparent",
+                        name = "Percent change (%)") +
   geom_sf(data = polygrid, alpha = 0.5, 
           size = 0.1, color = 'red', alpha = 0.5) +
   coord_sf(xlim = c(-58.65, -58.45),
@@ -247,6 +226,7 @@ ggplot() +
         panel.ontop = FALSE,
         panel.grid.major = element_blank(), 
         panel.grid.minor = element_blank()) +
+  ggtitle(filename) +
   ylab("Latitude") + 
   xlab("Longitude")
 

@@ -48,13 +48,16 @@ create_stars_raster <- function(template,
                                 nx, ny,
                                 data,
                                 var) {
-  raster_tmplt <- stars::st_as_stars(sf::st_bbox(template),
+  # data should be in sf format
+  data_sf <- sf::st_sf(data)
+  # create raster template
+  raster_tmplt <- stars::st_as_stars(sf::st_bbox(sf::st_as_sf(template)),
     values = NA_real_,
     ny = ny,
     nx = nx
   )
-
-  r <- stars::st_rasterize(data[, as.character(var)],
+ 
+  r <- stars::st_rasterize(data_sf[, c(as.character(var))],
     template = raster_tmplt
   )
 
