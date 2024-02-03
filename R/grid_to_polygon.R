@@ -150,8 +150,8 @@ grid_to_polygon <- function(data) {
   subdata <- subset(data, !is.na(data$quadkey))
 
   for (i in seq_len(nrow(subdata))) {
-    tileX <- subdata[i, ]$tileX
-    tileY <- subdata[i, ]$tileY
+    x <- subdata[i, ]$tileX
+    y <- subdata[i, ]$tileY
 
     # This point will always be a QuadKey in the dataframe
     a <- data[data$tileX == x & data$tileY == y, ]
@@ -213,7 +213,7 @@ quadkey_to_polygon <- function(quadkey){
            lon = pixelXY_to_latlong(.data$pixelX, 
                                     .data$pixelY,
                                     nchar(quadkey))$lon) |> 
-    st_as_sf(coords = c("lon", "lat"), # class sf
+    sf::st_as_sf(coords = c("lon", "lat"), # class sf
              crs = 4326)
     
   # Create polygon https://github.com/r-spatial/sf/issues/243

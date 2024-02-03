@@ -126,8 +126,8 @@ test_that("quadkey_to_latlong function works as expected", {
   )
 
   # Test 5: Check that quadkey_to_latlong() is giving correct values
-  expect_equal(st_coordinates(quadkey_to_latlong("0313102310"))[1], 
+  expect_equal(sf::st_coordinates(quadkey_to_latlong("0313102310"))[1], 
                -9.140625, tolerance = 1e-06)
-  expect_equal(st_coordinates(quadkey_to_latlong("0313102310"))[2], 
+  expect_equal(sf::st_coordinates(quadkey_to_latlong("0313102310"))[2], 
                53.33087, tolerance = 1e-06)
 })

@@ -7,7 +7,7 @@
 #' \href{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}{
 #' Microsoft Bing Maps Tile System documentation}
 #'
-#' @param qk The QuadKey number as a string.
+#' @param qk The QuadKey as a string.
 #'
 #' @return A list returning the tile X, tile Y coordinates and
 #' the level of detail.

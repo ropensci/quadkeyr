@@ -7,7 +7,7 @@
 quadkey_to_tileXY(qk)
 }
 \arguments{
-\item{qk}{The QuadKey number as a string.}
+\item{qk}{The QuadKey as a string.}
 }
 \value{
 A list returning the tile X, tile Y coordinates and

@@ -9,7 +9,7 @@ polygon_to_raster(
   nx,
   ny,
   template,
-  variable = "percent_change",
+  var = "percent_change",
   filename,
   path
 )
@@ -25,7 +25,7 @@ in the raster.}
 \item{template}{A spatial dataset (sf) with the polygon grid used as
 template}
 
-\item{variable}{The column name of the variable to plot.}
+\item{var}{The column name of the variable to plot.}
 
 \item{filename}{Select a name for the file. The date and time will
 be included automatically in the name.}
@@ -49,7 +49,7 @@ files <- read_fb_mobility_files(path_to_csvs = "../geocovid/data/rasters/city/",
 . coltypes = list(
  lat = 'd',
  lon = 'd',
- quadkey = 'i',
+ quadkey = 'c',
  date_time = 'T',
  n_crisis = 'c',
  percent_change = 'c')) 
