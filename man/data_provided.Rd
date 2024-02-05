@@ -9,7 +9,7 @@
 
 A data frame with 360 rows and 2 columns:
 \describe{
-\item{quadkey}{QuadKey number as character}
+\item{quadkey}{QuadKey as character}
 \item{variable}{Numeric variable}
 }
 }

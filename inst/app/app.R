@@ -32,8 +32,8 @@ qkmap_app <- function(...){
                                                shiny::textInput('xmax', 'xmax'),
                                                shiny::textInput('ymax', 'ymax')
                                              ),
-                                             shiny::sliderInput('levelofdetail',
-                                                                'Select the level of detail:',
+                                             shiny::sliderInput('zoom',
+                                                                'Select the zoom level:',
                                                                 min = 1,
                                                                 max = 23,
                                                                 value = 6),
@@ -42,7 +42,7 @@ qkmap_app <- function(...){
                                              shiny::hr(),
                                              textOutput("qk_nr"),
                                              shiny::hr(),
-                                             shiny::p(paste("Note that for higher levels of detail,",
+                                             shiny::p(paste("Note that for higher zoom levels,",
                                                             "it is preferable to use smaller areas",
                                                             " (< 2000 QuadKeys)",
                                                             "to prevent long processing times.")
@@ -67,11 +67,11 @@ qkmap_app <- function(...){
                                           
                                           coords <- quadkeyr::pixelXY_to_latlong(pixelX = pixel$pixelX,
                                                                                  pixelY = pixel$pixelY,
-                                                                                 level = tile$level)
+                                                                                 zoom = tile$zoom)
                                           
                                           return(list(tileX = tile$tileX ,
                                                       tileY = tile$tileY,
-                                                      level = tile$level,
+                                                      zoom = tile$zoom,
                                                       pixelX = pixel$pixelX,
                                                       pixelY = pixel$pixelY,
                                                       lat = coords$lat,
@@ -84,8 +84,8 @@ qkmap_app <- function(...){
                                qk_results()$tileX),
                              c('TileY',
                                qk_results()$tileY),
-                             c('Level of Detail',
-                               qk_results()$level),
+                             c('Zoom Level',
+                               qk_results()$zoom),
                              c('PixelX',
                                qk_results()$pixelX),
                              c('PixelY',
@@ -136,7 +136,7 @@ qkmap_app <- function(...){
                                                                         xmax = as.numeric(input$xmax),
                                                                         ymin = as.numeric(input$ymin),
                                                                         ymax = as.numeric(input$ymax),
-                                                                        level = as.numeric(input$levelofdetail))
+                                                                        zoom = as.numeric(input$zoom))
                                    griduser$data
                                    })
     

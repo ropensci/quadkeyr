@@ -19,9 +19,10 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' 
 #' read_fb_mobility_files(
-#'   path_to_csvs = "data/",
+#'   path_to_csvs = paste0(system.file("extdata",
+#'   package = "quadkeyr"), "/"),
 #'   colnames = c(
 #'     "lat", "lon",
 #'     "quadkey", "date_time",
@@ -36,7 +37,6 @@
 #'     percent_change = "c"
 #'   )
 #' )
-#' }
 #'
 read_fb_mobility_files <- function(path_to_csvs,
                                    colnames,

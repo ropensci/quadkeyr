@@ -1,15 +1,16 @@
-#' Create grid of QuadKeys for a particular level of detail.
+#' Create grid of QuadKeys for a particular zoom or level of detail.
 #'
 #' @description Generates a grid comprising all the QuadKeys within the area
 #' defined by the maximum and minimum coordinates of latitude and
-#' longitude along with a specified level of detail.
+#' longitude along with a specified zoom level.
 #'
 #'
 #' @param xmin Minimum value in the x axis (longitude)
 #' @param xmax Maximum value in the y axis (latitude)
 #' @param ymin Minimum value in the x axis (longitude)
 #' @param ymax Maximum value in the Y axis (latitude)
-#' @param level Level of detail, from 1 (lowest detail) to 23 (highest detail).
+#' @param zoom Zoom or level of detail, 
+#' from 1 (lowest detail) to 23 (highest detail).
 #'
 #' @importFrom rlang .data
 #'
@@ -26,10 +27,10 @@
 #'   xmax = -57,
 #'   ymin = -35,
 #'   ymax = -34,
-#'   level = 12
+#'   zoom = 12
 #' )
 #'
-create_qk_grid <- function(xmin, xmax, ymin, ymax, level) {
+create_qk_grid <- function(xmin, xmax, ymin, ymax, zoom) {
 
   # Values in Microsoft Bing Tile System Documentation
   min_latitude <- -85.05112878
@@ -37,8 +38,8 @@ create_qk_grid <- function(xmin, xmax, ymin, ymax, level) {
   min_longitude <- -180
   max_longitude <- 180
 
-  if (level < 0 | level > 23 | (level %% 1) != 0) {
-    stop("The level of detail should be an integer between 1 and 23")
+  if (zoom < 0 | zoom > 23 | (zoom %% 1) != 0) {
+    stop("The zoom level should be an integer between 1 and 23")
   }
 
   # this variables were defined in the function ground_res
@@ -55,7 +56,7 @@ create_qk_grid <- function(xmin, xmax, ymin, ymax, level) {
   pixs <- latlong_to_pixelXY(
     lat = ymin,
     lon = xmin,
-    level = level
+    zoom = zoom
   )
 
   tilesmn <- pixelXY_to_tileXY(
@@ -67,7 +68,7 @@ create_qk_grid <- function(xmin, xmax, ymin, ymax, level) {
   pixs <- latlong_to_pixelXY(
     lat = ymax,
     lon = xmax,
-    level = level
+    zoom = zoom
   )
 
   tilesmx <- pixelXY_to_tileXY(
@@ -82,7 +83,7 @@ create_qk_grid <- function(xmin, xmax, ymin, ymax, level) {
   if (resx == 0 | resy == 0) {
     stop(paste(
       "The selected inputs fail to generate a grid due to the limited area",
-      "for this level of detail. Consider adjusting the level of detail",
+      "for this zoom level. Consider adjusting the zoom level",
       "or modifying the xmin, xmax, ymin, or ymax values."
     ))
   }
@@ -105,7 +106,7 @@ create_qk_grid <- function(xmin, xmax, ymin, ymax, level) {
       quadkey = tileXY_to_quadkey(
         tileX = .data$tileX,
         tileY = .data$tileY,
-        level = level
+        zoom = zoom
       )
     ) |>
     dplyr::ungroup() |> # remove rowwise grouping

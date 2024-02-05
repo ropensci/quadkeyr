@@ -1,6 +1,6 @@
 test_that("mapsize can reproduce values reported in the Documentation", {
   expect_equal(
-    mapsize(level = 6),
+    mapsize(zoom = 6),
     16384
   )
 })
@@ -36,7 +36,7 @@ test_that("ground_res can reproduce values reported in the Documentation", {
   expect_equal(
     round(ground_res(
       latitude = 0,
-      level = 6
+      zoom = 6
     ),
     digits = 3
     ), # there are minor issues with decimals
@@ -47,7 +47,7 @@ test_that("ground_res can reproduce values reported in the Documentation", {
 test_that("mapscale can reproduce values reported in the Documentation", {
   expect_equal(mapscale(
     latitude = 0,
-    level = 6,
+    zoom = 6,
     screen_dpi = 96
   ),
   9244667,

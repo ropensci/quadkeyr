@@ -1,4 +1,4 @@
-#' Get lat/long coordinates from the QuadKey number
+#' Get lat/long coordinates from the QuadKey
 #'
 #' @description Reads the QuadKey as a string and extracts the
 #' lat/long coordinates of the upper-left corner of the QuadKey.
@@ -21,7 +21,7 @@
 #'   xmax = -40,
 #'   ymin = -38,
 #'   ymax = -20,
-#'   level = 6
+#'   zoom = 6
 #' )
 #'
 #' # quadkey column in grid$data converted to geographic coordinates
@@ -39,7 +39,7 @@ get_qk_coord <- function(data) {
 
   for (i in seq_len(nrow(data))) {
     # check that the data has the correct dimensions for this analysis
-    level <- nchar(data$quadkey[i])
+    zoom <- nchar(data$quadkey[i])
 
     qktot <- quadkey_to_tileXY(data$quadkey[i])
 
@@ -49,7 +49,7 @@ get_qk_coord <- function(data) {
 
   data <- get_tile_coord(
     data = data,
-    level = level
+    zoom = zoom
   )
 
   return(data)
@@ -62,7 +62,8 @@ get_qk_coord <- function(data) {
 #' lat/long coordinates of the upper-left corner of the QuadKey.
 #'
 #' @param data A dataframe with columns named tileX and tileY
-#' @param level Level of detail, from 1 (lowest detail) to 23 (highest detail).
+#' @param zoom Zoom or Level of detail, 
+#' from 1 (lowest detail) to 23 (highest detail).
 #'
 #' @seealso \code{\link{tileXY_to_pixelXY}}
 #' @seealso \code{\link{pixelXY_to_latlong}}
@@ -80,16 +81,16 @@ get_qk_coord <- function(data) {
 #'   xmax = -40,
 #'   ymin = -38,
 #'   ymax = -20,
-#'   level = 6
+#'   zoom = 6
 #' )
 #'
 #' # tileX and tileY columns in grid$data converted to geographic coordinates
 #' get_tile_coord(
 #'   data = grid$data,
-#'   level = 6
+#'   zoom = 6
 #' )
 #'
-get_tile_coord <- function(data, level) {
+get_tile_coord <- function(data, zoom) {
   if (!any(c("tileX", "tileY") %in% colnames(data))) {
     stop(paste(
       "Please ensure that the dataset contains columns named 'tileX'",
@@ -117,7 +118,7 @@ get_tile_coord <- function(data, level) {
     ptoll <- pixelXY_to_latlong(
       pixelX = data$pixelX[i],
       pixelY = data$pixelY[i],
-      level = level
+      zoom = zoom
     )
 
     data$lat[i] <- ptoll$lat

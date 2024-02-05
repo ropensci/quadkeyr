@@ -34,13 +34,13 @@ numeric strings. This is important to understand how the conversion works.
 
 Each geographic pair of coordinates (latitude/longitude) will belong to 
 a specific pixel referenced by coordinates (`pixelX`, `pixelY`) 
-for each level of detail. In Fig. 1, you can see pixels (0, 0) and (2047, 2047)
-for level of detail 3. The `quadkeyr` function `latlong_to_pixelXY`, converts 
+for each zoom level. In Fig. 1, you can see pixels (0, 0) and (2047, 2047)
+for zoom level 3. The `quadkeyr` function `latlong_to_pixelXY`, converts 
 geographic coordinates (latitude/longitude) in pixel coordinates for each
-level of detail.
+zoom level.
 
 
-```{r pixels, echo = FALSE, out.width= "50%", fig.align='center', fig.cap= "Fig 1. Pixels (0, 0) and (2047, 2047) for a map with level of detail 3. Image extracted from Microsoft's Bing Maps Tile System webpage."}
+```{r pixels, echo = FALSE, out.width= "50%", fig.align='center', fig.cap= "Fig 1. Pixels (0, 0) and (2047, 2047) for a map with zoom level 3. Image extracted from Microsoft's Bing Maps Tile System webpage."}
 knitr::include_graphics('bing_pixel.jpg')
 ```
 
@@ -49,7 +49,7 @@ A tile is comprised of 256x256 pixels. The tile coordinates are visually
 represented in Fig. 2. These coordinates will ultimately be converted 
 into one-dimensional QuadKeys.
 
-For instance, a pixel for level of detail 3 represented by
+For instance, a pixel for zoom level 3 represented by
 the coordinates `pixelX` = 255 and `pixelY` = 12 is part of the tile with 
 coordinates `tileX` = 0 and `tileY` = 0. 
 The pixel with coordinates (0,0) belongs to tile (0,0), and the 
@@ -61,10 +61,10 @@ knitr::include_graphics('bing_tiles.jpg')
 ```
 
 To convert from tile XY coordinates to QuadKeys for a particular
-level of detail, you can use the function `tileXY_to_quadkey`. 
-The digits of the QuadKey number will correspond to the level of detail
-of the map. For example, for the tile (4, 7) of level of detail 3, the
-QuadKey number will be `322`.
+zoom level, you can use the function `tileXY_to_quadkey`. 
+The digits of the QuadKey will correspond to the zoom level
+of the map. For example, for the tile (4, 7) of zoom level 3, the
+QuadKey will be `322`.
 
 This pertains to the conversion from geographic coordinates (latitude/longitude)
 to QuadKeys. However, when converting in the opposite direction, 
@@ -89,7 +89,7 @@ Note:
 ```{r lltp}
 lltp <- latlong_to_pixelXY(lat = -25, 
                            lon = -53, 
-                           level = 4)
+                           zoom = 4)
 lltp
 
 ```
@@ -106,12 +106,12 @@ ptt
 #### 1.3 Convert tile XY coordinates into a QuadKey number
 
 Ththis function returns the QuadKey number as a string. Since we are estimating 
-level 4, the number consists of 4 digits
+zoom level 4, the number consists of 4 digits
 
 ```{r ttq}
 tileXY_to_quadkey(tileX = ptt$tileX,
                   tileY = ptt$tileY,
-                  level = 4)
+                  zoom = 4)
 ```
 
 The function `latlong_to_quadkey` can convert map coordinates to QuadKeys in 
@@ -119,14 +119,14 @@ The function `latlong_to_quadkey` can convert map coordinates to QuadKeys in
 ```{r}
 latlong_to_quadkey(lat = -25,
                    lon = -53,
-                   level = 4)
+                   zoom = 4)
 ```
-This function also work for multiple coordinates
+This function also work for multiple coordinates:
 
 ```{r}
 latlong_to_quadkey(lat = c(-4, -25.33, -25.66),
                    lon = c(-53, -60.33, -70.66),
-                   level = 4)
+                   zoom = 4)
 ```
 
 ### 2. If you have QuadKeys, convert them to map coordinates
@@ -159,7 +159,7 @@ ttp
 ```{r ptll}
 ptll <- pixelXY_to_latlong(pixelX = ttp$pixelX,
                            pixelY = ttp$pixelY,
-                           level = 4)
+                           zoom = 4)
 
 ptll
 ```
@@ -198,7 +198,7 @@ of that tile. The same will happen for `pixelXY_to_latlong`.
 Hence, converting latitude/longitude coordinates into a QuadKey and then back
 to latitude/longitude won't yield identical values, unless the original
 latitude/longitude coordinates correspond to the upper-left pixel of the tile 
-at the same level of detail. You can try this by yourself.
+at the same zoom level. You can try this by yourself.
 
 Consider as initial values the coordinates result of 
 the conversion from QuadKey to latitude/longitude obtained in section 2.3

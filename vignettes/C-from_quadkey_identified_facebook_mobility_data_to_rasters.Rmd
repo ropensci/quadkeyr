@@ -35,12 +35,12 @@ provided by [Facebook Mobility data](https://dataforgood.facebook.com/).
 If you want to convert other QuadKey-identified datasets you can read
 [the previous vignette.]( https://fernandez-lab-wsu.github.io/quadkeyr/articles/B-from_quadkey_identified_data_to_raster.html)
 
-Facebook mobility data for each location and level of detail is stored in
+Facebook mobility data for each location and zoom level is stored in
 a separate `csv` file for each day and time.
 
 ### 1. read all the `csv` files from a folder and format them
 
-All this files are for the same area and level of detail, but dates and times
+All this files are for the same area and zoom level, but dates and times
 change.
 
 `read_fb_mobility_files` produce a warning in case there are days or times missing.
@@ -48,7 +48,7 @@ change.
 ```{r read}
 
 files <- read_fb_mobility_files(path_to_csvs = paste0(system.file("extdata",
-                                                           package = "quadkeyr"), "/"),
+                                                      package = "quadkeyr"), "/"),
                                 colnames = c("lat", "lon", 
                                              "quadkey", "date_time", 
                                              "n_crisis", "percent_change"),
@@ -168,7 +168,7 @@ ggplot() +
   xlab("Longitude")
 ```
 
-Once I have the regular grid of QuadKeys for the bounding box and level of detail,
+Once I have the regular grid of QuadKeys for the bounding box and zoom level,
 I combined the information with the data provided. I can select the variables
 that will be part of the analysis and also create new variables if needed.
 

@@ -9,9 +9,9 @@
 
 A data frame with 134,492 rows and 9 columns:
 \describe{
-\item{lat}{Latitude of QuadKey centroid}
-\item{lon}{Longitude of QuadKey centroid}
-\item{quadkey}{QuadKey number as character}
+\item{lat}{Latitude of the QuadKey centroid}
+\item{lon}{Longitude of the QuadKey centroid}
+\item{quadkey}{QuadKey as character}
 \item{country}{Country name}
 \item{date_time}{Date in format \%Y-\%m-\%d \%H\%M}
 \item{n_crisis}{Variable}

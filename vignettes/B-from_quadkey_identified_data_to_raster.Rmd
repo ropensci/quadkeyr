@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 > for general information about this package
 
 Create a raster from variables reported by QuadKeys for a specified map area
-and level of detail. A detailed explanation of what tile coordinates 
+and zoom level. A detailed explanation of what tile coordinates 
 (`tileX`, `tileY`) and pixel coordinates (`pixelX`, `pixelY`) are can be found 
 in `quadkeyr` vignette [Bing Maps Tile System Functions](https://fernandez-lab-wsu.github.io/quadkeyr/articles/1_bing_map_tile_system_functions.html)
 and in the [official documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system).
@@ -66,9 +66,9 @@ ggplot() +
 
 ```
 
-#### 1.2 Select the level of detail
+#### 1.2 Select the zoom level.
 
-The QuadKey grid can have a level of detail between 1 (less detail) to 23 
+The QuadKey grid can have a zoom level between 1 (less detail) to 23 
 (more detail). 
 
 The function `create_qk_grid` will return three outputs: 
@@ -86,7 +86,7 @@ grid <-  create_qk_grid(
                xmax = -57,
                ymin = -35,
                ymax = -34,
-               level = 12)
+               zoom = 12)
 head(grid$data)
 
 ```
@@ -183,7 +183,7 @@ knitr::include_graphics("qkmap_grid.png")
 
 Let's generate the raster. The `data_provided` dataset consists of QuadKeys 
 linked to a variable value. While this dataset contains QuadKeys within our
-defined study area and detail level, not all grid QuadKeys are present.
+defined study area and zoom level, not all grid QuadKeys are present.
 
 ```{r datap}
 data('data_provided')

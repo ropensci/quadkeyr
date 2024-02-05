@@ -1,7 +1,7 @@
 #' Converts lat/long coordinates to pixel XY coordinates
 #'
 #' @description Converts a point from latitude/longitude WGS-84 coordinates
-#' (in degrees) into pixel XY coordinates at a specified level of detail.
+#' (in degrees) into pixel XY coordinates at a specified zoom level.
 #' For further information, refer to the Microsoft Bing Maps Tile System
 #' documentation.
 #'
@@ -11,7 +11,8 @@
 #'
 #' @param lat Latitude of the point, in degrees.
 #' @param lon Longitude of the point, in degrees.
-#' @param level Level of detail, from 1 (lowest detail) to 23 (highest detail).
+#' @param zoom Zoom or level of detail,
+#' from 1 (lowest detail) to 23 (highest detail).
 #'
 #' @return A list returning pixel X and pixel Y coordinates.
 #' @export
@@ -21,12 +22,12 @@
 #' latlong_to_pixelXY(
 #'   lat = -35,
 #'   lon = -50,
-#'   level = 6
+#'   zoom = 6
 #' )
 #'
-latlong_to_pixelXY <- function(lat, lon, level) {
-  if (level < 0 | level > 23 | (level %% 1) != 0) {
-    stop("The level of detail should be an integer between 1 and 23")
+latlong_to_pixelXY <- function(lat, lon, zoom) {
+  if (zoom < 0 | zoom > 23 | (zoom %% 1) != 0) {
+    stop("The zoom level should be an integer between 1 and 23")
   }
 
   # These values were extracted from Microsoft Bing Maps Tile System
@@ -41,7 +42,7 @@ latlong_to_pixelXY <- function(lat, lon, level) {
 
   y <- 0.5 - log((1 + sinLatitude) / (1 - sinLatitude)) / (4 * pi)
 
-  mapsize <- mapsize(level = level)
+  mapsize <- mapsize(zoom = zoom)
 
   pixelX <- as.integer(clip(
     x * mapsize + 0.5, 0,
@@ -97,7 +98,7 @@ pixelXY_to_tileXY <- function(pixelX, pixelY) {
 #' Converts tile XY coordinates into a quadkey.
 #'
 #' @description Converts tile XY coordinates into a QuadKey at a specified
-#' level of detail.
+#' zoom level.
 #' For further information, refer to the Microsoft Bing Maps Tile System
 #' documentation.
 #'
@@ -107,7 +108,8 @@ pixelXY_to_tileXY <- function(pixelX, pixelY) {
 #'
 #' @param tileX Tile X coordinate.
 #' @param tileY Tile Y coordinate.
-#' @param level Level of detail, from 1 (lowest detail) to 23 (highest detail).
+#' @param zoom Zoom or level of detail, 
+#' from 1 (lowest detail) to 23 (highest detail).
 #'
 #' @return The quadkey number as a string.
 #' @export
@@ -117,30 +119,30 @@ pixelXY_to_tileXY <- function(pixelX, pixelY) {
 #' tileXY_to_quadkey(
 #'   tileX = 23,
 #'   tileY = 38,
-#'   level = 6
+#'   zoom = 6
 #' )
 #'
-tileXY_to_quadkey <- function(tileX, tileY, level) {
+tileXY_to_quadkey <- function(tileX, tileY, zoom) {
 
-  # Give an error if the level of detail isn't between 0 and 23
+  # Give an error if the zoom level isn't between 0 and 23
   # or it is not an integer.
-  if (level < 0 | level > 23 | (level %% 1) != 0) {
-    stop("The level of detail should be an integer between 1 and 23")
+  if (zoom < 0 | zoom > 23 | (zoom %% 1) != 0) {
+    stop("The zoom level should be an integer between 1 and 23")
   }
 
   # Check if tileX and tileY are within the valid range
-  max_tile_value <- (2^level) - 1
+  max_tile_value <- (2^zoom) - 1
   if (tileX < 0 | tileX > max_tile_value | tileY < 0 | tileY > max_tile_value) {
     stop(paste(
       "Invalid tileX or tileY values.",
-      "They should be within the range [0, 2^level - 1]."
+      "They should be within the range [0, 2^zoom - 1]."
     ))
   }
 
-  # get vector with one space as QuadKey's level of detail
-  qk <- character(level)
+  # get vector with one space as QuadKey's zoom level.
+  qk <- character(zoom)
 
-  for (i in level:1) {
+  for (i in zoom:1) {
     digit <- "0"
     mask <- 2^(i - 1)
 
@@ -152,7 +154,7 @@ tileXY_to_quadkey <- function(tileX, tileY, level) {
       digit <- as.character(as.numeric(digit) + 2)
     }
 
-    qk[level - i + 1] <- digit
+    qk[zoom - i + 1] <- digit
   }
 
   return(paste(qk, collapse = ""))
@@ -161,7 +163,7 @@ tileXY_to_quadkey <- function(tileX, tileY, level) {
 #' Convert latitude/longitude coordinates into QuadKeys
 #'
 #' @description Converts a point from latitude/longitude WGS-84 coordinates
-#' (in degrees) into a Quadkey at a specified level of detail.
+#' (in degrees) into a Quadkey at a specified zoom level.
 #' For further information, refer to the Microsoft Bing Maps Tile
 #' System documentation.
 #'
@@ -171,10 +173,10 @@ tileXY_to_quadkey <- function(tileX, tileY, level) {
 #'
 #' @param lat Latitude of the point, in degrees.
 #' @param lon Longitude of the point, in degrees.
-#' @param level Level of detail, from 1 (lowest detail) to 23 (highest detail).
+#' @param zoom Zoom or level of detail, from 1 (lowest detail) to 23 (highest detail).
 #'
-#' @return A dataframe with latitude (lat), longitude (lon), level of detail
-#' (level) and the QuadKey number as a string (quadkey).
+#' @return A dataframe with latitude (lat), longitude (lon), zoom level
+#' (zoom) and the QuadKey as a string (quadkey).
 #' @export
 #'
 #' @examples
@@ -182,21 +184,21 @@ tileXY_to_quadkey <- function(tileX, tileY, level) {
 #' latlong_to_quadkey(
 #'   lat = 35.63051,
 #'   lon = 139.69116,
-#'   level = 20
+#'   zoom = 20
 #' )
-latlong_to_quadkey <- function(lat, lon, level) {
+latlong_to_quadkey <- function(lat, lon, zoom) {
 
-  # Give an error if the level of detail isn't between 0 and 23
+  # Give an error if the zoom level isn't between 0 and 23
   # or it is not an integer.
-  if (level < 0 | level > 23 | (level %% 1) != 0) {
-    stop("The level of detail should be an integer between 1 and 23")
+  if (zoom < 0 | zoom > 23 | (zoom %% 1) != 0) {
+    stop("The zoom level should be an integer between 1 and 23")
   }
 
 
   data <- data.frame(
     lat = lat,
     lon = lon,
-    level = level
+    zoom = zoom
   )
 
 
@@ -204,7 +206,7 @@ latlong_to_quadkey <- function(lat, lon, level) {
     data[i, c("pixelX", "pixelY")] <- latlong_to_pixelXY(
       data$lat[i],
       data$lon[i],
-      data$level[i]
+      data$zoom[i]
     )
 
     data[i, c("tileX", "tileY")] <- pixelXY_to_tileXY(
@@ -214,7 +216,7 @@ latlong_to_quadkey <- function(lat, lon, level) {
 
     data[i, "quadkey"] <- tileXY_to_quadkey(data$tileX[i],
       data$tileY[i],
-      level = data$level[i]
+      zoom = data$zoom[i]
     )
   }
 

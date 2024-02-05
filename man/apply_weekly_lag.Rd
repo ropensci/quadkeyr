@@ -31,7 +31,7 @@ files <- read_fb_mobility_files(path_to_csvs = paste0(system.file("extdata",
                                 colnames = c("lat", "lon", 
                                              "quadkey", "date_time", 
                                              "n_crisis", "percent_change"),
-                                 coltypes = list(
+                                coltypes = list(
                                                 lat = 'd',
                                                 lon = 'd',
                                                 quadkey = 'c',

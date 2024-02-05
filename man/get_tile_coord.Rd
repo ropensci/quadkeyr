@@ -4,12 +4,13 @@
 \alias{get_tile_coord}
 \title{Get lat/long coordinates from the tile XY coordinates.}
 \usage{
-get_tile_coord(data, level)
+get_tile_coord(data, zoom)
 }
 \arguments{
 \item{data}{A dataframe with columns named tileX and tileY}
 
-\item{level}{Level of detail, from 1 (lowest detail) to 23 (highest detail).}
+\item{zoom}{Zoom or Level of detail,
+from 1 (lowest detail) to 23 (highest detail).}
 }
 \value{
 A spatial dataframe (sf) containing the tiles XY coordinates
@@ -27,13 +28,13 @@ grid <- create_qk_grid(
   xmax = -40,
   ymin = -38,
   ymax = -20,
-  level = 6
+  zoom = 6
 )
 
 # tileX and tileY columns in grid$data converted to geographic coordinates
 get_tile_coord(
   data = grid$data,
-  level = 6
+  zoom = 6
 )
 
 }

@@ -5,7 +5,7 @@ grid <- create_qk_grid(
   xmax = -57,
   ymin = -35,
   ymax = -34,
-  level = 12
+  zoom = 12
 )
 
 # QuadKeys - get_qk_coord()
@@ -34,7 +34,7 @@ test_that("Check existence of 'tileX' and 'tileY' columns", {
   df_missing_columns <- data.frame(other_column = c(1, 2, 3))
 
   # Test case where 'tileX' and 'tileY' columns are missing
-  expect_error(get_tile_coord(df_missing_columns, level = 6),
+  expect_error(get_tile_coord(df_missing_columns, zoom = 6),
     regexp = paste(
       "Please ensure that the dataset contains",
       "columns named 'tileX' and 'tileY'"
@@ -42,7 +42,7 @@ test_that("Check existence of 'tileX' and 'tileY' columns", {
   )
 
   # Test case where 'tileX' and 'tileY' columns are present
-  expect_silent(get_tile_coord(grid$data, level = 12))
+  expect_silent(get_tile_coord(grid$data, zoom = 12))
 })
 
 # Both
@@ -60,7 +60,7 @@ test_that("Check output dimensions", {
   )
 
   expect_equal(
-    nrow(get_tile_coord(grid$data, level = 12)),
+    nrow(get_tile_coord(grid$data, zoom = 12)),
     ((grid$num_rows + 1) * (grid$num_cols + 1))
   )
 })

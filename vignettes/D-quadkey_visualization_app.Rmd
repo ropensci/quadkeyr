@@ -54,7 +54,7 @@ knitr::include_graphics("qkmap_grid.png")
 #### Performance
 
 Note that for higher levels of detail, it is preferable to use
-smaller areas  (< 2000 QuadKeys) to prevent long processing times.
+smaller areas (< 2000 QuadKeys) to prevent long processing times.
 
 
 

@@ -22,7 +22,7 @@
 #'   xmax = -57,
 #'   ymin = -35,
 #'   ymax = -34,
-#'   level = 12
+#'   zoom = 12
 #' )
 #'
 #' grid_coords <- get_qk_coord(data = grid$data)

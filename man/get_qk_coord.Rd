@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_coords.R
 \name{get_qk_coord}
 \alias{get_qk_coord}
-\title{Get lat/long coordinates from the QuadKey number}
+\title{Get lat/long coordinates from the QuadKey}
 \usage{
 get_qk_coord(data)
 }
@@ -24,7 +24,7 @@ grid <- create_qk_grid(
   xmax = -40,
   ymin = -38,
   ymax = -20,
-  level = 6
+  zoom = 6
 )
 
 # quadkey column in grid$data converted to geographic coordinates

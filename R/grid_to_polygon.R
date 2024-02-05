@@ -24,7 +24,7 @@
 #'   xmax = -57,
 #'   ymin = -35,
 #'   ymax = -34,
-#'   level = 11
+#'   zoom = 11
 #' )
 #'
 #' grid_coords <- get_qk_coord(data = grid$data)
@@ -44,7 +44,7 @@ complete_grid_for_polygons <- function(data) {
 
   textX <- max(data$tileX) + 1
   textY <- max(data$tileY) + 1
-  level <- unique(nchar(data$quadkey))
+  zoom <- unique(nchar(data$quadkey))
 
   extragrid <- rbind(
     data.frame(
@@ -101,7 +101,7 @@ complete_grid_for_polygons <- function(data) {
 #'   xmax = -57,
 #'   ymin = -35,
 #'   ymax = -34,
-#'   level = 11
+#'   zoom = 11
 #' )
 #'
 #' grid_coords <- get_qk_coord(data = grid$data)
@@ -137,7 +137,7 @@ grid_to_polygon <- function(data) {
   extragrid <- complete_grid_for_polygons(data)
 
   extragrid <- get_tile_coord(extragrid,
-    level = unique(nchar(data$quadkey))
+    zoom <- unique(nchar(data$quadkey))
   )
 
   # combines the new data with the extended grid of points

@@ -11,7 +11,7 @@ quadkey_to_tileXY(qk)
 }
 \value{
 A list returning the tile X, tile Y coordinates and
-the level of detail.
+the zoom level.
 }
 \description{
 For further information, refer to the

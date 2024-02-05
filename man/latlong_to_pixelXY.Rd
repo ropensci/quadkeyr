@@ -4,21 +4,22 @@
 \alias{latlong_to_pixelXY}
 \title{Converts lat/long coordinates to pixel XY coordinates}
 \usage{
-latlong_to_pixelXY(lat, lon, level)
+latlong_to_pixelXY(lat, lon, zoom)
 }
 \arguments{
 \item{lat}{Latitude of the point, in degrees.}
 
 \item{lon}{Longitude of the point, in degrees.}
 
-\item{level}{Level of detail, from 1 (lowest detail) to 23 (highest detail).}
+\item{zoom}{Zoom or level of detail,
+from 1 (lowest detail) to 23 (highest detail).}
 }
 \value{
 A list returning pixel X and pixel Y coordinates.
 }
 \description{
 Converts a point from latitude/longitude WGS-84 coordinates
-(in degrees) into pixel XY coordinates at a specified level of detail.
+(in degrees) into pixel XY coordinates at a specified zoom level.
 For further information, refer to the Microsoft Bing Maps Tile System
 documentation.
 }
@@ -27,7 +28,7 @@ documentation.
 latlong_to_pixelXY(
   lat = -35,
   lon = -50,
-  level = 6
+  zoom = 6
 )
 
 }

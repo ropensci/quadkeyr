@@ -23,19 +23,21 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' 
-#' files <- read_fb_mobility_files(path_to_csvs = "../geocovid/data/rasters/city/",
-#'  colnames = c("lat", "lon", 
-#'             "quadkey", "date_time", 
-#'             "n_crisis", "percent_change"),
-#'. coltypes = list(
-#'  lat = 'd',
-#'  lon = 'd',
-#'  quadkey = 'c',
-#'  date_time = 'T',
-#'  n_crisis = 'c',
-#'  percent_change = 'c')) 
+#' 
+#' 
+#' files <- read_fb_mobility_files(path_to_csvs = paste0(system.file("extdata",
+#'                                                 package = "quadkeyr"), "/"),
+#'                                 colnames = c("lat", "lon", 
+#'                                              "quadkey", "date_time", 
+#'                                              "n_crisis", "percent_change"),
+#'                                 coltypes = list(
+#'                                              lat = 'd',
+#'                                              lon = 'd',
+#'                                              quadkey = 'c',
+#'                                              date_time = 'T',
+#'                                              n_crisis = 'c',
+#'                                              percent_change = 'c')) 
 #'
 #' # Extract unique QuadKey values
 #' quadkeys <-  unique(files$quadkey)
@@ -47,12 +49,13 @@
 #' regular_grid <- regular_qk_grid(qtll)
 #' 
 #' # Create polygons
-#' polygrid  <-  grid_to_polygon(grid_coords)
+#' polygrid  <-  grid_to_polygon(regular_grid$data)
 #' 
 #' # Keep only the QuadKeys reported
 #' polyvar <- files |>
 #'            dplyr::inner_join(polygrid, by = 'quadkey' )
 #'
+#'\dontrun{
 #' # Generate the raster files                       
 #' polygon_to_raster(data = polyvar,
 #'                   nx = grid$num_cols + 1,
@@ -61,8 +64,7 @@
 #'                   variable = 'percent_change',
 #'                   filename = 'cityA',
 #'                   path = "data/")
-#' }
-#'
+#'}
 polygon_to_raster <- function(data,
                               nx, ny,
                               template,

@@ -5,12 +5,12 @@ test_that("Does the error message appears when inputs are incorrect?", {
     xmax = -50,
     ymin = -34,
     ymax = -38,
-    level = 6
+    zoom = 6
   ),
   regexp = paste(
     "The selected inputs fail to generate a grid due to",
-    "the limited area for this level of detail.",
-    "Consider adjusting the level of detail or modifying",
+    "the limited area for this zoom level.",
+    "Consider adjusting the zoom level or modifying",
     "the xmin, xmax, ymin, or ymax values."
   )
   )
@@ -21,12 +21,12 @@ test_that("Does the error message appears when inputs are incorrect?", {
     xmax = -57,
     ymin = -34,
     ymax = -34,
-    level = 6
+    zoom = 6
   ),
   regexp = paste(
     "The selected inputs fail to generate a grid due to",
-    "the limited area for this level of detail.",
-    "Consider adjusting the level of detail or modifying",
+    "the limited area for this zoom level.",
+    "Consider adjusting the zoom level or modifying",
     "the xmin, xmax, ymin, or ymax values."
   )
   )
@@ -38,86 +38,86 @@ test_that("Does the error message appears when inputs are incorrect?", {
     xmax = 0,
     ymin = 0,
     ymax = 0,
-    level = 6
+    zoom = 6
   ),
   regexp = paste(
     "The selected inputs fail to generate a grid due to",
-    "the limited area for this level of detail.",
-    "Consider adjusting the level of detail or modifying",
+    "the limited area for this zoom level.",
+    "Consider adjusting the zoom level or modifying",
     "the xmin, xmax, ymin, or ymax values."
   )
   )
 
 
-  # Test case where the level of detail should be higher
+  # Test case where the zoom level should be higher
   expect_error(create_qk_grid(
     xmin = -59,
     xmax = -58,
     ymin = -34,
     ymax = -35,
-    level = 1
+    zoom = 1
   ),
   regexp = paste(
     "The selected inputs fail to generate a grid due to",
-    "the limited area for this level of detail.",
-    "Consider adjusting the level of detail or modifying",
+    "the limited area for this zoom level.",
+    "Consider adjusting the zoom level or modifying",
     "the xmin, xmax, ymin, or ymax values."
   )
   )
 
-  # Test a case where the area is small but the level of detail is appropriate
+  # Test a case where the area is small but the zoom level is appropriate
   expect_silent(create_qk_grid(
     xmin = -59,
     xmax = -58,
     ymin = -34,
     ymax = -35,
-    level = 12
+    zoom = 12
   ))
 })
 
 
-# Check the level of detail
+# Check the zoom level
 
-test_that("Check level detail - Negative level", {
+test_that("Check zoom level - Negative zoom", {
   expect_error(create_qk_grid(
     xmin = -59,
     xmax = -58,
     ymin = -34,
     ymax = -35,
-    level = -12
+    zoom = -12
   ),
   regexp = paste(
-    "The level of detail should be an integer",
+    "The zoom level should be an integer",
     "between 1 and 23"
   )
   )
 })
 
-test_that("Check level detail - Greater than 23", {
+test_that("Check zoom level - Greater than 23", {
   expect_error(create_qk_grid(
     xmin = -59,
     xmax = -58,
     ymin = -34,
     ymax = -35,
-    level = 24
+    zoom = 24
   ),
   regexp = paste(
-    "The level of detail should be an integer",
+    "The zoom level should be an integer",
     "between 1 and 23"
   )
   )
 })
 
-test_that("Check level detail - Use of decimals", {
+test_that("Check zoom level - Use of decimals", {
   expect_error(create_qk_grid(
     xmin = -59,
     xmax = -58,
     ymin = -34,
     ymax = -35,
-    level = 12.3
+    zoom = 12.3
   ),
   regexp = paste(
-    "The level of detail should be an integer",
+    "The zoom level should be an integer",
     "between 1 and 23"
   )
   )
@@ -133,7 +133,7 @@ test_that("Check coordinate validation", {
     xmax = -40,
     ymin = -86,
     ymax = -20,
-    level = 6
+    zoom = 6
   ),
   regexp = paste(
     "At least one of the provided coordinates",
@@ -149,7 +149,7 @@ test_that("Check coordinate validation", {
     xmax = -40,
     ymin = -38,
     ymax = 86,
-    level = 6
+    zoom = 6
   ),
   regexp = paste(
     "At least one of the provided coordinates",
@@ -165,7 +165,7 @@ test_that("Check coordinate validation", {
     xmax = -40,
     ymin = -38,
     ymax = -20,
-    level = 6
+    zoom = 6
   ),
   regexp = paste(
     "At least one of the provided coordinates",
@@ -181,7 +181,7 @@ test_that("Check coordinate validation", {
     xmax = 181,
     ymin = -38,
     ymax = -20,
-    level = 6
+    zoom = 6
   ),
   regexp = paste(
     "At least one of the provided coordinates",
@@ -197,6 +197,6 @@ test_that("Check coordinate validation", {
     xmax = -40,
     ymin = -38,
     ymax = -20,
-    level = 6
+    zoom = 6
   ))
 })

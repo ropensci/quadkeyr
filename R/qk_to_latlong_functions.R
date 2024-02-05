@@ -10,7 +10,7 @@
 #' @param qk The QuadKey as a string.
 #'
 #' @return A list returning the tile X, tile Y coordinates and
-#' the level of detail.
+#' the zoom level.
 #' @export
 #'
 #' @examples
@@ -24,7 +24,7 @@ quadkey_to_tileXY <- function(qk) {
     return(list(
       tileX = 0,
       tileY = 0,
-      level = 0
+      zoom = 0
     ))
   }
 
@@ -41,7 +41,7 @@ quadkey_to_tileXY <- function(qk) {
   return(list(
     tileX = xt,
     tileY = yt,
-    level = i
+    zoom = i
   ))
 }
 
@@ -88,8 +88,8 @@ tileXY_to_pixelXY <- function(tileX, tileY) {
 
 #' Converts pixel XY coordinatess into lat/long coordinates.
 #'
-#' @description Converts a pixel from pixel XY coordinates at a specified level
-#' of detail into latitude/longitude WGS-84 coordinates (in degrees).
+#' @description Converts a pixel from pixel XY coordinates at a specified zoom 
+#' level into latitude/longitude WGS-84 coordinates (in degrees).
 #' For further information, refer to the
 #' Microsoft Bing Maps Tile System documentation.
 #'
@@ -99,7 +99,8 @@ tileXY_to_pixelXY <- function(tileX, tileY) {
 #'
 #' @param pixelX X coordinate of the point, in pixels.
 #' @param pixelY Y coordinates of the point, in pixels.
-#' @param level Level of detail, from 1 (lowest detail) to 23 (highest detail).
+#' @param zoom Zoom or level of detail, 
+#' from 1 (lowest detail) to 23 (highest detail).
 #'
 #' @return A list with the longitude and latitude.
 #' @export
@@ -109,24 +110,24 @@ tileXY_to_pixelXY <- function(tileX, tileY) {
 #' pixelXY_to_latlong(
 #'   pixelX = 768,
 #'   pixelY = 1280,
-#'   level = 3
+#'   zoom = 3
 #' )
 #'
-pixelXY_to_latlong <- function(pixelX, pixelY, level) {
-  if (level < 0 | level > 23 | (level %% 1) != 0) {
-    stop("The level of detail should be an integer between 1 and 23")
+pixelXY_to_latlong <- function(pixelX, pixelY, zoom) {
+  if (zoom < 0 | zoom > 23 | (zoom %% 1) != 0) {
+    stop("The zoom level should be an integer between 1 and 23")
   }
 
   # Check if pixelX and pixelY are within the valid range
-  max_pixel_value <- mapsize(level) - 1
+  max_pixel_value <- mapsize(zoom) - 1
   if (pixelX < 0 | pixelX > max_pixel_value | pixelY < 0 | pixelY > max_pixel_value) {
     stop(paste(
       "Invalid pixelX or pixelY values.",
-      "They should be within the range [0, (256*2^level) - 1]."
+      "They should be within the range [0, (256*2^zoom) - 1]."
     ))
   }
 
-  mapsize <- mapsize(level)
+  mapsize <- mapsize(zoom)
 
   x <- (clip(
     pixelX, 0,
@@ -184,7 +185,7 @@ quadkey_to_latlong <- function(quadkeys) {
     stop("All the QuadKeys should have the same number of digits")
   }
 
-  level <- quadkey_to_tileXY(quadkeys[1])$level
+  zoom <- quadkey_to_tileXY(quadkeys[1])$zoom
 
   datacoords <- c()
   data <- data.frame(quadkey = NA)
@@ -192,7 +193,7 @@ quadkey_to_latlong <- function(quadkeys) {
   for (i in seq_along(quadkeys)) {
     data[i, "quadkey"] <- quadkeys[i]
 
-    data[i, c("tileX", "tileY", "level")] <- quadkey_to_tileXY(quadkeys[i])
+    data[i, c("tileX", "tileY", "zoom")] <- quadkey_to_tileXY(quadkeys[i])
 
     data[i, c("pixelX", "pixelY")] <- tileXY_to_pixelXY(
       data$tileX[i],
@@ -201,7 +202,7 @@ quadkey_to_latlong <- function(quadkeys) {
 
     data[i, c("lat", "lon")] <- pixelXY_to_latlong(data$pixelX[i],
       data$pixelY[i],
-      level = unique(data$level)
+      zoom  <-  unique(data$zoom)
     )
 
     datacoords <- rbind(data[i, ], datacoords)

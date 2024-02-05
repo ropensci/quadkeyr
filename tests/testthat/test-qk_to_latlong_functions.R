@@ -3,11 +3,11 @@
 test_that("quadkey_to_tileXY is giving correct results", {
   expect_equal(quadkey_to_tileXY("213")$tileX, 3)
   expect_equal(quadkey_to_tileXY("213")$tileY, 5)
-  expect_equal(quadkey_to_tileXY("213")$level, 3)
+  expect_equal(quadkey_to_tileXY("213")$zoom, 3)
   
   expect_equal(quadkey_to_tileXY('0313102310')$tileX, 486)
   expect_equal(quadkey_to_tileXY('0313102310')$tileY, 332)
-  expect_equal(quadkey_to_tileXY('0313102310')$level, 10)
+  expect_equal(quadkey_to_tileXY('0313102310')$zoom, 10)
 })
 
 
@@ -31,14 +31,14 @@ test_that("pixelXY_to_latlong is giving correct results", {
   expect_equal(round(pixelXY_to_latlong(
     pixelX = 768,
     pixelY = 1280,
-    level = 3
+    zoom = 3
   )$lat, digits = 2), -40.98)
   expect_equal(round(pixelXY_to_latlong(
     pixelX = 768,
     pixelY = 1280,
-    level = 3
+    zoom = 3
   )$lon, digits = 2), -45)
-  # Test with valid level and pixel values
+  # Test with valid zoom and pixel values
   result_valid <- pixelXY_to_latlong(100, 150, 5)
   expect_is(result_valid, "list")
   expect_length(result_valid, 2)
@@ -46,40 +46,40 @@ test_that("pixelXY_to_latlong is giving correct results", {
 
 # Check that errors appear in the correct cases - pixelXY_to_latlong
 
-test_that("Check level detail - Negative level", {
+test_that("Check zoom level - Negative value", {
   expect_error(pixelXY_to_latlong(
     pixelX = 768,
     pixelY = 1280,
-    level = -3
+    zoom = -3
   ),
   regexp = paste(
-    "The level of detail should be",
+    "The zoom level should be",
     "an integer between 1 and 23"
   )
   )
 })
 
-test_that("Check level detail - Greater than 23", {
+test_that("Check zoom detail - Greater than 23", {
   expect_error(pixelXY_to_latlong(
     pixelX = 768,
     pixelY = 1280,
-    level = 44
+    zoom = 44
   ),
   regexp = paste(
-    "The level of detail should be",
+    "The zoom level should be",
     "an integer between 1 and 23"
   )
   )
 })
 
-test_that("Check level detail - Use of decimals", {
+test_that("Check zoom level - Use of decimals", {
   expect_error(pixelXY_to_latlong(
     pixelX = 768,
     pixelY = 1280,
-    level = 4.7
+    zoom = 4.7
   ),
   regexp = paste(
-    "The level of detail should be",
+    "The zoom level should be",
     "an integer between 1 and 23"
   )
   )

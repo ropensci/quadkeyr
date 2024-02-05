@@ -22,8 +22,8 @@
 regular_qk_grid <- function(data) {
   bbox <- sf::st_bbox(data) 
 
-  # I assume that the all the QuadKeys correspond to the same level of detail.
-  qk_level <- nchar(data$quadkey[1])
+  # I assume that the all the QuadKeys correspond to the same zoom level.
+  qk_zoom <- nchar(data$quadkey[1])
 
   # Create the complete grid
   grid <- create_qk_grid(
@@ -31,7 +31,7 @@ regular_qk_grid <- function(data) {
     xmax = bbox$xmax[[1]],
     ymin = bbox$ymin[[1]],
     ymax = bbox$ymax[[1]],
-    level = qk_level
+    zoom = qk_zoom
   )
 
 

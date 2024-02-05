@@ -26,9 +26,10 @@ only in location, day, and time. As a result, we can uniformly apply
 specific formatting to columns across these files."
 }
 \examples{
-\dontrun{
+
 read_fb_mobility_files(
-  path_to_csvs = "data/",
+  path_to_csvs = paste0(system.file("extdata",
+  package = "quadkeyr"), "/"),
   colnames = c(
     "lat", "lon",
     "quadkey", "date_time",
@@ -43,7 +44,6 @@ read_fb_mobility_files(
     percent_change = "c"
   )
 )
-}
 
 }
 \seealso{

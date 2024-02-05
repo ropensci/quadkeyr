@@ -4,21 +4,22 @@
 \alias{tileXY_to_quadkey}
 \title{Converts tile XY coordinates into a quadkey.}
 \usage{
-tileXY_to_quadkey(tileX, tileY, level)
+tileXY_to_quadkey(tileX, tileY, zoom)
 }
 \arguments{
 \item{tileX}{Tile X coordinate.}
 
 \item{tileY}{Tile Y coordinate.}
 
-\item{level}{Level of detail, from 1 (lowest detail) to 23 (highest detail).}
+\item{zoom}{Zoom or level of detail,
+from 1 (lowest detail) to 23 (highest detail).}
 }
 \value{
 The quadkey number as a string.
 }
 \description{
 Converts tile XY coordinates into a QuadKey at a specified
-level of detail.
+zoom level.
 For further information, refer to the Microsoft Bing Maps Tile System
 documentation.
 }
@@ -27,7 +28,7 @@ documentation.
 tileXY_to_quadkey(
   tileX = 23,
   tileY = 38,
-  level = 6
+  zoom = 6
 )
 
 }
