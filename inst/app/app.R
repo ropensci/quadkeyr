@@ -12,14 +12,14 @@ qkmap_app <- function(...){
                      bslib::layout_sidebar(class = 'p-0',
                                            sidebar = bslib::sidebar(width = 300,
                                                                     shiny::textInput('qk',
-                                                                                     'Visualize a specific QuadKey',
+                                                                                     'Visualising a QuadKey',
                                                                                      placeholder = "complete and click search"),
                                                                     shiny::actionButton('search', 'Search'),
                                                                     shiny::hr(),
                                                                     DT::DTOutput('qkvalues')),
                                            leaflet::leafletOutput('mapqk'))
     ),
-    bslib::nav_panel(title = 'Grid',
+    bslib::nav_panel(title = 'Creating a QuadKey grid',
                      bslib::layout_sidebar(class = 'p-0',
                                            sidebar = bslib::sidebar(
                                              shiny::p(paste("Write the bounding box",

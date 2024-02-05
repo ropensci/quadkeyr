@@ -96,10 +96,9 @@ read_fb_mobility_files <- function(path_to_csvs,
 #' @seealso \code{\link{read_fb_mobility_files}}
 #'
 #' @examples
-#' \dontrun{
-#' fb_mobility_file <- read.csv("cityA_2020-04-26_0.csv")
-#' format_fb_data(data = fb_mobility_file)
-#' }
+#' 
+#' data(result_read_fb_mobility_data)
+#' format_fb_data(data = result_read_fb_mobility_data)
 format_fb_data <- function(data) {
 
   # remove scientific notation
@@ -123,7 +122,7 @@ format_fb_data <- function(data) {
       ~ ifelse(. == "\\N", NA, .)
     )) |>
     dplyr::mutate(dplyr::across(
-      -c("date_time", "day", "quadkey"),
+      -c("date_time", "day", "quadkey"), # tidyselect
       as.numeric
     ))
 
