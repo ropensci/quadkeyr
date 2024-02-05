@@ -12,7 +12,7 @@ qkmap_app <- function(...){
                      bslib::layout_sidebar(class = 'p-0',
                                            sidebar = bslib::sidebar(width = 300,
                                                                     shiny::textInput('qk',
-                                                                                     'Visualize the upper-left coordinate of the QuadKey',
+                                                                                     'Visualize a specific QuadKey',
                                                                                      placeholder = "complete and click search"),
                                                                     shiny::actionButton('search', 'Search'),
                                                                     shiny::hr(),
@@ -22,8 +22,8 @@ qkmap_app <- function(...){
     bslib::nav_panel(title = 'Grid',
                      bslib::layout_sidebar(class = 'p-0',
                                            sidebar = bslib::sidebar(
-                                             shiny::p("Write the coordinates in decimal degrees"),
-                                             
+                                             shiny::p(paste("Write the bounding box",
+                                                            "coordinates in decimal degrees")),
                                              bslib::layout_columns(
                                                shiny::textInput('xmin', 'xmin'),
                                                shiny::textInput('ymin', 'ymin')
@@ -53,13 +53,13 @@ qkmap_app <- function(...){
   server <- function(input, output, session){
     
     # TAB 1: QuadKey
+    # Get the QuadKey Coorinates
     qk_results <-  shiny::eventReactive(input$search,
                                         ignoreNULL = FALSE,{
                                           shiny::validate(
                                             shiny::need(input$qk,
                                                         "Please, write a QuadKey number and press 'Search'")
                                           )
-                                          
                                           tile <- quadkeyr::quadkey_to_tileXY(as.character(input$qk))
                                           
                                           pixel <- quadkeyr::tileXY_to_pixelXY(tileX = tile$tileX,
@@ -77,7 +77,7 @@ qkmap_app <- function(...){
                                                       lat = coords$lat,
                                                       lon = coords$lon))
                                         })
-    
+    # Data table with QuadKey Info
     output$qkvalues <- DT::renderDT({
       
       dataqk <- t(data.frame(c('TileX',
@@ -104,20 +104,40 @@ qkmap_app <- function(...){
       
     })
     
+    qk_polygon <- shiny::eventReactive(input$search,
+                                       ignoreNULL = FALSE,{
+                        shiny::validate(
+        shiny::need(input$qk,
+                    "Please, write a QuadKey number and press 'Search'")
+      )
+                       quadkey_to_polygon(as.character(input$qk))                  
+                       })
+    
     # Quadkey location map
     output$mapqk <- leaflet::renderLeaflet({
-      
+      # get polygon bounding box
+      bbx <-  sf::st_bbox(qk_polygon())
+      # Map tab 1, QuadKey polygon and upper-left corner coordinate
       leaflet::leaflet() |>
         leaflet::addTiles() |>
+        leaflet::addMeasure(primaryLengthUnit="kilometers",
+                            secondaryLengthUnit="kilometers") |> 
+        leaflet::addPolygons(data = qk_polygon(),
+                             group = 'polygon',
+                             layerId = ~quadkey, # https://rstudio.github.io/leaflet/showhide.html
+                             color = "red",
+                             fillColor = NA,
+                             label =  ~as.character(input$qk)) |> 
         leaflet::addMarkers(data = qk_results(),
                             lat = ~lat,
                             lng = ~lon,
-                            popup = ~paste(qk_results()$lat, 
+                             ~paste(qk_results()$lat, 
                                            qk_results()$lon),
                             label =  ~as.character(input$qk)) |>
-        leaflet::setView(zoom = 6,
-                         lat = qk_results()$lat,
-                         lng = qk_results()$lon)
+        leaflet::fitBounds(lng1 = bbx$xmin[[1]],
+                           lat1 = bbx$ymin[[1]],
+                           lng2 = bbx$xmax[[1]],
+                           lat2 = bbx$ymax[[1]])
     })
     
     
@@ -159,7 +179,7 @@ qkmap_app <- function(...){
           type = "message"
         )}
 
-      grid_coords <- quadkeyr::extract_qk_coord(data = grid_selected())
+      grid_coords <- quadkeyr::get_qk_coord(data = grid_selected())
       polygrid <-  quadkeyr::grid_to_polygon(grid_coords)
       polygrid
     })
@@ -171,6 +191,8 @@ qkmap_app <- function(...){
       shiny::req(polygrid())
       
       leaflet::leaflet() |>
+        leaflet::addMeasure(primaryLengthUnit="kilometers",
+                            secondaryLengthUnit="kilometers") |> 
         leaflet::addTiles() |>
         leaflet::addPolygons(data = polygrid(),
                              color = 'red',
