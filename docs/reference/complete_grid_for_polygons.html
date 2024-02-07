@@ -34,9 +34,9 @@ This function is called internally by grid_to_polygon."><meta property="og:image
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/A-bing_map_tile_system_functions.html">Bing Maps Tile System functions</a>
-    <a class="dropdown-item" href="../articles/B-from_quadkey_data_to_raster.html">Converting QuadKey's Data into Raster Images</a>
-    <a class="dropdown-item" href="../articles/C-from_facebook_quadkey_data_to_raster.html">Converting Facebook QuadKey's Data into Raster Images</a>
+    <a class="dropdown-item" href="../articles/quadkey_to_sf_conversion.html">From QuadKey to Simple Features data.frame and other conversions</a>
+    <a class="dropdown-item" href="../articles/B-from_quadkey_identified_data_to_raster.html">Generating a Raster Image from Quadkey-Identified Data</a>
+    <a class="dropdown-item" href="../articles/C-from_quadkey_identified_facebook_mobility_data_to_rasters.html">Converting Facebook Mobility Datasets Identified by Quadkeys into Raster Images</a>
     <a class="dropdown-item" href="../articles/D-quadkey_visualization_app.html">QuadKey Visualization App</a>
   </div>
 </li>
@@ -46,7 +46,13 @@ This function is called internally by grid_to_polygon."><meta property="og:image
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
-      <ul class="navbar-nav"></ul></div>
+      <ul class="navbar-nav"><li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/Fernandez-Lab-WSU/quadkeyr/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul></div>
 
     
   </div>
@@ -54,7 +60,7 @@ This function is called internally by grid_to_polygon."><meta property="og:image
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Prepares the grid of QuadKeys for the conversion to square polygons</h1>
-      
+      <small class="dont-index">Source: <a href="https://github.com/Fernandez-Lab-WSU/quadkeyr/blob/HEAD/R/grid_to_polygon.R" class="external-link"><code>R/grid_to_polygon.R</code></a></small>
       <div class="d-none name"><code>complete_grid_for_polygons.Rd</code></div>
     </div>
 
@@ -92,26 +98,20 @@ This function is called internally by grid_to_polygon.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">grid</span>  <span class="op">&lt;-</span>  <span class="fu"><a href="create_qk_grid.html">create_qk_grid</a></span><span class="op">(</span>xmin <span class="op">=</span> <span class="op">-</span><span class="fl">59</span>,</span></span>
-<span class="r-in"><span>                      xmax <span class="op">=</span> <span class="op">-</span><span class="fl">57</span>,</span></span>
-<span class="r-in"><span>                      ymin <span class="op">=</span> <span class="op">-</span><span class="fl">35</span>,</span></span>
-<span class="r-in"><span>                      ymax <span class="op">=</span> <span class="op">-</span><span class="fl">34</span>,</span></span>
-<span class="r-in"><span>                      level <span class="op">=</span> <span class="fl">11</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">grid</span> <span class="op">&lt;-</span> <span class="fu"><a href="create_qk_grid.html">create_qk_grid</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  xmin <span class="op">=</span> <span class="op">-</span><span class="fl">59</span>,</span></span>
+<span class="r-in"><span>  xmax <span class="op">=</span> <span class="op">-</span><span class="fl">57</span>,</span></span>
+<span class="r-in"><span>  ymin <span class="op">=</span> <span class="op">-</span><span class="fl">35</span>,</span></span>
+<span class="r-in"><span>  ymax <span class="op">=</span> <span class="op">-</span><span class="fl">34</span>,</span></span>
+<span class="r-in"><span>  zoom <span class="op">=</span> <span class="fl">11</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">grid_coords</span> <span class="op">&lt;-</span> <span class="fu"><a href="extract_qk_coord.html">extract_qk_coord</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">grid</span><span class="op">$</span><span class="va">data</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Unknown or uninitialised column: `qk_tileX`.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Unknown or uninitialised column: `qk_tileY`.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Unknown or uninitialised column: `tl_pxx`.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Unknown or uninitialised column: `tl_pxy`.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Unknown or uninitialised column: `pxy_lat`.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Unknown or uninitialised column: `pxy_lon`.</span>
+<span class="r-in"><span><span class="va">grid_coords</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_qk_coord.html">get_qk_coord</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">grid</span><span class="op">$</span><span class="va">data</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># You can use grid_to_polygon</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">extragrid</span> <span class="op">&lt;-</span> <span class="fu">complete_grid_for_polygons</span><span class="op">(</span><span class="va">grid_coords</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

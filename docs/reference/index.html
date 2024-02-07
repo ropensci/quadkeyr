@@ -24,9 +24,9 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/A-bing_map_tile_system_functions.html">Bing Maps Tile System functions</a>
-    <a class="dropdown-item" href="../articles/B-from_quadkey_data_to_raster.html">Converting QuadKey's Data into Raster Images</a>
-    <a class="dropdown-item" href="../articles/C-from_facebook_quadkey_data_to_raster.html">Converting Facebook QuadKey's Data into Raster Images</a>
+    <a class="dropdown-item" href="../articles/quadkey_to_sf_conversion.html">From QuadKey to Simple Features data.frame and other conversions</a>
+    <a class="dropdown-item" href="../articles/B-from_quadkey_identified_data_to_raster.html">Generating a Raster Image from Quadkey-Identified Data</a>
+    <a class="dropdown-item" href="../articles/C-from_quadkey_identified_facebook_mobility_data_to_rasters.html">Converting Facebook Mobility Datasets Identified by Quadkeys into Raster Images</a>
     <a class="dropdown-item" href="../articles/D-quadkey_visualization_app.html">QuadKey Visualization App</a>
   </div>
 </li>
@@ -36,7 +36,13 @@
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
-      <ul class="navbar-nav"></ul></div>
+      <ul class="navbar-nav"><li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/Fernandez-Lab-WSU/quadkeyr/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul></div>
 
     
   </div>
@@ -64,11 +70,6 @@
         <dd>Apply a 7 day lag to the variable n_crisis</dd>
       </dl><dl><dt>
           
-          <code><a href="clip.html">clip()</a></code> 
-        </dt>
-        <dd>Clips a number to the specified minimum and maximum values.</dd>
-      </dl><dl><dt>
-          
           <code><a href="complete_grid_for_polygons.html">complete_grid_for_polygons()</a></code> 
         </dt>
         <dd>Prepares the grid of QuadKeys for the conversion to square polygons</dd>
@@ -76,10 +77,10 @@
           
           <code><a href="create_qk_grid.html">create_qk_grid()</a></code> 
         </dt>
-        <dd>Create grid of QuadKeys for a particular level of detail.</dd>
+        <dd>Create grid of QuadKeys for a particular zoom or level of detail.</dd>
       </dl><dl><dt>
           
-          <code><a href="create_raster.html">create_raster()</a></code> 
+          <code><a href="create_stars_raster.html">create_stars_raster()</a></code> 
         </dt>
         <dd>Create a stars raster</dd>
       </dl><dl><dt>
@@ -89,19 +90,19 @@
         <dd>data_provided: fake dataset</dd>
       </dl><dl><dt>
           
-          <code><a href="extract_qk_coord.html">extract_qk_coord()</a></code> 
-        </dt>
-        <dd>Extract lat/long coordinates from the QuadKey number</dd>
-      </dl><dl><dt>
-          
-          <code><a href="extract_tile_coord.html">extract_tile_coord()</a></code> 
-        </dt>
-        <dd>Extract lat/long coordinates from the tile XY coordinates.</dd>
-      </dl><dl><dt>
-          
           <code><a href="format_fb_data.html">format_fb_data()</a></code> 
         </dt>
         <dd>Format the data</dd>
+      </dl><dl><dt>
+          
+          <code><a href="get_qk_coord.html">get_qk_coord()</a></code> 
+        </dt>
+        <dd>Get lat/long coordinates from the QuadKey</dd>
+      </dl><dl><dt>
+          
+          <code><a href="get_tile_coord.html">get_tile_coord()</a></code> 
+        </dt>
+        <dd>Get lat/long coordinates from the tile XY coordinates.</dd>
       </dl><dl><dt>
           
           <code><a href="grid_to_polygon.html">grid_to_polygon()</a></code> 
@@ -111,7 +112,7 @@
           
           <code><a href="ground_res.html">ground_res()</a></code> 
         </dt>
-        <dd>Ground resolution at a specified latitude and level of detail</dd>
+        <dd>Ground resolution at a specified latitude and zoom level</dd>
       </dl><dl><dt>
           
           <code><a href="latlong_to_pixelXY.html">latlong_to_pixelXY()</a></code> 
@@ -164,6 +165,11 @@
         <dd>Convert a string of Quadkey numbers to lat/long coordinates</dd>
       </dl><dl><dt>
           
+          <code><a href="quadkey_to_polygon.html">quadkey_to_polygon()</a></code> 
+        </dt>
+        <dd>Convert a QuadKey into a square polygon</dd>
+      </dl><dl><dt>
+          
           <code><a href="quadkey_to_tileXY.html">quadkey_to_tileXY()</a></code> 
         </dt>
         <dd>Converts a QuadKey into tile XY coordinates.</dd>
@@ -179,9 +185,9 @@
         <dd>Converts a irregular QuadKey grid into a regular grid</dd>
       </dl><dl><dt>
           
-          <code><a href="result_read_all_files.html">result_read_all_files</a></code> 
+          <code><a href="result_read_fb_mobility_data.html">result_read_fb_mobility_data</a></code> 
         </dt>
-        <dd>result_read_all_files: Fake dataset</dd>
+        <dd>result_read_fb_mobility_data: Fake dataset</dd>
       </dl><dl><dt>
           
           <code><a href="tileXY_to_pixelXY.html">tileXY_to_pixelXY()</a></code> 

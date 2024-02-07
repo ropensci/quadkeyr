@@ -7,7 +7,7 @@
 #' \href{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}{
 #' Microsoft Bing Maps Tile System documentation}
 #'
-#' @param qk The QuadKey as a string.
+#' @param quadkey The QuadKey as a string.
 #'
 #' @return A list returning the tile X, tile Y coordinates and
 #' the zoom level.
@@ -15,12 +15,12 @@
 #'
 #' @examples
 #'
-#' quadkey_to_tileXY(qk = 213)
+#' quadkey_to_tileXY(quadkey = 213)
 #'
-quadkey_to_tileXY <- function(qk) {
-  qk <- as.character(qk)
+quadkey_to_tileXY <- function(quadkey) {
+  quadkey <- as.character(quadkey)
 
-  if (nchar(qk) == 0) {
+  if (nchar(quadkey) == 0) {
     return(list(
       tileX = 0,
       tileY = 0,
@@ -29,7 +29,7 @@ quadkey_to_tileXY <- function(qk) {
   }
 
   # Split the digits of the QuadKey and reverse the order
-  digits <- rev(strsplit(qk, "")[[1]])
+  digits <- rev(strsplit(quadkey, "")[[1]])
 
   # The number of digits corresponds to the zoom level
   i <- length(digits)

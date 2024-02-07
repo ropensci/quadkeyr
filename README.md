@@ -39,7 +39,7 @@ Maps](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system)
 
 <div class="figure" style="text-align: center">
 
-<img src="man/figures/quadkeys.jpg" alt="The QuadKey of any tile starts with the QuadKey of its parent tile (the containing tile at the previous level). Image extracted from Microsoft's Bing Maps Tile System webpage." width="90%" />
+<img src="man/figures/quadkeys.jpg" alt="The QuadKey of any tile starts with the QuadKey of its parent tile (the containing tile at the previous level). Image extracted from Microsoft's Bing Maps Tile System webpage." width="70%" />
 <p class="caption">
 The QuadKey of any tile starts with the QuadKey of its parent tile (the
 containing tile at the previous level). Image extracted from Microsoft’s
@@ -52,11 +52,16 @@ Bing Maps Tile System webpage.
 
 The goal of `quadkeyr` is to:
 
-1.  [**Provide Bing Maps Tile System
-    functions**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_conversion.html)
-    R functions to convert geographical coordinates to and from QuadKeys
-    as described in the [official
-    documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system)
+1.  [**Convert a QuadKey to a simple feature data.frame, and other
+    transformations**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_conversion.html)
+    `quadkeyr` provides functions to convert a QuadKey to a
+    `sf POINT data.frame` or `sf POLYGON data.frame`. Additionally, all
+    the R functions described in the [official
+    documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system)  
+    to convert QuadKeys to and from tiles, pixels and geographic
+    coordinates are available.
+
+<img src="man/figures/workflow_quadkey.png" width="90%" style="display: block; margin: auto;" />
 
 2.  [**Create rasters based on
     QuadKeys**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/get_grid_from_quadkeys.html)

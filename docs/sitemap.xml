@@ -16,25 +16,28 @@
     <loc>/LICENSE.html</loc>
   </url>
   <url>
-    <loc>/articles/1_bing_map_tile_system_functions.html</loc>
-  </url>
-  <url>
     <loc>/articles/2_from_quadkey_data_to_raster.html</loc>
   </url>
   <url>
     <loc>/articles/3_from_facebook_quadkey_data_to_raster.html</loc>
   </url>
   <url>
-    <loc>/articles/A-bing_map_tile_system_functions.html</loc>
+    <loc>/articles/B-from_quadkey_data_to_raster.html</loc>
   </url>
   <url>
-    <loc>/articles/B-from_quadkey_data_to_raster.html</loc>
+    <loc>/articles/B-from_quadkey_identified_data_to_raster.html</loc>
   </url>
   <url>
     <loc>/articles/C-from_facebook_quadkey_data_to_raster.html</loc>
   </url>
   <url>
+    <loc>/articles/C-from_quadkey_identified_facebook_mobility_data_to_rasters.html</loc>
+  </url>
+  <url>
     <loc>/articles/D-quadkey_visualization_app.html</loc>
+  </url>
+  <url>
+    <loc>/articles/a_quadkey_to_sf_conversion.html</loc>
   </url>
   <url>
     <loc>/articles/bing_map_tile_system_functions.html</loc>
@@ -47,6 +50,9 @@
   </url>
   <url>
     <loc>/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>/articles/quadkey_to_sf_conversion.html</loc>
   </url>
   <url>
     <loc>/authors.html</loc>
@@ -73,6 +79,9 @@
     <loc>/reference/create_raster.html</loc>
   </url>
   <url>
+    <loc>/reference/create_stars_raster.html</loc>
+  </url>
+  <url>
     <loc>/reference/data_provided.html</loc>
   </url>
   <url>
@@ -86,6 +95,12 @@
   </url>
   <url>
     <loc>/reference/format_fb_data.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_qk_coord.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_tile_coord.html</loc>
   </url>
   <url>
     <loc>/reference/grid_to_polygon.html</loc>
@@ -127,6 +142,9 @@
     <loc>/reference/quadkey_to_latlong.html</loc>
   </url>
   <url>
+    <loc>/reference/quadkey_to_polygon.html</loc>
+  </url>
+  <url>
     <loc>/reference/quadkey_to_tileXY.html</loc>
   </url>
   <url>
@@ -143,6 +161,9 @@
   </url>
   <url>
     <loc>/reference/result_read_all_files.html</loc>
+  </url>
+  <url>
+    <loc>/reference/result_read_fb_mobility_data.html</loc>
   </url>
   <url>
     <loc>/reference/tileXY_to_pixelXY.html</loc>
