@@ -21,13 +21,92 @@ knitr::opts_chunk$set(
 > Please, visit the [README](https://fernandez-lab-wsu.github.io/quadkeyr/) 
 > for general information about this package
 
-Create a raster from variables reported by QuadKeys for a specified map area
+Create a raster from QuadKey-identified data for a specified map area
 and zoom level. A detailed explanation of what tile coordinates 
 (`tileX`, `tileY`) and pixel coordinates (`pixelX`, `pixelY`) are can be found 
-in `quadkeyr` vignette [Bing Maps Tile System Functions](https://fernandez-lab-wsu.github.io/quadkeyr/articles/1_bing_map_tile_system_functions.html)
+in `quadkeyr` vignette [From QuadKey to Simple Features data.frame and other conversions](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html)
 and in the [official documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system).
 
-### Step 1: Create a grid of QuadKeys
+## Basic workflow
+
+```{r w2, echo = FALSE, out.width= "90%", fig.align='center'}
+knitr::include_graphics("../man/figures/workflow_raster.png")
+```
+
+If you are working with a data.frame with a `quadkey` column, as in the
+example image, you can create a raster image from it combining the
+QuadKeys' spatial information with any other variable reported.
+
+But before that, consider if you really want a raster image.
+You have the option of convert the QuadKeys into a `sf POLYGON data.frame`
+with the function `quadkey_df_to_polygon`, and then plot it.
+
+```{r}
+
+# read the file with the data
+path <- paste0(system.file("extdata", package = 'quadkeyr'), "/cityA_2020_04_15_0000.csv")
+data <- read.csv(path)
+data <- format_fb_data(data)
+
+# create polygon column
+poly_data <- quadkey_df_to_polygon(data = data)
+poly_data
+```
+
+```{r}
+
+ggplot() +
+  geom_sf(data = poly_data,
+          aes(fill = percent_change)) +
+  scale_fill_viridis_c() +
+  theme_minimal()
+
+```
+
+
+If you are sure that you prefer a raster image,
+first you must complete the grid with `get_regular_polygon_grid`.
+This function gets all the QuadKeys needed to complete the bounding box 
+created with the QuadKeys in the column provided. In case you aren't sure
+if your grid is complete, you can run the function anyway, 
+and it will return the same `sf` data.frame.
+The extra QuadKeys added in the process will be `NA`
+for all the variables except `geometry`.
+After getting the regular grid, 
+you can create a [STARS object](https://r-spatial.github.io/stars/articles/stars1.html) 
+using the function `create_stars_raster`. 
+
+```{r}
+complete_polygon_grid <- add_regular_polygon_grid(data = data)
+
+head(complete_polygon_grid$data)
+```
+
+
+
+```{r}
+ggplot() +
+  geom_sf(data = complete_polygon_grid$data,
+          aes(fill = percent_change)) +
+  scale_fill_viridis_c() +
+  theme_minimal()
+```
+
+```{r}
+stars_object <- create_stars_raster(data = complete_polygon_grid$data,
+                    template = complete_polygon_grid$data,
+                    var = "percent_change",
+                    nx = complete_polygon_grid$num_cols,
+                    ny = complete_polygon_grid$num_rows)
+stars_object
+```
+
+```{r}
+plot(stars_object)
+```
+
+
+## Advanced use
 
 #### 1.1 Define the area
 
@@ -188,7 +267,6 @@ defined study area and zoom level, not all grid QuadKeys are present.
 ```{r datap}
 data('data_provided')
 head(data_provided)
-
 ```
 
 

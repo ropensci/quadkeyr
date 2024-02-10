@@ -67,6 +67,9 @@ knitr::include_graphics("man/figures/workflow_quadkey.png")
 Complete a grid of QuadKeys within a specified area and level of detail, 
 and create a raster from them. 
   
+```{r w1, echo = FALSE, out.width= "90%", fig.align='center'}
+knitr::include_graphics("man/figures/workflow_raster.png")
+```
 3. [**Generate rasters from Facebook mobility data**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/create_rasters_from_grid.html)
 Adapt the functions described in points 1 and 2 to effectively process and
 analyze Facebook mobility data.  

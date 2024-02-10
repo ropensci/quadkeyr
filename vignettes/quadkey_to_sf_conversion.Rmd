@@ -1,10 +1,10 @@
 ---
-title: "From QuadKey to Simple Features data.frame and other conversions"
+title: "From a QuadKey to a Simple Features data.frame and other conversions"
 output:
   html_document:
     number_sections: true
 vignette: >
-  %\VignetteIndexEntry{From QuadKey to Simple Features data.frame and other conversions}
+  %\VignetteIndexEntry{From a QuadKey to a Simple Features data.frame and other conversions}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -218,7 +218,7 @@ ptll
 ```
 
 You can also use the function `quadkey_to_latlong` 
-that wraps the last 3 functions.
+that wraps the last 3 functions and returns a `sf POINT data.frame`.
 
 ```{r}
 quadkey_to_latlong("2103")

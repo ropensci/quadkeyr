@@ -126,12 +126,40 @@ get_tile_coord <- function(data, zoom) {
   }
 
   # I have to keep the quadkeys for later use
-  data <- data |>
+  data <- data |> 
+    sf::st_as_sf(coords = c("lon", "lat"), crs = 4326) |> 
     dplyr::select(
-      "tileX", "tileY", "quadkey",
-      "lon", "lat"
-    ) |> # tidyselect
-    sf::st_as_sf(coords = c("lon", "lat"), crs = 4326)
+      - "pixelX", - "pixelY",
+      - "tileX", - "tileY"
+    )  # tidyselect
 
   return(data)
+}
+
+
+#' Convert data.frame with quadkey column to a sf POLYGON data.frame
+#'
+#' @param data A data.frame with a quadkey column
+#'
+#' @return The same original data.frame with a sf POLYGON data.frame with a
+#' geometry column.
+#'  
+#' @export
+#'
+#' @examples
+#' 
+#' path <- paste0(system.file("extdata", package = 'quadkeyr'), 
+#'                                     "/cityA_2020_04_15_0000.csv")
+#' data <- read.csv(path)
+#' data <- format_fb_data(data)
+#'
+#' quadkey_df_to_polygon(data)
+quadkey_df_to_polygon <- function(data){
+  
+        data |> 
+        dplyr::rowwise() |> 
+        dplyr::mutate(quadkey_to_polygon(quadkey)) |> # tidyselect
+        as.data.frame() |>  # remove class rowwise_df
+        sf::st_sf() 
+  
 }
