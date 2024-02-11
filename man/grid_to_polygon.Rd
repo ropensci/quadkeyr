@@ -13,7 +13,7 @@ they will be used by complete_grid_for_polygons().
 If not, the tile coordinates will be calculated internally.}
 }
 \value{
-A spatial dataset (sf) with the quadkey and POLYGON column.
+A sf POLYGON data.frame with a quadkey column.
 }
 \description{
 The main argument of this function, the grid of

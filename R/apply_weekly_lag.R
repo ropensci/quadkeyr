@@ -39,24 +39,25 @@
 #'
 apply_weekly_lag <- function(data) {
   out_data <- c()
-
+  
   for (i in unique(data$quadkey)) {
     inter <- data |>
       dplyr::filter(.data$quadkey == i)
-
+    
     # I am only considering cases where there aren't NAs
     if (!is.na(sum(inter$n_crisis))) {
       quadkey_lag <- inter |>
         dplyr::group_by(.data$quadkey, .data$hour) |>
         dplyr::mutate(n_crisis_lag_7 = dplyr::lag(as.numeric(.data$n_crisis),
-          n = 7
-        )) |>
-        dplyr::mutate(percent_change_7 = ((.data$n_crisis_lag_7 - .data$n_crisis) /
+                                                  n = 7)) |>
+        dplyr::mutate(percent_change_7 = ((
+          .data$n_crisis_lag_7 - .data$n_crisis
+        ) /
           .data$n_crisis) * 100)
-
+      
       out_data <- rbind(out_data, quadkey_lag)
     }
   }
-
+  
   return(out_data)
 }

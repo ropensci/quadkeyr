@@ -32,6 +32,7 @@ quadkey_to_latlong(c("213", "212", "210"))
 
 \code{\link{pixelXY_to_latlong}}
 
-\href{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}{
-Microsoft Bing Maps Tile System documentation}
+\href{
+https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system
+}{Microsoft Bing Maps Tile System documentation}
 }

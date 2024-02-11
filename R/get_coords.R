@@ -130,7 +130,6 @@ get_tile_coord <- function(data, zoom) {
     sf::st_as_sf(coords = c("lon", "lat"), crs = 4326) |> 
     dplyr::select(
       - "pixelX", - "pixelY",
-      - "tileX", - "tileY"
     )  # tidyselect
 
   return(data)
@@ -158,7 +157,7 @@ quadkey_df_to_polygon <- function(data){
   
         data |> 
         dplyr::rowwise() |> 
-        dplyr::mutate(quadkey_to_polygon(quadkey)) |> # tidyselect
+        dplyr::mutate(quadkey_to_polygon(.data$quadkey)) |> # tidyselect
         as.data.frame() |>  # remove class rowwise_df
         sf::st_sf() 
   

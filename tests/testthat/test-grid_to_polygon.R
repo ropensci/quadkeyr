@@ -24,20 +24,6 @@ test_that("Dataset is of class 'sf'", {
   )
 })
 
-test_that("tileX and tileY columns are created", {
-  grid_coords_test <- subset(grid_coords,
-    select = -c(tileX, tileY)
-  )
-
-  expect_message(
-    grid_to_polygon(grid_coords_test),
-    paste(
-      "The 'tileX' and 'tileY' columns have been generated",
-      "using the 'quadkey_to_tileXY' function."
-    )
-  )
-})
-
 test_that("quadkey_to_polygon gives the correct output", {
   polygon <- quadkey_to_polygon('213')
   expect_s3_class(polygon, "sf")

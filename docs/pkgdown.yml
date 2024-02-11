@@ -2,9 +2,9 @@ pandoc: 3.1.3
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
-  B-from_quadkey_identified_data_to_raster: B-from_quadkey_identified_data_to_raster.html
-  C-from_quadkey_identified_facebook_mobility_data_to_rasters: C-from_quadkey_identified_facebook_mobility_data_to_rasters.html
-  D-quadkey_visualization_app: D-quadkey_visualization_app.html
+  facebook_mobility_csvs_to_raster_files: facebook_mobility_csvs_to_raster_files.html
+  quadkey_identified_data_to_raster: quadkey_identified_data_to_raster.html
   quadkey_to_sf_conversion: quadkey_to_sf_conversion.html
-last_built: 2024-02-07T19:46Z
+  quadkey_visualization_app: quadkey_visualization_app.html
+last_built: 2024-02-11T21:38Z
 

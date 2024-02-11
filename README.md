@@ -17,11 +17,11 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 ### What can this package do for you?
 
 The `quadkeyr` R package presents a comprehensive toolkit tailored for
-generating raster images from data reported by QuadKeys within
+generating raster images from Quadkey-Identified data within
 [Microsoft’s Bing Maps Tile
 System](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system).
-Designed to integrate Bing Maps data into R workflows, this package
-facilitates the creation of QuadKey grids and raster images and
+Designed to integrate Quadkey-Identified data into R workflows, this
+package facilitates the creation of QuadKey grids and raster images and
 introduces specialized functions for the processing of [Facebook
 Mobility data](https://dataforgood.facebook.com/).
 
@@ -29,13 +29,11 @@ Mobility data](https://dataforgood.facebook.com/).
 
 Tile maps divide the Earth’s surface into a grid of tiles, with each
 tile corresponding to a specific geographic area at various zoom levels.
-Different zoom levels in a tile map display varying levels of detail.
 
 QuadKeys represent a location on a map by encoding its hierarchical
 spatial position as a sequence of characters. They provide an efficient
 method to address and retrieve specific map tiles, facilitating rapid
-display within mapping applications such as [Microsoft Bing
-Maps](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system).
+display within mapping applications.
 
 <div class="figure" style="text-align: center">
 
@@ -52,8 +50,8 @@ Bing Maps Tile System webpage.
 
 The goal of `quadkeyr` is to:
 
-1.  [**Convert a QuadKey to a simple feature data.frame, and other
-    transformations**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_conversion.html)
+1.  [**Convert a QuadKey to a simple features data.frame (and
+    more)**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html)
     `quadkeyr` provides functions to convert a QuadKey to a
     `sf POINT data.frame` or `sf POLYGON data.frame`. Additionally, all
     the R functions described in the [official
@@ -63,19 +61,24 @@ The goal of `quadkeyr` is to:
 
 <img src="man/figures/workflow_quadkey.png" width="90%" style="display: block; margin: auto;" />
 
-2.  [**Create rasters based on
-    QuadKeys**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/get_grid_from_quadkeys.html)
-    Complete a grid of QuadKeys within a specified area and level of
-    detail, and create a raster from them.
+2.  [**Generate Raster Images from Quadkey-Identified
+    Data**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_identified_data_to_raster.html)
+    Complete a grid of QuadKeys within a specified area and zoom level,
+    and create a `stars` raster. You can also directly convert QuadKeys
+    in a data.frame column into an `sf POLYGON data.frame`.
 
-3.  [**Generate rasters from Facebook mobility
-    data**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/create_rasters_from_grid.html)
-    Adapt the functions described in points 1 and 2 to effectively
-    process and analyze Facebook mobility data.
+<img src="man/figures/workflow_raster.png" width="90%" style="display: block; margin: auto;" />
+3. [**Convert Facebook Mobility QuadKey-identified Datasets into Raster
+Files**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html)
+Convert Facebook mobility data `.csv` files into `.tif` files by day and
+hour reported.
 
-4.  Introduce a QuadKey map application enabling users to validate
-    function outcomes and offering tools for visualizing the generated
-    data.
+<img src="man/figures/workflow_facebook.png" width="90%" style="display: block; margin: auto;" />
+
+4.  [**Offer an App for visualizing QuadKeys on a
+    map.**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_visualization_app.html)
+    Introduce a QuadKey visualization application enabling users to
+    validate function outcomes.
 
 ## Install `quadkeyr` from GitHub
 

@@ -38,14 +38,14 @@ grid_to_polygon <- function(data) {
   if (!("sf" %in% class(data))) {
     stop("The dataset should be of class 'sf'")
   }
-  
+
   # Convert the QuadKeys to tile coordinates
   # if that columns aren't present in the data
-  if (!("tileX" %in% colnames(data) | "tileY" %in% colnames(data))) {
-    message(paste(
-      "The 'tileX' and 'tileY' columns have been generated",
-      "using the 'quadkey_to_tileXY' function."
-    ))
+  # if (!("tileX" %in% colnames(data) | "tileY" %in% colnames(data))) {
+  #   message(paste(
+  #     "The 'tileX' and 'tileY' columns have been generated",
+  #     "using the 'quadkey_to_tileXY' function."
+  #   ))
     
     # In the case that one of this columns is not present, 
     # calculate both again.
@@ -58,14 +58,17 @@ grid_to_polygon <- function(data) {
         tileX = quadkey_to_tileXY(.data$quadkey)$tileX,
         tileY = quadkey_to_tileXY(.data$quadkey)$tileY
       )
-  }
+ # }
+    
+    
+    # We add the extra row and column we need for the grid and
+    # Convert it to an sf POINT data.frame
+    extragrid <- complete_grid_for_polygons(data)
+    extragrid <- get_tile_coord(extragrid,
+                                zoom = unique(nchar(data$quadkey))
+      )
   
-  extragrid <- complete_grid_for_polygons(data)
-  
-  extragrid <- get_tile_coord(extragrid,
-                              zoom <- unique(nchar(data$quadkey))
-  )
-  
+  # Now we can combine it with the original data. 
   if(ncol(data) == ncol(extragrid)){
     # combines the new data with the extended grid of points
     data <- rbind(data, extragrid)
@@ -94,7 +97,6 @@ grid_to_polygon <- function(data) {
     c <- data[data$tileX == x + 1 & data$tileY == y, ]
     
     d <- data[data$tileX == x + 1 & data$tileY == y + 1, ]
-    
     
     polygon <- rbind(a, b, c, d) |>
       sf::st_bbox() |>
@@ -169,7 +171,7 @@ complete_grid_for_polygons <- function(data) {
   extragrid <- rbind(
     data.frame(
       tileX = seq(
-        min(data$tileX),
+        min(data$tileX), 
         textX
       ),
       tileY = textY
@@ -190,10 +192,6 @@ complete_grid_for_polygons <- function(data) {
 
   return(extragrid)
 }
-
-
-
-
 
 #' Convert a QuadKey into a square polygon
 #'

@@ -4,8 +4,9 @@
 #' Microsoft Bing Maps Tile System documentation.
 #'
 #' @seealso
-#' \href{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}{
-#' Microsoft Bing Maps Tile System documentation}
+#' \href{
+#' https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system
+#' }{Microsoft Bing Maps Tile System documentation}
 #'
 #' @param quadkey The QuadKey as a string.
 #'
@@ -19,7 +20,7 @@
 #'
 quadkey_to_tileXY <- function(quadkey) {
   quadkey <- as.character(quadkey)
-
+  
   if (nchar(quadkey) == 0) {
     return(list(
       tileX = 0,
@@ -27,17 +28,17 @@ quadkey_to_tileXY <- function(quadkey) {
       zoom = 0
     ))
   }
-
+  
   # Split the digits of the QuadKey and reverse the order
   digits <- rev(strsplit(quadkey, "")[[1]])
-
+  
   # The number of digits corresponds to the zoom level
   i <- length(digits)
-
-  masks <- 2**(0:(i - 1))
+  
+  masks <- 2 ** (0:(i - 1))
   xt <- sum(masks[digits == "1" | digits == "3"])
   yt <- sum(masks[digits == "2" | digits == "3"])
-
+  
   return(list(
     tileX = xt,
     tileY = yt,
@@ -94,8 +95,9 @@ tileXY_to_pixelXY <- function(tileX, tileY) {
 #' Microsoft Bing Maps Tile System documentation.
 #'
 #' @seealso
-#' \href{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}{
-#' Microsoft Bing Maps Tile System documentation}
+#' \href{
+#' https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system
+#' }{Microsoft Bing Maps Tile System documentation}
 #'
 #' @param pixelX X coordinate of the point, in pixels.
 #' @param pixelY Y coordinates of the point, in pixels.
@@ -162,8 +164,9 @@ pixelXY_to_latlong <- function(pixelX, pixelY, zoom) {
 #' @seealso \code{\link{tileXY_to_pixelXY}}
 #' @seealso \code{\link{pixelXY_to_latlong}}
 #' @seealso
-#' \href{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}{
-#' Microsoft Bing Maps Tile System documentation}
+#' \href{
+#' https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system
+#' }{Microsoft Bing Maps Tile System documentation}
 #'
 #' @return A spatial data frame of class sf with a quadkey column
 #' and POINT geometry.

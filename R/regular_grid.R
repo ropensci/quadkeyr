@@ -44,8 +44,8 @@ regular_qk_grid <- function(data) {
 
   # Select the QuadKeys that are missing in the original grid
   qk_missing <- grid$data |>
-    dplyr::anti_join(data, by = "quadkey") |> 
-    dplyr::select(-tileX, -tileY)
+    dplyr::anti_join(data, by = "quadkey") |>  #tidyselect
+    dplyr::select(-"tileX", -"tileY") # tidyselect
   
   # Convert the QuadKeys to coordinates
   grid_coords <- quadkey_to_latlong(qk_missing$quadkey)
@@ -89,14 +89,14 @@ regular_qk_grid <- function(data) {
 #' @export
 #'
 #' @examples
+#' # read the file with the data
+#' path <- paste0(system.file("extdata", package = 'quadkeyr'),
+#'                              "/cityA_2020_04_15_0000.csv")
+#' data <- read.csv(path)
+#' data <- format_fb_data(data)
+#' 
+#' get_regular_polygon_grid(data = data)
 add_regular_polygon_grid <- function(data){
-  
-  
-  # # read the file with the data
-  # path <- paste0(system.file("extdata", package = 'quadkeyr'), "/cityA_2020_04_15_0000.csv")
-  # data <- read.csv(path)
-  # data <- format_fb_data(data)
-  # 
    sf_grid <- get_qk_coord(data)
    reggrid <- regular_qk_grid(sf_grid)
    add_polygrid <- grid_to_polygon(reggrid$data)
@@ -133,14 +133,14 @@ add_regular_polygon_grid <- function(data){
 #' 
 #' get_regular_polygon_grid(data = data)
 get_regular_polygon_grid <- function(data){
-  
+
   # I convert the QuadKeys to points and not polygons directly
   # Because I want to generate the regular grid first 
   grid_coords <- quadkey_to_latlong(quadkeys = unique(data$quadkey))
   reggrid <- regular_qk_grid(grid_coords)
   polygrid <- grid_to_polygon(reggrid$data)
-  return(data = polygrid,
+  return(list(data = polygrid,
          num_cols = reggrid$num_cols,
-         num_rows = reggrid$num_rows)
+         num_rows = reggrid$num_rows))
 }
 

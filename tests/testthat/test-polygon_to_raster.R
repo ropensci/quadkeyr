@@ -1,4 +1,3 @@
-
  files <- read_fb_mobility_files(path_to_csvs = paste0(system.file("extdata",
                                                  package = "quadkeyr"), "/"),
                                  colnames = c("lat", "lon", 

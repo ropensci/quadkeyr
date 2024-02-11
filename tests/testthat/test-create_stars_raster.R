@@ -12,16 +12,14 @@ grid_coords
 
 polygrid <- grid_to_polygon(grid_coords)
 
-data <- polygrid |>
-  dplyr::mutate(var = runif(nrow(polygrid)))
-
+polygrid[,"var"] <- runif(n = nrow(polygrid))
 
 test_that("create_raster function creates raster as expected", {
   # Test 1: Check if the returned object is a stars object
-  result <- create_stars_raster(data,
+  result <- create_stars_raster(polygrid,
     nx = grid$num_cols + 1,
     ny = grid$num_rows + 1,
-    data,
+    polygrid,
     "var"
   )
   expect_true(is(result, "stars"),

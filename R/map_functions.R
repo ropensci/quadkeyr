@@ -6,7 +6,8 @@
 #' System documentation.
 #'
 #' @seealso
-#' \href{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}{
+#' \href{https://learn.microsoft.com/en-us/bingmaps/
+#' articles/bing-maps-tile-system}{
 #' Microsoft Bing Maps Tile System documentation}
 #'
 #' @param zoom Zoom or level of detail, 
@@ -65,7 +66,8 @@ clip <- function(n, min_value, max_value) {
 #' documentation.
 #'
 #' @seealso
-#' \href{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}{
+#' \href{https://learn.microsoft.com/en-us/bingmaps/
+#' articles/bing-maps-tile-system}{
 #' Microsoft Bing Maps Tile System documentation}
 #'
 #' @param latitude Latitude (in degrees) at which
@@ -106,7 +108,8 @@ ground_res <- function(latitude, zoom) {
 #' documentation.
 #'
 #' @seealso
-#' \href{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}{
+#' \href{https://learn.microsoft.com/en-us/bingmaps/
+#' articles/bing-maps-tile-system}{
 #' Microsoft Bing Maps Tile System documentation}
 #'
 #' @param latitude Latitude (in degrees) at which to measure the map scale.
