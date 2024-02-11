@@ -23,10 +23,10 @@ quadkey_to_tileXY <- function(qk){
                 level = 0))
   }
 
-  # Serparo los digitos del quadkey e invierto el orden
+  # Split the digits of the QuadKey and reverse the order
   digits <- rev(strsplit(qk,"")[[1]])
 
-  # La cantidad de digitos corresponde al nivel de zoom
+  # The number of digits corresponds to the zoom level
   i <- length(digits)
 
   masks <- 2**(0:(i-1))
@@ -59,6 +59,9 @@ quadkey_to_tileXY <- function(qk){
 #'
 tileXY_to_pixelXY <- function(tileX, tileY) {
 
+  # Each tile is 256x256 pixels. 
+  # These functions are described in the Microsoft Bing Map Tile System 
+  # documentation.
 
   pixelX <- tileX * 256
   pixelY <- tileY * 256
@@ -95,6 +98,12 @@ pixelXY_to_latlong <- function(pixelX, pixelY, level) {
     stop("The level of detail should be an integer between 1 and 23")
   }
 
+  # Check if pixelX and pixelY are within the valid range
+  max_pixel_value <- mapsize(level) - 1
+  if (pixelX < 0 | pixelX > max_pixel_value | pixelY < 0 | pixelY > max_pixel_value) {
+    stop(paste("Invalid pixelX or pixelY values.",
+                "They should be within the range [0, (256*2^level) - 1]."))
+  } 
 
   mapsize <- mapsize(level)
 
@@ -151,28 +160,27 @@ quadkey_to_latlong <- function(quadkeys){
 
   }
 
-  level = quadkey_to_tileXY(quadkeys[1])$level
+  level <- quadkey_to_tileXY(quadkeys[1])$level
 
-  datacoords = c()
-  data = data.frame(quadkey = NA)
+  datacoords <- c()
+  data <- data.frame(quadkey = NA)
 
   for(i in seq_along(quadkeys)){
 
-
+    
     data[i, 'quadkey'] <- quadkeys[i]
-    data[i, 'tileX'] <- quadkey_to_tileXY(quadkeys[i])$tileX
-    data[i, 'tileY'] <- quadkey_to_tileXY(quadkeys[i])$tileY
-    data[i, 'pixelX'] <- tileXY_to_pixelXY(data$tileX[i],
-                                           data$tileY[i])$pixelX
-    data[i, 'pixelY'] <- tileXY_to_pixelXY(data$tileX[i],
-                                           data$tileY[i])$pixelY
-    data[i, 'lat'] <- pixelXY_to_latlong(data$pixelX[i], 
-                                         data$pixelY[i], level = level)$lat
-    data[i, 'lon'] <- pixelXY_to_latlong(data$pixelX[i], 
-                                         data$pixelY[i], level = level)$lon
-
+    
+    data[i, c('tileX', 'tileY', 'level')] <- quadkey_to_tileXY(quadkeys[i])
+    
+    data[i, c('pixelX', 'pixelY')] <- tileXY_to_pixelXY(data$tileX[i],
+                                                        data$tileY[i])
+    
+    data[i, c('lat', 'lon')] <- pixelXY_to_latlong(data$pixelX[i], 
+                                                   data$pixelY[i], 
+                                                   level = unique(data$level))
+    
     datacoords <- rbind(data[i,], datacoords)
-
+    
   }
 
   data_sf <-  datacoords |>
@@ -183,28 +191,4 @@ quadkey_to_latlong <- function(quadkeys){
   return(data_sf)
 }
 
-# quadkey_to_latlong <- function(data){
-#
-#   quadkey_loop <- c()
-#
-#   for(i in 1:length(data$quadkey)){
-#
-#     # convierte el quadkey a tile
-#     t <- quadkey_to_tile(data$quadkey[i])
-#
-#     # convierte el tile a las coordenadas del pixel
-#     # vertice superior izquierdo pixel
-#     vsip <- slippymath::tilenum_to_lonlat(t$x, t$y, t$zoom)
-#
-#     # stopifnot(t$zoom == 16)
-#
-#     data_loop <- tibble(quadkey = data$quadkey[i],
-#                         lon = vsip$lon,
-#                         lat = vsip$lat) |>
-#       st_as_sf(coords = c("lon","lat"),
-#                crs = 4326)
-#
-#     quadkey_loop <- rbind(quadkey_loop, data_loop)
-#
-#   }
-#   return(quadkey_loop)
+

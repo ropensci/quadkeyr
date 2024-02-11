@@ -7,10 +7,9 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![pkgcheck](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/pkgcheck.yaml/badge.svg)](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/pkgcheck.yaml)
-[![R-CMD-check](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-standard.yaml) 
+[![test-coverage](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/test-coverage.yaml)
+[![R-CMD-check](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-standard.yaml)
 [![Codecov](https://img.shields.io/codecov/c/github/Fernandez-Lab-WSU/quadkeyr)](https://codecov.io/gh/Fernandez-Lab-WSU/quadkeyr)
-[![Status at rOpenSci Software Peer Review](https://badges.ropensci.org/619_status.svg)](https://github.com/ropensci/software-review/issues/619)
 <!-- badges: end -->
 
 ⚠️ This package is under review
@@ -27,11 +26,16 @@ method to address and retrieve specific map tiles, facilitating rapid
 display within mapping applications such as [Microsoft Bing
 Maps](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system).
 
-<img src="man/figures/quadkeys.jpg" width="100%" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
 
-*The QuadKey of any tile starts with the QuadKey of its parent tile (the
+<img src="man/figures/quadkeys.jpg" alt="The QuadKey of any tile starts with the QuadKey of its parent tile (the containing tile at the previous level). Image extracted from Microsoft's Bing Maps Tile System webpage." width="90%" />
+<p class="caption">
+The QuadKey of any tile starts with the QuadKey of its parent tile (the
 containing tile at the previous level). Image extracted from Microsoft’s
-Bing Maps Tile System webpage.*
+Bing Maps Tile System webpage.
+</p>
+
+</div>
 
 ### What can this package do for you?
 
@@ -68,14 +72,14 @@ The goal of `quadkeyr` is to:
     function outcomes and offering tools for visualizing the generated
     data.
 
-## Installation
+## Install `quadkeyr` from GitHub
 
 You can install the development version of `quadkeyr` from
 [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("Fernandez-Lab-WSU/quadkeyr")
+# install.packages("remotes")
+remotes::install_github("Fernandez-Lab-WSU/quadkeyr")
 ```
 
 ## Code of Conduct

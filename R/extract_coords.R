@@ -31,6 +31,14 @@ extract_qk_coord <- function(data){
   if (!"quadkey" %in% colnames(data)) {
     stop("Please ensure that the dataset contains a column named 'quadkey'.")
   }
+  
+  # initialize columns to avoid warnings
+  data$qk_tileX <- NA
+  data$qk_tileY <- NA
+  data$tl_pxx <- NA
+  data$tl_pxy <- NA
+  data$pxy_lat <- NA
+  data$pxy_lon <- NA
 
   for(i in seq_len(nrow(data))){
     # check that the data has the correct dimensions for this analysis
@@ -38,7 +46,7 @@ extract_qk_coord <- function(data){
 
     qktot  <-  quadkey_to_tileXY(data$quadkey[i])
 
-    data$qk_tileX[i] <-  qktot$tileX
+    data$qk_tileX[i] <- qktot$tileX
     data$qk_tileY[i] <- qktot$tileY
 
     ttop <- tileXY_to_pixelXY(tileX = data$qk_tileX[i],
@@ -101,8 +109,15 @@ extract_tile_coord <- function(data, level){
                "and 'tileY'"))
   }
 
+  
+  # initialize columns to avoid warnings
+  data$tl_pxx <- NA
+  data$tl_pxy <- NA
+  data$pxy_lat <- NA
+  data$pxy_lon <- NA
+  
   for(i in seq_len(nrow(data))){
-
+   # conversion from tile coordinates to geographic coordinates
     ttop <- tileXY_to_pixelXY(tileX = data$tileX[i],
                              tileY = data$tileY[i])
 

@@ -113,7 +113,7 @@ grid_to_polygon <- function(data){
  
   # The quadkeys of interest are the ones that are not NA
   # The original quadkeys of the grid
-  subdata = subset(data, !is.na(data$quadkey))
+  subdata <- subset(data, !is.na(data$quadkey))
 
   for(i in seq_len(nrow(subdata))){
 
@@ -121,18 +121,14 @@ grid_to_polygon <- function(data){
   y <- subdata[i, ]$tileY
 
   # This point will always be a quadkey in the dataframe
-  a <- data |>
-    dplyr::filter(.data$tileX == x & .data$tileY == y)
+  a <- data[data$tileX == x & data$tileY == y, ]
 
   # b, c and d can be part of the extended grid
-  b <- data |>
-    dplyr::filter(.data$tileX == x & .data$tileY == (y + 1))
+  b <-  data[data$tileX == x & data$tileY == (y + 1), ]
 
-  c <- data |>
-    dplyr::filter(.data$tileX == x + 1  & .data$tileY == y)
+  c <- data[data$tileX == x + 1  & data$tileY == y, ]
 
-  d <- data |>
-    dplyr::filter(.data$tileX == x + 1 & .data$tileY == y + 1)
+  d <- data[data$tileX == x + 1 & data$tileY == y + 1, ]
 
   pixel <- rbind(a, b, c, d) |>
         sf::st_bbox() |>
@@ -149,67 +145,3 @@ grid_to_polygon <- function(data){
   return(db)
 }
 
-
-
-#   # tiene que haber un minimo de puntos
-#
-#   # algunos cambos en la data
-#   datapre = data |> st_transform(3857) # only if it is sf
-#   data = datapre |>
-#     cbind(st_coordinates(datapre))
-# print(data)
-#
-#
-#
-#     # elijo los 4 mas cercanos
-#     pol = data[i,] |>
-#       st_is_within_distance(data, dist = ratio) #2500 para baires y
-#       750 para amba
-#
-#
-#
-#     # consigo las coordenadas de esos 4 mas cercanos
-#     subpol = data[pol[[1]], ]
-#
-#     # extraigo la bbox
-#     bb = st_bbox(data[pol[[1]], ])
-#
-#     # elimino puntos que no van
-#     vv <-  subpol |>
-#       filter(X != bb$xmin, Y != bb$ymax)
-#
-#     # Si hay menos de 3 es que no detecto suficientes puntos
-#     if(nrow(vv) == 3){
-#
-#       # detecto el numero de quadkey para asignarlo al pixel
-#       qk <- vv |>  filter(Y != bb$ymin, X != bb$xmax)
-#
-#       # selecciono puntos que cierran el pixel
-#       pts_cmpt = c(bb$xmax[[1]], bb$ymin[[1]])
-#
-#      st_geometry(vv) <-  NULL
-#      print(vv)
-#      pts_pixl = vv |>  select(X, Y) |>
-#         rbind(data.frame(X = pts_cmpt[1],
-#                          Y = pts_cmpt[2])) |>
-#         mutate(quadkey = qk$quadkey) |>
-#        st_as_sf(coords = c('X', "Y")) # convierto a sf
-#
-#
-#      print(pts_pixl)
-#
-#       pixel = pts_pixl |>
-#         group_by(quadkey) |>
-#         summarize() |>
-#         st_cast('POLYGON') |>
-#         st_convex_hull() # pixel!
-#
-#       print(pixel)
-#
-#       db = rbind(pixel, db) }
-#
-#   }
-#   print(db)
-#
-#
-# }

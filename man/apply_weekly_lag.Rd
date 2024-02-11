@@ -10,12 +10,19 @@ apply_weekly_lag(data)
 \item{data}{A dataset}
 }
 \value{
-A dataframe with the extra colums n_crisis_lag_7 and n_crisis_percent_7
+A dataframe with the extra columns n_crisis_lag_7 and
+percent_change_7.
+
+n_crisis_lag_7, is the same variable defined as n_crisis in the Facebook
+dataset with a 7 day lag applied.
+
+percent_change_7 is the difference between the n_crisis value between weeks
+expressed as percentage.
 }
 \description{
-Applying a week lag to the data will create rasters showing how
-people was moving a week ago the date of interest. This function works only
-for quadkeys without NAs.
+Applying a week lag to the data will create raster images
+showing the mobility a week before the date of interest.
+This function works only for quadkeys without NAs.
 }
 \examples{
 

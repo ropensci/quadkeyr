@@ -13,11 +13,12 @@ mapsize(level)
 The map width and height in pixels.
 }
 \description{
-Determines the map width and height (in pixels) at a specified level of detail.
-For further information, refer to the Microsoft Bing Maps Tile System documentation.
+Determines the map width and height (in pixels) at a specified
+level of detail.
+For further information, refer to the Microsoft Bing Maps Tile
+System documentation.
 }
 \examples{
 
 mapsize(level = 6)
-
 }

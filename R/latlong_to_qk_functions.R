@@ -64,9 +64,13 @@ latlong_to_pixelXY <- function(lat, lon, level) {
 #' @examples
 #'
 #' pixelXY_to_tileXY(pixelX = 5916,
-#'               pixelY = 9894)
+#'                   pixelY = 9894)
 #'
 pixelXY_to_tileXY <- function(pixelX, pixelY) {
+
+  # Each tile is 256x256 pixels. 
+  # These functions are described in the Microsoft Bing Map Tile System 
+  # documentation.
 
   tileX <- floor(pixelX / 256)
   tileY <- floor(pixelY / 256)
@@ -96,29 +100,38 @@ pixelXY_to_tileXY <- function(pixelX, pixelY) {
 #'                   level = 6)
 #'
 tileXY_to_quadkey <- function(tileX, tileY, level) {
-
+  
+  # Give an error if the level of detail isn't between 0 and 23 
+  # or it is not an integer.
   if (level < 0 | level > 23 | (level %% 1) != 0) {
     stop("The level of detail should be an integer between 1 and 23")
   }
-
+  
+  # Check if tileX and tileY are within the valid range
+  max_tile_value <- (2^level) - 1
+  if (tileX < 0 | tileX > max_tile_value | tileY < 0 | tileY > max_tile_value) {
+    stop(paste("Invalid tileX or tileY values.",
+               "They should be within the range [0, 2^level - 1]."))
+  }
+  
   # get vector with one space as QuadKey's level of detail
   qk <- character(level)
-
+  
   for (i in level:1) {
     digit <- '0'
     mask <- 2^(i - 1)
-
+    
     if ((bitwAnd(tileX, mask) != 0)) {
       digit <- as.character(as.numeric(digit) + 1)
     }
-
+    
     if ((bitwAnd(tileY, mask) != 0)) {
       digit <- as.character(as.numeric(digit) + 2)
     }
-
+    
     qk[level - i + 1] <- digit
   }
-
+  
   return(paste(qk, collapse = ''))
 }
 
@@ -144,35 +157,34 @@ tileXY_to_quadkey <- function(tileX, tileY, level) {
 #'                   level = 20)
 latlong_to_quadkey <- function(lat, lon, level) {
   
+  # Give an error if the level of detail isn't between 0 and 23 
+  # or it is not an integer.
   if (level < 0 | level > 23 | (level %% 1) != 0) {
     stop("The level of detail should be an integer between 1 and 23")
   }
   
   
-   data <- data.frame(lat = lat,
-                      lon = lon,
-                      level = level)
+  data <- data.frame(lat = lat,
+                     lon = lon,
+                     level = level)
   
-
+  
   for(i in seq_len(nrow(data))){
-
     
-    data[i, 'pixelX'] <- latlong_to_pixelXY(data$lat[i], 
-                                            data$lon[i],
-                                            data$level[i])$pixelX
-    data[i, 'pixelY']  <-  latlong_to_pixelXY(data$lat[i],
-                                              data$lon[i],
-                                              data$level[i])$pixelY
-    data[i, 'tileY']  <-  pixelXY_to_tileXY(data$pixelX[i],
-                                            data$pixelY[i])$tileY
-    data[i, 'tileX']  <-  pixelXY_to_tileXY(data$pixelX[i], 
-                                            data$pixelY[i])$tileX
+    
+    data[i, c('pixelX', 'pixelY')]  <- latlong_to_pixelXY(data$lat[i], 
+                                                          data$lon[i],
+                                                          data$level[i])
+    
+    data[i, c('tileX', 'tileY')]  <-  pixelXY_to_tileXY(data$pixelX[i],
+                                                        data$pixelY[i])
+    
     data[i, 'quadkey']  <-  tileXY_to_quadkey(data$tileX[i],
                                               data$tileY[i], 
                                               level = data$level[i])
-
-}
-   
+    
+  }
+  
   data_sf <-  data |>
     dplyr::select("lat", "lon", "quadkey") |> #tidyselect
     sf::st_as_sf(coords = c("lon", "lat"),
