@@ -34,9 +34,10 @@ This function is called internally by grid_to_polygon."><meta property="og:image
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/create_rasters_from_grid.html">create_rasters_from_grid</a>
-    <a class="dropdown-item" href="../articles/get_grid_from_quadkeys.html">get_grid_from_quadkeys</a>
-    <a class="dropdown-item" href="../articles/quadkey_conversion.html">quadkey_conversion</a>
+    <a class="dropdown-item" href="../articles/quadkey_to_sf_conversion.html">From a QuadKey to a Simple Features data.frame and other conversions</a>
+    <a class="dropdown-item" href="../articles/quadkey_identified_data_to_raster.html">Generating a Raster Image from Quadkey-Identified Data</a>
+    <a class="dropdown-item" href="../articles/facebook_mobility_csvs_to_raster_files.html">Converting Facebook Mobility QuadKey-identified Datasets into Raster Files</a>
+    <a class="dropdown-item" href="../articles/quadkey_visualization_app.html">QuadKey Visualization App</a>
   </div>
 </li>
 <li class="nav-item">
@@ -97,20 +98,20 @@ This function is called internally by grid_to_polygon.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">grid</span>  <span class="op">&lt;-</span>  <span class="fu"><a href="create_qk_grid.html">create_qk_grid</a></span><span class="op">(</span>xmin <span class="op">=</span> <span class="op">-</span><span class="fl">59</span>,</span></span>
-<span class="r-in"><span>                      xmax <span class="op">=</span> <span class="op">-</span><span class="fl">57</span>,</span></span>
-<span class="r-in"><span>                      ymin <span class="op">=</span> <span class="op">-</span><span class="fl">35</span>,</span></span>
-<span class="r-in"><span>                      ymax <span class="op">=</span> <span class="op">-</span><span class="fl">34</span>,</span></span>
-<span class="r-in"><span>                      level <span class="op">=</span> <span class="fl">11</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">grid</span> <span class="op">&lt;-</span> <span class="fu"><a href="create_qk_grid.html">create_qk_grid</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  xmin <span class="op">=</span> <span class="op">-</span><span class="fl">59</span>,</span></span>
+<span class="r-in"><span>  xmax <span class="op">=</span> <span class="op">-</span><span class="fl">57</span>,</span></span>
+<span class="r-in"><span>  ymin <span class="op">=</span> <span class="op">-</span><span class="fl">35</span>,</span></span>
+<span class="r-in"><span>  ymax <span class="op">=</span> <span class="op">-</span><span class="fl">34</span>,</span></span>
+<span class="r-in"><span>  zoom <span class="op">=</span> <span class="fl">11</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">grid_coords</span> <span class="op">&lt;-</span> <span class="fu"><a href="extract_qk_coord.html">extract_qk_coord</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">grid</span><span class="op">$</span><span class="va">data</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">grid_coords</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_qk_coord.html">get_qk_coord</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">grid</span><span class="op">$</span><span class="va">data</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># You can use grid_to_polygon</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">extragrid</span> <span class="op">&lt;-</span> <span class="fu">complete_grid_for_polygons</span><span class="op">(</span><span class="va">grid_coords</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

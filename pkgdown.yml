@@ -2,8 +2,9 @@ pandoc: 2.19.2
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
-  create_rasters_from_grid: create_rasters_from_grid.html
-  get_grid_from_quadkeys: get_grid_from_quadkeys.html
-  quadkey_conversion: quadkey_conversion.html
-last_built: 2023-12-22T23:41Z
+  facebook_mobility_csvs_to_raster_files: facebook_mobility_csvs_to_raster_files.html
+  quadkey_identified_data_to_raster: quadkey_identified_data_to_raster.html
+  quadkey_to_sf_conversion: quadkey_to_sf_conversion.html
+  quadkey_visualization_app: quadkey_visualization_app.html
+last_built: 2024-02-11T22:30Z
 

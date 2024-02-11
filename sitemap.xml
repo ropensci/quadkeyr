@@ -13,19 +13,19 @@
     <loc>/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>/articles/create_rasters_from_grid.html</loc>
-  </url>
-  <url>
-    <loc>/articles/get_grid_from_quadkeys.html</loc>
+    <loc>/articles/facebook_mobility_csvs_to_raster_files.html</loc>
   </url>
   <url>
     <loc>/articles/index.html</loc>
   </url>
   <url>
-    <loc>/articles/quadkey_conversion.html</loc>
+    <loc>/articles/quadkey_identified_data_to_raster.html</loc>
+  </url>
+  <url>
+    <loc>/articles/quadkey_to_sf_conversion.html</loc>
+  </url>
+  <url>
+    <loc>/articles/quadkey_visualization_app.html</loc>
   </url>
   <url>
     <loc>/authors.html</loc>
@@ -35,6 +35,9 @@
   </url>
   <url>
     <loc>/news/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/add_regular_polygon_grid.html</loc>
   </url>
   <url>
     <loc>/reference/apply_weekly_lag.html</loc>
@@ -49,19 +52,22 @@
     <loc>/reference/create_qk_grid.html</loc>
   </url>
   <url>
-    <loc>/reference/create_raster.html</loc>
+    <loc>/reference/create_stars_raster.html</loc>
   </url>
   <url>
     <loc>/reference/data_provided.html</loc>
   </url>
   <url>
-    <loc>/reference/extract_qk_coord.html</loc>
+    <loc>/reference/format_fb_data.html</loc>
   </url>
   <url>
-    <loc>/reference/extract_tile_coord.html</loc>
+    <loc>/reference/get_qk_coord.html</loc>
   </url>
   <url>
-    <loc>/reference/format_data.html</loc>
+    <loc>/reference/get_regular_polygon_grid.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_tile_coord.html</loc>
   </url>
   <url>
     <loc>/reference/grid_to_polygon.html</loc>
@@ -100,19 +106,25 @@
     <loc>/reference/qkmap_app.html</loc>
   </url>
   <url>
+    <loc>/reference/quadkey_df_to_polygon.html</loc>
+  </url>
+  <url>
     <loc>/reference/quadkey_to_latlong.html</loc>
+  </url>
+  <url>
+    <loc>/reference/quadkey_to_polygon.html</loc>
   </url>
   <url>
     <loc>/reference/quadkey_to_tileXY.html</loc>
   </url>
   <url>
-    <loc>/reference/read_all_files.html</loc>
+    <loc>/reference/read_fb_mobility_files.html</loc>
   </url>
   <url>
     <loc>/reference/regular_qk_grid.html</loc>
   </url>
   <url>
-    <loc>/reference/result_read_all_files.html</loc>
+    <loc>/reference/result_read_fb_mobility_data.html</loc>
   </url>
   <url>
     <loc>/reference/tileXY_to_pixelXY.html</loc>
