@@ -1,0 +1,45 @@
+{
+  "input": {
+    "grid": 1,
+    "mapgrid_groups": "qks",
+    "mapgrid_shape_mouseout": [
+      "122222030310",
+      "0.794855618843523",
+      "qks",
+      "3.8288621362097",
+      "2.04791332440333"
+    ],
+    "mapgrid_shape_mouseover": [
+      "122222030310",
+      "0.0699345260623052",
+      "qks",
+      "3.85899759362869",
+      "1.98335540317661"
+    ],
+    "qk": "",
+    "search": 0,
+    "xmax": "2",
+    "xmin": "1",
+    "ymax": "4",
+    "ymin": "3",
+    "zoom": 12
+  },
+  "output": {
+    "mapqk": {
+      "message": "Please, introduce a QuadKey press 'Search'",
+      "call": "NULL",
+      "type": [
+        "shiny.silent.error",
+        "validation"
+      ]
+    },
+    "qkvalues": [
+      "Please, insert a QuadKey and press 'Search'",
+      "NULL",
+      "c(\"shiny.silent.error\", \"validation\")"
+    ]
+  },
+  "export": {
+
+  }
+}

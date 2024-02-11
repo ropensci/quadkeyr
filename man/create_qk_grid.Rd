@@ -2,9 +2,9 @@
 % Please edit documentation in R/create_qk_grid.R
 \name{create_qk_grid}
 \alias{create_qk_grid}
-\title{Create grid of QuadKeys for a particular level of detail.}
+\title{Create grid of QuadKeys for a particular zoom or level of detail.}
 \usage{
-create_qk_grid(xmin, xmax, ymin, ymax, level)
+create_qk_grid(xmin, xmax, ymin, ymax, zoom)
 }
 \arguments{
 \item{xmin}{Minimum value in the x axis (longitude)}
@@ -15,7 +15,8 @@ create_qk_grid(xmin, xmax, ymin, ymax, level)
 
 \item{ymax}{Maximum value in the Y axis (latitude)}
 
-\item{level}{Level of detail, from 1 (lowest detail) to 23 (highest detail).}
+\item{zoom}{Zoom or level of detail,
+from 1 (lowest detail) to 23 (highest detail).}
 }
 \value{
 A list returning the QuadKeys as a dataframe (data),
@@ -25,14 +26,16 @@ and columns (num_cols) of the grid.
 \description{
 Generates a grid comprising all the QuadKeys within the area
 defined by the maximum and minimum coordinates of latitude and
-longitude along with a specified level of detail.
+longitude along with a specified zoom level.
 }
 \examples{
 
-grid = create_qk_grid( xmin = -59,
-                       xmax = -57,
-                       ymin = -35,
-                       ymax = -34,
-                       level = 12)
+grid <- create_qk_grid(
+  xmin = -59,
+  xmax = -57,
+  ymin = -35,
+  ymax = -34,
+  zoom = 12
+)
 
 }

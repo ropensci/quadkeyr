@@ -4,28 +4,35 @@
 \alias{latlong_to_quadkey}
 \title{Convert latitude/longitude coordinates into QuadKeys}
 \usage{
-latlong_to_quadkey(lat, lon, level)
+latlong_to_quadkey(lat, lon, zoom)
 }
 \arguments{
 \item{lat}{Latitude of the point, in degrees.}
 
 \item{lon}{Longitude of the point, in degrees.}
 
-\item{level}{Level of detail, from 1 (lowest detail) to 23 (highest detail).}
+\item{zoom}{Zoom or level of detail, from 1 (lowest detail) to 23 (highest detail).}
 }
 \value{
-A dataframe with latitude (lat), longitude (lon), level of detail
-(level) and the QuadKey number as a string (quadkey).
+A dataframe with latitude (lat), longitude (lon), zoom level
+(zoom) and the QuadKey as a string (quadkey).
 }
 \description{
 Converts a point from latitude/longitude WGS-84 coordinates
-(in degrees) into a Quadkey at a specified level of detail.
+(in degrees) into a Quadkey at a specified zoom level.
 For further information, refer to the Microsoft Bing Maps Tile
 System documentation.
 }
 \examples{
 
-latlong_to_quadkey(lat = 35.63051, 
-                  lon = 139.69116,
-                  level = 20)
+latlong_to_quadkey(
+  lat = 35.63051,
+  lon = 139.69116,
+  zoom = 20
+)
+}
+\seealso{
+\href{
+https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system
+}{Microsoft Bing Maps Tile System documentation}
 }

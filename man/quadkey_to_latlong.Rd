@@ -22,7 +22,7 @@ documentation.
 }
 \examples{
 
-quadkey_to_latlong(c('213', '212', '210'))
+quadkey_to_latlong(c("213", "212", "210"))
 
 }
 \seealso{
@@ -31,4 +31,8 @@ quadkey_to_latlong(c('213', '212', '210'))
 \code{\link{tileXY_to_pixelXY}}
 
 \code{\link{pixelXY_to_latlong}}
+
+\href{
+https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system
+}{Microsoft Bing Maps Tile System documentation}
 }

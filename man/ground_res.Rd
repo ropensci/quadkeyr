@@ -2,25 +2,36 @@
 % Please edit documentation in R/map_functions.R
 \name{ground_res}
 \alias{ground_res}
-\title{Ground resolution at a specified latitude and level of detail}
+\title{Ground resolution at a specified latitude and zoom level}
 \usage{
-ground_res(latitude, level)
+ground_res(latitude, zoom)
 }
 \arguments{
-\item{latitude}{Latitude (in degrees) at which to measure the ground resolution.}
+\item{latitude}{Latitude (in degrees) at which
+to measure the ground resolution.}
 
-\item{level}{Level of detail, from 1 (lowest detail) to 23 (highest detail).}
+\item{zoom}{Zoom or level of detail,
+from 1 (lowest detail) to 23 (highest detail).}
 }
 \value{
 the ground resolution (meters / pixel)
 }
 \description{
-Determines the ground resolution (in meters per pixel) at a specified latitude and level of detail.
-For further information, refer to the Microsoft Bing Maps Tile System documentation.
+Determines the ground resolution (in meters per pixel) at a
+specified latitude and zoom level.
+For further information, refer to the Microsoft Bing Maps Tile System
+documentation.
 }
 \examples{
 
-ground_res(latitude = 0,
-           level = 6)
+ground_res(
+  latitude = 0,
+  zoom = 6
+)
 
+}
+\seealso{
+\href{
+https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system
+}{Microsoft Bing Maps Tile System documentation}
 }

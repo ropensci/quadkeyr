@@ -4,14 +4,14 @@
 \alias{quadkey_to_tileXY}
 \title{Converts a QuadKey into tile XY coordinates.}
 \usage{
-quadkey_to_tileXY(qk)
+quadkey_to_tileXY(quadkey)
 }
 \arguments{
-\item{qk}{The QuadKey number as a string.}
+\item{quadkey}{The QuadKey as a string.}
 }
 \value{
 A list returning the tile X, tile Y coordinates and
-the level of detail.
+the zoom level.
 }
 \description{
 For further information, refer to the
@@ -19,5 +19,11 @@ Microsoft Bing Maps Tile System documentation.
 }
 \examples{
 
-quadkey_to_tileXY(qk = 213)
+quadkey_to_tileXY(quadkey = 213)
+
+}
+\seealso{
+\href{
+https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system
+}{Microsoft Bing Maps Tile System documentation}
 }

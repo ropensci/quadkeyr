@@ -27,19 +27,23 @@ specific formatting to columns across these files."
 }
 \examples{
 
-\dontrun{
- read_fb_mobility_files(path_to_csvs = 'data/',
-                 colnames = c("lat", "lon", 
-                              "quadkey", "date_time", 
-                              "n_crisis", "percent_change"),
-                 coltypes = list(
-                                lat = 'd',
-                                lon = 'd',
-                                quadkey = 'd',
-                                date_time = 'T',
-                                n_crisis = 'c',
-                                percent_change = 'c'))
-}
+read_fb_mobility_files(
+  path_to_csvs = paste0(system.file("extdata",
+  package = "quadkeyr"), "/"),
+  colnames = c(
+    "lat", "lon",
+    "quadkey", "date_time",
+    "n_crisis", "percent_change"
+  ),
+  coltypes = list(
+    lat = "d",
+    lon = "d",
+    quadkey = "d",
+    date_time = "T",
+    n_crisis = "c",
+    percent_change = "c"
+  )
+)
 
 }
 \seealso{

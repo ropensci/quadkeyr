@@ -19,10 +19,8 @@ and ensures that the format of the date and QuadKeys is correct.
 }
 \examples{
 
-\dontrun{
-fb_mobility_file <-  read.csv("cityA_2020-04-26_0.csv")
-format_fb_data(data = fb_mobility_file)
-}
+data(result_read_fb_mobility_data)
+format_fb_data(data = result_read_fb_mobility_data)
 }
 \seealso{
 \code{\link{read_fb_mobility_files}}

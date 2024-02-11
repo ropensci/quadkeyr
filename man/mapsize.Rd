@@ -4,10 +4,11 @@
 \alias{mapsize}
 \title{Map size in pixels}
 \usage{
-mapsize(level)
+mapsize(zoom)
 }
 \arguments{
-\item{level}{Level of detail, from 1 (lowest detail) to 23 (highest detail).}
+\item{zoom}{Zoom or level of detail,
+from 1 (lowest detail) to 23 (highest detail).}
 }
 \value{
 The map width and height in pixels.
@@ -20,5 +21,11 @@ System documentation.
 }
 \examples{
 
-mapsize(level = 6)
+mapsize(zoom = 6)
+
+}
+\seealso{
+\href{
+https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system
+}{Microsoft Bing Maps Tile System documentation}
 }

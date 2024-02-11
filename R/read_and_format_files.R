@@ -7,11 +7,11 @@
 #'
 #' @param path_to_csvs Path to the folder where the .csv files are stored
 #' @param colnames Columns to include in the results (as character).
-#' For more information go to readr::read_csv() 
+#' For more information go to readr::read_csv()
 #' @param coltypes Column specifications (as character).
 #' See vignette("readr") for more details.
 #' documentation.
-#'  
+#'
 #' @seealso \code{\link{format_fb_data}}
 #' @seealso \code{\link[readr]{read_csv}}
 #'
@@ -19,56 +19,66 @@
 #' @export
 #'
 #' @examples
+#' 
+#' read_fb_mobility_files(
+#'   path_to_csvs = paste0(system.file("extdata",
+#'   package = "quadkeyr"), "/"),
+#'   colnames = c(
+#'     "lat", "lon",
+#'     "quadkey", "date_time",
+#'     "n_crisis", "percent_change"
+#'   ),
+#'   coltypes = list(
+#'     lat = "d",
+#'     lon = "d",
+#'     quadkey = "d",
+#'     date_time = "T",
+#'     n_crisis = "c",
+#'     percent_change = "c"
+#'   )
+#' )
 #'
-#' \dontrun{
-#'  read_fb_mobility_files(path_to_csvs = 'data/',
-#'                  colnames = c("lat", "lon", 
-#'                               "quadkey", "date_time", 
-#'                               "n_crisis", "percent_change"),
-#'                  coltypes = list(
-#'                                 lat = 'd',
-#'                                 lon = 'd',
-#'                                 quadkey = 'd',
-#'                                 date_time = 'T',
-#'                                 n_crisis = 'c',
-#'                                 percent_change = 'c'))
-#' }
-#'
-read_fb_mobility_files <- function(path_to_csvs, 
-                           colnames, 
-                           coltypes){
+read_fb_mobility_files <- function(path_to_csvs,
+                                   colnames,
+                                   coltypes) {
 
   # This data always have the same format
-  fnames <- list.files(path = path_to_csvs,
-                       pattern = "\\.csv$")
-  
+  fnames <- list.files(
+    path = path_to_csvs,
+    pattern = "\\.csv$"
+  )
+
   # Give an error if there are not empty files
   if (length(fnames) == 0) {
     stop("Error:.csv files not found in the specified directory.")
   }
 
-  fnames <- paste0(path_to_csvs,
-                   fnames)
-  
+  fnames <- paste0(
+    path_to_csvs,
+    fnames
+  )
+
   # There could be empty files, let's remove them
   fnames <- fnames[file.info(fnames)$size != 0]
-  
+
   data <- purrr::map_dfr(fnames,
-                     readr::read_csv,
-                     col_select = dplyr::all_of(colnames), # tidyselect
-                     col_names = TRUE, # header
-                     col_types = coltypes)
+    readr::read_csv,
+    col_select = dplyr::all_of(colnames), # tidyselect
+    col_names = TRUE, # header
+    col_types = coltypes
+  )
 
 
   data <- format_fb_data(data)
 
   if (nrow(missing_combinations(data)) > 0) {
-    message(paste("The files with the following combinations of",
-                  "days and times are not present or have 0KB"))
+    message(paste(
+      "The files with the following combinations of",
+      "days and times are not present or have 0KB"
+    ))
     print(missing_combinations(data))
   }
   data
-
 }
 
 
@@ -77,7 +87,7 @@ read_fb_mobility_files <- function(path_to_csvs,
 #' @description This function removes unnecessary characters such as `\\N`
 #' and ensures that the format of the date and QuadKeys is correct.
 #'
-#' @param data A dataframe with a quadkey, date_time, country columns and 
+#' @param data A dataframe with a quadkey, date_time, country columns and
 #' other numeric variables
 #'
 #' @return A dataframe.
@@ -86,31 +96,36 @@ read_fb_mobility_files <- function(path_to_csvs,
 #' @seealso \code{\link{read_fb_mobility_files}}
 #'
 #' @examples
-#'
-#'\dontrun{
-#' fb_mobility_file <-  read.csv("cityA_2020-04-26_0.csv")
-#' format_fb_data(data = fb_mobility_file)
-#'}
-format_fb_data <- function(data){
+#' 
+#' data(result_read_fb_mobility_data)
+#' format_fb_data(data = result_read_fb_mobility_data)
+format_fb_data <- function(data) {
 
   # remove scientific notation
   data$quadkey <- format(data$quadkey,
-                         scientific = FALSE)
+    scientific = FALSE
+  )
 
   # change date format
   data$day <- lubridate::date(data$date_time)
 
-  data$hour <- as.numeric(format(as.POSIXct(data$date_time, 
-                                            format = "%Y-%m-%d %H%M"), 
-                                 format = "%H"))
+  data$hour <- as.numeric(format(as.POSIXct(data$date_time,
+    format = "%Y-%m-%d %H%M"
+  ),
+  format = "%H"
+  ))
 
   # replace \\N with NA
   data <- data |>
-    dplyr::mutate(dplyr::across(-c("date_time", "day"), #tidyselect
-                  ~ ifelse(. == "\\N", NA, .))) |> 
-    dplyr::mutate(dplyr::across(-c("date_time", "day", "quadkey"),
-               as.numeric))
-     
+    dplyr::mutate(dplyr::across(
+      -c("date_time", "day"), # tidyselect
+      ~ ifelse(. == "\\N", NA, .)
+    )) |>
+    dplyr::mutate(dplyr::across(
+      -c("date_time", "day", "quadkey"), # tidyselect
+      as.numeric
+    ))
+
   data
 }
 
@@ -124,7 +139,7 @@ format_fb_data <- function(data){
 #' @param data A dataframe with a day and time column.
 #'
 #' @importFrom rlang .data
-#' 
+#'
 #' @return A dataframe with the missing days and times, if any.
 #' @export
 #'
@@ -132,31 +147,31 @@ format_fb_data <- function(data){
 #'
 #' # Sample dataset
 #' data <- data.frame(
-#'  day = c("2023-01-01", "2023-01-03", "2023-01-05"),
-#'  hour = c(0, 8, 16)
+#'   day = c("2023-01-01", "2023-01-03", "2023-01-05"),
+#'   hour = c(0, 8, 16)
 #' )
 #'
 #' missing_combinations(data)
 #'
 missing_combinations <- function(data) {
-
-  data <- data |> 
+  data <- data |>
     dplyr::mutate(day = as.Date(.data$day))
-  
+
   # Generate all combinations of days and times
   all_combinations <- expand.grid(
-    day = seq(from = min(data$day),
-              to = max(data$day),
-              by = 'days'),
+    day = seq(
+      from = min(data$day),
+      to = max(data$day),
+      by = "days"
+    ),
     hour = c(0, 8, 16)
   )
 
   # Select the dates not present on the dataset
   missing_combinations <- dplyr::anti_join(all_combinations,
-                                    data,
-                                    by = c("day", "hour"))
+    data,
+    by = c("day", "hour")
+  )
 
   return(missing_combinations)
 }
-
-

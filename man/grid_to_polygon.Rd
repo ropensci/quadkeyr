@@ -7,14 +7,17 @@
 grid_to_polygon(data)
 }
 \arguments{
-\item{data}{A spatial dataset (sf) with a quadkey and POINT geometry column.}
+\item{data}{A spatial dataset (sf) with a quadkey and POINT geometry column.
+If the columns tileX and tileY are included in the input dataset,
+they will be used by complete_grid_for_polygons().
+If not, the tile coordinates will be calculated internally.}
 }
 \value{
-A spatial dataset (sf) with the quadkey and POLYGON column.
+A sf POLYGON data.frame with a quadkey column.
 }
 \description{
-The main argument of this function, the grid of QuadKeys points
-representing lat/long WG84 coordinates specifically indicate the upper-left
+The main argument of this function, the grid of
+geographic coordinates (lat/long WG84) represents the upper-left
 corner of the QuadKey.
 To transform these coordinates into square polygons, the function
 supplements the grid by adding a row and column of tiles. These points
@@ -24,17 +27,18 @@ The function constructs the polygons using all the points of the grid.
 Note that it's possible to associate each QuadKey with its square polygon.
 }
 \examples{
-grid  <-  create_qk_grid(xmin = -59,
-                      xmax = -57,
-                      ymin = -35,
-                      ymax = -34,
-                      level = 11)
+grid <- create_qk_grid(
+  xmin = -59,
+  xmax = -57,
+  ymin = -35,
+  ymax = -34,
+  zoom = 11
+)
 
-                      grid_coords <- extract_qk_coord(data = grid$data)
-                      grid_coords
+grid_coords <- get_qk_coord(data = grid$data)
 
-                      polygrid  <-  grid_to_polygon(grid_coords)
-                      polygrid
+polygrid <- grid_to_polygon(grid_coords)
+polygrid
 }
 \seealso{
 \code{\link{complete_grid_for_polygons}}

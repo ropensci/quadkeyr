@@ -28,10 +28,10 @@ This function works only for quadkeys without NAs."><meta property="og:image" co
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/A-bing_map_tile_system_functions.html">Bing Maps Tile System functions</a>
-    <a class="dropdown-item" href="../articles/B-from_quadkey_data_to_raster.html">Converting QuadKey's Data into Raster Images</a>
-    <a class="dropdown-item" href="../articles/C-from_facebook_quadkey_data_to_raster.html">Converting Facebook QuadKey's Data into Raster Images</a>
-    <a class="dropdown-item" href="../articles/D-quadkey_visualization_app.html">QuadKey Visualization App</a>
+    <a class="dropdown-item" href="../articles/quadkey_to_sf_conversion.html">From a QuadKey to a Simple Features data.frame and other conversions</a>
+    <a class="dropdown-item" href="../articles/quadkey_identified_data_to_raster.html">Generating a Raster Image from Quadkey-Identified Data</a>
+    <a class="dropdown-item" href="../articles/facebook_mobility_csvs_to_raster_files.html">Converting Facebook Mobility QuadKey-identified Datasets into Raster Files</a>
+    <a class="dropdown-item" href="../articles/quadkey_visualization_app.html">QuadKey Visualization App</a>
   </div>
 </li>
 <li class="nav-item">
@@ -40,7 +40,13 @@ This function works only for quadkeys without NAs."><meta property="og:image" co
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
-      <ul class="navbar-nav"></ul></div>
+      <ul class="navbar-nav"><li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/Fernandez-Lab-WSU/quadkeyr/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul></div>
 
     
   </div>
@@ -48,7 +54,7 @@ This function works only for quadkeys without NAs."><meta property="og:image" co
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Apply a 7 day lag to the variable n_crisis</h1>
-      
+      <small class="dont-index">Source: <a href="https://github.com/Fernandez-Lab-WSU/quadkeyr/blob/HEAD/R/apply_weekly_lag.R" class="external-link"><code>R/apply_weekly_lag.R</code></a></small>
       <div class="d-none name"><code>apply_weekly_lag.Rd</code></div>
     </div>
 
@@ -88,24 +94,46 @@ expressed as percentage.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">result_read_all_files</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">500</span>,<span class="op">]</span></span></span>
-<span class="r-in"><span><span class="fu">apply_weekly_lag</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 191 × 11</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># Groups:   quadkey, time [191]</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      lat   lon quadkey      country date_time n_crisis percent_change day       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> -<span style="color: #BB0000;">34.8</span> -<span style="color: #BB0000;">58.9</span> 21032130022… AR      2020-04-…    143.        -<span style="color: #BB0000;">11.5</span>    2020-04-26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> -<span style="color: #BB0000;">34.4</span> -<span style="color: #BB0000;">58.8</span> 21032130001… AR      2020-04-…    117.         11.8    2020-04-26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> -<span style="color: #BB0000;">34.5</span> -<span style="color: #BB0000;">58.6</span> 21032130012… AR      2020-04-…    109.         10.9    2020-04-26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> -<span style="color: #BB0000;">35.1</span> -<span style="color: #BB0000;">58.9</span> 21032130202… AR      2020-04-…    137.          0.519  2020-04-26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> -<span style="color: #BB0000;">34.6</span> -<span style="color: #BB0000;">59.0</span> 21032130002… AR      2020-04-…     34.4         2.26   2020-04-26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> -<span style="color: #BB0000;">34.4</span> -<span style="color: #BB0000;">58.4</span> 21032130011… <span style="color: #BB0000;">NA</span>      2020-04-…     84.9        -<span style="color: #BB0000;">0.068</span><span style="color: #BB0000; text-decoration: underline;">5</span> 2020-04-26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> -<span style="color: #BB0000;">35.0</span> -<span style="color: #BB0000;">58.5</span> 21032130211… AR      2020-04-…    145.          9.10   2020-04-26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> -<span style="color: #BB0000;">35.0</span> -<span style="color: #BB0000;">59.0</span> 21032130200… AR      2020-04-…     41.9         6.26   2020-04-26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> -<span style="color: #BB0000;">34.7</span> -<span style="color: #BB0000;">59.1</span> 21032121131… AR      2020-04-…     37.1        -<span style="color: #BB0000;">5.22</span>   2020-04-26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> -<span style="color: #BB0000;">35.2</span> -<span style="color: #BB0000;">59.2</span> 21032121313… AR      2020-04-…     90.9         0      2020-04-26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 181 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 3 more variables: time &lt;dbl&gt;, n_crisis_lag_7 &lt;dbl&gt;, percent_change_7 &lt;dbl&gt;</span></span>
+<span class="r-in"><span><span class="va">files</span> <span class="op">&lt;-</span> <span class="fu"><a href="read_fb_mobility_files.html">read_fb_mobility_files</a></span><span class="op">(</span>path_to_csvs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>,</span></span>
+<span class="r-in"><span>                                package <span class="op">=</span> <span class="st">"quadkeyr"</span><span class="op">)</span>, <span class="st">"/"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                                colnames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lat"</span>, <span class="st">"lon"</span>, </span></span>
+<span class="r-in"><span>                                             <span class="st">"quadkey"</span>, <span class="st">"date_time"</span>, </span></span>
+<span class="r-in"><span>                                             <span class="st">"n_crisis"</span>, <span class="st">"percent_change"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                                coltypes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>                                                lat <span class="op">=</span> <span class="st">'d'</span>,</span></span>
+<span class="r-in"><span>                                                lon <span class="op">=</span> <span class="st">'d'</span>,</span></span>
+<span class="r-in"><span>                                                quadkey <span class="op">=</span> <span class="st">'c'</span>,</span></span>
+<span class="r-in"><span>                                                date_time <span class="op">=</span> <span class="st">'T'</span>,</span></span>
+<span class="r-in"><span>                                                n_crisis <span class="op">=</span> <span class="st">'c'</span>,</span></span>
+<span class="r-in"><span>                                                percent_change <span class="op">=</span> <span class="st">'c'</span><span class="op">)</span><span class="op">)</span> </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> New names:</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...1`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> New names:</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...1`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> New names:</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...1`</span>
+<span class="r-in"><span> </span></span>
+<span class="r-in"><span><span class="fu">apply_weekly_lag</span><span class="op">(</span><span class="va">files</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 15 × 10</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># Groups:   quadkey, hour [15]</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      lat   lon quadkey    date_time           n_crisis percent_change day       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> -<span style="color: #BB0000;">34.6</span> -<span style="color: #BB0000;">58.5</span> 210321300… 2020-04-15 <span style="color: #949494;">00:00:00</span>    221.          6.68   2020-04-15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> -<span style="color: #BB0000;">34.6</span> -<span style="color: #BB0000;">58.5</span> 210321300… 2020-04-15 <span style="color: #949494;">08:00:00</span>     15.2         3.31   2020-04-15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> -<span style="color: #BB0000;">34.6</span> -<span style="color: #BB0000;">58.5</span> 210321300… 2020-04-15 <span style="color: #949494;">16:00:00</span>     17.2         1.20   2020-04-15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> -<span style="color: #BB0000;">34.5</span> -<span style="color: #BB0000;">58.6</span> 210321300… 2020-04-15 <span style="color: #949494;">00:00:00</span>    383.         -<span style="color: #BB0000;">0.785</span>  2020-04-15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> -<span style="color: #BB0000;">34.5</span> -<span style="color: #BB0000;">58.6</span> 210321300… 2020-04-15 <span style="color: #949494;">08:00:00</span>     53.9         1.98   2020-04-15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> -<span style="color: #BB0000;">34.5</span> -<span style="color: #BB0000;">58.6</span> 210321300… 2020-04-15 <span style="color: #949494;">16:00:00</span>     66.6         0.112  2020-04-15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> -<span style="color: #BB0000;">34.6</span> -<span style="color: #BB0000;">58.5</span> 210321300… 2020-04-15 <span style="color: #949494;">00:00:00</span>    159.          0.034<span style="text-decoration: underline;">0</span> 2020-04-15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> -<span style="color: #BB0000;">34.6</span> -<span style="color: #BB0000;">58.5</span> 210321300… 2020-04-15 <span style="color: #949494;">08:00:00</span>     39.4         0.244  2020-04-15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> -<span style="color: #BB0000;">34.6</span> -<span style="color: #BB0000;">58.5</span> 210321300… 2020-04-15 <span style="color: #949494;">16:00:00</span>    199.         -<span style="color: #BB0000;">0.497</span>  2020-04-15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> -<span style="color: #BB0000;">34.6</span> -<span style="color: #BB0000;">58.5</span> 210321300… 2020-04-15 <span style="color: #949494;">00:00:00</span>    128.          0.528  2020-04-15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> -<span style="color: #BB0000;">34.6</span> -<span style="color: #BB0000;">58.5</span> 210321300… 2020-04-15 <span style="color: #949494;">08:00:00</span>     72.1        -<span style="color: #BB0000;">9.20</span>   2020-04-15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> -<span style="color: #BB0000;">34.6</span> -<span style="color: #BB0000;">58.5</span> 210321300… 2020-04-15 <span style="color: #949494;">16:00:00</span>     99.3        -<span style="color: #BB0000;">0.161</span>  2020-04-15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> -<span style="color: #BB0000;">34.5</span> -<span style="color: #BB0000;">58.6</span> 210321300… 2020-04-15 <span style="color: #949494;">00:00:00</span>    127.         -<span style="color: #BB0000;">5.37</span>   2020-04-15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> -<span style="color: #BB0000;">34.5</span> -<span style="color: #BB0000;">58.6</span> 210321300… 2020-04-15 <span style="color: #949494;">08:00:00</span>     23.6        -<span style="color: #BB0000;">2.32</span>   2020-04-15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> -<span style="color: #BB0000;">34.5</span> -<span style="color: #BB0000;">58.6</span> 210321300… 2020-04-15 <span style="color: #949494;">16:00:00</span>    111.         16.8    2020-04-15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 3 more variables: hour &lt;dbl&gt;, n_crisis_lag_7 &lt;dbl&gt;, percent_change_7 &lt;dbl&gt;</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

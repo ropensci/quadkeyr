@@ -1,0 +1,508 @@
+{
+  "input": {
+    "grid": 0,
+    "mapqk_bounds": {
+      "north": -16.42554750691673,
+      "east": -33.53027343750001,
+      "south": -45.27488643704893,
+      "west": -78.92578125000001
+    },
+    "mapqk_center": {
+      "lng": -56.25000000000001,
+      "lat": -31.95216223802498
+    },
+    "mapqk_groups": "polygon",
+    "mapqk_zoom": 5,
+    "qk": "2103",
+    "qkvalues_cell_clicked": {
+
+    },
+    "qkvalues_cells_selected": [
+
+    ],
+    "qkvalues_columns_selected": null,
+    "qkvalues_rows_all": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "qkvalues_rows_current": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "qkvalues_rows_selected": null,
+    "qkvalues_search": "",
+    "qkvalues_state": [
+      "1707689467564",
+      "0",
+      "10",
+      "",
+      "TRUE",
+      "FALSE",
+      "TRUE",
+      "TRUE",
+      "",
+      "TRUE",
+      "FALSE",
+      "TRUE",
+      "TRUE",
+      "",
+      "TRUE",
+      "FALSE",
+      "TRUE"
+    ],
+    "search": 1,
+    "xmax": "",
+    "xmin": "",
+    "ymax": "",
+    "ymin": "",
+    "zoom": 6
+  },
+  "output": {
+    "mapqk": {
+      "x": {
+        "options": {
+          "crs": {
+            "crsClass": "L.CRS.EPSG3857",
+            "code": null,
+            "proj4def": null,
+            "projectedBounds": null,
+            "options": {
+
+            }
+          }
+        },
+        "calls": [
+          {
+            "method": "addTiles",
+            "args": [
+              "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+              null,
+              null,
+              {
+                "minZoom": 0,
+                "maxZoom": 18,
+                "tileSize": 256,
+                "subdomains": "abc",
+                "errorTileUrl": "",
+                "tms": false,
+                "noWrap": false,
+                "zoomOffset": 0,
+                "zoomReverse": false,
+                "opacity": 1,
+                "zIndex": 1,
+                "detectRetina": false,
+                "attribution": "&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"
+              }
+            ]
+          },
+          {
+            "method": "addMeasure",
+            "args": [
+              {
+                "position": "topright",
+                "primaryLengthUnit": "kilometers",
+                "secondaryLengthUnit": "kilometers",
+                "primaryAreaUnit": "acres",
+                "activeColor": "#ABE67E",
+                "completedColor": "#C8F2BE",
+                "popupOptions": {
+                  "className": "leaflet-measure-resultpopup",
+                  "autoPanPadding": [
+                    10,
+                    10
+                  ]
+                },
+                "captureZIndex": 10000,
+                "localization": "en",
+                "decPoint": ".",
+                "thousandsSep": ","
+              }
+            ]
+          },
+          {
+            "method": "addPolygons",
+            "args": [
+              [
+                [
+                  [
+                    {
+                      "lng": [
+                        -67.5,
+                        -45,
+                        -45,
+                        -67.5,
+                        -67.5
+                      ],
+                      "lat": [
+                        -40.97989806962013,
+                        -40.97989806962013,
+                        -21.94304553343818,
+                        -21.94304553343818,
+                        -40.97989806962013
+                      ]
+                    }
+                  ]
+                ]
+              ],
+              "2103",
+              "polygon",
+              {
+                "interactive": true,
+                "className": "",
+                "stroke": true,
+                "color": "red",
+                "weight": 5,
+                "opacity": 0.5,
+                "fill": true,
+                "fillColor": null,
+                "fillOpacity": 0.2,
+                "smoothFactor": 1,
+                "noClip": false
+              },
+              null,
+              null,
+              "2103",
+              {
+                "interactive": false,
+                "permanent": false,
+                "direction": "auto",
+                "opacity": 1,
+                "offset": [
+                  0,
+                  0
+                ],
+                "textsize": "10px",
+                "textOnly": false,
+                "className": "",
+                "sticky": true
+              },
+              null
+            ]
+          },
+          {
+            "method": "addMarkers",
+            "args": [
+              -21.94304553343818,
+              -67.5,
+              null,
+              "-21.9430455334382 -67.5",
+              null,
+              {
+                "interactive": true,
+                "draggable": false,
+                "keyboard": true,
+                "title": "",
+                "alt": "",
+                "zIndexOffset": 0,
+                "opacity": 1,
+                "riseOnHover": false,
+                "riseOffset": 250
+              },
+              null,
+              null,
+              null,
+              null,
+              "2103",
+              {
+                "interactive": false,
+                "permanent": false,
+                "direction": "auto",
+                "opacity": 1,
+                "offset": [
+                  0,
+                  0
+                ],
+                "textsize": "10px",
+                "textOnly": false,
+                "className": "",
+                "sticky": true
+              },
+              null
+            ]
+          }
+        ],
+        "limits": {
+          "lat": [
+            -40.97989806962013,
+            -21.94304553343818
+          ],
+          "lng": [
+            -67.5,
+            -45
+          ]
+        },
+        "fitBounds": [
+          -40.97989806962013,
+          -67.5,
+          -21.94304553343818,
+          -45,
+          [
+
+          ]
+        ]
+      },
+      "evals": [
+
+      ],
+      "jsHooks": [
+
+      ],
+      "deps": [
+        {
+          "name": "jquery",
+          "version": "3.6.0",
+          "src": {
+            "href": "jquery-3.6.0"
+          },
+          "meta": null,
+          "script": "jquery-3.6.0.min.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        },
+        {
+          "name": "leaflet",
+          "version": "1.3.1",
+          "src": {
+            "href": "leaflet-1.3.1"
+          },
+          "meta": null,
+          "script": "leaflet.js",
+          "stylesheet": "leaflet.css",
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        },
+        {
+          "name": "leafletfix",
+          "version": "1.0.0",
+          "src": {
+            "href": "leafletfix-1.0.0"
+          },
+          "meta": null,
+          "script": null,
+          "stylesheet": "leafletfix.css",
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        },
+        {
+          "name": "proj4",
+          "version": "2.6.2",
+          "src": {
+            "href": "proj4-2.6.2"
+          },
+          "meta": null,
+          "script": "proj4.min.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        },
+        {
+          "name": "Proj4Leaflet",
+          "version": "1.0.1",
+          "src": {
+            "href": "Proj4Leaflet-1.0.1"
+          },
+          "meta": null,
+          "script": "proj4leaflet.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        },
+        {
+          "name": "rstudio_leaflet",
+          "version": "1.3.1",
+          "src": {
+            "href": "rstudio_leaflet-1.3.1"
+          },
+          "meta": null,
+          "script": null,
+          "stylesheet": "rstudio_leaflet.css",
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        },
+        {
+          "name": "leaflet-binding",
+          "version": "2.2.1",
+          "src": {
+            "href": "leaflet-binding-2.2.1"
+          },
+          "meta": null,
+          "script": "leaflet.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        },
+        {
+          "name": "leaflet-measure",
+          "version": "2.1.7",
+          "src": {
+            "href": "leaflet-measure-2.1.7"
+          },
+          "meta": null,
+          "script": "leaflet-measure.min.js",
+          "stylesheet": "leaflet-measure.css",
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        }
+      ]
+    },
+    "qkvalues": {
+      "x": {
+        "style": "bootstrap5",
+        "filter": "none",
+        "vertical": false,
+        "container": "<table class=\"table table-striped table-hover row-border order-column display\">\n  <thead>\n    <tr>\n      <th><\/th>\n      <th><\/th>\n    <\/tr>\n  <\/thead>\n<\/table>",
+        "options": {
+          "ordering": false,
+          "dom": "t",
+          "columnDefs": [
+            {
+              "name": "V1",
+              "targets": 0
+            },
+            {
+              "name": "V2",
+              "targets": 1
+            }
+          ],
+          "order": [
+
+          ],
+          "autoWidth": false,
+          "orderClasses": false,
+          "ajax": {
+            "type": "POST",
+            "data": "function(d) {\nd.search.caseInsensitive = true;\nd.search.smart = true;\nd.escape = true;\nvar encodeAmp = function(x) { x.value = x.value.replace(/&/g, \"%26\"); }\nencodeAmp(d.search);\n$.each(d.columns, function(i, v) {encodeAmp(v.search);});\n}"
+          },
+          "serverSide": true,
+          "processing": true
+        },
+        "selection": {
+          "mode": "multiple",
+          "selected": null,
+          "target": "row",
+          "selectable": null
+        }
+      },
+      "evals": [
+        "options.ajax.data"
+      ],
+      "jsHooks": [
+
+      ],
+      "deps": [
+        {
+          "name": "jquery",
+          "version": "3.6.0",
+          "src": {
+            "href": "jquery-3.6.0"
+          },
+          "meta": null,
+          "script": "jquery-3.6.0.min.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        },
+        {
+          "name": "dt-core-bootstrap5",
+          "version": "1.13.6",
+          "src": {
+            "href": "dt-core-bootstrap5-1.13.6"
+          },
+          "meta": null,
+          "script": [
+            "js/jquery.dataTables.min.js",
+            "js/dataTables.bootstrap5.min.js"
+          ],
+          "stylesheet": "css/dataTables.bootstrap5.min.css",
+          "head": null,
+          "attachment": null,
+          "package": null,
+          "all_files": false
+        },
+        {
+          "name": "bootstrap",
+          "version": "5.3.1",
+          "src": {
+            "href": "bootstrap-5.3.1"
+          },
+          "meta": {
+            "viewport": "width=device-width, initial-scale=1, shrink-to-fit=no"
+          },
+          "script": "bootstrap.bundle.min.js",
+          "stylesheet": "bootstrap.min.css",
+          "head": null,
+          "attachment": null,
+          "package": null,
+          "all_files": true
+        },
+        {
+          "name": "Raleway",
+          "version": "0.4.8",
+          "src": {
+            "href": "Raleway-0.4.8"
+          },
+          "meta": null,
+          "script": null,
+          "stylesheet": "font.css",
+          "head": null,
+          "attachment": null,
+          "package": null,
+          "all_files": true
+        },
+        {
+          "name": "bs3compat",
+          "version": "0.6.1",
+          "src": {
+            "href": "bs3compat-0.6.1"
+          },
+          "meta": null,
+          "script": [
+            "transition.js",
+            "tabs.js",
+            "bs3compat.js"
+          ],
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        },
+        {
+          "name": "crosstalk",
+          "version": "1.2.1",
+          "src": {
+            "href": "crosstalk-1.2.1"
+          },
+          "meta": null,
+          "script": "js/crosstalk.min.js",
+          "stylesheet": "css/crosstalk.min.css",
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        }
+      ]
+    }
+  },
+  "export": {
+
+  }
+}

@@ -9,7 +9,7 @@
 #' @param ny Integer; number of cells in y direction.
 #' @param data A spatial dataframe (sf) with the variable we want to represent 
 #' in the raster.
-#' @param variable The column name of the variable to plot.
+#' @param var The column name of the variable to plot.
 #' @param filename Select a name for the file. The date and time will
 #'  be included automatically in the name.
 #' @param path Path where the files should be stored.
@@ -23,50 +23,43 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' 
-#' files <- read_fb_mobility_files(path_to_csvs = "../geocovid/data/rasters/city/",
-#'  colnames = c("lat", "lon", 
-#'             "quadkey", "date_time", 
-#'             "n_crisis", "percent_change"),
-#'. coltypes = list(
-#'  lat = 'd',
-#'  lon = 'd',
-#'  quadkey = 'i',
-#'  date_time = 'T',
-#'  n_crisis = 'c',
-#'  percent_change = 'c')) 
+#' files <- read_fb_mobility_files(path_to_csvs = paste0(system.file("extdata",
+#'                                                 package = "quadkeyr"), "/"),
+#'                                 colnames = c("lat", "lon", 
+#'                                              "quadkey", "date_time", 
+#'                                              "n_crisis", "percent_change"),
+#'                                 coltypes = list(
+#'                                              lat = 'd',
+#'                                              lon = 'd',
+#'                                              quadkey = 'c',
+#'                                              date_time = 'T',
+#'                                              n_crisis = 'c',
+#'                                              percent_change = 'c')) 
 #'
-#' # Extract unique QuadKey values
-#' quadkeys <-  unique(files$quadkey)
-#' 
-#' # Convert QuadKeys to geographic coordinates
-#' qtll <- quadkey_to_latlong(quadkeys = quadkeys)
-#' 
-#' # Complete the grid (if necessary)
-#' regular_grid <- regular_qk_grid(qtll)
-#' 
-#' # Create polygons
-#' polygrid  <-  grid_to_polygon(grid_coords)
+#' # Get a regular grid and create the polygons
+#' regular_grid <- get_regular_polygon_grid(data = files)
 #' 
 #' # Keep only the QuadKeys reported
-#' polyvar <- files |>
-#'            dplyr::inner_join(polygrid, by = 'quadkey' )
+#' files_polygons <- files |> 
+#' dplyr::inner_join(regular_grid$data, 
+#'                   by = c("quadkey"))
 #'
-#' # Generate the raster files                       
-#' polygon_to_raster(data = polyvar,
-#'                   nx = grid$num_cols + 1,
-#'                   ny = grid$num_rows + 1,
-#'                   template = polyvar,
-#'                   variable = 'percent_change',
-#'                   filename = 'cityA',
-#'                   path = "data/")
-#' }
-#'
+#'\dontrun{
+#'# Generate the raster files                       
+#'polygon_to_raster(data = files_polygons,
+#'                  nx = regular_grid$num_cols,
+#'                  ny = regular_grid$num_rows,
+#'                  template = files_polygons,
+#'                  var = 'percent_change',
+#'                  filename = 'cityA',
+#'                  path = paste0( system.file("extdata", 
+#'                                             package = "quadkeyr"),
+#'                                 "/"))
+#'}
 polygon_to_raster <- function(data,
                               nx, ny,
                               template,
-                              variable = 'percent_change',
+                              var = 'percent_change',
                               filename,
                               path){
   
@@ -91,7 +84,7 @@ polygon_to_raster <- function(data,
       no_data <- mc |>
         dplyr::filter(.data$day ==  as.Date(i, 
                                             origin = "1970-01-01") &
-                        .data$time == p)
+                        .data$hour == p)
       
       # If it is, skip this iteration
       if (nrow(no_data) > 0) {
@@ -99,17 +92,17 @@ polygon_to_raster <- function(data,
       }
       
       
-      data <- data |>
+      data_raster <- data |>
         dplyr::filter(.data$day ==  as.Date(i, 
                                             origin = "1970-01-01") & 
-                        .data$time == p)
+                      .data$hour == p)
       
       # Create raster using a template to avoid errors
-      file <-  create_raster(template = template,
+      file <-  create_stars_raster(template = template,
                              nx = nx,
                              ny = ny,
-                             data = data,
-                             var = variable )
+                             data = data_raster,
+                             var = var)
       
       # Save raster file
       stars::write_stars(obj = file,

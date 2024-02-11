@@ -4,29 +4,36 @@
 \alias{pixelXY_to_latlong}
 \title{Converts pixel XY coordinatess into lat/long coordinates.}
 \usage{
-pixelXY_to_latlong(pixelX, pixelY, level)
+pixelXY_to_latlong(pixelX, pixelY, zoom)
 }
 \arguments{
 \item{pixelX}{X coordinate of the point, in pixels.}
 
 \item{pixelY}{Y coordinates of the point, in pixels.}
 
-\item{level}{Level of detail, from 1 (lowest detail) to 23 (highest detail).}
+\item{zoom}{Zoom or level of detail,
+from 1 (lowest detail) to 23 (highest detail).}
 }
 \value{
 A list with the longitude and latitude.
 }
 \description{
-Converts a pixel from pixel XY coordinates at a specified level
-of detail into latitude/longitude WGS-84 coordinates (in degrees).
+Converts a pixel from pixel XY coordinates at a specified zoom
+level into latitude/longitude WGS-84 coordinates (in degrees).
 For further information, refer to the
 Microsoft Bing Maps Tile System documentation.
 }
 \examples{
 
-pixelXY_to_latlong(pixelX = 768,
-                   pixelY = 1280,
-                   level = 3)
+pixelXY_to_latlong(
+  pixelX = 768,
+  pixelY = 1280,
+  zoom = 3
+)
 
-
+}
+\seealso{
+\href{
+https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system
+}{Microsoft Bing Maps Tile System documentation}
 }

@@ -14,6 +14,6 @@ This function launches the Shiny app.
 }
 \examples{
 \dontrun{
-qkmap_app() 
-} 
+qkmap_app()
+}
 }

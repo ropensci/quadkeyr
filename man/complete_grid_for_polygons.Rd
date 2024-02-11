@@ -22,20 +22,20 @@ This function is called internally by grid_to_polygon.
 }
 \examples{
 
-grid  <-  create_qk_grid(xmin = -59,
-                      xmax = -57,
-                      ymin = -35,
-                      ymax = -34,
-                      level = 11)
+grid <- create_qk_grid(
+  xmin = -59,
+  xmax = -57,
+  ymin = -35,
+  ymax = -34,
+  zoom = 11
+)
 
-grid_coords <- extract_qk_coord(data = grid$data)
+grid_coords <- get_qk_coord(data = grid$data)
 
 
 # You can use grid_to_polygon
 
 extragrid <- complete_grid_for_polygons(grid_coords)
-
-
 }
 \seealso{
 \code{\link{grid_to_polygon}}
