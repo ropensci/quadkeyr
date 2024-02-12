@@ -3,10 +3,15 @@
 #' @description  For further information, refer to the
 #' Microsoft Bing Maps Tile System documentation.
 #'
-#' @seealso
-#' \href{
-#' https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system
-#' }{Microsoft Bing Maps Tile System documentation}
+#' For a detailed explanation on how to use this
+#' and other similar `quadkeyr` functions,
+#' see the vignette:
+#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
+#' quadkey_to_sf_conversion.html}
+#' 
+#' @references 
+#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/
+#' bing-maps-tile-system}
 #'
 #' @param quadkey The QuadKey as a string.
 #'
@@ -53,10 +58,16 @@ quadkey_to_tileXY <- function(quadkey) {
 #'  the upper-left pixel of the specified tile.
 #' For further information, refer to the Microsoft Bing Maps Tile System
 #' documentation.
+#' 
+#' For a detailed explanation on how to use this
+#' and other similar `quadkeyr` functions,
+#' see the vignette:
+#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
+#' quadkey_to_sf_conversion.html}
 #'
-#' @seealso
-#' \href{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}{
-#' Microsoft Bing Maps Tile System documentation}
+#' @references 
+#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/
+#' bing-maps-tile-system}
 #'
 #' @param tileX Tile X coordinate.
 #' @param tileY Tile Y coordinate.
@@ -94,10 +105,15 @@ tileXY_to_pixelXY <- function(tileX, tileY) {
 #' For further information, refer to the
 #' Microsoft Bing Maps Tile System documentation.
 #'
-#' @seealso
-#' \href{
-#' https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system
-#' }{Microsoft Bing Maps Tile System documentation}
+#' For a detailed explanation on how to use this
+#' and other similar `quadkeyr` functions,
+#' see the vignette:
+#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
+#' quadkey_to_sf_conversion.html}
+#'
+#' @references 
+#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/
+#' bing-maps-tile-system}
 #'
 #' @param pixelX X coordinate of the point, in pixels.
 #' @param pixelY Y coordinates of the point, in pixels.
@@ -157,16 +173,21 @@ pixelXY_to_latlong <- function(pixelX, pixelY, zoom) {
 #' latitude/longitude WGS-84 coordinates (in degrees).
 #' For further information, refer to the Microsoft Bing Maps Tile System
 #' documentation.
+#' 
+#' #' For a detailed explanation on how to use this
+#' and other similar `quadkeyr` functions,
+#' see the vignette:
+#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
+#' quadkey_to_sf_conversion.html}
 #'
 #' @param quadkeys A vector with unique QuadKey numbers.
 #'
 #' @seealso \code{\link{quadkey_to_tileXY}}
 #' @seealso \code{\link{tileXY_to_pixelXY}}
 #' @seealso \code{\link{pixelXY_to_latlong}}
-#' @seealso
-#' \href{
-#' https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system
-#' }{Microsoft Bing Maps Tile System documentation}
+#' @references 
+#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/
+#' bing-maps-tile-system}
 #'
 #' @return A spatial data frame of class sf with a quadkey column
 #' and POINT geometry.

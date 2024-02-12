@@ -218,8 +218,6 @@ head(grid_coords)
 We can visualize the points in the map to understand better the results.
 
 ```{r mapgrid, echo = FALSE}
-
-
 min <- st_sfc(st_point(c(-59,-35)), crs = 4326)
 max <- st_sfc(st_point(c(-57,-34)), crs = 4326)
 ggplot() + 

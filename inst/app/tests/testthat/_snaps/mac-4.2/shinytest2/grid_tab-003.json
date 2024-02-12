@@ -1,13 +1,13 @@
 {
   "input": {
-    "grid": 0,
+    "grid": 1,
     "qk": "",
     "search": 0,
-    "xmax": "",
-    "xmin": "",
-    "ymax": "",
-    "ymin": "",
-    "zoom": 6
+    "xmax": "2",
+    "xmin": "1",
+    "ymax": "4",
+    "ymin": "3",
+    "zoom": 10
   },
   "output": {
     "mapqk": {

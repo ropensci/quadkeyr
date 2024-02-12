@@ -19,6 +19,12 @@ Converts tile XY coordinates into pixel XY coordinates of
 the upper-left pixel of the specified tile.
 For further information, refer to the Microsoft Bing Maps Tile System
 documentation.
+
+For a detailed explanation on how to use this
+and other similar \code{quadkeyr} functions,
+see the vignette:
+\url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
+quadkey_to_sf_conversion.html}
 }
 \examples{
 
@@ -28,7 +34,7 @@ tileXY_to_pixelXY(
 )
 
 }
-\seealso{
-\href{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}{
-Microsoft Bing Maps Tile System documentation}
+\references{
+\url{https://learn.microsoft.com/en-us/bingmaps/articles/
+bing-maps-tile-system}
 }

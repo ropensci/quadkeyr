@@ -5,10 +5,9 @@
 #' For further information, refer to the Microsoft Bing Maps Tile
 #' System documentation.
 #'
-#' @seealso
-#' \href{https://learn.microsoft.com/en-us/bingmaps/
-#' articles/bing-maps-tile-system}{
-#' Microsoft Bing Maps Tile System documentation}
+#' @references 
+#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/
+#' bing-maps-tile-system}
 #'
 #' @param zoom Zoom or level of detail, 
 #' from 1 (lowest detail) to 23 (highest detail).
@@ -19,7 +18,7 @@
 #' @examples
 #'
 #' mapsize(zoom = 6)
-#'
+
 # At the lowest zoom level (level 1), the map is 512 x 512 pixels.
 # At each successive zoom level, the map width and height grow by a
 # factor of 2.
@@ -33,8 +32,8 @@ mapsize <- function(zoom) {
 
 #' Clips a number to the specified minimum and maximum values.
 #'
-#' @description This function is user internally by latlong_to_pixelXY and
-#' pixelXY_to_latlong.
+#' @description This function is user internally by [latlong_to_pixelXY()] and
+#' [pixelXY_to_latlong()].
 #' For further information, refer to the Microsoft Bing Maps Tile System
 #' documentation.
 #'
@@ -65,10 +64,9 @@ clip <- function(n, min_value, max_value) {
 #' For further information, refer to the Microsoft Bing Maps Tile System
 #' documentation.
 #'
-#' @seealso
-#' \href{https://learn.microsoft.com/en-us/bingmaps/
-#' articles/bing-maps-tile-system}{
-#' Microsoft Bing Maps Tile System documentation}
+#' @references 
+#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/
+#' bing-maps-tile-system}
 #'
 #' @param latitude Latitude (in degrees) at which
 #'  to measure the ground resolution.
@@ -107,10 +105,9 @@ ground_res <- function(latitude, zoom) {
 #' For further information, refer to the Microsoft Bing Maps Tile System
 #' documentation.
 #'
-#' @seealso
-#' \href{https://learn.microsoft.com/en-us/bingmaps/
-#' articles/bing-maps-tile-system}{
-#' Microsoft Bing Maps Tile System documentation}
+#' @references 
+#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/
+#' bing-maps-tile-system}
 #'
 #' @param latitude Latitude (in degrees) at which to measure the map scale.
 #' @param zoom Zoom or level of detail, 
