@@ -10,8 +10,8 @@ get_qk_coord(data)
 \item{data}{A dataframe with a quadkey column.}
 }
 \value{
-A spatial dataframe (sf) containing the tiles XY coordinates
-(tileX, tileY), the QuadKey (quadkey), and a POINT geometry column.
+A \code{sf} POINT data.frame containing the tiles XY coordinates
+(\code{tileX}, \code{tileY}), the QuadKeys (\code{quadkey}), and a \code{geometry} column.
 }
 \description{
 Reads the QuadKey as a string and extracts the

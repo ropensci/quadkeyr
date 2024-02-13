@@ -2,28 +2,32 @@
 % Please edit documentation in R/regular_grid.R
 \name{regular_qk_grid}
 \alias{regular_qk_grid}
-\title{Converts a irregular QuadKey grid into a regular grid}
+\title{Converts a incomplete QuadKey \code{sf} POINT data.frame into a regular grid.}
 \usage{
 regular_qk_grid(data)
 }
 \arguments{
-\item{data}{A spatial dataset of class sf with POINT geometry}
+\item{data}{A \code{sf} POINT data.frame}
 }
 \value{
-A spatial dataset of class sf with POINT geometry
+A list with three elements:
+\itemize{
+\item \code{data} A \code{sf} POINT data.frame, with the rows needed to complete the grid.
+\item \code{num_rows} The number of columns of the regular grid.
+\item \code{num_cols} The number of rows of the regular grid.
+}
 }
 \description{
-This function completes the grid of QuadKeys using the bounding
-box of the data provided.
+This function completes \code{sf} POINT data.frame grid of QuadKeys
+using the bounding box of the data provided.
 }
 \examples{
 
-quadkeys <- c("213", "210", "211")
+quadkey_vector <- c("213", "210", "211")
 
-qtll <- quadkey_to_latlong(quadkeys = quadkeys)
+qtll <- quadkey_to_latlong(quadkey = quadkey_vector)
 
 regular_qk_grid(qtll)
-
 }
 \seealso{
 \code{\link{create_qk_grid}}

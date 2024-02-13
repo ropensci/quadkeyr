@@ -1,0 +1,30 @@
+{
+  "input": {
+    "grid": 1,
+    "qk": "",
+    "search": 0,
+    "xmax": "2",
+    "xmin": "1",
+    "ymax": "4",
+    "ymin": "3",
+    "zoom": 10
+  },
+  "output": {
+    "mapqk": {
+      "message": "Please, introduce a QuadKey press 'Search'",
+      "call": "NULL",
+      "type": [
+        "shiny.silent.error",
+        "validation"
+      ]
+    },
+    "qkvalues": [
+      "Please, insert a QuadKey and press 'Search'",
+      "NULL",
+      "c(\"shiny.silent.error\", \"validation\")"
+    ]
+  },
+  "export": {
+
+  }
+}

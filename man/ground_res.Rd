@@ -17,8 +17,8 @@ from 1 (lowest detail) to 23 (highest detail).}
 the ground resolution (meters / pixel)
 }
 \description{
-Determines the ground resolution (in meters per pixel) at a
-specified latitude and zoom level.
+Determines the ground resolution (in meters per pixel)
+at a specified latitude and zoom level.
 For further information, refer to the Microsoft Bing Maps Tile System
 documentation.
 }
@@ -30,8 +30,6 @@ ground_res(
 )
 
 }
-\seealso{
-\href{
-https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system
-}{Microsoft Bing Maps Tile System documentation}
+\references{
+\url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}
 }

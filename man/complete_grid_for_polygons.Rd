@@ -7,18 +7,21 @@
 complete_grid_for_polygons(data)
 }
 \arguments{
-\item{data}{A spatial dataset (sf) with the columns tileX, tileY and quadkey.}
+\item{data}{A \code{sf} POINT data.frame with the \code{quadkey},
+\code{tileX}, \code{tileY} and \code{geometry} columns}
 }
 \value{
-A spatial dataset (sf) with the columns tileX, tileY and quadkey.
+A data.frame with the \code{tileX}, \code{tileY} and \code{quadkey} columns.
+QuadKeys appears as NAs as there are only kept to extend the grid.
+Their value is not necessary.
 }
 \description{
-The QuadKey's points of the grid represent the upper-left corner
-of the QuadKey.
+The QuadKey's points of the grid represent
+the upper-left corner of the QuadKey.
 This function creates an extra tile row and column needed to create
 the square polygons for the QuadKeys that are in the the borders of the area
 without adding explicitly new QuadKeys to the grid.
-This function is called internally by grid_to_polygon.
+This function is called internally by \code{\link[=grid_to_polygon]{grid_to_polygon()}}.
 }
 \examples{
 
@@ -31,9 +34,6 @@ grid <- create_qk_grid(
 )
 
 grid_coords <- get_qk_coord(data = grid$data)
-
-
-# You can use grid_to_polygon
 
 extragrid <- complete_grid_for_polygons(grid_coords)
 }

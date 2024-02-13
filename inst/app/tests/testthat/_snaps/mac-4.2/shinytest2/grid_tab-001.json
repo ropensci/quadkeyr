@@ -1,28 +1,13 @@
 {
   "input": {
-    "grid": 1,
-    "mapgrid_groups": "qks",
-    "mapgrid_shape_mouseout": [
-      "122222030310",
-      "0.794855618843523",
-      "qks",
-      "3.8288621362097",
-      "2.04791332440333"
-    ],
-    "mapgrid_shape_mouseover": [
-      "122222030310",
-      "0.0699345260623052",
-      "qks",
-      "3.85899759362869",
-      "1.98335540317661"
-    ],
+    "grid": 0,
     "qk": "",
     "search": 0,
-    "xmax": "2",
-    "xmin": "1",
-    "ymax": "4",
-    "ymin": "3",
-    "zoom": 12
+    "xmax": "",
+    "xmin": "",
+    "ymax": "",
+    "ymin": "",
+    "zoom": 6
   },
   "output": {
     "mapqk": {

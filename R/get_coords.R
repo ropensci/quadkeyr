@@ -9,8 +9,8 @@
 #' @seealso \code{\link{tileXY_to_pixelXY}}
 #' @seealso \code{\link{pixelXY_to_latlong}}
 #'
-#' @return A spatial dataframe (sf) containing the tiles XY coordinates
-#' (tileX, tileY), the QuadKey (quadkey), and a POINT geometry column.
+#' @return A `sf` POINT data.frame containing the tiles XY coordinates
+#' (`tileX`, `tileY`), the QuadKeys (`quadkey`), and a `geometry` column.
 #'
 #' @export
 #'
@@ -61,15 +61,15 @@ get_qk_coord <- function(data) {
 #' @description Reads the tile XY coordinates and extracts the
 #' lat/long coordinates of the upper-left corner of the QuadKey.
 #'
-#' @param data A dataframe with columns named tileX and tileY
+#' @param data A dataframe with columns named `tileX` and `tileY`
 #' @param zoom Zoom or Level of detail, 
 #' from 1 (lowest detail) to 23 (highest detail).
 #'
 #' @seealso \code{\link{tileXY_to_pixelXY}}
 #' @seealso \code{\link{pixelXY_to_latlong}}
 #'
-#' @return  A spatial dataframe (sf) containing the tiles XY coordinates
-#' (tileX, tileY)  and a column for POINT geometry.
+#' @return  A `sf` POINT data.frame containing the tiles XY coordinates
+#' (`tileX`, `tileY`), a `quadkey` and a `geometry` column.
 #'
 #' @export
 #'
@@ -133,32 +133,4 @@ get_tile_coord <- function(data, zoom) {
     )  # tidyselect
 
   return(data)
-}
-
-
-#' Convert data.frame with quadkey column to a sf POLYGON data.frame
-#'
-#' @param data A data.frame with a quadkey column
-#'
-#' @return The same original data.frame with a sf POLYGON data.frame with a
-#' geometry column.
-#'  
-#' @export
-#'
-#' @examples
-#' 
-#' path <- paste0(system.file("extdata", package = 'quadkeyr'), 
-#'                                     "/cityA_2020_04_15_0000.csv")
-#' data <- read.csv(path)
-#' data <- format_fb_data(data)
-#'
-#' quadkey_df_to_polygon(data)
-quadkey_df_to_polygon <- function(data){
-  
-        data |> 
-        dplyr::rowwise() |> 
-        dplyr::mutate(quadkey_to_polygon(.data$quadkey)) |> # tidyselect
-        as.data.frame() |>  # remove class rowwise_df
-        sf::st_sf() 
-  
 }

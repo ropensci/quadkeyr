@@ -49,13 +49,13 @@
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="../logo.png" class="logo" alt=""><h1>Convert data.frame with quadkey column to a sf POLYGON data.frame</h1>
-      <small class="dont-index">Source: <a href="https://github.com/Fernandez-Lab-WSU/quadkeyr/blob/HEAD/R/get_coords.R" class="external-link"><code>R/get_coords.R</code></a></small>
+      <img src="../logo.png" class="logo" alt=""><h1>Convert data.frame with <code>quadkey</code> column to a <code>sf</code> POLYGON data.frame</h1>
+      <small class="dont-index">Source: <a href="https://github.com/Fernandez-Lab-WSU/quadkeyr/blob/HEAD/R/qk_to_polygon_functions.R" class="external-link"><code>R/qk_to_polygon_functions.R</code></a></small>
       <div class="d-none name"><code>quadkey_df_to_polygon.Rd</code></div>
     </div>
 
     <div class="ref-description section level2">
-    <p>Convert data.frame with quadkey column to a sf POLYGON data.frame</p>
+    <p>Convert data.frame with <code>quadkey</code> column to a <code>sf</code> POLYGON data.frame</p>
     </div>
 
     <div class="section level2">
@@ -66,54 +66,70 @@
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>data</dt>
-<dd><p>A data.frame with a quadkey column</p></dd>
+<dd><p>A data.frame with a <code>quadkey</code> column</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>The same original data.frame with a sf POLYGON data.frame with a
-geometry column.</p>
+<p>The same original data.frame with a <code>sf</code> POLYGON data.frame with a
+<code>geometry</code> column.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
+    <div class="dont-index"><p><code>quadkey_df_to_polygon</code></p></div>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, package <span class="op">=</span> <span class="st">'quadkeyr'</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span><span class="co"># Quadkey as string</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="quadkey_to_polygon.html">quadkey_to_polygon</a></span><span class="op">(</span>quadkey <span class="op">=</span> <span class="st">'213'</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Simple feature collection with 1 feature and 1 field</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Geometry type: POLYGON</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dimension:     XY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: -45 ymin: -66.51326 xmax: 0 ymax: -40.9799</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Geodetic CRS:  WGS 84</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   quadkey                       geometry</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     213 POLYGON ((-45 -66.51326, 0 ...</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># QuadKeys as column in a data.frame</span></span></span>
+<span class="r-in"><span><span class="co"># get data file</span></span></span>
+<span class="r-in"><span><span class="va">path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, package <span class="op">=</span> <span class="st">'quadkeyr'</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>                                    <span class="st">"/cityA_2020_04_15_0000.csv"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="va">path</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="format_fb_data.html">format_fb_data</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">quadkey_df_to_polygon</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">quadkey_df_to_polygon</span><span class="op">(</span>data <span class="op">=</span> <span class="va">data</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Simple feature collection with 150 features and 9 fields</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Geometry type: POLYGON</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Dimension:     XY</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: -180 ymin: 84.80247 xmax: -177.1875 ymax: 85.05113</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: -58.60107 ymin: -34.60156 xmax: -58.5022 ymax: -34.50203</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Geodetic CRS:  WGS 84</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> First 10 features:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     X       lat       lon quadkey  date_time n_crisis percent_change        day</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1   1 -34.58574 -58.55438 quadkey 2020-04-15       NA      2.8639400 2020-04-15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2   2 -34.51335 -58.57635 quadkey 2020-04-15       NA     -2.6009911 2020-04-15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3   3 -34.59026 -58.57086 quadkey 2020-04-15       NA      1.4601414 2020-04-15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4   4 -34.52692 -58.54340 quadkey 2020-04-15       NA      2.6076928 2020-04-15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5   5 -34.53145 -58.52692 quadkey 2020-04-15       NA      3.2428621 2020-04-15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6   6 -34.52692 -58.58734 quadkey 2020-04-15       NA      1.1728565 2020-04-15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7   7 -34.51787 -58.59283 quadkey 2020-04-15 13.07492     -0.3100404 2020-04-15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8   8 -34.58574 -58.59833 quadkey 2020-04-15       NA     11.4323758 2020-04-15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9   9 -34.56764 -58.52142 quadkey 2020-04-15       NA    -18.2960744 2020-04-15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 10 -34.55407 -58.59833 quadkey 2020-04-15       NA    -15.7189196 2020-04-15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    hour                       geometry</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1    NA POLYGON ((-180 84.80247, -1...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2    NA POLYGON ((-180 84.80247, -1...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3    NA POLYGON ((-180 84.80247, -1...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4    NA POLYGON ((-180 84.80247, -1...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5    NA POLYGON ((-180 84.80247, -1...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6    NA POLYGON ((-180 84.80247, -1...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7    NA POLYGON ((-180 84.80247, -1...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8    NA POLYGON ((-180 84.80247, -1...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9    NA POLYGON ((-180 84.80247, -1...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10   NA POLYGON ((-180 84.80247, -1...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     X       lat       lon          quadkey  date_time n_crisis percent_change</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   1 -34.58574 -58.55438 2103213001233302 2020-04-15       NA      2.8639400</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   2 -34.51335 -58.57635 2103213001213202 2020-04-15       NA     -2.6009911</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   3 -34.59026 -58.57086 2103213001233221 2020-04-15       NA      1.4601414</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   4 -34.52692 -58.54340 2103213001231110 2020-04-15       NA      2.6076928</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   5 -34.53145 -58.52692 2103213001320003 2020-04-15       NA      3.2428621</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6   6 -34.52692 -58.58734 2103213001230110 2020-04-15       NA      1.1728565</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7   7 -34.51787 -58.59283 2103213001212321 2020-04-15 13.07492     -0.3100404</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8   8 -34.58574 -58.59833 2103213001232302 2020-04-15       NA     11.4323758</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9   9 -34.56764 -58.52142 2103213001322012 2020-04-15       NA    -18.2960744</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 10 -34.55407 -58.59833 2103213001230320 2020-04-15       NA    -15.7189196</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           day hour                       geometry</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  2020-04-15   NA POLYGON ((-58.55713 -34.588...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  2020-04-15   NA POLYGON ((-58.5791 -34.5156...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  2020-04-15   NA POLYGON ((-58.57361 -34.592...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  2020-04-15   NA POLYGON ((-58.54614 -34.529...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  2020-04-15   NA POLYGON ((-58.52966 -34.533...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  2020-04-15   NA POLYGON ((-58.59009 -34.529...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7  2020-04-15   NA POLYGON ((-58.59558 -34.520...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8  2020-04-15   NA POLYGON ((-58.60107 -34.588...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  2020-04-15   NA POLYGON ((-58.52417 -34.569...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 2020-04-15   NA POLYGON ((-58.60107 -34.556...</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

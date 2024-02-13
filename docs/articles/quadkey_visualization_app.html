@@ -77,12 +77,13 @@
 </nav><div class="container template-article">
 
 
-
-
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>QuadKey Visualization App</h1>
+                        <h4 data-toc-skip class="author">Florencia
+D’Andrea</h4>
             
+            <h4 data-toc-skip class="date">2024-02-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/Fernandez-Lab-WSU/quadkeyr/blob/HEAD/vignettes/quadkey_visualization_app.Rmd" class="external-link"><code>vignettes/quadkey_visualization_app.Rmd</code></a></small>
       <div class="d-none name"><code>quadkey_visualization_app.Rmd</code></div>
@@ -102,33 +103,43 @@ and</li>
 coordinates, you can utilize the internal app provided by
 <code>quadkeyr</code>.</li>
 </ol>
-<div class="section level3">
-<h3 id="run-the-app">Run the app<a class="anchor" aria-label="anchor" href="#run-the-app"></a>
-</h3>
+<div class="section level2" number="1">
+<h2 id="run-the-app">
+<span class="header-section-number">1</span> Run the app<a class="anchor" aria-label="anchor" href="#run-the-app"></a>
+</h2>
 <p>You can open the app running:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">quadkeyr</span><span class="fu">::</span><span class="fu"><a href="../reference/qkmap_app.html">qkmap_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="quadkey-location">QuadKey location<a class="anchor" aria-label="anchor" href="#quadkey-location"></a>
+<div class="section level2" number="2">
+<h2 id="tabs">
+<span class="header-section-number">2</span> Tabs<a class="anchor" aria-label="anchor" href="#tabs"></a>
+</h2>
+<div class="section level3" number="2.1">
+<h3 id="quadkey-tab">
+<span class="header-section-number">2.1</span> QuadKey tab<a class="anchor" aria-label="anchor" href="#quadkey-tab"></a>
 </h3>
 <p>On the first tab, you can locate the upper corner of the QuadKey on
-the map and discover its level of detail, as well as the associated tile
-and pixel coordinates.</p>
+the map and discover its zoomlevel, as well as the associated tile and
+pixel coordinates.</p>
 <p><img src="qkmap_qk.png" width="90%" style="display: block; margin: auto;"></p>
 </div>
-<div class="section level3">
-<h3 id="quadkey-grid">QuadKey grid<a class="anchor" aria-label="anchor" href="#quadkey-grid"></a>
+<div class="section level3" number="2.2">
+<h3 id="creating-a-quadkey-grid-tab">
+<span class="header-section-number">2.2</span> Creating a QuadKey
+grid tab<a class="anchor" aria-label="anchor" href="#creating-a-quadkey-grid-tab"></a>
 </h3>
 <p>The second tab allows you to visualize the grid created using the
 <code>grid_to_polygon</code> function and locate specific QuadKeys.</p>
 <p><img src="qkmap_grid.png" width="90%" style="display: block; margin: auto;"></p>
-<div class="section level4">
-<h4 id="performance">Performance<a class="anchor" aria-label="anchor" href="#performance"></a>
-</h4>
+</div>
+</div>
+<div class="section level2" number="3">
+<h2 id="performance">
+<span class="header-section-number">3</span> Performance<a class="anchor" aria-label="anchor" href="#performance"></a>
+</h2>
 <p>Note that for higher levels of detail, it is preferable to use
 smaller areas (&lt; 2000 QuadKeys) to prevent long processing times.</p>
-</div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>

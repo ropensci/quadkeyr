@@ -1,7 +1,15 @@
 ---
 title: "QuadKey Visualization App"
+author: "Florencia D'Andrea"
+date: "`r Sys.Date()`"
 output:
-  html_document:
+   html_document:
+    toc : true
+    number_sections: true
+    toc_depth: 3
+urlcolor: blue
+pkgdown:
+  as_is: true
 vignette: >
   %\VignetteIndexEntry{QuadKey Visualization App}
   %\VignetteEngine{knitr::rmarkdown}
@@ -25,7 +33,7 @@ To easily visualize:
 2. The grid for the area delimited by two pairs of geographic coordinates,
    you can utilize the internal app provided by `quadkeyr`.
 
-### Run the app
+# Run the app
 
 You can open the app running:
 
@@ -33,17 +41,18 @@ You can open the app running:
 quadkeyr::qkmap_app()
 ```
 
-### QuadKey location
+# Tabs
+## QuadKey tab
 
 On the first tab, you can locate the upper corner of the QuadKey on the map 
-and discover its level of detail, 
+and discover its zoomlevel, 
 as well as the associated tile and pixel coordinates.
 
 ```{r qkmap_qk_app, echo = FALSE, out.width= "90%", fig.align='center'}
 knitr::include_graphics("qkmap_qk.png")
 ```
 
-### QuadKey grid
+## Creating a QuadKey grid tab
 
 The second tab allows you to visualize the grid created using 
 the `grid_to_polygon` function and locate specific QuadKeys.
@@ -52,7 +61,7 @@ the `grid_to_polygon` function and locate specific QuadKeys.
 knitr::include_graphics("qkmap_grid.png")
 ```
 
-#### Performance
+# Performance
 
 Note that for higher levels of detail, it is preferable to use
 smaller areas (< 2000 QuadKeys) to prevent long processing times.

@@ -15,15 +15,14 @@ polygon_to_raster(
 )
 }
 \arguments{
-\item{data}{A spatial dataframe (sf) with the variable we want to represent
+\item{data}{A \code{sf} POLYGON data.frame with the variable we want to represent
 in the raster.}
 
 \item{nx}{Integer; number of cells in x direction.}
 
 \item{ny}{Integer; number of cells in y direction.}
 
-\item{template}{A spatial dataset (sf) with the polygon grid used as
-template}
+\item{template}{A \code{sf} POLYGON data.frame}
 
 \item{var}{The column name of the variable to plot.}
 
@@ -37,7 +36,7 @@ as many .tif files as dates and times in the dataset
 }
 \description{
 Creates one raster by each date and time reported and
-saves it as a .tif.
+saves it as a \code{.tif}.
 }
 \examples{
 files <- read_fb_mobility_files(path_to_csvs = paste0(system.file("extdata",

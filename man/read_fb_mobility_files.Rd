@@ -7,23 +7,24 @@
 read_fb_mobility_files(path_to_csvs, colnames, coltypes)
 }
 \arguments{
-\item{path_to_csvs}{Path to the folder where the .csv files are stored}
+\item{path_to_csvs}{Path to the folder where the \code{.csv} files are stored}
 
 \item{colnames}{Columns to include in the results (as character).
-For more information go to readr::read_csv()}
+For more information go to \code{\link[readr:read_delim]{readr::read_csv()}}}
 
-\item{coltypes}{Column specifications (as character).
-See vignette("readr") for more details.
+\item{coltypes}{Column specifications (as strings).
+See vignette("readr", package = "readr") for more details.
 documentation.}
 }
 \value{
-A dataframe with the information of all the files.
+A data.frame with the information of all the files read.
 }
 \description{
-This function reads all the .csv files in a particular folder.
-These files consistently contain identical columns, with variations
-only in location, day, and time. As a result, we can uniformly apply
-specific formatting to columns across these files."
+This function reads all the \code{.csv} files in a particular folder.
+These files consistently contain identical columns,
+with variations only in location, day, and time.
+As a result,
+we can uniformly apply specific formatting to columns across these files.
 }
 \examples{
 

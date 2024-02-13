@@ -7,7 +7,7 @@
 quadkey_to_tileXY(quadkey)
 }
 \arguments{
-\item{quadkey}{The QuadKey as a string.}
+\item{quadkey}{A QuadKey as a single string.}
 }
 \value{
 A list returning the tile X, tile Y coordinates and
@@ -17,13 +17,26 @@ the zoom level.
 For further information, refer to the
 Microsoft Bing Maps Tile System documentation.
 }
+\details{
+Converting latitude/longitude coordinates into a QuadKey
+and then back to latitude/longitude won't yield identical values,
+unless the initial latitude/longitude coordinates
+correspond to the upper-left Quadkey's pixel and tile XY coordinates
+at the same zoom level.
+
+Understanding this distinction is crucial for
+the accurate use of these functions in coordinate conversions.
+
+For a detailed explanation on how to use this
+and other similar \code{quadkeyr} functions,
+read the the vignette:
+\url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html}
+}
 \examples{
 
-quadkey_to_tileXY(quadkey = 213)
+quadkey_to_tileXY(quadkey = "213")
 
 }
-\seealso{
-\href{
-https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system
-}{Microsoft Bing Maps Tile System documentation}
+\references{
+\url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}
 }

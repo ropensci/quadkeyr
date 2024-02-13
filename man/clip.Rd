@@ -17,8 +17,8 @@ clip(n, min_value, max_value)
 The clipped value.
 }
 \description{
-This function is user internally by latlong_to_pixelXY and
-pixelXY_to_latlong.
+This function is user internally by \code{\link[=latlong_to_pixelXY]{latlong_to_pixelXY()}} and
+\code{\link[=pixelXY_to_latlong]{pixelXY_to_latlong()}}.
 For further information, refer to the Microsoft Bing Maps Tile System
 documentation.
 }
