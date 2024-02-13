@@ -2,23 +2,23 @@
 % Please edit documentation in R/regular_grid.R
 \name{get_regular_polygon_grid}
 \alias{get_regular_polygon_grid}
-\title{Get a data.frame representing a regular QuadKey grid
-derived from the bounding box of the \code{quadkey} column of a data.frame.
-Output: \code{sf} POLYGON data.frame}
+\title{Get regular QuadKey polygon grid derived from
+the bounding box of the \code{quadkey} column of a data.frame.}
 \usage{
 get_regular_polygon_grid(data)
 }
 \arguments{
-\item{data}{A data.frame with a \code{quadkey} column.
-
-' @return A list with three elements:
+\item{data}{A data.frame with a \code{quadkey} column.}
+}
+\value{
+A list with three elements:
 \itemize{
 \item \code{data} An \code{sf} POLYGON data.frame with all the QuadKeys within
 the bounding box of the \code{quadkey} column of a data.frame.
 Only the columns \code{quadkey}, \code{tileX}, \code{tileY} and \code{geometry} are returned.
 \item \code{num_rows} The number of columns of the regular grid.
 \item \code{num_cols} The number of rows of the regular grid.
-}}
+}
 }
 \description{
 This function estimates the bounding box of the QuadKeys given in the
@@ -27,12 +27,11 @@ This function estimates the bounding box of the QuadKeys given in the
 For a detailed explanation on how to use this
 and other similar \code{quadkeyr} functions,
 read the the vignette:
-\url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
-facebook_mobility_csvs_to_raster_files.html}
+\url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html}
 }
 \examples{
 
-# daya file
+# data file
 path <- paste0(system.file("extdata", package = 'quadkeyr'),
                              "/cityA_2020_04_15_0000.csv")
 data <- read.csv(path)

@@ -2,9 +2,8 @@
 % Please edit documentation in R/regular_grid.R
 \name{add_regular_polygon_grid}
 \alias{add_regular_polygon_grid}
-\title{Add the rows needed to complete a regular QuadKey grid
-derived from the bounding box of the \code{quadkey} column of a data.frame.
-Output: \code{sf} POLYGON data.frame}
+\title{Add the rows needed to complete a regular QuadKey polygon grid
+derived from the bounding box of the \code{quadkey} column of a data.frame.}
 \usage{
 add_regular_polygon_grid(data)
 }
@@ -40,8 +39,7 @@ All other columns for the introduced QuadKeys will be filled with NAs.
 For a detailed explanation on how to use this
 and other similar \code{quadkeyr} functions,
 read the the vignette:
-\url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
-quadkey_identified_data_to_raster.html}
+\url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_identified_data_to_raster.html}
 }
 \examples{
 # read the file with the data

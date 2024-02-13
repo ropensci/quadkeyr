@@ -1,8 +1,13 @@
 ---
 title: "Generating a Raster Image from Quadkey-Identified Data"
 output:
-  html_document:
+   html_document:
+    toc : true
     number_sections: true
+    toc_depth: 3
+urlcolor: blue
+pkgdown:
+  as_is: true
 vignette: >
   %\VignetteIndexEntry{Generating a Raster Image from Quadkey-Identified Data}
   %\VignetteEngine{knitr::rmarkdown}
@@ -33,7 +38,7 @@ can be found in `quadkeyr` vignette
 [From QuadKey to Simple Features data.frame and other conversions](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html)
 and in the [official documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system).
 
-## Basic workflow
+# Basic workflow
 
 ```{r w2, echo = FALSE, out.width= "90%", fig.align='center'}
 knitr::include_graphics("../man/figures/workflow_raster.png")
@@ -65,7 +70,7 @@ data <- format_fb_data(data)
 head(data)
 ```
 
-### Converting QuadKey-identified data to raster images
+## Converting QuadKey-identified data to raster images
 To create the raster,
 it is preferable to work with a regular grid.
 That is why we need to ensure that we have all the QuadKeys 
@@ -130,7 +135,7 @@ ggplot() +
     scale_y_discrete(expand=c(0,0))
 ```
 
-### Quadkeys as polygons
+## Quadkeys as polygons
 If you want to visualize the QuadKeys without creating a raster image, 
 you also have the option of converting 
 the QuadKeys into an `sf` POLYGON data.frame using
@@ -150,14 +155,14 @@ ggplot() +
   theme_minimal()
 ```
 
-## Advanced use and intermediate functions
+# Advanced use and intermediate functions
 The function `add_regular_polygon_grid()` 
 serves as a wrapper for three functions:
 `get_qk_coords()`, `regular_qk_grid()`, and `grid_to_polygon()`.
 
 We will demostrate some of the uses of these functions in isolation:
 
-### Create a Quadkey-identified polygon regular grid
+## Create a Quadkey-identified polygon regular grid
 The `regular_qk_grid()` function generates
 a regular grid by utilizing the `create_qk_grid()` function. 
 To accomplish this,
@@ -218,7 +223,7 @@ grid <-  create_qk_grid(
 head(grid$data)
 ```
 
-#### Get the grid coordinates from the QuadKeys
+### Get the grid coordinates from the QuadKeys
 
 The coordinates are extracted from the QuadKeys 
 using the function `get_qk_coords()`. 
@@ -257,7 +262,7 @@ that they do not precisely cover the entire area
 defined by the initial points. 
 
 
-##### Conversion to polygons
+### Conversion to polygons
 As we are creating the polygons from a `sf` POINT data.frame
 we can use `grid_to_polygon()`.
 
@@ -309,7 +314,7 @@ qkmap_app()
 knitr::include_graphics("qkmap_grid.png")
 ```
 
-### Raster creation
+## Raster creation
 
 Let's generate the raster. 
 `data_provided` is an example 
@@ -375,7 +380,7 @@ raster
 
 min <-st_sfc(st_point(c(-59,-35)), crs = 4326)
 max <- st_sfc(st_point(c(-57,-34)), crs = 4326)
-p = ggplot() + 
+ggplot() + 
   geom_sf(data = ne_countries(returnclass = 'sf'),
           fill = 'beige') +
 
@@ -394,7 +399,5 @@ p = ggplot() +
         panel.grid.minor = element_blank()) +
   ylab("Latitude") + 
   xlab("Longitude")
-
-p
 
 ```

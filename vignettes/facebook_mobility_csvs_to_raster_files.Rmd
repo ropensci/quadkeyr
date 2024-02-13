@@ -1,8 +1,15 @@
 ---
 title: "Converting Facebook Mobility QuadKey-identified Datasets into Raster Files"
+author: "Florencia D'Andrea"
+date: "`r Sys.Date()`"
 output:
-  html_document:
+   html_document:
+    toc : true
     number_sections: true
+    toc_depth: 3
+urlcolor: blue
+pkgdown:
+  as_is: true
 vignette: >
   %\VignetteIndexEntry{Converting Facebook Mobility QuadKey-identified Datasets into Raster Files}
   %\VignetteEngine{knitr::rmarkdown}
@@ -40,7 +47,7 @@ you can read
 Facebook mobility data for each location and zoom level is stored in
 a separate `csv` file for each day and time.
 
-## Basic workflow
+# Basic workflow
 
 
 ```{r w3, echo = FALSE, out.width= "90%", fig.align='center'}
@@ -48,7 +55,7 @@ knitr::include_graphics("../man/figures/workflow_facebook.png")
 ```
 
 
-### Reading and formatting multiple `csv` Files
+## Reading and formatting multiple `csv` Files
 
 - All these files are for the same area and zoom level, 
 but dates and hours will change.
@@ -89,7 +96,7 @@ head(files)
 > Please, contact [Data for Good](https://dataforgood.facebook.com/) to
 > get datasets.
 
-### Create a Quadkey polygon grid for your area of analysis
+## Create a Quadkey polygon grid for your area of analysis
 
 This function generates a `sf POLYGON data.frame` with a
 `quadkey` and `geometry` column.
@@ -196,7 +203,7 @@ ggplot() +
 ```
 
 
-## Advanced use and intermediate functions
+# Advanced use: intermediate functions
 
 The function `get_regular_polygon_grid()` is a wrapper for 
 `quadkey_to_latlong()`, `regular_qk_grid()`, and `grid_to_polygon()`. 
@@ -210,7 +217,7 @@ head(files)
 ```
 
 
-### Convert the QuadKeys to latitude/longitude coordinates
+## Convert the QuadKeys to latitude/longitude coordinates
 
 Even if these files correspond to the same location,
 the number of QuadKeys reported could vary.
@@ -229,7 +236,7 @@ head(qtll)
 ```
 Let's plot the QuadKey grid.
 
-```{r plotqtll, echo= FALSE}
+```{r plotqtll, echo= FALSE, fig.align='center'}
 
 ggplot() + 
   geom_sf(data = ne_countries(returnclass = 'sf'),
@@ -246,7 +253,7 @@ ggplot() +
   xlab("Longitude")
 ```
 
-### Complete the grid 
+## Complete the grid 
 
 Some of the QuadKeys inside the bounding box are missing, 
 we can't consider this a regular grid. 
@@ -274,7 +281,7 @@ resulting in a complete grid of 369 points,
 as depicted in the plot.
 The additional points are highlighted in orange:
 
-```{r echo = FALSE}
+```{r echo = FALSE, fig.align='center'}
 
 ggplot() + 
   geom_sf(data = ne_countries(returnclass = 'sf'),
@@ -292,7 +299,7 @@ ggplot() +
   xlab("Longitude")
 ```
 
-### Create the polygons
+## Create the polygons
 
 Now we can transform the QuadKeys into polygons.
 ```{r polygrid}
@@ -301,7 +308,7 @@ head(polygrid)
 ```
 
 
-```{r plotpolygrid, echo = FALSE}
+```{r plotpolygrid, echo = FALSE, fig.align='center'}
 ggplot() + 
   geom_sf(data = ne_countries(returnclass = 'sf'),
           fill = 'beige') +
@@ -332,7 +339,7 @@ head(polyvar)
 ```
 
 
-### Create the rasters for the variables and data involved.
+## Create the rasters for the variables and data involved.
 
 The rasters are going to be created automatically 
 for each day and time reported.
@@ -354,7 +361,7 @@ polygon_to_raster(data = polyvar,
 Let's plot one of the rasters, `"cityA_2020-04-15_8.tif"`.
 As you can see, the overlapping with the polygon grid is perfect:
 
-```{r plotploytoras, echo=FALSE}
+```{r plotploytoras, echo=FALSE, fig.align='center'}
 
 filename <- "cityA_2020-04-15_16.tif"
 output_raster <-  stars::read_stars(system.file("extdata",

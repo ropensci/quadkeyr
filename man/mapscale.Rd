@@ -34,6 +34,5 @@ mapscale(
 
 }
 \references{
-\url{https://learn.microsoft.com/en-us/bingmaps/articles/
-bing-maps-tile-system}
+\url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}
 }

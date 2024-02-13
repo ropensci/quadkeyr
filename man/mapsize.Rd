@@ -24,6 +24,5 @@ System documentation.
 mapsize(zoom = 6)
 }
 \references{
-\url{https://learn.microsoft.com/en-us/bingmaps/articles/
-bing-maps-tile-system}
+\url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}
 }

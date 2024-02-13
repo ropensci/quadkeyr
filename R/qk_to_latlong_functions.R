@@ -7,7 +7,7 @@
 #' Converting latitude/longitude coordinates into a QuadKey 
 #' and then back to latitude/longitude won't yield identical values, 
 #' unless the initial latitude/longitude coordinates 
-#' correspond to the upper-left Quadkey's pixel and tile XY coordinates
+#' correspond to the upper-left QuadKey's pixel and tile XY coordinates
 #' at the same zoom level. 
 #'  
 #' Understanding this distinction is crucial for 
@@ -137,7 +137,7 @@ tileXY_to_pixelXY <- function(tileX, tileY) {
 #' Converting latitude/longitude coordinates into a QuadKey 
 #' and then back to latitude/longitude won't yield identical values, 
 #' unless the initial latitude/longitude coordinates 
-#' correspond to the upper-left Quadkey's pixel and tile XY coordinates
+#' correspond to the upper-left QuadKey's pixel and tile XY coordinates
 #' at the same zoom level. 
 #'  
 #' Understanding this distinction is crucial for 
@@ -176,7 +176,8 @@ pixelXY_to_latlong <- function(pixelX, pixelY, zoom) {
 
   # Check if pixelX and pixelY are within the valid range
   max_pixel_value <- mapsize(zoom) - 1
-  if (pixelX < 0 | pixelX > max_pixel_value | pixelY < 0 | pixelY > max_pixel_value) {
+  if (pixelX < 0 | pixelX > max_pixel_value |
+      pixelY < 0 | pixelY > max_pixel_value) {
     stop(paste(
       "Invalid pixelX or pixelY values.",
       "They should be within the range [0, (256*2^zoom) - 1]."

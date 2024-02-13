@@ -64,7 +64,7 @@ test_that("`get_regular_polygon_grid()` returns the expected output structure",
             expect_type(regular_grid$num_rows, "double")
           })
 
-test_that("`get_regular_polygon_grid()` returns the expected # of columns and rows",
+test_that("`get_regular_polygon_grid()` returns the expected # of cols/rows",
           {
             # Check if the number of cols and rows matches the expected values
             expect_equal(regular_grid$num_cols, 18)

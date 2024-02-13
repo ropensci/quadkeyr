@@ -1,5 +1,4 @@
 #' Converts a incomplete QuadKey `sf` POINT data.frame into a regular grid.
-#' Output: `sf` POINT data.frame
 #'
 #' @description This function completes `sf` POINT data.frame grid of QuadKeys 
 #' using the bounding box of the data provided.
@@ -78,11 +77,9 @@ regular_qk_grid <- function(data) {
 
 
 
-#' Add the rows needed to complete a regular QuadKey grid 
+#' Add the rows needed to complete a regular QuadKey polygon grid 
 #' derived from the bounding box of the `quadkey` column of a data.frame.
-#' Output: `sf` POLYGON data.frame
 #' 
-#'
 #' @description
 #' This function estimates the bounding box of the quadkeys given in the 
 #' quadkey column and adds rows to complete the quadkeys and the geometry 
@@ -135,9 +132,8 @@ add_regular_polygon_grid <- function(data){
 }
   
 
-#' Get a data.frame representing a regular QuadKey grid 
-#' derived from the bounding box of the `quadkey` column of a data.frame.
-#' Output: `sf` POLYGON data.frame
+#' Get regular QuadKey polygon grid derived from 
+#' the bounding box of the `quadkey` column of a data.frame.
 #' 
 #' @description
 #' This function estimates the bounding box of the QuadKeys given in the 
@@ -151,7 +147,7 @@ add_regular_polygon_grid <- function(data){
 #'
 #' @param data A data.frame with a `quadkey` column.
 #'
-#'' @return A list with three elements:
+#' @return A list with three elements:
 #' * `data` An `sf` POLYGON data.frame with all the QuadKeys within
 #' the bounding box of the `quadkey` column of a data.frame.
 #' Only the columns `quadkey`, `tileX`, `tileY` and `geometry` are returned.
@@ -162,7 +158,7 @@ add_regular_polygon_grid <- function(data){
 #'
 #' @examples
 #' 
-#' # daya file
+#' # data file
 #' path <- paste0(system.file("extdata", package = 'quadkeyr'),
 #'                              "/cityA_2020_04_15_0000.csv")
 #' data <- read.csv(path)

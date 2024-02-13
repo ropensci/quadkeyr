@@ -33,7 +33,7 @@ test_that("`ground_res()` can reproduce values reported in the Documentation",
           {
             expect_equal(round(ground_res(latitude = 0,
                                           zoom = 6),
-                               digits = 3), # there are minor issues with decimals
+                         digits = 3), # there are minor issues with decimals
                          2445.985)
           })
 

@@ -2,8 +2,7 @@
 % Please edit documentation in R/regular_grid.R
 \name{regular_qk_grid}
 \alias{regular_qk_grid}
-\title{Converts a incomplete QuadKey \code{sf} POINT data.frame into a regular grid.
-Output: \code{sf} POINT data.frame}
+\title{Converts a incomplete QuadKey \code{sf} POINT data.frame into a regular grid.}
 \usage{
 regular_qk_grid(data)
 }

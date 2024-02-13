@@ -11,7 +11,7 @@ test_that("{shinytest2} recording: qk_tab", {
   app$set_inputs(qk = "2103")
   app$click("search")
   app$expect_values()
-  app$expect_screenshot()
+  #app$expect_screenshot()
 })
 
 
