@@ -13,7 +13,7 @@
 #' \url{https://learn.microsoft.com/en-us/bingmaps/articles/
 #' bing-maps-tile-system}
 #'
-#' @param quadkey The QuadKey as a string.
+#' @param quadkey A QuadKey as a single string.
 #'
 #' @return A list returning the tile X, tile Y coordinates and
 #' the zoom level.
@@ -21,34 +21,42 @@
 #'
 #' @examples
 #'
-#' quadkey_to_tileXY(quadkey = 213)
+#' quadkey_to_tileXY(quadkey = "213")
 #'
 quadkey_to_tileXY <- function(quadkey) {
-  quadkey <- as.character(quadkey)
-  
-  if (nchar(quadkey) == 0) {
-    return(list(
-      tileX = 0,
-      tileY = 0,
-      zoom = 0
-    ))
+  # The conversion to character is not straightfoward
+  # as there could be leading zeros or scientific notation
+  if (!is.character(quadkey) || length(quadkey) != 1) {
+    stop("Please provide a QuadKey as a single string")
   }
-  
-  # Split the digits of the QuadKey and reverse the order
-  digits <- rev(strsplit(quadkey, "")[[1]])
-  
-  # The number of digits corresponds to the zoom level
-  i <- length(digits)
-  
-  masks <- 2 ** (0:(i - 1))
-  xt <- sum(masks[digits == "1" | digits == "3"])
-  yt <- sum(masks[digits == "2" | digits == "3"])
-  
+  if (!all(grepl("[0-9]+", quadkey)) |
+           any(!unlist(strsplit(quadkey, "")) %in% c("0", "1", "2", "3"))) {
+    stop("QuadKeys can contain only the numbers '0', '1', '2', or '3'")
+  }
+
+if (nchar(quadkey) == 0) {
   return(list(
-    tileX = xt,
-    tileY = yt,
-    zoom = i
+    tileX = 0,
+    tileY = 0,
+    zoom = 0
   ))
+}
+
+# Split the digits of the QuadKey and reverse the order
+digits <- rev(strsplit(quadkey, "")[[1]])
+
+# The number of digits corresponds to the zoom level
+i <- length(digits)
+
+masks <- 2 ** (0:(i - 1))
+xt <- sum(masks[digits == "1" | digits == "3"])
+yt <- sum(masks[digits == "2" | digits == "3"])
+
+return(list(
+  tileX = xt,
+  tileY = yt,
+  zoom = i
+))
 }
 
 
@@ -174,13 +182,14 @@ pixelXY_to_latlong <- function(pixelX, pixelY, zoom) {
 #' For further information, refer to the Microsoft Bing Maps Tile System
 #' documentation.
 #' 
-#' #' For a detailed explanation on how to use this
+#' For a detailed explanation on how to use this
 #' and other similar `quadkeyr` functions,
 #' see the vignette:
 #' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
 #' quadkey_to_sf_conversion.html}
 #'
-#' @param quadkeys A vector with unique QuadKey numbers.
+#' @param quadkeys A single QuadKey as a string or 
+#' a vector with unique QuadKeys.
 #'
 #' @seealso \code{\link{quadkey_to_tileXY}}
 #' @seealso \code{\link{tileXY_to_pixelXY}}
@@ -189,24 +198,32 @@ pixelXY_to_latlong <- function(pixelX, pixelY, zoom) {
 #' \url{https://learn.microsoft.com/en-us/bingmaps/articles/
 #' bing-maps-tile-system}
 #'
-#' @return A spatial data frame of class sf with a quadkey column
-#' and POINT geometry.
-#' The coordinates represent the upper-left corner of the QuadKey.
+#' @return A sf POINT data.frame with a `quadkey` column.
+#' The latitude/longitude coordinates represent
+#' the upper-left corner of the QuadKey.
 #'
 #' @export
 #'
 #' @examples
 #'
-#' quadkey_to_latlong(c("213", "212", "210"))
-#'
+#' quadkey_to_latlong(quadkeys = "213")
+#' quadkey_to_latlong(quadkeys = c("213", "212", "210"))
+
 quadkey_to_latlong <- function(quadkeys) {
+  # The conversion to character is not straightfoward
+  # as there could be leading zeros or scientific notation
+  if(!is.character(quadkeys)){
+    stop("Please provide QuadKeys a single string or a character vector")
+  }
   if (any(duplicated(quadkeys))) {
     stop("Please, remove duplicated QuadKeys")
   }
-
-
   if (any(unique(nchar(quadkeys)) != nchar(quadkeys[1]))) {
     stop("All the QuadKeys should have the same number of digits")
+  }
+  if (!all(grepl("[0-9]+", quadkeys)) |
+      any(!unlist(strsplit(quadkeys, "")) %in% c("0", "1", "2", "3"))) {
+    stop("QuadKeys can contain only the numbers '0', '1', '2', or '3'")
   }
 
   zoom <- quadkey_to_tileXY(quadkeys[1])$zoom
