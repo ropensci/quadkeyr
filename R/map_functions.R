@@ -1,7 +1,7 @@
 #' Map size in pixels
 #'
-#' @description  Determines the map width and height (in pixels) at a specified
-#' level of detail.
+#' @description  Determines the map width and height (in pixels) 
+#' at a specified zoom level.
 #' For further information, refer to the Microsoft Bing Maps Tile
 #' System documentation.
 #'
@@ -59,8 +59,8 @@ clip <- function(n, min_value, max_value) {
 
 #' Ground resolution at a specified latitude and zoom level
 #'
-#' @description Determines the ground resolution (in meters per pixel) at a
-#' specified latitude and zoom level.
+#' @description Determines the ground resolution (in meters per pixel) 
+#' at a specified latitude and zoom level.
 #' For further information, refer to the Microsoft Bing Maps Tile System
 #' documentation.
 #'
@@ -101,7 +101,7 @@ ground_res <- function(latitude, zoom) {
 #' Map scale (1 : N)
 #'
 #' @description Determines the map scale at a specified latitude,
-#' level of detail, and screen resolution.
+#' zoom level, and screen resolution.
 #' For further information, refer to the Microsoft Bing Maps Tile System
 #' documentation.
 #'

@@ -19,9 +19,9 @@ create_qk_grid(xmin, xmax, ymin, ymax, zoom)
 from 1 (lowest detail) to 23 (highest detail).}
 }
 \value{
-A list returning the QuadKeys as a dataframe (data),
-the number of rows (num_rows)
-and columns (num_cols) of the grid.
+A list returning the QuadKeys as a data.frame (\code{data}),
+the number of rows (\code{num_rows})
+and columns (\code{num_cols}) of the grid.
 }
 \description{
 Generates a grid comprising all the QuadKeys within the area

@@ -1,17 +1,40 @@
 #' Convert a QuadKey into a square polygon
 #'
-#' This functions creates a sf class polygon from a QuadKey.
+#' This functions creates a `sf` POLYGON data.frame from a QuadKey string.
 #'
 #' @param quadkey The QuadKey as a string
 #'
-#' @return A spatial dataset (sf) with a quadkey and POLYGON geometry column.
+#' @seealso \code{\link{quadkey_df_to_polygon}}
+#'
+#' @return A `sf` POLYGON data.frame with a `quadkey` and `geometry` column.
 #' @export
 #'
 #' @examples
 #'
+#' # Quadkey as string
 #' quadkey_to_polygon(quadkey = '213')
+#'
+#' # QuadKeys as column in a data.frame
+#' # get data file
+#' path <- paste0(system.file("extdata", package = 'quadkeyr'),
+#'                                     "/cityA_2020_04_15_0000.csv")
+#' data <- read.csv(path)
+#' data <- format_fb_data(data)
+#'
+#' quadkey_df_to_polygon(data = data)
 
 quadkey_to_polygon <- function(quadkey) {
+  # The conversion to character is not straightfoward
+  # as there could be leading zeros or scientific notation
+  if (!is.character(quadkey) || length(quadkey) != 1) {
+    stop("Please provide a QuadKey as a single string")
+  }
+  if (!grepl("[0-9]+", quadkey) |
+      any(!unlist(strsplit(quadkey, "")) %in%
+          c("0", "1", "2", "3"))) {
+    stop("QuadKeys can contain only the numbers '0', '1', '2', or '3'")
+  }
+  
   tileX <- quadkey_to_tileXY(quadkey)$tileX
   tileY <- quadkey_to_tileXY(quadkey)$tileY
   
@@ -48,17 +71,23 @@ quadkey_to_polygon <- function(quadkey) {
   return(quadkey_polygon)
 }
 
-#' Convert data.frame with quadkey column to a sf POLYGON data.frame
+#' Convert data.frame with `quadkey` column to a `sf` POLYGON data.frame
 #'
-#' @param data A data.frame with a quadkey column
+#' @param data A data.frame with a `quadkey` column
 #'
-#' @return The same original data.frame with a sf POLYGON data.frame with a
-#' geometry column.
+#' @seealso \code{\link{quadkey_df_to_polygon}}
+#'
+#' @return The same original data.frame with a `sf` POLYGON data.frame with a
+#' `geometry` column.
 #'
 #' @export
 #'
 #' @examples
 #'
+#' # Quadkey as string
+#' quadkey_to_polygon(quadkey = '213')
+#'
+#' # QuadKeys as column in a data.frame
 #' # get data file
 #' path <- paste0(system.file("extdata", package = 'quadkeyr'),
 #'                                     "/cityA_2020_04_15_0000.csv")
@@ -80,10 +109,13 @@ quadkey_df_to_polygon <- function(data) {
           c("0", "1", "2", "3"))) {
     stop("QuadKeys can contain only the numbers '0', '1', '2', or '3'")
   }
-  data |>
-    dplyr::rowwise() |>
-    dplyr::mutate(quadkey_to_polygon(.data$quadkey)) |> # tidyselect
-    as.data.frame() |>  # remove class rowwise_df
-    sf::st_sf()
   
+  
+  data_sf <- data |>
+    dplyr::rowwise() |>
+    dplyr::mutate(geometry = quadkey_to_polygon(.data$quadkey)$geometry) |>
+    as.data.frame() |>
+    sf::st_as_sf()
+  
+  return(data_sf)
 }

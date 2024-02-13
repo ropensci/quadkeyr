@@ -49,7 +49,7 @@ library(dplyr)
 library(stars)
 ```
 
-If you are working with a `data.frame` with a `quadkey` column,
+If you are working with a data.frame with a `quadkey` column,
 as shown as INPUT in the example image,
 you can visualize the data by combining
 the QuadKeys' spatial information with any other reported variable.
@@ -133,7 +133,7 @@ ggplot() +
 ### Quadkeys as polygons
 If you want to visualize the QuadKeys without creating a raster image, 
 you also have the option of converting 
-the QuadKeys into an `sf POLYGON data.frame` using
+the QuadKeys into an `sf` POLYGON data.frame using
 the function `quadkey_df_to_polygon()`, and then plotting it.
 
 ```{r qkdf}
@@ -324,7 +324,7 @@ The function `get_qk_coord()` allow us
 converting the data to an `sf` POINT data.frame
 keeping our variable of interest.
 ```{r}
-data_sfpoint <- get_qk_coord(data_provided)
+data_sfpoint <- get_qk_coord(data = data_provided)
 head(data_sfpoint)
 ```
 
@@ -343,12 +343,12 @@ providing you with the number of columns and rows that
 we will have to introduce as arguments of  `create_stars_raster()`
 
 ```{r datarast}
-data_raster <- regular_qk_grid(data_sfpoint)
+data_raster <- regular_qk_grid(data = data_sfpoint)
 head(data_raster)
 ```
 
-```{r}
-polygon_raster <- grid_to_polygon(data_raster$data)
+```{r polyrasterdata}
+polygon_raster <- grid_to_polygon(data = data_raster$data)
 head(polygon_raster)
 ```
 

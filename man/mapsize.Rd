@@ -14,8 +14,8 @@ from 1 (lowest detail) to 23 (highest detail).}
 The map width and height in pixels.
 }
 \description{
-Determines the map width and height (in pixels) at a specified
-level of detail.
+Determines the map width and height (in pixels)
+at a specified zoom level.
 For further information, refer to the Microsoft Bing Maps Tile
 System documentation.
 }

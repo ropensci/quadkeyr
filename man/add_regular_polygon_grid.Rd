@@ -2,25 +2,46 @@
 % Please edit documentation in R/regular_grid.R
 \name{add_regular_polygon_grid}
 \alias{add_regular_polygon_grid}
-\title{Complete a data.frame with the quadkeys needed to have a regular grid.}
+\title{Add the rows needed to complete a regular QuadKey grid
+derived from the bounding box of the \code{quadkey} column of a data.frame.
+Output: \code{sf} POLYGON data.frame}
 \usage{
 add_regular_polygon_grid(data)
 }
 \arguments{
-\item{data}{A data.frame with a quadkey column.}
+\item{data}{A data.frame with a \code{quadkey} column.}
 }
 \value{
-An sf POLYGON data.frame with all the quadkeys within
-the bounding box of the provided quadkeys.
-The columns quadkey and geometry are returned for all the grid,
-and the values of the introduced quadkeys will be NA
-for the rest pf the variables.
+An \code{sf} POLYGON data.frame with all the QuadKeys within
+the bounding box the Quadkeys provided in the \code{quadkey} column
+of the input dataset.
+The columns \code{quadkey} and \code{geometry} are complete for all the grid,
+and the values of the introduced QuadKeys will be NA
+for the rest of the variables.
+
+A list with three elements:
+\itemize{
+\item \code{data} A \code{sf} POLYGON data.frame with all the QuadKeys within
+the bounding box of the ones provided in the \code{quadkey} column
+of the input dataset, and the rest of the original variables.
+The columns \code{quadkey} and \code{geometry} are returned for all the grid,
+The values of the newly added QuadKeys will be NA
+for the rest of the variables.
+\item \code{num_rows} The number of columns of the regular grid.
+\item \code{num_cols} The number of rows of the regular grid.
+}
 }
 \description{
 This function estimates the bounding box of the quadkeys given in the
 quadkey column and adds rows to complete the quadkeys and the geometry
 needed to create a regular grid.
-All other columns for the introduced quadkeys will be filled with NAs.
+All other columns for the introduced QuadKeys will be filled with NAs.
+
+For a detailed explanation on how to use this
+and other similar \code{quadkeyr} functions,
+read the the vignette:
+\url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
+quadkey_identified_data_to_raster.html}
 }
 \examples{
 # read the file with the data
@@ -29,5 +50,5 @@ path <- paste0(system.file("extdata", package = 'quadkeyr'),
 data <- read.csv(path)
 data <- format_fb_data(data)
 
-get_regular_polygon_grid(data = data)
+add_regular_polygon_grid(data = data)
 }

@@ -19,7 +19,7 @@ The map scale, expressed as the denominator N of the ratio 1 : N.
 }
 \description{
 Determines the map scale at a specified latitude,
-level of detail, and screen resolution.
+zoom level, and screen resolution.
 For further information, refer to the Microsoft Bing Maps Tile System
 documentation.
 }

@@ -90,41 +90,14 @@ Only the columns quadkey and geometry are returned.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># read the file with the data</span></span></span>
+<span class="r-in"><span><span class="co"># daya file</span></span></span>
 <span class="r-in"><span><span class="va">path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, package <span class="op">=</span> <span class="st">'quadkeyr'</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>                             <span class="st">"/cityA_2020_04_15_0000.csv"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="va">path</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="format_fb_data.html">format_fb_data</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_regular_polygon_grid</span><span class="op">(</span>data <span class="op">=</span> <span class="va">data</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $data</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Simple feature collection with 396 features and 3 fields</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Geometry type: POLYGON</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Dimension:     XY</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: -58.60107 ymin: -34.60156 xmax: -58.5022 ymax: -34.50203</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Geodetic CRS:  WGS 84</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 396 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># Rowwise: </span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    quadkey                                                  geometry tileX tileY</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #BCBCBC;">*</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                               <span style="color: #949494; font-style: italic;">&lt;POLYGON [°]&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2103213001233302 ((-58.55713 -34.588, -58.55164 -34.588, -58.551… <span style="text-decoration: underline;">22</span>108 <span style="text-decoration: underline;">39</span>485</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2103213001213202 ((-58.5791 -34.51561, -58.57361 -34.51561, -58.… <span style="text-decoration: underline;">22</span>104 <span style="text-decoration: underline;">39</span>469</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 2103213001233221 ((-58.57361 -34.59252, -58.56812 -34.59252, -58… <span style="text-decoration: underline;">22</span>105 <span style="text-decoration: underline;">39</span>486</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 2103213001231110 ((-58.54614 -34.52919, -58.54065 -34.52919, -58… <span style="text-decoration: underline;">22</span>110 <span style="text-decoration: underline;">39</span>472</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 2103213001320003 ((-58.52966 -34.53371, -58.52417 -34.53371, -58… <span style="text-decoration: underline;">22</span>113 <span style="text-decoration: underline;">39</span>473</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2103213001230110 ((-58.59009 -34.52919, -58.58459 -34.52919, -58… <span style="text-decoration: underline;">22</span>102 <span style="text-decoration: underline;">39</span>472</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2103213001212321 ((-58.59558 -34.52014, -58.59009 -34.52014, -58… <span style="text-decoration: underline;">22</span>101 <span style="text-decoration: underline;">39</span>470</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2103213001232302 ((-58.60107 -34.588, -58.59558 -34.588, -58.595… <span style="text-decoration: underline;">22</span>100 <span style="text-decoration: underline;">39</span>485</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2103213001322012 ((-58.52417 -34.56991, -58.51868 -34.56991, -58… <span style="text-decoration: underline;">22</span>114 <span style="text-decoration: underline;">39</span>481</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2103213001230320 ((-58.60107 -34.55634, -58.59558 -34.55634, -58… <span style="text-decoration: underline;">22</span>100 <span style="text-decoration: underline;">39</span>478</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 386 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $num_cols</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $num_rows</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in quadkey_to_latlong(quadkeys = unique(data$quadkey)):</span> unused argument (quadkeys = unique(data$quadkey))</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

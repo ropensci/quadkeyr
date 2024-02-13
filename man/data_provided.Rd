@@ -18,6 +18,6 @@ A data frame with 360 rows and 2 columns:
 data_provided
 }
 \description{
-A data frame simulating a variable asociated with QuadKey numbers.
+A data.frame simulating a variable asociated with QuadKeys.
 }
 \keyword{datasets}

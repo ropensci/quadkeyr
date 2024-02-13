@@ -1,21 +1,22 @@
 #' Read all the .csv files in a folder and format the data.
 #'
-#' @description This function reads all the .csv files in a particular folder.
-#' These files consistently contain identical columns, with variations
-#' only in location, day, and time. As a result, we can uniformly apply
-#' specific formatting to columns across these files."
+#' @description This function reads all the `.csv` files in a particular folder.
+#' These files consistently contain identical columns, 
+#' with variations only in location, day, and time.
+#' As a result,
+#' we can uniformly apply specific formatting to columns across these files.
 #'
-#' @param path_to_csvs Path to the folder where the .csv files are stored
+#' @param path_to_csvs Path to the folder where the `.csv` files are stored
 #' @param colnames Columns to include in the results (as character).
-#' For more information go to readr::read_csv()
-#' @param coltypes Column specifications (as character).
-#' See vignette("readr") for more details.
+#' For more information go to [readr::read_csv()]
+#' @param coltypes Column specifications (as strings).
+#' See vignette("readr", package = "readr") for more details.
 #' documentation.
 #'
 #' @seealso \code{\link{format_fb_data}}
 #' @seealso \code{\link[readr]{read_csv}}
 #'
-#' @return A dataframe with the information of all the files.
+#' @return A data.frame with the information of all the files read.
 #' @export
 #'
 #' @examples
@@ -82,15 +83,15 @@ read_fb_mobility_files <- function(path_to_csvs,
 }
 
 
-#' Format the data
+#' Format the Facebook mobility data
 #'
 #' @description This function removes unnecessary characters such as `\\N`
 #' and ensures that the format of the date and QuadKeys is correct.
 #'
-#' @param data A dataframe with a quadkey, date_time, country columns and
-#' other numeric variables
+#' @param data A data.frame with a `quadkey`, `date_time`, `country` columns 
+#' and other numeric variables
 #'
-#' @return A dataframe.
+#' @return A data.frame.
 #' @export
 #'
 #' @seealso \code{\link{read_fb_mobility_files}}
@@ -131,16 +132,16 @@ format_fb_data <- function(data) {
 
 #' Detects dates and times missing
 #'
-#' @description Facebook mobility data is reported daily at 3 different times
+#' @description Facebook mobility data is reported daily at 3 different hours
 #' (0, 8, 16).
 #' This function reads the data extracted from the current files and detects
 #' if any day or time is missing.
 #'
-#' @param data A dataframe with a day and time column.
+#' @param data A data.frame with a `day` and hour column.
 #'
 #' @importFrom rlang .data
 #'
-#' @return A dataframe with the missing days and times, if any.
+#' @return A data.frame with the missing days and hours, if any.
 #' @export
 #'
 #' @examples
@@ -152,7 +153,6 @@ format_fb_data <- function(data) {
 #' )
 #'
 #' missing_combinations(data)
-#'
 missing_combinations <- function(data) {
   data <- data |>
     dplyr::mutate(day = as.Date(.data$day))

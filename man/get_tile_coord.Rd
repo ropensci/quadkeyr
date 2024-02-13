@@ -7,14 +7,14 @@
 get_tile_coord(data, zoom)
 }
 \arguments{
-\item{data}{A dataframe with columns named tileX and tileY}
+\item{data}{A dataframe with columns named \code{tileX} and \code{tileY}}
 
 \item{zoom}{Zoom or Level of detail,
 from 1 (lowest detail) to 23 (highest detail).}
 }
 \value{
-A spatial dataframe (sf) containing the tiles XY coordinates
-(tileX, tileY)  and a column for POINT geometry.
+A \code{sf} POINT data.frame containing the tiles XY coordinates
+(\code{tileX}, \code{tileY}), a \code{quadkey} and a \code{geometry} column.
 }
 \description{
 Reads the tile XY coordinates and extracts the

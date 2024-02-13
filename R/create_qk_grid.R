@@ -14,9 +14,9 @@
 #'
 #' @importFrom rlang .data
 #'
-#' @return A list returning the QuadKeys as a dataframe (data),
-#' the number of rows (num_rows)
-#' and columns (num_cols) of the grid.
+#' @return A list returning the QuadKeys as a data.frame (`data`),
+#' the number of rows (`num_rows`)
+#' and columns (`num_cols`) of the grid.
 #'
 #' @export
 #'

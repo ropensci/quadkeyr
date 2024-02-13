@@ -19,10 +19,20 @@ Converts tile XY coordinates into pixel XY coordinates of
 the upper-left pixel of the specified tile.
 For further information, refer to the Microsoft Bing Maps Tile System
 documentation.
+}
+\details{
+Converting latitude/longitude coordinates into a QuadKey
+and then back to latitude/longitude won't yield identical values,
+unless the initial latitude/longitude coordinates
+correspond to the upper-left Quadkey's pixel and tile XY coordinates
+at the same zoom level.
+
+Understanding this distinction is crucial for
+the accurate use of these functions in coordinate conversions.
 
 For a detailed explanation on how to use this
 and other similar \code{quadkeyr} functions,
-see the vignette:
+read the the vignette:
 \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
 quadkey_to_sf_conversion.html}
 }

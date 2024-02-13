@@ -1,6 +1,6 @@
 #' data_provided: fake dataset
 #'
-#' A data frame simulating a variable asociated with QuadKey numbers.
+#' A data.frame simulating a variable asociated with QuadKeys.
 #'
 #' @format ## `data_provided`
 #' A data frame with 360 rows and 2 columns:
@@ -10,9 +10,9 @@
 #' }
 "data_provided"
 
-#' result_read_fb_mobility_data: Fake dataset
+#' `result_read_fb_mobility_data`: Fake dataset
 #'
-#' A data frame similar to a the potential output of read_all_files().
+#' A data frame similar to a the potential output of `read_fb_mobility_files`.
 #'
 #' @format ## `result_read_fb_mobility_data`
 #' A data frame with 134,492 rows and 9 columns:

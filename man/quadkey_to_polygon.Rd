@@ -10,12 +10,25 @@ quadkey_to_polygon(quadkey)
 \item{quadkey}{The QuadKey as a string}
 }
 \value{
-A spatial dataset (sf) with a quadkey and POLYGON geometry column.
+A \code{sf} POLYGON data.frame with a \code{quadkey} and \code{geometry} column.
 }
 \description{
-This functions creates a sf class polygon from a QuadKey.
+This functions creates a \code{sf} POLYGON data.frame from a QuadKey string.
 }
 \examples{
 
+# Quadkey as string
 quadkey_to_polygon(quadkey = '213')
+
+# QuadKeys as column in a data.frame
+# get data file
+path <- paste0(system.file("extdata", package = 'quadkeyr'),
+                                    "/cityA_2020_04_15_0000.csv")
+data <- read.csv(path)
+data <- format_fb_data(data)
+
+quadkey_df_to_polygon(data = data)
+}
+\seealso{
+\code{\link{quadkey_df_to_polygon}}
 }

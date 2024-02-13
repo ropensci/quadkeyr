@@ -2,27 +2,27 @@
 % Please edit documentation in R/apply_weekly_lag.R
 \name{apply_weekly_lag}
 \alias{apply_weekly_lag}
-\title{Apply a 7 day lag to the variable n_crisis}
+\title{Apply a 7 day lag to the variable \code{n_crisis}}
 \usage{
 apply_weekly_lag(data)
 }
 \arguments{
-\item{data}{A dataset}
+\item{data}{A data.frame}
 }
 \value{
-A dataframe with the extra columns n_crisis_lag_7 and
-percent_change_7.
-
-n_crisis_lag_7, is the same variable defined as n_crisis in the Facebook
-dataset with a 7 day lag applied.
-
-percent_change_7 is the difference between the n_crisis value between weeks
-expressed as percentage.
+A data.frame with the extra columns \code{n_crisis_lag_7} and
+\code{percent_change_7}.
+\itemize{
+\item \code{n_crisis_lag_7}, is the same variable defined as \code{n_crisis}
+in the Facebook mobility data.frame with a 7 day lag applied.
+\item \code{percent_change_7} is the difference between
+the \code{n_crisis} value between weeks expressed as percentage.
+}
 }
 \description{
 Applying a week lag to the data will create raster images
 showing the mobility a week before the date of interest.
-This function works only for quadkeys without NAs.
+This function works only for QuadKeys without NAs.
 }
 \examples{
 
@@ -40,5 +40,4 @@ files <- read_fb_mobility_files(path_to_csvs = paste0(system.file("extdata",
                                                 percent_change = 'c')) 
  
 apply_weekly_lag(files)
-
 }

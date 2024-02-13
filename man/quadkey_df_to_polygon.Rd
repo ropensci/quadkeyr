@@ -2,22 +2,26 @@
 % Please edit documentation in R/qk_to_polygon_functions.R
 \name{quadkey_df_to_polygon}
 \alias{quadkey_df_to_polygon}
-\title{Convert data.frame with quadkey column to a sf POLYGON data.frame}
+\title{Convert data.frame with \code{quadkey} column to a \code{sf} POLYGON data.frame}
 \usage{
 quadkey_df_to_polygon(data)
 }
 \arguments{
-\item{data}{A data.frame with a quadkey column}
+\item{data}{A data.frame with a \code{quadkey} column}
 }
 \value{
-The same original data.frame with a sf POLYGON data.frame with a
-geometry column.
+The same original data.frame with a \code{sf} POLYGON data.frame with a
+\code{geometry} column.
 }
 \description{
-Convert data.frame with quadkey column to a sf POLYGON data.frame
+Convert data.frame with \code{quadkey} column to a \code{sf} POLYGON data.frame
 }
 \examples{
 
+# Quadkey as string
+quadkey_to_polygon(quadkey = '213')
+
+# QuadKeys as column in a data.frame
 # get data file
 path <- paste0(system.file("extdata", package = 'quadkeyr'),
                                     "/cityA_2020_04_15_0000.csv")
@@ -25,4 +29,7 @@ data <- read.csv(path)
 data <- format_fb_data(data)
 
 quadkey_df_to_polygon(data = data)
+}
+\seealso{
+\code{\link{quadkey_df_to_polygon}}
 }

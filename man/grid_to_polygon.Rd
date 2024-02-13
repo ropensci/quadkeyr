@@ -7,10 +7,7 @@
 grid_to_polygon(data)
 }
 \arguments{
-\item{data}{A spatial dataset (sf) with a quadkey and POINT geometry column.
-If the columns tileX and tileY are included in the input dataset,
-they will be used by complete_grid_for_polygons().
-If not, the tile coordinates will be calculated internally.}
+\item{data}{A \code{sf} POINT data.frame with a \code{quadkey} and \code{geometry} column.}
 }
 \value{
 A sf POLYGON data.frame with a quadkey column.
@@ -22,7 +19,7 @@ corner of the QuadKey.
 To transform these coordinates into square polygons, the function
 supplements the grid by adding a row and column of tiles. These points
 introduce QuadKeys located at the border of the area
-(complete_grid_for_polygons).
+\code{\link[=complete_grid_for_polygons]{complete_grid_for_polygons()}}.
 The function constructs the polygons using all the points of the grid.
 Note that it's possible to associate each QuadKey with its square polygon.
 }

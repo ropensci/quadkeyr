@@ -4,10 +4,10 @@
 \alias{quadkey_to_latlong}
 \title{Convert a string of Quadkey numbers to lat/long coordinates}
 \usage{
-quadkey_to_latlong(quadkeys)
+quadkey_to_latlong(quadkey)
 }
 \arguments{
-\item{quadkeys}{A single QuadKey as a string or
+\item{quadkey}{A single QuadKey as a string or
 a vector with unique QuadKeys.}
 }
 \value{
@@ -20,17 +20,27 @@ This function converts Quadkeys to
 latitude/longitude WGS-84 coordinates (in degrees).
 For further information, refer to the Microsoft Bing Maps Tile System
 documentation.
+}
+\details{
+Converting latitude/longitude coordinates into a QuadKey
+and then back to latitude/longitude won't yield identical values,
+unless the initial latitude/longitude coordinates
+correspond to the upper-left Quadkey's pixel and tile XY coordinates
+at the same zoom level.
+
+Understanding this distinction is crucial for
+the accurate use of these functions in coordinate conversions.
 
 For a detailed explanation on how to use this
 and other similar \code{quadkeyr} functions,
-see the vignette:
+read the the vignette:
 \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
 quadkey_to_sf_conversion.html}
 }
 \examples{
 
-quadkey_to_latlong(quadkeys = "213")
-quadkey_to_latlong(quadkeys = c("213", "212", "210"))
+quadkey_to_latlong(quadkey = "213")
+quadkey_to_latlong(quadkey = c("213", "212", "210"))
 }
 \references{
 \url{https://learn.microsoft.com/en-us/bingmaps/articles/

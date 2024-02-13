@@ -2,10 +2,20 @@
 #'
 #' @description  For further information, refer to the
 #' Microsoft Bing Maps Tile System documentation.
-#'
+#' 
+#' @details
+#' Converting latitude/longitude coordinates into a QuadKey 
+#' and then back to latitude/longitude won't yield identical values, 
+#' unless the initial latitude/longitude coordinates 
+#' correspond to the upper-left Quadkey's pixel and tile XY coordinates
+#' at the same zoom level. 
+#'  
+#' Understanding this distinction is crucial for 
+#' the accurate use of these functions in coordinate conversions.
+#'  
 #' For a detailed explanation on how to use this
 #' and other similar `quadkeyr` functions,
-#' see the vignette:
+#' read the the vignette:
 #' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
 #' quadkey_to_sf_conversion.html}
 #' 
@@ -67,9 +77,19 @@ return(list(
 #' For further information, refer to the Microsoft Bing Maps Tile System
 #' documentation.
 #' 
+#' @details
+#' Converting latitude/longitude coordinates into a QuadKey 
+#' and then back to latitude/longitude won't yield identical values, 
+#' unless the initial latitude/longitude coordinates 
+#' correspond to the upper-left Quadkey's pixel and tile XY coordinates
+#' at the same zoom level. 
+#'  
+#' Understanding this distinction is crucial for 
+#' the accurate use of these functions in coordinate conversions.
+#'  
 #' For a detailed explanation on how to use this
 #' and other similar `quadkeyr` functions,
-#' see the vignette:
+#' read the the vignette:
 #' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
 #' quadkey_to_sf_conversion.html}
 #'
@@ -113,9 +133,19 @@ tileXY_to_pixelXY <- function(tileX, tileY) {
 #' For further information, refer to the
 #' Microsoft Bing Maps Tile System documentation.
 #'
+#' @details
+#' Converting latitude/longitude coordinates into a QuadKey 
+#' and then back to latitude/longitude won't yield identical values, 
+#' unless the initial latitude/longitude coordinates 
+#' correspond to the upper-left Quadkey's pixel and tile XY coordinates
+#' at the same zoom level. 
+#'  
+#' Understanding this distinction is crucial for 
+#' the accurate use of these functions in coordinate conversions.
+#'  
 #' For a detailed explanation on how to use this
 #' and other similar `quadkeyr` functions,
-#' see the vignette:
+#' read the the vignette:
 #' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
 #' quadkey_to_sf_conversion.html}
 #'
@@ -182,13 +212,23 @@ pixelXY_to_latlong <- function(pixelX, pixelY, zoom) {
 #' For further information, refer to the Microsoft Bing Maps Tile System
 #' documentation.
 #' 
+#' @details
+#' Converting latitude/longitude coordinates into a QuadKey 
+#' and then back to latitude/longitude won't yield identical values, 
+#' unless the initial latitude/longitude coordinates 
+#' correspond to the upper-left Quadkey's pixel and tile XY coordinates
+#' at the same zoom level. 
+#'  
+#' Understanding this distinction is crucial for 
+#' the accurate use of these functions in coordinate conversions.
+#'  
 #' For a detailed explanation on how to use this
 #' and other similar `quadkeyr` functions,
-#' see the vignette:
+#' read the the vignette:
 #' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
 #' quadkey_to_sf_conversion.html}
 #'
-#' @param quadkeys A single QuadKey as a string or 
+#' @param quadkey A single QuadKey as a string or 
 #' a vector with unique QuadKeys.
 #'
 #' @seealso \code{\link{quadkey_to_tileXY}}
@@ -206,35 +246,35 @@ pixelXY_to_latlong <- function(pixelX, pixelY, zoom) {
 #'
 #' @examples
 #'
-#' quadkey_to_latlong(quadkeys = "213")
-#' quadkey_to_latlong(quadkeys = c("213", "212", "210"))
+#' quadkey_to_latlong(quadkey = "213")
+#' quadkey_to_latlong(quadkey = c("213", "212", "210"))
 
-quadkey_to_latlong <- function(quadkeys) {
+quadkey_to_latlong <- function(quadkey) {
   # The conversion to character is not straightfoward
   # as there could be leading zeros or scientific notation
-  if(!is.character(quadkeys)){
+  if(!is.character(quadkey)){
     stop("Please provide QuadKeys a single string or a character vector")
   }
-  if (any(duplicated(quadkeys))) {
+  if (any(duplicated(quadkey))) {
     stop("Please, remove duplicated QuadKeys")
   }
-  if (any(unique(nchar(quadkeys)) != nchar(quadkeys[1]))) {
+  if (any(unique(nchar(quadkey)) != nchar(quadkey[1]))) {
     stop("All the QuadKeys should have the same number of digits")
   }
-  if (!all(grepl("[0-9]+", quadkeys)) |
-      any(!unlist(strsplit(quadkeys, "")) %in% c("0", "1", "2", "3"))) {
+  if (!all(grepl("[0-9]+", quadkey)) |
+      any(!unlist(strsplit(quadkey, "")) %in% c("0", "1", "2", "3"))) {
     stop("QuadKeys can contain only the numbers '0', '1', '2', or '3'")
   }
 
-  zoom <- quadkey_to_tileXY(quadkeys[1])$zoom
+  zoom <- quadkey_to_tileXY(quadkey[1])$zoom
 
   datacoords <- c()
   data <- data.frame(quadkey = NA)
 
-  for (i in seq_along(quadkeys)) {
-    data[i, "quadkey"] <- quadkeys[i]
+  for (i in seq_along(quadkey)) {
+    data[i, "quadkey"] <- quadkey[i]
 
-    data[i, c("tileX", "tileY", "zoom")] <- quadkey_to_tileXY(quadkeys[i])
+    data[i, c("tileX", "tileY", "zoom")] <- quadkey_to_tileXY(quadkey[i])
 
     data[i, c("pixelX", "pixelY")] <- tileXY_to_pixelXY(
       data$tileX[i],

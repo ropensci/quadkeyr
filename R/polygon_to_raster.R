@@ -1,13 +1,12 @@
 #' Create and save raster images for different dates and times
 #'
 #' @description Creates one raster by each date and time reported and
-#'  saves it as a .tif.
+#'  saves it as a `.tif`.
 #'
-#' @param template A spatial dataset (sf) with the polygon grid used as
-#'  template
+#' @param template A `sf` POLYGON data.frame 
 #' @param nx Integer; number of cells in x direction.
 #' @param ny Integer; number of cells in y direction.
-#' @param data A spatial dataframe (sf) with the variable we want to represent 
+#' @param data A `sf` POLYGON data.frame with the variable we want to represent 
 #' in the raster.
 #' @param var The column name of the variable to plot.
 #' @param filename Select a name for the file. The date and time will
@@ -88,7 +87,7 @@ polygon_to_raster <- function(data,
       
       # If it is, skip this iteration
       if (nrow(no_data) > 0) {
-        next  # 
+        next  
       }
       
       

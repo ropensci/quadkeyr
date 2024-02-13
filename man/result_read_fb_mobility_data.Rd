@@ -3,7 +3,7 @@
 \docType{data}
 \name{result_read_fb_mobility_data}
 \alias{result_read_fb_mobility_data}
-\title{result_read_fb_mobility_data: Fake dataset}
+\title{\code{result_read_fb_mobility_data}: Fake dataset}
 \format{
 \subsection{\code{result_read_fb_mobility_data}}{
 
@@ -25,6 +25,6 @@ A data frame with 134,492 rows and 9 columns:
 result_read_fb_mobility_data
 }
 \description{
-A data frame similar to a the potential output of read_all_files().
+A data frame similar to a the potential output of \code{read_fb_mobility_files}.
 }
 \keyword{datasets}

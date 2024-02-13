@@ -2,23 +2,33 @@
 % Please edit documentation in R/regular_grid.R
 \name{get_regular_polygon_grid}
 \alias{get_regular_polygon_grid}
-\title{Create a data.frame with all the quadkeys needed to
-generate a regular grid.}
+\title{Get a data.frame representing a regular QuadKey grid
+derived from the bounding box of the \code{quadkey} column of a data.frame.
+Output: \code{sf} POLYGON data.frame}
 \usage{
 get_regular_polygon_grid(data)
 }
 \arguments{
-\item{data}{A data.frame with a quadkey column.}
-}
-\value{
-An sf POLYGON data.frame with all the quadkeys within
-the bounding box of the provided quadkeys.
-Only the columns quadkey and geometry are returned.
+\item{data}{A data.frame with a \code{quadkey} column.
+
+' @return A list with three elements:
+\itemize{
+\item \code{data} An \code{sf} POLYGON data.frame with all the QuadKeys within
+the bounding box of the \code{quadkey} column of a data.frame.
+Only the columns \code{quadkey}, \code{tileX}, \code{tileY} and \code{geometry} are returned.
+\item \code{num_rows} The number of columns of the regular grid.
+\item \code{num_cols} The number of rows of the regular grid.
+}}
 }
 \description{
-This function estimates the bounding box of the quadkeys given in the
-quadkey column and adds rows to complete the quadkeys and the geometry
-needed to create a regular grid.
+This function estimates the bounding box of the QuadKeys given in the
+\code{quadkey} column and adds the rows needed to complete a regular grid.
+
+For a detailed explanation on how to use this
+and other similar \code{quadkeyr} functions,
+read the the vignette:
+\url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
+facebook_mobility_csvs_to_raster_files.html}
 }
 \examples{
 

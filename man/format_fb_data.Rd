@@ -2,16 +2,16 @@
 % Please edit documentation in R/read_and_format_files.R
 \name{format_fb_data}
 \alias{format_fb_data}
-\title{Format the data}
+\title{Format the Facebook mobility data}
 \usage{
 format_fb_data(data)
 }
 \arguments{
-\item{data}{A dataframe with a quadkey, date_time, country columns and
-other numeric variables}
+\item{data}{A data.frame with a \code{quadkey}, \code{date_time}, \code{country} columns
+and other numeric variables}
 }
 \value{
-A dataframe.
+A data.frame.
 }
 \description{
 This function removes unnecessary characters such as \verb{\\\\N}

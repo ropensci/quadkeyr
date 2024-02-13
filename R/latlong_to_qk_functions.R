@@ -5,9 +5,19 @@
 #' For further information, refer to the Microsoft Bing Maps Tile System
 #' documentation.
 #' 
+#' @details
+#' Converting latitude/longitude coordinates into a QuadKey 
+#' and then back to latitude/longitude won't yield identical values, 
+#' unless the initial latitude/longitude coordinates 
+#' correspond to the upper-left Quadkey's pixel and tile XY coordinates
+#' at the same zoom level. 
+#'  
+#' Understanding this distinction is crucial for 
+#' the accurate use of these functions in coordinate conversions.
+#'  
 #' For a detailed explanation on how to use this
 #' and other similar `quadkeyr` functions,
-#' see the vignette:
+#' read the the vignette:
 #' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
 #' quadkey_to_sf_conversion.html}
 #'
@@ -65,9 +75,19 @@ latlong_to_pixelXY <- function(lat, lon, zoom) {
 #' For further information, refer to the Microsoft Bing Maps
 #' Tile System documentation.
 #'
+#' @details
+#' Converting latitude/longitude coordinates into a QuadKey 
+#' and then back to latitude/longitude won't yield identical values, 
+#' unless the initial latitude/longitude coordinates 
+#' correspond to the upper-left Quadkey's pixel and tile XY coordinates
+#' at the same zoom level. 
+#'  
+#' Understanding this distinction is crucial for 
+#' the accurate use of these functions in coordinate conversions.
+#'  
 #' For a detailed explanation on how to use this
 #' and other similar `quadkeyr` functions,
-#' see the vignette:
+#' read the the vignette:
 #' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
 #' quadkey_to_sf_conversion.html}
 #'
@@ -100,16 +120,26 @@ pixelXY_to_tileXY <- function(pixelX, pixelY) {
 }
 
 
-#' Converts tile XY coordinates into a quadkey.
+#' Converts tile XY coordinates into a QuadKey.
 #'
 #' @description Converts tile XY coordinates into a QuadKey at a specified
 #' zoom level.
 #' For further information, refer to the Microsoft Bing Maps Tile System
 #' documentation.
 #'
+#' @details
+#' Converting latitude/longitude coordinates into a QuadKey 
+#' and then back to latitude/longitude won't yield identical values, 
+#' unless the initial latitude/longitude coordinates 
+#' correspond to the upper-left Quadkey's pixel and tile XY coordinates
+#' at the same zoom level. 
+#'  
+#' Understanding this distinction is crucial for 
+#' the accurate use of these functions in coordinate conversions.
+#'  
 #' For a detailed explanation on how to use this
 #' and other similar `quadkeyr` functions,
-#' see the vignette:
+#' read the the vignette:
 #' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
 #' quadkey_to_sf_conversion.html}
 #'
@@ -122,7 +152,7 @@ pixelXY_to_tileXY <- function(pixelX, pixelY) {
 #' @param zoom Zoom or level of detail, 
 #' from 1 (lowest detail) to 23 (highest detail).
 #'
-#' @return The quadkey number as a string.
+#' @return The QuadKey as a string.
 #' @export
 #'
 #' @examples
@@ -180,9 +210,19 @@ tileXY_to_quadkey <- function(tileX, tileY, zoom) {
 #' For further information, refer to the Microsoft Bing Maps Tile
 #' System documentation.
 #'
+#' @details
+#' Converting latitude/longitude coordinates into a QuadKey 
+#' and then back to latitude/longitude won't yield identical values, 
+#' unless the initial latitude/longitude coordinates 
+#' correspond to the upper-left Quadkey's pixel and tile XY coordinates
+#' at the same zoom level. 
+#'  
+#' Understanding this distinction is crucial for 
+#' the accurate use of these functions in coordinate conversions.
+#'  
 #' For a detailed explanation on how to use this
 #' and other similar `quadkeyr` functions,
-#' see the vignette:
+#' read the the vignette:
 #' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
 #' quadkey_to_sf_conversion.html}
 #'

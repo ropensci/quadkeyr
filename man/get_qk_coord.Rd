@@ -11,7 +11,7 @@ get_qk_coord(data)
 }
 \value{
 A \code{sf} POINT data.frame containing the tiles XY coordinates
-(tileX, tileY), the QuadKeys (quadkey), and a geometry column.
+(\code{tileX}, \code{tileY}), the QuadKeys (\code{quadkey}), and a \code{geometry} column.
 }
 \description{
 Reads the QuadKey as a string and extracts the

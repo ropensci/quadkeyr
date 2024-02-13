@@ -7,13 +7,13 @@
 missing_combinations(data)
 }
 \arguments{
-\item{data}{A dataframe with a day and time column.}
+\item{data}{A data.frame with a \code{day} and hour column.}
 }
 \value{
-A dataframe with the missing days and times, if any.
+A data.frame with the missing days and hours, if any.
 }
 \description{
-Facebook mobility data is reported daily at 3 different times
+Facebook mobility data is reported daily at 3 different hours
 (0, 8, 16).
 This function reads the data extracted from the current files and detects
 if any day or time is missing.
@@ -27,5 +27,4 @@ data <- data.frame(
 )
 
 missing_combinations(data)
-
 }

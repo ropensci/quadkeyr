@@ -26,7 +26,6 @@ library(tidyr)
 library(ggplot2)
 library(rnaturalearth)
 library(stars)
-
 ```
 
 > Please, visit the [README](https://fernandez-lab-wsu.github.io/quadkeyr/) 
@@ -145,15 +144,24 @@ ggplot() +
 Now, we can merge this grid with 
 the Facebook mobility data in the `files` dataframe.
 We've chosen to use an `dplyr::inner_join()`
-that will retain only the polygons reported in the files
+that will retain only the polygons reported in the files.
 
-```{r}
+```{r joinsrg}
 files_polygons <- files |> 
                   dplyr::inner_join(regular_grid$data, 
                           by = c("quadkey"))
 
 head(files_polygons)
 ```
+
+If you want to modify any of the variables you intend to use, 
+it should be done before this point.
+For example,`apply_weekly_lag()` applies a 7 day
+lag to `n_crisis` and `percent_change` creating new variables.
+You could apply this function to `files` 
+and then select the resulting variable `percent_change_7`
+as the argument `var` in `polygon_to_raster()`
+We are not demonstrating it in this example.
 
 Now that we have the polygons, let's create the raster files.
 
@@ -211,12 +219,12 @@ To start, we will select
 from all the files 
 the QuadKeys that appear at 
 least once and convert them to
-an `sf POINT data.frame` using `quadkey_to_latlong()`
+an `sf` POINT data.frame using `quadkey_to_latlong()`
 
 ```{r qtll1}
-quadkeys <-  unique(files$quadkey)
+quadkey_vector <-  unique(files$quadkey)
 
-qtll <- quadkey_to_latlong(quadkeys = quadkeys)
+qtll <- quadkey_to_latlong(quadkey = quadkey_vector)
 head(qtll)
 ```
 Let's plot the QuadKey grid.
@@ -252,7 +260,7 @@ the output is a list with three elements:
 - `num_cols`.
 
 ```{r rgc}
-regular_grid <- regular_qk_grid(qtll)
+regular_grid <- regular_qk_grid(data = qtll)
 head(regular_grid)
 ```
 
@@ -288,7 +296,7 @@ ggplot() +
 
 Now we can transform the QuadKeys into polygons.
 ```{r polygrid}
-polygrid <- grid_to_polygon(regular_grid$data)
+polygrid <- grid_to_polygon(data = regular_grid$data)
 head(polygrid)
 ```
 
