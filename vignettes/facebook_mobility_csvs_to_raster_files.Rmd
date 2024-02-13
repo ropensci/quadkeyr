@@ -114,13 +114,11 @@ to learn more about this function.
 
 
 ```{r grid}
-
 regular_grid <- get_regular_polygon_grid(data = files)
 regular_grid$data
-
 ```
 
-```{r reg_grid, out.width= "90%", fig.align='center'}
+```{r reg_grid, out.width= "80%", fig.align='center'}
 ggplot() +
   geom_sf(data = regular_grid$data, 
           color = 'red', 
@@ -158,7 +156,7 @@ polygon_to_raster(data = files_polygons,
                                  "/"))
 ```
 
-```{r qkgrid, out.width= "90%", fig.align='center'}
+```{r qkgrid, out.width= "80%", fig.align='center'}
 raster <- read_stars(paste0(system.file("extdata", 
                                         package = "quadkeyr"),
                                  "/cityA_2020-04-15_16.tif"))  

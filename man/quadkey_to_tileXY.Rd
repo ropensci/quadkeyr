@@ -7,7 +7,7 @@
 quadkey_to_tileXY(quadkey)
 }
 \arguments{
-\item{quadkey}{The QuadKey as a string.}
+\item{quadkey}{A QuadKey as a single string.}
 }
 \value{
 A list returning the tile X, tile Y coordinates and
@@ -25,7 +25,7 @@ quadkey_to_sf_conversion.html}
 }
 \examples{
 
-quadkey_to_tileXY(quadkey = 213)
+quadkey_to_tileXY(quadkey = "213")
 
 }
 \references{

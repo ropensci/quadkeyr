@@ -134,31 +134,3 @@ get_tile_coord <- function(data, zoom) {
 
   return(data)
 }
-
-
-#' Convert data.frame with quadkey column to a sf POLYGON data.frame
-#'
-#' @param data A data.frame with a quadkey column
-#'
-#' @return The same original data.frame with a sf POLYGON data.frame with a
-#' geometry column.
-#'  
-#' @export
-#'
-#' @examples
-#' 
-#' path <- paste0(system.file("extdata", package = 'quadkeyr'), 
-#'                                     "/cityA_2020_04_15_0000.csv")
-#' data <- read.csv(path)
-#' data <- format_fb_data(data)
-#'
-#' quadkey_df_to_polygon(data)
-quadkey_df_to_polygon <- function(data){
-  
-        data |> 
-        dplyr::rowwise() |> 
-        dplyr::mutate(quadkey_to_polygon(.data$quadkey)) |> # tidyselect
-        as.data.frame() |>  # remove class rowwise_df
-        sf::st_sf() 
-  
-}

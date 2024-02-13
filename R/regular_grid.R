@@ -125,7 +125,7 @@ add_regular_polygon_grid <- function(data){
 #'
 #' @examples
 #' 
-#' # read the file with the data
+#' # daya file
 #' path <- paste0(system.file("extdata", package = 'quadkeyr'),
 #'                              "/cityA_2020_04_15_0000.csv")
 #' data <- read.csv(path)

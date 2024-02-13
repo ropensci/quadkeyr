@@ -7,12 +7,13 @@
 quadkey_to_latlong(quadkeys)
 }
 \arguments{
-\item{quadkeys}{A vector with unique QuadKey numbers.}
+\item{quadkeys}{A single QuadKey as a string or
+a vector with unique QuadKeys.}
 }
 \value{
-A spatial data frame of class sf with a quadkey column
-and POINT geometry.
-The coordinates represent the upper-left corner of the QuadKey.
+A sf POINT data.frame with a \code{quadkey} column.
+The latitude/longitude coordinates represent
+the upper-left corner of the QuadKey.
 }
 \description{
 This function converts Quadkeys to
@@ -20,7 +21,7 @@ latitude/longitude WGS-84 coordinates (in degrees).
 For further information, refer to the Microsoft Bing Maps Tile System
 documentation.
 
-#' For a detailed explanation on how to use this
+For a detailed explanation on how to use this
 and other similar \code{quadkeyr} functions,
 see the vignette:
 \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
@@ -28,8 +29,8 @@ quadkey_to_sf_conversion.html}
 }
 \examples{
 
-quadkey_to_latlong(c("213", "212", "210"))
-
+quadkey_to_latlong(quadkeys = "213")
+quadkey_to_latlong(quadkeys = c("213", "212", "210"))
 }
 \references{
 \url{https://learn.microsoft.com/en-us/bingmaps/articles/

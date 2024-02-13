@@ -138,6 +138,7 @@ ggplot() +
   scale_fill_viridis_c() +
   theme_minimal()
 ```
+
 ## Advanced use
 The function `add_regular_polygon_grid` serves as a wrapper for three functions:
 `get_qk_coords`, `regular_qk_grid`, and `grid_to_polygon`.

@@ -37,13 +37,13 @@ knitr::include_graphics("../man/figures/workflow_quadkey.png")
 You can convert any QuadKey to
 a [Simple Features object](https://r-spatial.github.io/sf/articles/sf1.html#sf-objects-with-simple-features)
 `sf POINT data.frame` or `sf POLYGON data.frame` 
-using the functions `quadkey_to_latlong` and `quadkey_to_polygon`. 
+using the functions `quadkey_to_latlong()` and `quadkey_to_polygon()`. 
 It's important to notice that the geographic coordinates of the point 
 will always correspond to the upper-left corner of the polygon
 for the same QuadKey.
 
 ```{r}
-qtll <- quadkey_to_latlong("2103")
+qtll <- quadkey_to_latlong(quadkeys = "2103")
 qtll
 ```
 
@@ -52,13 +52,18 @@ qtp <- quadkey_to_polygon("2103")
 qtp
 ```
 
-```{r qk, out.width="70%", fig.align='center'}
+```{r qk, out.width="50%", fig.align='center'}
 ggplot() +
   geom_sf(data = qtp, color = 'red', fill = NA, linewidth = 2.5) +
   geom_sf(data = qtll, color = 'blue', size = 4) + 
   ggtitle(paste("QuadKey", qtll$quadkey)) +
   theme_minimal()
 ```
+If you want to convert a data.frame `quadkey` column 
+to a `sf POLYGON data.frame`
+you can use the function `quadkey_df_to_polygon()` 
+described in the
+['Generating a Raster Image from Quadkey-Identified Data' vignette](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_identified_data_to_raster.html)
 
 ## Advanced use
 
@@ -87,7 +92,7 @@ numeric strings. This is important to understand how the conversion works.
 Each geographic pair of coordinates (latitude/longitude) will belong to 
 a specific pixel referenced by coordinates (`pixelX`, `pixelY`) 
 for each zoom level. In Fig. 1, you can see pixels (0, 0) and (2047, 2047)
-for zoom level 3. The `quadkeyr` function `latlong_to_pixelXY`, converts 
+for zoom level 3. The `quadkeyr` function `latlong_to_pixelXY()`, converts 
 geographic coordinates (latitude/longitude) in pixel coordinates for each
 zoom level.
 
@@ -107,14 +112,14 @@ the coordinates `pixelX` = 255 and `pixelY` = 12 is part of the tile with
 coordinates `tileX` = 0 and `tileY` = 0. 
 The pixel with coordinates (0,0) belongs to tile (0,0), and the 
 pixel (2047, 2047) is part of tile (7,7). You can verify this using 
-the function `pixelXY_to_tileXY` and by comparing Fig. 1 and Fig. 2.
+the function `pixelXY_to_tileXY()` and by comparing Fig. 1 and Fig. 2.
 
 ```{r tiles, echo = FALSE, out.width= "50%", fig.align='center', fig.cap= "Fig 2. Tile coordinates. Image extracted from Microsoft's Bing Maps Tile System webpage."}
 knitr::include_graphics('bing_tiles.jpg')
 ```
 
 To convert from tile XY coordinates to QuadKeys for a particular
-zoom level, you can use the function `tileXY_to_quadkey`. 
+zoom level, you can use the function `tileXY_to_quadkey()`. 
 The number of digits of the QuadKey will correspond to the zoom level
 of the map. For example, for the tile (4, 7) of zoom level 3, the
 QuadKey will be `322`.
@@ -144,7 +149,6 @@ lltp <- latlong_to_pixelXY(lat = -25,
                            lon = -53, 
                            zoom = 4)
 lltp
-
 ```
 
 #### Convert pixel XY coordinates into tile XY coordinates
@@ -166,7 +170,7 @@ tileXY_to_quadkey(tileX = ptt$tileX,
                   zoom = 4)
 ```
 
-The function `latlong_to_quadkey` wraps the last three functions,
+The function `latlong_to_quadkey()` wraps the last three functions,
 and converts map coordinates into a QuadKey for a particular zoom level:
 
 ```{r}
@@ -233,7 +237,7 @@ latitude/longitude coordinates (as in section 2.3)
 would yield the same values as the original input in section 1.
 
 However, this isn't the case, as evidenced by the behavior of the 
-functions `pixelXY_to_tileXY` and `tileXY_to_pixel_XY`.
+functions `pixelXY_to_tileXY()` and `tileXY_to_pixel_XY()`.
 
 When choosing latitude/longitude coordinates in the initial function in 
 section 1, they were within a specific pixel represented by unique tile 
@@ -241,13 +245,13 @@ coordinates and a QuadKey number. As you can see in the example in this
 vignette, the conversion back from QuadKey to latitude/longitude
 does not directly result in the same initial geographic coordinates.
 
-This discrepancy arises because `tileXY_to_pixel_XY` provides the pixel 
+This discrepancy arises because `tileXY_to_pixel_XY()` provides the pixel 
 coordinates for the upper-left corner of the tile, not the exact coordinates 
-chosen initially. For example, if you run `tileXY_to_pixelXY` for the tile
+chosen initially. For example, if you run `tileXY_to_pixelXY()` for the tile
 (7, 7), you will see that the resulting pixel is (1792, 1792) and
 no (2047, 2047) the one you could see in Fig. 2. As each tile is
 256x256 pixels, you can easily check that the result is the upper-left pixel 
-of that tile. The same will happen for `pixelXY_to_latlong`. 
+of that tile. The same will happen for `pixelXY_to_latlong()`. 
 
 Hence, converting latitude/longitude coordinates into a QuadKey and then back
 to latitude/longitude won't yield identical values, unless the original
@@ -268,7 +272,7 @@ the accurate use of these functions in coordinate conversions.
 
 In addition to the conversion functions mentioned earlier,
 the `quadkeyr` package also includes the following functions:
-`mapsize`, `mapscale`, and `ground_res`.
+`mapsize()`, `mapscale()`, and `ground_res()`.
 These functions are described on the
 [Bing Maps Tile System webpage](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system) 
 and are available for its use.
