@@ -9,8 +9,8 @@
 #' @seealso \code{\link{tileXY_to_pixelXY}}
 #' @seealso \code{\link{pixelXY_to_latlong}}
 #'
-#' @return A spatial dataframe (sf) containing the tiles XY coordinates
-#' (tileX, tileY), the QuadKey (quadkey), and a POINT geometry column.
+#' @return A `sf` POINT data.frame containing the tiles XY coordinates
+#' (tileX, tileY), the QuadKeys (quadkey), and a geometry column.
 #'
 #' @export
 #'

@@ -1,12 +1,12 @@
-# quadkey_to_polygon
+# Test cases for `quadkey_to_polygon()`
 
-test_that("quadkey_to_polygon gives the correct output", {
+test_that("`quadkey_to_polygon()` gives the correct output", {
   polygon <- quadkey_to_polygon('213')
   expect_s3_class(polygon, "sf")
   expect_equal(polygon$quadkey, "213")
 })
 
-# quadkey_df_to_polygon
+# Test cases for `quadkey_df_to_polygon()`
 
 # example
 grid <- create_qk_grid(
@@ -17,7 +17,7 @@ grid <- create_qk_grid(
   zoom = 12
 )
 
-test_that("quadkey_df_to_polygon errors are correct", {
+test_that("`quadkey_df_to_polygon()` errors are correct", {
   data <- grid$data
   # If quadkey is not a character column, it should stop
   data$quadkey <- as.numeric(data$quadkey)
@@ -41,7 +41,7 @@ test_that("quadkey_df_to_polygon errors are correct", {
   )
 })
 
-test_that("quadkey_df_to_polygon function tests", {
+test_that("`quadkey_df_to_polygon()` error tests", {
   data <- grid$data[1:3,]
   # Test that the function runs without errors with correct quadkey format
   expect_silent(quadkey_df_to_polygon(data))

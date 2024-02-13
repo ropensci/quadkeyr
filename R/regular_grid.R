@@ -39,7 +39,11 @@ regular_qk_grid <- function(data) {
 
   if (nrow(grid$data) == nrow(data)) {
     warning("The grid is already complete, this function is not necessary")
-    return(data)
+    return(list(
+      data = data,
+      num_rows = grid$num_rows,
+      num_cols = grid$num_cols
+    ))
   }
 
   # Select the QuadKeys that are missing in the original grid

@@ -1,3 +1,4 @@
+# Test cases for `apply_weekly_lag()`
 test_that("Check if column 'var_n_percent_7' exists", {
   output <- result_read_fb_mobility_data[1:100, ] |> apply_weekly_lag()
 

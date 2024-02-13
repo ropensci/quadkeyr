@@ -1,4 +1,5 @@
- files <- read_fb_mobility_files(path_to_csvs = paste0(system.file("extdata",
+# Test cases for `polygon_to_raster()`
+files <- read_fb_mobility_files(path_to_csvs = paste0(system.file("extdata",
                                                  package = "quadkeyr"), "/"),
                                  colnames = c("lat", "lon", 
                                               "quadkey", "date_time", 
@@ -20,7 +21,7 @@
                    by = c("quadkey"))
 
 
- test_that("polygon_to_raster produces output files", {
+ test_that("`polygon_to_raster()` produces output files", {
    
    # The files are saved in a temp directory for the tests
    withr::with_tempdir({

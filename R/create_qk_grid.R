@@ -89,11 +89,15 @@ create_qk_grid <- function(xmin, xmax, ymin, ymax, zoom) {
   }
 
   # define the dimensions of the matrix
-  num_rows <- abs(resy)
-  num_cols <- abs(resx)
+  num_tiles_rows <- abs(resy) 
+  num_tiles_cols <- abs(resx) 
 
   # create all the possible combinations of columns and rows
-  grid <- expand.grid(c = 0:num_cols, r = 0:num_rows)
+  # I start with 0 because I want the first tiles in `tilesmn$tileX`
+  # and `tilesmn$tileY` to be counted.
+  # This is equivalent to say that I want the bounding box 
+  # included inside the grid.
+  grid <- expand.grid(c = 0:num_tiles_cols, r = 0:num_tiles_rows)
 
   # calculate tileX and tileY for each combination
   data <- grid |>
@@ -114,7 +118,7 @@ create_qk_grid <- function(xmin, xmax, ymin, ymax, zoom) {
 
   return(list(
     data = data,
-    num_rows = num_rows,
-    num_cols = num_cols
+    num_rows = num_tiles_rows+1, #+1 as I was counting the zero
+    num_cols = num_tiles_cols+1
   ))
 }

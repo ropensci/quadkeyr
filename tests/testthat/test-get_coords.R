@@ -7,7 +7,7 @@ grid <- create_qk_grid(
   zoom = 12
 )
 
-# QuadKeys - get_qk_coord()
+# Test cases for `get_qk_coord()`
 test_that("Check existence of 'quadkey' column", {
   # Create a dataframe without 'quadkey' column
   df_missing_column <- data.frame(other_column = c(1, 2, 3))
@@ -28,7 +28,7 @@ test_that("Check existence of 'quadkey' column", {
   expect_silent(get_qk_coord(grid$data))
 })
 
-# Tile XY coordinates - get_tile_coord()
+# Test cases for `get_tile_coord()`
 test_that("Check existence of 'tileX' and 'tileY' columns", {
   # Create a dataframe without 'tileX' and 'tileY' columns
   df_missing_columns <- data.frame(other_column = c(1, 2, 3))
@@ -51,13 +51,9 @@ test_that("Check output dimensions", {
   # the number of points in the grid is equal to the product of the
   # number of columns and rows
   # calculated when the grid was generated
-  
-  # +1 is because I started counting by 0 the first element
-  
   expect_equal(nrow(get_qk_coord(grid$data)),
-               ((grid$num_rows + 1) * (grid$num_cols + 1)))
+               ((grid$num_rows) * (grid$num_cols)))
   
   expect_equal(nrow(get_tile_coord(grid$data, zoom = 12)),
-               ((grid$num_rows + 1) * (grid$num_cols + 1)))
+               ((grid$num_rows) * (grid$num_cols)))
 })
-

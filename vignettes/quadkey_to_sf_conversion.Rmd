@@ -222,7 +222,7 @@ ptll
 ```
 
 You can also use the function `quadkey_to_latlong` 
-that wraps the last 3 functions and returns a `sf POINT data.frame`.
+that wraps the last three functions and returns a `sf POINT data.frame`.
 
 ```{r}
 quadkey_to_latlong("2103")
