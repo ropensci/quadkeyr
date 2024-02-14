@@ -232,7 +232,8 @@ tileXY_to_quadkey <- function(tileX, tileY, zoom) {
 #'
 #' @param lat Latitude of the point, in degrees.
 #' @param lon Longitude of the point, in degrees.
-#' @param zoom Zoom or level of detail, from 1 (lowest detail) to 23 (highest detail).
+#' @param zoom Zoom or level of detail, from 1 (lowest detail) 
+#' to 23 (highest detail).
 #'
 #' @return A dataframe with latitude (lat), longitude (lon), zoom level
 #' (zoom) and the QuadKey as a string (quadkey).

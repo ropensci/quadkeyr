@@ -9,7 +9,10 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![test-coverage](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/test-coverage.yaml)
 [![R-CMD-check](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-standard.yaml)
+[![pkgcheck](https://github.com/%3Corg%3E/%3Crepo%3E/workflows/pkgcheck/badge.svg)](https://github.com/%3Corg%3E/%3Crepo%3E/actions?query=workflow%3Apkgcheck)
 [![Codecov](https://img.shields.io/codecov/c/github/Fernandez-Lab-WSU/quadkeyr)](https://codecov.io/gh/Fernandez-Lab-WSU/quadkeyr)
+[![Status at rOpenSci Software Peer
+Review](https://badges.ropensci.org/619_status.svg)](https://github.com/ropensci/software-review/issues/619)
 <!-- badges: end -->
 
 ⚠️ This package is under review
