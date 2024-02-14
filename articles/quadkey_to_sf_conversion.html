@@ -77,12 +77,13 @@
 </nav><div class="container template-article">
 
 
-
-
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>From a QuadKey to a Simple Features data.frame and other conversions</h1>
+                        <h4 data-toc-skip class="author">Florencia
+D’Andrea</h4>
             
+            <h4 data-toc-skip class="date">2024-02-14</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/Fernandez-Lab-WSU/quadkeyr/blob/HEAD/vignettes/quadkey_to_sf_conversion.Rmd" class="external-link"><code>vignettes/quadkey_to_sf_conversion.Rmd</code></a></small>
       <div class="d-none name"><code>quadkey_to_sf_conversion.Rmd</code></div>
@@ -98,19 +99,19 @@ general information about this package</p>
 documentation. <code>quadkeyr</code> functions are the R version of the
 ones described in <a href="https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system" class="external-link">Bing
 Maps Tile System webpage</a>.</p>
-<div class="section level2">
-<h2 id="basic-workflow">Basic workflow<a class="anchor" aria-label="anchor" href="#basic-workflow"></a>
+<div class="section level2" number="1">
+<h2 id="basic-workflow">
+<span class="header-section-number">1</span> Basic workflow<a class="anchor" aria-label="anchor" href="#basic-workflow"></a>
 </h2>
 <p><img src="../reference/figures/workflow_quadkey.png" width="90%" style="display: block; margin: auto;"></p>
 <p>You can convert any QuadKey to a <a href="https://r-spatial.github.io/sf/articles/sf1.html#sf-objects-with-simple-features" class="external-link">Simple
-Features object</a> <code>sf POINT data.frame</code> or
-<code>sf POLYGON data.frame</code> using the functions
-<code>quadkey_to_latlong</code> and <code>quadkey_to_polygon</code>.
-It’s important to notice that the geographic coordinates of the point
-will always correspond to the upper-left corner of the polygon for the
-same QuadKey.</p>
+Features object</a> <code>sf</code> POINT data.frame or <code>sf</code>
+POLYGON data.frame using the functions <code><a href="../reference/quadkey_to_latlong.html">quadkey_to_latlong()</a></code>
+and <code><a href="../reference/quadkey_to_polygon.html">quadkey_to_polygon()</a></code>. It’s important to notice that the
+geographic coordinates of the point will always correspond to the
+upper-left corner of the polygon for the same QuadKey.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">qtll</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quadkey_to_latlong.html">quadkey_to_latlong</a></span><span class="op">(</span><span class="st">"2103"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">qtll</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quadkey_to_latlong.html">quadkey_to_latlong</a></span><span class="op">(</span>quadkey <span class="op">=</span> <span class="st">"2103"</span><span class="op">)</span></span>
 <span><span class="va">qtll</span></span>
 <span><span class="co">#&gt; Simple feature collection with 1 feature and 1 field</span></span>
 <span><span class="co">#&gt; Geometry type: POINT</span></span>
@@ -120,7 +121,7 @@ same QuadKey.</p>
 <span><span class="co">#&gt;   quadkey                geometry</span></span>
 <span><span class="co">#&gt; 1    2103 POINT (-67.5 -21.94305)</span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">qtp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quadkey_to_polygon.html">quadkey_to_polygon</a></span><span class="op">(</span><span class="st">"2103"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">qtp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quadkey_to_polygon.html">quadkey_to_polygon</a></span><span class="op">(</span>quadkey <span class="op">=</span> <span class="st">"2103"</span><span class="op">)</span></span>
 <span><span class="va">qtp</span></span>
 <span><span class="co">#&gt; Simple feature collection with 1 feature and 1 field</span></span>
 <span><span class="co">#&gt; Geometry type: POLYGON</span></span>
@@ -135,18 +136,26 @@ same QuadKey.</p>
 <span>  <span class="fu">geom_sf</span><span class="op">(</span>data <span class="op">=</span> <span class="va">qtll</span>, color <span class="op">=</span> <span class="st">'blue'</span>, size <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu">ggtitle</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"QuadKey"</span>, <span class="va">qtll</span><span class="op">$</span><span class="va">quadkey</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="quadkey_to_sf_conversion_files/figure-html/qk-1.png" width="70%" style="display: block; margin: auto;"></p>
+<p><img src="quadkey_to_sf_conversion_files/figure-html/qk-1.png" width="50%" style="display: block; margin: auto;">
+If you want to convert a data.frame <code>quadkey</code> column to a
+<code>sf</code> POLYGON data.frame. you can use the function
+<code><a href="../reference/quadkey_df_to_polygon.html">quadkey_df_to_polygon()</a></code> described in the <a href="https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_identified_data_to_raster.html" class="external-link">‘Generating
+a Raster Image from Quadkey-Identified Data’ vignette</a></p>
 </div>
-<div class="section level2">
-<h2 id="advanced-use">Advanced use<a class="anchor" aria-label="anchor" href="#advanced-use"></a>
+<div class="section level2" number="2">
+<h2 id="advanced-use-intermediate-functions">
+<span class="header-section-number">2</span> Advanced use:
+intermediate functions<a class="anchor" aria-label="anchor" href="#advanced-use-intermediate-functions"></a>
 </h2>
 <p>The conversion from QuadKey to geographic coordinates involves a
 series of smaller transformations that relate to the structure of Tile
 Maps. All of these intermediary functions, as well as those facilitating
 the reverse conversion, are available for use within the
 <code>quadkeyr</code> package.</p>
-<div class="section level3">
-<h3 id="tile-maps-quadkeys-tiles-pixels-and-geographic-coordinates">Tile Maps: QuadKeys, tiles, pixels and geographic coordinates<a class="anchor" aria-label="anchor" href="#tile-maps-quadkeys-tiles-pixels-and-geographic-coordinates"></a>
+<div class="section level3" number="2.1">
+<h3 id="tile-maps-quadkeys-tiles-pixels-and-geographic-coordinates">
+<span class="header-section-number">2.1</span> Tile Maps: QuadKeys,
+tiles, pixels and geographic coordinates<a class="anchor" aria-label="anchor" href="#tile-maps-quadkeys-tiles-pixels-and-geographic-coordinates"></a>
 </h3>
 <blockquote>
 <p>Note: In the official documentation, the term ‘level of detail’ is
@@ -164,7 +173,7 @@ This is important to understand how the conversion works.</p>
 to a specific pixel referenced by coordinates (<code>pixelX</code>,
 <code>pixelY</code>) for each zoom level. In Fig. 1, you can see pixels
 (0, 0) and (2047, 2047) for zoom level 3. The <code>quadkeyr</code>
-function <code>latlong_to_pixelXY</code>, converts geographic
+function <code><a href="../reference/latlong_to_pixelXY.html">latlong_to_pixelXY()</a></code>, converts geographic
 coordinates (latitude/longitude) in pixel coordinates for each zoom
 level.</p>
 <div class="figure" style="text-align: center">
@@ -181,8 +190,8 @@ converted into one-dimensional QuadKeys.</p>
 tile with coordinates <code>tileX</code> = 0 and <code>tileY</code> = 0.
 The pixel with coordinates (0,0) belongs to tile (0,0), and the pixel
 (2047, 2047) is part of tile (7,7). You can verify this using the
-function <code>pixelXY_to_tileXY</code> and by comparing Fig. 1 and Fig.
-2.</p>
+function <code><a href="../reference/pixelXY_to_tileXY.html">pixelXY_to_tileXY()</a></code> and by comparing Fig. 1 and
+Fig. 2.</p>
 <div class="figure" style="text-align: center">
 <img src="bing_tiles.jpg" alt="Fig 2. Tile coordinates. Image extracted from Microsoft's Bing Maps Tile System webpage." width="50%"><p class="caption">
 Fig 2. Tile coordinates. Image extracted from Microsoft’s Bing Maps Tile
@@ -190,7 +199,7 @@ System webpage.
 </p>
 </div>
 <p>To convert from tile XY coordinates to QuadKeys for a particular zoom
-level, you can use the function <code>tileXY_to_quadkey</code>. The
+level, you can use the function <code><a href="../reference/tileXY_to_quadkey.html">tileXY_to_quadkey()</a></code>. The
 number of digits of the QuadKey will correspond to the zoom level of the
 map. For example, for the tile (4, 7) of zoom level 3, the QuadKey will
 be <code>322</code>.</p>
@@ -203,9 +212,10 @@ with your original QuadKey.</p>
 <p>To understand this in more detail, have a look to the functions and
 then read section 3.</p>
 </div>
-<div class="section level3">
-<h3 id="if-you-have-a-pair-of-geographic-map-coordinates-convert-them-to-a-quadkey">If you have a pair of geographic map coordinates, convert them to a
-QuadKey<a class="anchor" aria-label="anchor" href="#if-you-have-a-pair-of-geographic-map-coordinates-convert-them-to-a-quadkey"></a>
+<div class="section level3" number="2.2">
+<h3 id="if-you-have-a-pair-of-geographic-map-coordinates-convert-them-to-a-quadkey">
+<span class="header-section-number">2.2</span> If you have a pair of
+geographic map coordinates, convert them to a QuadKey<a class="anchor" aria-label="anchor" href="#if-you-have-a-pair-of-geographic-map-coordinates-convert-them-to-a-quadkey"></a>
 </h3>
 <p><strong>Geographic coordinates</strong> <span>→</span> <strong>pixel
 XY coordinates</strong> <span>→</span> <strong>tile XY
@@ -214,8 +224,10 @@ coordinates</strong> <span>→</span> <strong>QuadKey</strong></p>
 <p>Note: The latitude and longitude coordinates are in the WGS 84
 reference system.</p>
 </blockquote>
-<div class="section level4">
-<h4 id="convert-latitudelongitude-coordinates-to-pixel-xy-coordinates">Convert latitude/longitude coordinates to pixel XY coordinates<a class="anchor" aria-label="anchor" href="#convert-latitudelongitude-coordinates-to-pixel-xy-coordinates"></a>
+<div class="section level4" number="2.2.1">
+<h4 id="convert-latitudelongitude-coordinates-to-pixel-xy-coordinates">
+<span class="header-section-number">2.2.1</span> Convert
+latitude/longitude coordinates to pixel XY coordinates<a class="anchor" aria-label="anchor" href="#convert-latitudelongitude-coordinates-to-pixel-xy-coordinates"></a>
 </h4>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lltp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/latlong_to_pixelXY.html">latlong_to_pixelXY</a></span><span class="op">(</span>lat <span class="op">=</span> <span class="op">-</span><span class="fl">25</span>, </span>
@@ -228,8 +240,10 @@ reference system.</p>
 <span><span class="co">#&gt; $pixelY</span></span>
 <span><span class="co">#&gt; [1] 2342</span></span></code></pre></div>
 </div>
-<div class="section level4">
-<h4 id="convert-pixel-xy-coordinates-into-tile-xy-coordinates">Convert pixel XY coordinates into tile XY coordinates<a class="anchor" aria-label="anchor" href="#convert-pixel-xy-coordinates-into-tile-xy-coordinates"></a>
+<div class="section level4" number="2.2.2">
+<h4 id="convert-pixel-xy-coordinates-into-tile-xy-coordinates">
+<span class="header-section-number">2.2.2</span> Convert pixel XY
+coordinates into tile XY coordinates<a class="anchor" aria-label="anchor" href="#convert-pixel-xy-coordinates-into-tile-xy-coordinates"></a>
 </h4>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ptt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pixelXY_to_tileXY.html">pixelXY_to_tileXY</a></span><span class="op">(</span>pixelX <span class="op">=</span> <span class="va">lltp</span><span class="op">$</span><span class="va">pixelX</span>,</span>
@@ -241,8 +255,10 @@ reference system.</p>
 <span><span class="co">#&gt; $tileY</span></span>
 <span><span class="co">#&gt; [1] 9</span></span></code></pre></div>
 </div>
-<div class="section level4">
-<h4 id="convert-tile-xy-coordinates-into-a-quadkey">Convert tile XY coordinates into a QuadKey<a class="anchor" aria-label="anchor" href="#convert-tile-xy-coordinates-into-a-quadkey"></a>
+<div class="section level4" number="2.2.3">
+<h4 id="convert-tile-xy-coordinates-into-a-quadkey">
+<span class="header-section-number">2.2.3</span> Convert tile XY
+coordinates into a QuadKey<a class="anchor" aria-label="anchor" href="#convert-tile-xy-coordinates-into-a-quadkey"></a>
 </h4>
 <p>This function returns the QuadKey string. Since we are estimating
 zoom level 4, the number consists of 4 digits.</p>
@@ -251,7 +267,7 @@ zoom level 4, the number consists of 4 digits.</p>
 <span>                  tileY <span class="op">=</span> <span class="va">ptt</span><span class="op">$</span><span class="va">tileY</span>,</span>
 <span>                  zoom <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "2103"</span></span></code></pre></div>
-<p>The function <code>latlong_to_quadkey</code> wraps the last three
+<p>The function <code><a href="../reference/latlong_to_quadkey.html">latlong_to_quadkey()</a></code> wraps the last three
 functions, and converts map coordinates into a QuadKey for a particular
 zoom level:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -281,17 +297,20 @@ zoom level:</p>
 <span><span class="co">#&gt; 3    2102 POINT (-70.66 -25.66)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level3">
-<h3 id="if-you-have-a-quadkeys-convert-them-to-a-pair-of-map-coordinates">If you have a QuadKeys, convert them to a pair of map
-coordinates<a class="anchor" aria-label="anchor" href="#if-you-have-a-quadkeys-convert-them-to-a-pair-of-map-coordinates"></a>
+<div class="section level3" number="2.3">
+<h3 id="if-you-have-a-quadkeys-convert-them-to-a-pair-of-map-coordinates">
+<span class="header-section-number">2.3</span> If you have a
+QuadKeys, convert them to a pair of map coordinates<a class="anchor" aria-label="anchor" href="#if-you-have-a-quadkeys-convert-them-to-a-pair-of-map-coordinates"></a>
 </h3>
 <p>Let’s attempt the reverse route.</p>
 <p><strong>QuadKey</strong> <span>→</span> <strong>tile XY
 coordinates</strong> <span>→</span> <strong>pixel XY
 coordinates</strong> <span>→</span> <strong>Geographic
 coordinates</strong></p>
-<div class="section level4">
-<h4 id="convert-a-quadkey-into-tile-xy-coordinates">Convert a QuadKey into tile XY coordinates<a class="anchor" aria-label="anchor" href="#convert-a-quadkey-into-tile-xy-coordinates"></a>
+<div class="section level4" number="2.3.1">
+<h4 id="convert-a-quadkey-into-tile-xy-coordinates">
+<span class="header-section-number">2.3.1</span> Convert a QuadKey
+into tile XY coordinates<a class="anchor" aria-label="anchor" href="#convert-a-quadkey-into-tile-xy-coordinates"></a>
 </h4>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">qtt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quadkey_to_tileXY.html">quadkey_to_tileXY</a></span><span class="op">(</span><span class="st">"2103"</span><span class="op">)</span></span>
@@ -305,8 +324,10 @@ coordinates</strong></p>
 <span><span class="co">#&gt; $zoom</span></span>
 <span><span class="co">#&gt; [1] 4</span></span></code></pre></div>
 </div>
-<div class="section level4">
-<h4 id="convert-tile-xy-coordinates-into-pixel-xy-coordinates">Convert tile XY coordinates into pixel XY coordinates<a class="anchor" aria-label="anchor" href="#convert-tile-xy-coordinates-into-pixel-xy-coordinates"></a>
+<div class="section level4" number="2.3.2">
+<h4 id="convert-tile-xy-coordinates-into-pixel-xy-coordinates">
+<span class="header-section-number">2.3.2</span> Convert tile XY
+coordinates into pixel XY coordinates<a class="anchor" aria-label="anchor" href="#convert-tile-xy-coordinates-into-pixel-xy-coordinates"></a>
 </h4>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ttp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tileXY_to_pixelXY.html">tileXY_to_pixelXY</a></span><span class="op">(</span>tileX <span class="op">=</span> <span class="va">qtt</span><span class="op">$</span><span class="va">tileX</span>,</span>
@@ -318,8 +339,10 @@ coordinates</strong></p>
 <span><span class="co">#&gt; $pixelY</span></span>
 <span><span class="co">#&gt; [1] 2304</span></span></code></pre></div>
 </div>
-<div class="section level4">
-<h4 id="convert-pixel-xy-coordinates-into-latlong-coordinates">Convert pixel XY coordinates into lat/long coordinates<a class="anchor" aria-label="anchor" href="#convert-pixel-xy-coordinates-into-latlong-coordinates"></a>
+<div class="section level4" number="2.3.3">
+<h4 id="convert-pixel-xy-coordinates-into-latlong-coordinates">
+<span class="header-section-number">2.3.3</span> Convert pixel XY
+coordinates into lat/long coordinates<a class="anchor" aria-label="anchor" href="#convert-pixel-xy-coordinates-into-latlong-coordinates"></a>
 </h4>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ptll</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pixelXY_to_latlong.html">pixelXY_to_latlong</a></span><span class="op">(</span>pixelX <span class="op">=</span> <span class="va">ttp</span><span class="op">$</span><span class="va">pixelX</span>,</span>
@@ -332,11 +355,11 @@ coordinates</strong></p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $lon</span></span>
 <span><span class="co">#&gt; [1] -67.5</span></span></code></pre></div>
-<p>You can also use the function <code>quadkey_to_latlong</code> that
-wraps the last 3 functions and returns a
-<code>sf POINT data.frame</code>.</p>
+<p>You can also use the function <code><a href="../reference/quadkey_to_latlong.html">quadkey_to_latlong()</a></code> that
+wraps the last three functions and returns a <code>sf</code> POINT
+data.frame.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/quadkey_to_latlong.html">quadkey_to_latlong</a></span><span class="op">(</span><span class="st">"2103"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/quadkey_to_latlong.html">quadkey_to_latlong</a></span><span class="op">(</span>quadkey <span class="op">=</span> <span class="st">"2103"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Simple feature collection with 1 feature and 1 field</span></span>
 <span><span class="co">#&gt; Geometry type: POINT</span></span>
 <span><span class="co">#&gt; Dimension:     XY</span></span>
@@ -346,57 +369,64 @@ wraps the last 3 functions and returns a
 <span><span class="co">#&gt; 1    2103 POINT (-67.5 -21.94305)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level3">
-<h3 id="caveats-when-converting-coordinates">Caveats when converting coordinates<a class="anchor" aria-label="anchor" href="#caveats-when-converting-coordinates"></a>
-</h3>
+</div>
+<div class="section level2" number="3">
+<h2 id="caveats-when-converting-coordinates">
+<span class="header-section-number">3</span> Caveats when converting
+coordinates<a class="anchor" aria-label="anchor" href="#caveats-when-converting-coordinates"></a>
+</h2>
 <p>Given the process of converting geographic coordinates
 (latitude/longitude) to QuadKeys, one might expect that the conversion
 back to latitude/longitude coordinates (as in section 2.3) would yield
 the same values as the original input in section 1.</p>
-<p>However, this isn’t the case, as evidenced by the behavior of the
-functions <code>pixelXY_to_tileXY</code> and
-<code>tileXY_to_pixel_XY</code>.</p>
+<p>However, this isn’t the case, as evidenced by the results of the
+functions <code><a href="../reference/pixelXY_to_tileXY.html">pixelXY_to_tileXY()</a></code> and
+<code>tileXY_to_pixel_XY()</code>.</p>
 <p>When choosing latitude/longitude coordinates in the initial function
 in section 1, they were within a specific pixel represented by unique
-tile coordinates and a QuadKey number. As you can see in the example in
-this vignette, the conversion back from QuadKey to latitude/longitude
-does not directly result in the same initial geographic coordinates.</p>
-<p>This discrepancy arises because <code>tileXY_to_pixel_XY</code>
+tile coordinates and QuadKey. As you can see in the example in this
+vignette, the conversion back from QuadKey to latitude/longitude does
+not directly result in the same initial geographic coordinates.</p>
+<p>This discrepancy arises because <code>tileXY_to_pixel_XY()</code>
 provides the pixel coordinates for the upper-left corner of the tile,
 not the exact coordinates chosen initially. For example, if you run
-<code>tileXY_to_pixelXY</code> for the tile (7, 7), you will see that
-the resulting pixel is (1792, 1792) and no (2047, 2047) the one you
-could see in Fig. 2. As each tile is 256x256 pixels, you can easily
-check that the result is the upper-left pixel of that tile. The same
-will happen for <code>pixelXY_to_latlong</code>.</p>
+<code><a href="../reference/tileXY_to_pixelXY.html">tileXY_to_pixelXY()</a></code> for the tile XY coordinates are (7, 7),
+the resulting pixel XY coordinates are (1792, 1792) and no (2047, 2047)
+as you could see in Fig. 2. As each tile is 256x256 pixels, you can
+easily check that the result is the upper-left pixel of that tile. The
+same will happen for <code><a href="../reference/pixelXY_to_latlong.html">pixelXY_to_latlong()</a></code>.</p>
 <p>Hence, converting latitude/longitude coordinates into a QuadKey and
 then back to latitude/longitude won’t yield identical values, unless the
-original latitude/longitude coordinates correspond to the upper-left
-pixel of the tile at the same zoom level. You can try this by
-yourself.</p>
+initial latitude/longitude coordinates correspond to the upper-left to
+the upper-left Quadkey’s pixel and tile XY coordinates at the same zool
+level.</p>
 <p>Consider as initial values the coordinates result of the conversion
-from QuadKey to latitude/longitude obtained in section 2.3 (lat =
--21.94305, lon = -67.5) and rerun all functions from the beginning.
-You’ll proof this way that obtaining the original geographic coordinates
-is unlikely unless the initial coordinates correspond to the upper-left
-pixel of the tile.</p>
+from QuadKey to latitude/longitude obtained in section 2.3
+<code>(lat = -21.94305, lon = -67.5)</code> and rerun all functions from
+the beginning. You’ll proof this way that obtaining the original
+geographic coordinates is unlikely unless the initial coordinates
+correspond to the upper-left upper-left Quadkey’s pixel and tile XY
+coordinates.</p>
 <p>Understanding this distinction is crucial for the accurate use of
 these functions in coordinate conversions.</p>
-</div>
-<div class="section level3">
-<h3 id="additional-functions">Additional functions<a class="anchor" aria-label="anchor" href="#additional-functions"></a>
-</h3>
+<div class="section level4" number="3.0.1">
+<h4 id="additional-functions">
+<span class="header-section-number">3.0.1</span> Additional
+functions<a class="anchor" aria-label="anchor" href="#additional-functions"></a>
+</h4>
 <p>In addition to the conversion functions mentioned earlier, the
 <code>quadkeyr</code> package also includes the following functions:
-<code>mapsize</code>, <code>mapscale</code>, and
-<code>ground_res</code>. These functions are described on the <a href="https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system" class="external-link">Bing
+<code><a href="../reference/mapsize.html">mapsize()</a></code>, <code><a href="../reference/mapscale.html">mapscale()</a></code>, and
+<code><a href="../reference/ground_res.html">ground_res()</a></code>. These functions are described on the <a href="https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system" class="external-link">Bing
 Maps Tile System webpage</a> and are available for its use.</p>
 </div>
 </div>
-<div class="section level2">
-<h2 id="quadkey-map-visualizer-app">QuadKey map visualizer app<a class="anchor" aria-label="anchor" href="#quadkey-map-visualizer-app"></a>
+<div class="section level2" number="4">
+<h2 id="quadkey-map-visualizer-app">
+<span class="header-section-number">4</span> QuadKey map visualizer
+app<a class="anchor" aria-label="anchor" href="#quadkey-map-visualizer-app"></a>
 </h2>
-<p>You can visualize the QuadKey location in the map using the app
+<p>You can visualize the QuadKey location in the map using the Shiny app
 included in this package.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/qkmap_app.html">qkmap_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>

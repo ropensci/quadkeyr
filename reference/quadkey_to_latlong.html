@@ -69,35 +69,61 @@ documentation.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">quadkey_to_latlong</span><span class="op">(</span><span class="va">quadkeys</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">quadkey_to_latlong</span><span class="op">(</span><span class="va">quadkey</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>quadkeys</dt>
-<dd><p>A vector with unique QuadKey numbers.</p></dd>
+    <dl><dt>quadkey</dt>
+<dd><p>A single QuadKey as a string or
+a vector with unique QuadKeys.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A spatial data frame of class sf with a quadkey column
-and POINT geometry.
-The coordinates represent the upper-left corner of the QuadKey.</p>
+<p>A sf POINT data.frame with a <code>quadkey</code> column.
+The latitude/longitude coordinates represent
+the upper-left corner of the QuadKey.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>Converting latitude/longitude coordinates into a QuadKey
+and then back to latitude/longitude won't yield identical values,
+unless the initial latitude/longitude coordinates
+correspond to the upper-left Quadkey's pixel and tile XY coordinates
+at the same zoom level.</p>
+<p>Understanding this distinction is crucial for
+the accurate use of these functions in coordinate conversions.</p>
+<p>For a detailed explanation on how to use this
+and other similar <code>quadkeyr</code> functions,
+read the the vignette:
+<a href="https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html" class="external-link">https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html</a></p>
+    </div>
+    <div class="section level2">
+    <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
+    <p><a href="https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system" class="external-link">https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system</a></p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p><code><a href="quadkey_to_tileXY.html">quadkey_to_tileXY</a></code></p>
 <p><code><a href="tileXY_to_pixelXY.html">tileXY_to_pixelXY</a></code></p>
-<p><code><a href="pixelXY_to_latlong.html">pixelXY_to_latlong</a></code></p>
-<p><a href="https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system%0A" class="external-link">Microsoft Bing Maps Tile System documentation</a></p></div>
+<p><code><a href="pixelXY_to_latlong.html">pixelXY_to_latlong</a></code></p></div>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">quadkey_to_latlong</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"213"</span>, <span class="st">"212"</span>, <span class="st">"210"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">quadkey_to_latlong</span><span class="op">(</span>quadkey <span class="op">=</span> <span class="st">"213"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Simple feature collection with 1 feature and 1 field</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Geometry type: POINT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dimension:     XY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: -45 ymin: -40.9799 xmax: -45 ymax: -40.9799</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Geodetic CRS:  WGS 84</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   quadkey             geometry</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     213 POINT (-45 -40.9799)</span>
+<span class="r-in"><span><span class="fu">quadkey_to_latlong</span><span class="op">(</span>quadkey <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"213"</span>, <span class="st">"212"</span>, <span class="st">"210"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Simple feature collection with 3 features and 1 field</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Geometry type: POINT</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Dimension:     XY</span>
@@ -107,7 +133,6 @@ The coordinates represent the upper-left corner of the QuadKey.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3     210        POINT (-90 0)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2     212 POINT (-90 -40.9799)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1     213 POINT (-45 -40.9799)</span>
-<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

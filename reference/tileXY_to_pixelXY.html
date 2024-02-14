@@ -89,9 +89,22 @@ documentation.</p>
 <p>A list returning the pixel X and pixel Y coordinates.</p>
     </div>
     <div class="section level2">
-    <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><a href="https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system" class="external-link">
-Microsoft Bing Maps Tile System documentation</a></p></div>
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>Converting latitude/longitude coordinates into a QuadKey
+and then back to latitude/longitude won't yield identical values,
+unless the initial latitude/longitude coordinates
+correspond to the upper-left Quadkey's pixel and tile XY coordinates
+at the same zoom level.</p>
+<p>Understanding this distinction is crucial for
+the accurate use of these functions in coordinate conversions.</p>
+<p>For a detailed explanation on how to use this
+and other similar <code>quadkeyr</code> functions,
+read the the vignette:
+<a href="https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html" class="external-link">https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html</a></p>
+    </div>
+    <div class="section level2">
+    <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
+    <p><a href="https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system" class="external-link">https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system</a></p>
     </div>
 
     <div class="section level2">
