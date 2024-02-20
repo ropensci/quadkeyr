@@ -62,7 +62,7 @@ get_qk_coord <- function(data) {
 #' lat/long coordinates of the upper-left corner of the QuadKey.
 #'
 #' @param data A dataframe with columns named `tileX` and `tileY`
-#' @param zoom Zoom or Level of detail, 
+#' @param zoom Zoom or Level of detail,
 #' from 1 (lowest detail) to 23 (highest detail).
 #'
 #' @seealso \code{\link{tileXY_to_pixelXY}}
@@ -126,11 +126,11 @@ get_tile_coord <- function(data, zoom) {
   }
 
   # I have to keep the quadkeys for later use
-  data <- data |> 
-    sf::st_as_sf(coords = c("lon", "lat"), crs = 4326) |> 
+  data <- data |>
+    sf::st_as_sf(coords = c("lon", "lat"), crs = 4326) |>
     dplyr::select(
-      - "pixelX", - "pixelY",
-    )  # tidyselect
+      -"pixelX", -"pixelY",
+    ) # tidyselect
 
   return(data)
 }

@@ -1,14 +1,14 @@
 #' Map size in pixels
 #'
-#' @description  Determines the map width and height (in pixels) 
+#' @description  Determines the map width and height (in pixels)
 #' at a specified zoom level.
 #' For further information, refer to the Microsoft Bing Maps Tile
 #' System documentation.
 #'
-#' @references 
+#' @references
 #' \url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}
 #'
-#' @param zoom Zoom or level of detail, 
+#' @param zoom Zoom or level of detail,
 #' from 1 (lowest detail) to 23 (highest detail).
 #'
 #' @return The map width and height in pixels.
@@ -17,7 +17,7 @@
 #' @examples
 #'
 #' mapsize(zoom = 6)
-
+#'
 # At the lowest zoom level (level 1), the map is 512 x 512 pixels.
 # At each successive zoom level, the map width and height grow by a
 # factor of 2.
@@ -58,17 +58,17 @@ clip <- function(n, min_value, max_value) {
 
 #' Ground resolution at a specified latitude and zoom level
 #'
-#' @description Determines the ground resolution (in meters per pixel) 
+#' @description Determines the ground resolution (in meters per pixel)
 #' at a specified latitude and zoom level.
 #' For further information, refer to the Microsoft Bing Maps Tile System
 #' documentation.
 #'
-#' @references 
+#' @references
 #' \url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}
 #'
 #' @param latitude Latitude (in degrees) at which
 #'  to measure the ground resolution.
-#' @param zoom Zoom or level of detail, 
+#' @param zoom Zoom or level of detail,
 #' from 1 (lowest detail) to 23 (highest detail).
 #'
 #' @return the ground resolution (meters / pixel)
@@ -103,11 +103,11 @@ ground_res <- function(latitude, zoom) {
 #' For further information, refer to the Microsoft Bing Maps Tile System
 #' documentation.
 #'
-#' @references 
+#' @references
 #' \url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}
 #'
 #' @param latitude Latitude (in degrees) at which to measure the map scale.
-#' @param zoom Zoom or level of detail, 
+#' @param zoom Zoom or level of detail,
 #' from 1 (lowest detail) to 23 (highest detail).
 #' @param screen_dpi Resolution of the screen, in dots per inch.
 #'

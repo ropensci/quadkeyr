@@ -20,4 +20,3 @@ test_that("Dataset is of class 'sf'", {
   expect_silent(polygrid)
   expect_error(grid_to_polygon(as.data.frame(grid_coords)))
 })
-

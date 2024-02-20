@@ -11,7 +11,7 @@ data <- data.frame(
 
 formatted_data <- format_fb_data(data)
 
-# Test cases for `format_fb_data()` 
+# Test cases for `format_fb_data()`
 test_that("`format_fb_data()` performs data formatting correctly", {
   # Check if scientific notation is removed in 'quadkey'
   expect_false(any(unlist(lapply(
@@ -40,7 +40,7 @@ data <- data.frame(
   hour = c(0, 8, 16)
 )
 
-# Test cases for `missing_combinations()` 
+# Test cases for `missing_combinations()`
 test_that("Test `missing_combinations()` function", {
 
   # Test if output is a data frame

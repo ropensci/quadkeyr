@@ -12,7 +12,7 @@ grid_coords
 
 polygrid <- grid_to_polygon(grid_coords)
 
-polygrid[,"var"] <- runif(n = nrow(polygrid))
+polygrid[, "var"] <- runif(n = nrow(polygrid))
 
 test_that("create_raster function creates raster as expected", {
   # Test 1: Check if the returned object is a stars object

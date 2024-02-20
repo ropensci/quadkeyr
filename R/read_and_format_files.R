@@ -1,7 +1,7 @@
 #' Read all the .csv files in a folder and format the data.
 #'
 #' @description This function reads all the `.csv` files in a particular folder.
-#' These files consistently contain identical columns, 
+#' These files consistently contain identical columns,
 #' with variations only in location, day, and time.
 #' As a result,
 #' we can uniformly apply specific formatting to columns across these files.
@@ -20,10 +20,11 @@
 #' @export
 #'
 #' @examples
-#' 
+#'
 #' files <- read_fb_mobility_files(
 #'   path_to_csvs = paste0(system.file("extdata",
-#'                                     package = "quadkeyr"), "/"),
+#'     package = "quadkeyr"
+#'   ), "/"),
 #'   colnames = c( # The columns not listed here will be omitted
 #'     "lat",
 #'     "lon",
@@ -35,17 +36,17 @@
 #'     "hour"
 #'   ),
 #'   coltypes = list(
-#'     lat = 'd',
-#'     lon = 'd',
-#'     quadkey = 'c',
-#'     date_time = 'T',
-#'     n_crisis = 'c',
-#'     percent_change = 'c',
-#'     day = 'D',
-#'     hour = 'i'
+#'     lat = "d",
+#'     lon = "d",
+#'     quadkey = "c",
+#'     date_time = "T",
+#'     n_crisis = "c",
+#'     percent_change = "c",
+#'     day = "D",
+#'     hour = "i"
 #'   )
 #' )
-#' 
+#'
 #' head(files)
 read_fb_mobility_files <- function(path_to_csvs,
                                    colnames,
@@ -69,7 +70,7 @@ read_fb_mobility_files <- function(path_to_csvs,
 
   # There could be empty files, let's remove them
   fnames <- fnames[file.info(fnames)$size != 0]
-  
+
   data <- purrr::map_dfr(
     .x = fnames,
     .f = function(files) {
@@ -102,7 +103,7 @@ read_fb_mobility_files <- function(path_to_csvs,
 #' @description This function removes unnecessary characters such as `\\N`
 #' and ensures that the format of the date and QuadKeys is correct.
 #'
-#' @param data A data.frame with a `quadkey`, `date_time`, `country` columns 
+#' @param data A data.frame with a `quadkey`, `date_time`, `country` columns
 #' and other numeric variables
 #'
 #' @return A data.frame.
@@ -111,7 +112,7 @@ read_fb_mobility_files <- function(path_to_csvs,
 #' @seealso \code{\link{read_fb_mobility_files}}
 #'
 #' @examples
-#' 
+#'
 #' data(result_read_fb_mobility_data)
 #' format_fb_data(data = result_read_fb_mobility_data)
 format_fb_data <- function(data) {
