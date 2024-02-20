@@ -6,8 +6,7 @@
 #' System documentation.
 #'
 #' @references 
-#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/
-#' bing-maps-tile-system}
+#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}
 #'
 #' @param zoom Zoom or level of detail, 
 #' from 1 (lowest detail) to 23 (highest detail).
@@ -65,8 +64,7 @@ clip <- function(n, min_value, max_value) {
 #' documentation.
 #'
 #' @references 
-#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/
-#' bing-maps-tile-system}
+#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}
 #'
 #' @param latitude Latitude (in degrees) at which
 #'  to measure the ground resolution.
@@ -106,8 +104,7 @@ ground_res <- function(latitude, zoom) {
 #' documentation.
 #'
 #' @references 
-#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/
-#' bing-maps-tile-system}
+#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}
 #'
 #' @param latitude Latitude (in degrees) at which to measure the map scale.
 #' @param zoom Zoom or level of detail, 

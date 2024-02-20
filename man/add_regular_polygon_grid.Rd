@@ -11,13 +11,6 @@ add_regular_polygon_grid(data)
 \item{data}{A data.frame with a \code{quadkey} column.}
 }
 \value{
-An \code{sf} POLYGON data.frame with all the QuadKeys within
-the bounding box the Quadkeys provided in the \code{quadkey} column
-of the input dataset.
-The columns \code{quadkey} and \code{geometry} are complete for all the grid,
-and the values of the introduced QuadKeys will be NA
-for the rest of the variables.
-
 A list with three elements:
 \itemize{
 \item \code{data} A \code{sf} POLYGON data.frame with all the QuadKeys within
@@ -39,8 +32,7 @@ All other columns for the introduced QuadKeys will be filled with NAs.
 For a detailed explanation on how to use this
 and other similar \code{quadkeyr} functions,
 read the the vignette:
-\url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
-quadkey_identified_data_to_raster.html}
+\url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_identified_data_to_raster.html}
 }
 \examples{
 # read the file with the data

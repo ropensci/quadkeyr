@@ -37,8 +37,7 @@ the accurate use of these functions in coordinate conversions.
 For a detailed explanation on how to use this
 and other similar \code{quadkeyr} functions,
 read the the vignette:
-\url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
-quadkey_to_sf_conversion.html}
+\url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html}
 }
 \examples{
 
@@ -47,8 +46,10 @@ latlong_to_quadkey(
   lon = 139.69116,
   zoom = 20
 )
+latlong_to_quadkey(lat = c(-4, -25.33, -25.66),
+                   lon = c(-53, -60.33, -70.66),
+                   zoom = 4)
 }
 \references{
-\url{https://learn.microsoft.com/en-us/bingmaps/articles/
-bing-maps-tile-system}
+\url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}
 }

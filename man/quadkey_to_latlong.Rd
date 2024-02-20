@@ -4,10 +4,10 @@
 \alias{quadkey_to_latlong}
 \title{Convert a string of Quadkey numbers to lat/long coordinates}
 \usage{
-quadkey_to_latlong(quadkey)
+quadkey_to_latlong(quadkey_data)
 }
 \arguments{
-\item{quadkey}{A single QuadKey as a string or
+\item{quadkey_data}{A single QuadKey as a string or
 a vector with unique QuadKeys.}
 }
 \value{
@@ -34,17 +34,15 @@ the accurate use of these functions in coordinate conversions.
 For a detailed explanation on how to use this
 and other similar \code{quadkeyr} functions,
 read the the vignette:
-\url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
-quadkey_to_sf_conversion.html}
+\url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html}
 }
 \examples{
 
-quadkey_to_latlong(quadkey = "213")
-quadkey_to_latlong(quadkey = c("213", "212", "210"))
+quadkey_to_latlong(quadkey_data = "213")
+quadkey_to_latlong(quadkey_data = c("213", "212", "210"))
 }
 \references{
-\url{https://learn.microsoft.com/en-us/bingmaps/articles/
-bing-maps-tile-system}
+\url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}
 }
 \seealso{
 \code{\link{quadkey_to_tileXY}}

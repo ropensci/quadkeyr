@@ -50,8 +50,8 @@ a separate `csv` file for each day and time.
 # Basic workflow
 
 
-```{r w3, echo = FALSE, out.width= "90%", fig.align='center'}
-knitr::include_graphics("../man/figures/workflow_facebook.png")
+```{r w3, echo = FALSE, out.width= "80%", fig.align='center'}
+knitr::include_graphics("workflow_facebook.png")
 ```
 
 

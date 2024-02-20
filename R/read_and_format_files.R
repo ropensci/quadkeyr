@@ -47,7 +47,6 @@
 #' )
 #' 
 #' head(files)
-#'
 read_fb_mobility_files <- function(path_to_csvs,
                                    colnames,
                                    coltypes) {

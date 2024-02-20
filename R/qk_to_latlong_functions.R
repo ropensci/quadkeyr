@@ -16,12 +16,10 @@
 #' For a detailed explanation on how to use this
 #' and other similar `quadkeyr` functions,
 #' read the the vignette:
-#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
-#' quadkey_to_sf_conversion.html}
+#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html}
 #' 
 #' @references 
-#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/
-#' bing-maps-tile-system}
+#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}
 #'
 #' @param quadkey A QuadKey as a single string.
 #'
@@ -90,12 +88,10 @@ return(list(
 #' For a detailed explanation on how to use this
 #' and other similar `quadkeyr` functions,
 #' read the the vignette:
-#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
-#' quadkey_to_sf_conversion.html}
+#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html}
 #'
 #' @references 
-#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/
-#' bing-maps-tile-system}
+#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}
 #'
 #' @param tileX Tile X coordinate.
 #' @param tileY Tile Y coordinate.
@@ -146,12 +142,10 @@ tileXY_to_pixelXY <- function(tileX, tileY) {
 #' For a detailed explanation on how to use this
 #' and other similar `quadkeyr` functions,
 #' read the the vignette:
-#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
-#' quadkey_to_sf_conversion.html}
+#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html}
 #'
 #' @references 
-#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/
-#' bing-maps-tile-system}
+#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}
 #'
 #' @param pixelX X coordinate of the point, in pixels.
 #' @param pixelY Y coordinates of the point, in pixels.
@@ -226,18 +220,16 @@ pixelXY_to_latlong <- function(pixelX, pixelY, zoom) {
 #' For a detailed explanation on how to use this
 #' and other similar `quadkeyr` functions,
 #' read the the vignette:
-#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
-#' quadkey_to_sf_conversion.html}
+#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html}
 #'
-#' @param quadkey A single QuadKey as a string or 
+#' @param quadkey_data A single QuadKey as a string or 
 #' a vector with unique QuadKeys.
 #'
 #' @seealso \code{\link{quadkey_to_tileXY}}
 #' @seealso \code{\link{tileXY_to_pixelXY}}
 #' @seealso \code{\link{pixelXY_to_latlong}}
 #' @references 
-#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/
-#' bing-maps-tile-system}
+#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}
 #'
 #' @return A sf POINT data.frame with a `quadkey` column.
 #' The latitude/longitude coordinates represent
@@ -247,35 +239,35 @@ pixelXY_to_latlong <- function(pixelX, pixelY, zoom) {
 #'
 #' @examples
 #'
-#' quadkey_to_latlong(quadkey = "213")
-#' quadkey_to_latlong(quadkey = c("213", "212", "210"))
+#' quadkey_to_latlong(quadkey_data = "213")
+#' quadkey_to_latlong(quadkey_data = c("213", "212", "210"))
 
-quadkey_to_latlong <- function(quadkey) {
+quadkey_to_latlong <- function(quadkey_data) {
   # The conversion to character is not straightfoward
   # as there could be leading zeros or scientific notation
-  if(!is.character(quadkey)){
+  if(!is.character(quadkey_data)){
     stop("Please provide QuadKeys a single string or a character vector")
   }
-  if (any(duplicated(quadkey))) {
+  if (any(duplicated(quadkey_data))) {
     stop("Please, remove duplicated QuadKeys")
   }
-  if (any(unique(nchar(quadkey)) != nchar(quadkey[1]))) {
+  if (any(unique(nchar(quadkey_data)) != nchar(quadkey_data[1]))) {
     stop("All the QuadKeys should have the same number of digits")
   }
-  if (!all(grepl("[0-9]+", quadkey)) |
-      any(!unlist(strsplit(quadkey, "")) %in% c("0", "1", "2", "3"))) {
+  if (!all(grepl("[0-9]+", quadkey_data)) |
+      any(!unlist(strsplit(quadkey_data, "")) %in% c("0", "1", "2", "3"))) {
     stop("QuadKeys can contain only the numbers '0', '1', '2', or '3'")
   }
 
-  zoom <- quadkey_to_tileXY(quadkey[1])$zoom
+  zoom <- quadkey_to_tileXY(quadkey_data[1])$zoom
 
   datacoords <- c()
-  data <- data.frame(quadkey = NA)
+  data <- data.frame(quadkey_data = NA)
 
-  for (i in seq_along(quadkey)) {
-    data[i, "quadkey"] <- quadkey[i]
+  for (i in seq_along(quadkey_data)) {
+    data[i, "quadkey"] <- quadkey_data[i]
 
-    data[i, c("tileX", "tileY", "zoom")] <- quadkey_to_tileXY(quadkey[i])
+    data[i, c("tileX", "tileY", "zoom")] <- quadkey_to_tileXY(quadkey_data[i])
 
     data[i, c("pixelX", "pixelY")] <- tileXY_to_pixelXY(
       data$tileX[i],

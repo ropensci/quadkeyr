@@ -6,7 +6,7 @@ output:
    html_document:
     toc : true
     number_sections: true
-    toc_depth: 2
+    toc_depth: 3
 urlcolor: blue
 pkgdown:
   as_is: true
@@ -37,8 +37,8 @@ Most of the function and arguments names conserved from the documentation.
 
 # Basic workflow
 
-```{r w1, echo = FALSE, out.width= "90%", fig.align='center'}
-knitr::include_graphics("../man/figures/workflow_quadkey.png")
+```{r w1, echo = FALSE, out.width= "80%", fig.align='center'}
+knitr::include_graphics("workflow_quadkey.png")
 ```
 
 You can convert any QuadKey to
@@ -185,6 +185,12 @@ tileXY_to_quadkey(tileX = ptt$tileX,
                   zoom = 4)
 ```
 
+### Direct conversion from geographic coordinates to one or more QuadKeys
+
+```{r lltqd, echo = FALSE, out.width= "60%", fig.align='center'}
+knitr::include_graphics("latlong_to_qk.png")
+```
+
 The function `latlong_to_quadkey()` 
 wraps the last three functions,
 and converts map coordinates into a QuadKey
@@ -238,11 +244,21 @@ ptll <- pixelXY_to_latlong(pixelX = ttp$pixelX,
 ptll
 ```
 
+
+### Direct conversion from one or more QuadKeys to geographic coordinates
+
+```{r qtlld, echo = FALSE, out.width= "60%", fig.align='center'}
+knitr::include_graphics("qk_to_latlong.png")
+```
+
 You can also use the function `quadkey_to_latlong()` 
 that wraps the last three functions and returns a `sf` POINT data.frame.
 
-```{r}
-quadkey_to_latlong(quadkey = "2103")
+```{r ex1}
+quadkey_to_latlong(quadkey_data = "2103")
+```
+```{r ex2}
+quadkey_to_latlong(quadkey_data = c("213", "212", "210"))
 ```
 
 # Caveats when converting coordinates
@@ -311,7 +327,7 @@ using the Shiny app included in this package.
 qkmap_app()
 ```
 
-```{r qkmap_qk, echo = FALSE, out.width= "90%", fig.align='center'}
+```{r qkmap_qk, echo = FALSE, out.width= "70%", fig.align='center'}
 knitr::include_graphics("qkmap_qk.png")
 ```
 

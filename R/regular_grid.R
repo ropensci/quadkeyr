@@ -75,8 +75,6 @@ regular_qk_grid <- function(data) {
   ))
 }
 
-
-
 #' Add the rows needed to complete a regular QuadKey polygon grid 
 #' derived from the bounding box of the `quadkey` column of a data.frame.
 #' 
@@ -89,18 +87,10 @@ regular_qk_grid <- function(data) {
 #' For a detailed explanation on how to use this
 #' and other similar `quadkeyr` functions,
 #' read the the vignette:
-#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
-#' quadkey_identified_data_to_raster.html}
+#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_identified_data_to_raster.html}
 #' 
 #' @param data A data.frame with a `quadkey` column.
 #' 
-#' @return An `sf` POLYGON data.frame with all the QuadKeys within
-#' the bounding box the Quadkeys provided in the `quadkey` column
-#' of the input dataset.
-#' The columns `quadkey` and `geometry` are complete for all the grid,
-#' and the values of the introduced QuadKeys will be NA
-#' for the rest of the variables.
-#'  
 #' @return A list with three elements:
 #' * `data` A `sf` POLYGON data.frame with all the QuadKeys within
 #' the bounding box of the ones provided in the `quadkey` column
@@ -142,8 +132,7 @@ add_regular_polygon_grid <- function(data){
 #' For a detailed explanation on how to use this
 #' and other similar `quadkeyr` functions,
 #' read the the vignette:
-#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
-#' facebook_mobility_csvs_to_raster_files.html}
+#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html}
 #'
 #' @param data A data.frame with a `quadkey` column.
 #'
@@ -169,7 +158,7 @@ get_regular_polygon_grid <- function(data){
 
   # I convert the QuadKeys to points and not polygons directly
   # Because I want to generate the regular grid first 
-  grid_coords <- quadkey_to_latlong(quadkey = unique(data$quadkey))
+  grid_coords <- quadkey_to_latlong(quadkey_data = unique(data$quadkey))
   reggrid <- regular_qk_grid(grid_coords)
   polygrid <- grid_to_polygon(reggrid$data)
   return(list(data = polygrid,

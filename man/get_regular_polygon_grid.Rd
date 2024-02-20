@@ -27,8 +27,7 @@ This function estimates the bounding box of the QuadKeys given in the
 For a detailed explanation on how to use this
 and other similar \code{quadkeyr} functions,
 read the the vignette:
-\url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
-facebook_mobility_csvs_to_raster_files.html}
+\url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html}
 }
 \examples{
 

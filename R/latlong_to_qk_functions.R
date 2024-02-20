@@ -18,12 +18,10 @@
 #' For a detailed explanation on how to use this
 #' and other similar `quadkeyr` functions,
 #' read the the vignette:
-#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
-#' quadkey_to_sf_conversion.html}
+#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html}
 #'
 #' @references 
-#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/
-#' bing-maps-tile-system}
+#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}
 #'
 #' @param lat Latitude of the point, in degrees.
 #' @param lon Longitude of the point, in degrees.
@@ -88,12 +86,10 @@ latlong_to_pixelXY <- function(lat, lon, zoom) {
 #' For a detailed explanation on how to use this
 #' and other similar `quadkeyr` functions,
 #' read the the vignette:
-#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
-#' quadkey_to_sf_conversion.html}
+#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html}
 #'
 #' @references 
-#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/
-#' bing-maps-tile-system}
+#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}
 #'
 #' @param pixelX Pixel X coordinate.
 #' @param pixelY Pixel Y coordinate.
@@ -140,12 +136,10 @@ pixelXY_to_tileXY <- function(pixelX, pixelY) {
 #' For a detailed explanation on how to use this
 #' and other similar `quadkeyr` functions,
 #' read the the vignette:
-#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
-#' quadkey_to_sf_conversion.html}
+#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html}
 #'
 #' @references 
-#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/
-#' bing-maps-tile-system}
+#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}
 #'
 #' @param tileX Tile X coordinate.
 #' @param tileY Tile Y coordinate.
@@ -223,12 +217,10 @@ tileXY_to_quadkey <- function(tileX, tileY, zoom) {
 #' For a detailed explanation on how to use this
 #' and other similar `quadkeyr` functions,
 #' read the the vignette:
-#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
-#' quadkey_to_sf_conversion.html}
+#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html}
 #'
 #' @references 
-#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/
-#' bing-maps-tile-system}
+#' \url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}
 #'
 #' @param lat Latitude of the point, in degrees.
 #' @param lon Longitude of the point, in degrees.
@@ -246,6 +238,9 @@ tileXY_to_quadkey <- function(tileX, tileY, zoom) {
 #'   lon = 139.69116,
 #'   zoom = 20
 #' )
+#' latlong_to_quadkey(lat = c(-4, -25.33, -25.66),
+#'                    lon = c(-53, -60.33, -70.66),
+#'                    zoom = 4)
 latlong_to_quadkey <- function(lat, lon, zoom) {
   # Give an error if the zoom level isn't between 0 and 23
   # or it is not an integer.

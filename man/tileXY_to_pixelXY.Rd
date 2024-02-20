@@ -33,8 +33,7 @@ the accurate use of these functions in coordinate conversions.
 For a detailed explanation on how to use this
 and other similar \code{quadkeyr} functions,
 read the the vignette:
-\url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
-quadkey_to_sf_conversion.html}
+\url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html}
 }
 \examples{
 
@@ -45,6 +44,5 @@ tileXY_to_pixelXY(
 
 }
 \references{
-\url{https://learn.microsoft.com/en-us/bingmaps/articles/
-bing-maps-tile-system}
+\url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}
 }

@@ -40,8 +40,8 @@ and in the [official documentation](https://learn.microsoft.com/en-us/bingmaps/a
 
 # Basic workflow
 
-```{r w2, echo = FALSE, out.width= "90%", fig.align='center'}
-knitr::include_graphics("../man/figures/workflow_raster.png")
+```{r w2, echo = FALSE, out.width= "80%", fig.align='center'}
+knitr::include_graphics("workflow_raster.png")
 ```
 
 

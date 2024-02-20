@@ -54,7 +54,6 @@ files <- read_fb_mobility_files(
 )
 
 head(files)
-
 }
 \seealso{
 \code{\link{format_fb_data}}
