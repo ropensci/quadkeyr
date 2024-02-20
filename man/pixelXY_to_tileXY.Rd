@@ -2,7 +2,7 @@
 % Please edit documentation in R/latlong_to_qk_functions.R
 \name{pixelXY_to_tileXY}
 \alias{pixelXY_to_tileXY}
-\title{Converts pixel XY coordinates into tile XY coordinates}
+\title{Convert pixel XY coordinates into tile XY coordinates}
 \usage{
 pixelXY_to_tileXY(pixelX, pixelY)
 }

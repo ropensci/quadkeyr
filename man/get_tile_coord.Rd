@@ -43,3 +43,4 @@ get_tile_coord(
 
 \code{\link{pixelXY_to_latlong}}
 }
+\keyword{internal}

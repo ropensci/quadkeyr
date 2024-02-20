@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_and_format_files.R
 \name{missing_combinations}
 \alias{missing_combinations}
-\title{Detects dates and times missing}
+\title{Detect dates and hours missing in filenames}
 \usage{
 missing_combinations(data)
 }
@@ -16,7 +16,7 @@ A data.frame with the missing days and hours, if any.
 Facebook mobility data is reported daily at 3 different hours
 (0, 8, 16).
 This function reads the data extracted from the current files and detects
-if any day or time is missing.
+if any file for a particular day or hour is missing.
 }
 \examples{
 

@@ -1,7 +1,7 @@
 #' QuadKey-identified Dataset
 #'
 #' A data.frame simulating a QuadKey-identified dataset.
-#'
+#' @keywords internal
 #' @format ## `data_provided`
 #' A data.frame with 360 rows and 2 columns:
 #' \describe{
@@ -13,7 +13,7 @@
 #' Dataset with (fake) Facebook mobility data
 #'
 #' A data.frame similar to a the potential output of `read_fb_mobility_files`.
-#'
+#' @keywords internal
 #' @format ## `result_read_fb_mobility_data`
 #' A data frame with 134,492 rows and 9 columns:
 #' \describe{

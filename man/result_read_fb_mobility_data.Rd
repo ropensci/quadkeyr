@@ -27,4 +27,4 @@ result_read_fb_mobility_data
 \description{
 A data.frame similar to a the potential output of \code{read_fb_mobility_files}.
 }
-\keyword{datasets}
+\keyword{internal}

@@ -26,18 +26,24 @@ This function works only for QuadKeys without NAs.
 }
 \examples{
 
-files <- read_fb_mobility_files(path_to_csvs = paste0(system.file("extdata",
-                                package = "quadkeyr"), "/"),
-                                colnames = c("lat", "lon", 
-                                             "quadkey", "date_time", 
-                                             "n_crisis", "percent_change"),
-                                coltypes = list(
-                                                lat = 'd',
-                                                lon = 'd',
-                                                quadkey = 'c',
-                                                date_time = 'T',
-                                                n_crisis = 'c',
-                                                percent_change = 'c')) 
- 
+files <- read_fb_mobility_files(
+  path_to_csvs = paste0(system.file("extdata",
+    package = "quadkeyr"
+  ), "/"),
+  colnames = c(
+    "lat", "lon",
+    "quadkey", "date_time",
+    "n_crisis", "percent_change"
+  ),
+  coltypes = list(
+    lat = "d",
+    lon = "d",
+    quadkey = "c",
+    date_time = "T",
+    n_crisis = "c",
+    percent_change = "c"
+  )
+)
+
 apply_weekly_lag(files)
 }

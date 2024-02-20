@@ -145,12 +145,12 @@ format_fb_data <- function(data) {
   data
 }
 
-#' Detects dates and times missing
+#' Detect dates and hours missing in filenames
 #'
 #' @description Facebook mobility data is reported daily at 3 different hours
 #' (0, 8, 16).
 #' This function reads the data extracted from the current files and detects
-#' if any day or time is missing.
+#' if any file for a particular day or hour is missing.
 #'
 #' @param data A data.frame with a `day` and hour column.
 #'

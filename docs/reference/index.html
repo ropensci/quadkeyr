@@ -53,9 +53,80 @@
     </div>
 
     <div class="section level2">
-      <h2 id="all-functions">All functions<a class="anchor" aria-label="anchor" href="#all-functions"></a></h2>
+      <h2 id="from-a-quadkey-to-a-simple-features-data-frame-and-other-conversions">From a QuadKey to a Simple Features data.frame and other conversions<a class="anchor" aria-label="anchor" href="#from-a-quadkey-to-a-simple-features-data-frame-and-other-conversions"></a></h2>
+      
+      <p class="section-desc"></p><p>Functions to convert a QuadKey to a sf POINT data.frame or <code>sf</code> POLYGON data.frame. Additionally, all the R functions described in the official documentation to convert QuadKeys to and from tiles, pixels and geographic coordinates are available.</p>
+
+      
+    </div><div id="" class="section level2">
       
       
+      
+
+      <dl><dt>
+          
+          <code><a href="quadkey_to_polygon.html">quadkey_to_polygon()</a></code> 
+        </dt>
+        <dd>Convert a QuadKey into a square polygon</dd>
+      </dl><dl><dt>
+          
+          <code><a href="quadkey_to_latlong.html">quadkey_to_latlong()</a></code> 
+        </dt>
+        <dd>Convert a string of Quadkey numbers to lat/long coordinates</dd>
+      </dl><dl><dt>
+          
+          <code><a href="quadkey_to_tileXY.html">quadkey_to_tileXY()</a></code> 
+        </dt>
+        <dd>Converts a QuadKey into tile XY coordinates.</dd>
+      </dl><dl><dt>
+          
+          <code><a href="tileXY_to_pixelXY.html">tileXY_to_pixelXY()</a></code> 
+        </dt>
+        <dd>Convert tile XY coordinates into pixel XY coordinates</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pixelXY_to_latlong.html">pixelXY_to_latlong()</a></code> 
+        </dt>
+        <dd>Converts pixel XY coordinatess into lat/long coordinates.</dd>
+      </dl><dl><dt>
+          
+          <code><a href="latlong_to_quadkey.html">latlong_to_quadkey()</a></code> 
+        </dt>
+        <dd>Convert latitude/longitude coordinates into QuadKeys</dd>
+      </dl><dl><dt>
+          
+          <code><a href="latlong_to_pixelXY.html">latlong_to_pixelXY()</a></code> 
+        </dt>
+        <dd>Converts lat/long coordinates to pixel XY coordinates</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pixelXY_to_tileXY.html">pixelXY_to_tileXY()</a></code> 
+        </dt>
+        <dd>Converts pixel XY coordinates into tile XY coordinates</dd>
+      </dl><dl><dt>
+          
+          <code><a href="tileXY_to_quadkey.html">tileXY_to_quadkey()</a></code> 
+        </dt>
+        <dd>Converts tile XY coordinates into a QuadKey.</dd>
+      </dl><dl><dt>
+          
+          <code><a href="mapsize.html">mapsize()</a></code> 
+        </dt>
+        <dd>Map size in pixels</dd>
+      </dl><dl><dt>
+          
+          <code><a href="mapscale.html">mapscale()</a></code> 
+        </dt>
+        <dd>Map scale (1 : N)</dd>
+      </dl><dl><dt>
+          
+          <code><a href="ground_res.html">ground_res()</a></code> 
+        </dt>
+        <dd>Ground resolution at a specified latitude and zoom level</dd>
+      </dl></div><div class="section level2">
+      <h2 id="generating-a-raster-image-from-quadkey-identified-data">Generating a Raster Image from Quadkey-Identified Data<a class="anchor" aria-label="anchor" href="#generating-a-raster-image-from-quadkey-identified-data"></a></h2>
+      
+      <p class="section-desc"></p><p>Complete a grid of QuadKeys within a specified area and zoom level, and create a <code>stars</code> raster. You can also directly convert QuadKeys in a data.frame column into an <code>sf</code> POLYGON data.frame.</p>
 
       
     </div><div id="" class="section level2">
@@ -71,9 +142,14 @@
 derived from the bounding box of the <code>quadkey</code> column of a data.frame.</dd>
       </dl><dl><dt>
           
-          <code><a href="apply_weekly_lag.html">apply_weekly_lag()</a></code> 
+          <code><a href="create_stars_raster.html">create_stars_raster()</a></code> 
         </dt>
-        <dd>Apply a 7 day lag to the variable <code>n_crisis</code></dd>
+        <dd>Create a <code>stars</code> raster</dd>
+      </dl><dl><dt>
+          
+          <code><a href="quadkey_df_to_polygon.html">quadkey_df_to_polygon()</a></code> 
+        </dt>
+        <dd>Convert data.frame with <code>quadkey</code> column to a <code>sf</code> POLYGON data.frame</dd>
       </dl><dl><dt>
           
           <code><a href="create_qk_grid.html">create_qk_grid()</a></code> 
@@ -81,14 +157,35 @@ derived from the bounding box of the <code>quadkey</code> column of a data.frame
         <dd>Create grid of QuadKeys for a particular zoom or level of detail.</dd>
       </dl><dl><dt>
           
-          <code><a href="create_stars_raster.html">create_stars_raster()</a></code> 
+          <code><a href="get_qk_coord.html">get_qk_coord()</a></code> 
         </dt>
-        <dd>Create a <code>stars</code> raster</dd>
+        <dd>Get lat/long coordinates from the QuadKey</dd>
       </dl><dl><dt>
           
-          <code><a href="data_provided.html">data_provided</a></code> 
+          <code><a href="regular_qk_grid.html">regular_qk_grid()</a></code> 
         </dt>
-        <dd>QuadKey-identified Dataset</dd>
+        <dd>Converts a incomplete QuadKey <code>sf</code> POINT data.frame into a regular grid.</dd>
+      </dl><dl><dt>
+          
+          <code><a href="grid_to_polygon.html">grid_to_polygon()</a></code> 
+        </dt>
+        <dd>Convert a grid of QuadKeys to square polygons</dd>
+      </dl></div><div class="section level2">
+      <h2 id="converting-facebook-mobility-quadkey-identified-datasets-into-raster-files">Converting Facebook Mobility QuadKey-identified Datasets into Raster Files<a class="anchor" aria-label="anchor" href="#converting-facebook-mobility-quadkey-identified-datasets-into-raster-files"></a></h2>
+      
+      <p class="section-desc"></p><p>Convert Facebook mobility data <code>.csv</code> files into <code>.tif</code> files by day and hour reported.</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="read_fb_mobility_files.html">read_fb_mobility_files()</a></code> 
+        </dt>
+        <dd>Read all the .csv files in a folder and format the data.</dd>
       </dl><dl><dt>
           
           <code><a href="format_fb_data.html">format_fb_data()</a></code> 
@@ -96,9 +193,9 @@ derived from the bounding box of the <code>quadkey</code> column of a data.frame
         <dd>Format the Facebook mobility data</dd>
       </dl><dl><dt>
           
-          <code><a href="get_qk_coord.html">get_qk_coord()</a></code> 
+          <code><a href="missing_combinations.html">missing_combinations()</a></code> 
         </dt>
-        <dd>Get lat/long coordinates from the QuadKey</dd>
+        <dd>Detects dates and times missing</dd>
       </dl><dl><dt>
           
           <code><a href="get_regular_polygon_grid.html">get_regular_polygon_grid()</a></code> 
@@ -107,111 +204,33 @@ derived from the bounding box of the <code>quadkey</code> column of a data.frame
 the bounding box of the <code>quadkey</code> column of a data.frame.</dd>
       </dl><dl><dt>
           
-          <code><a href="get_tile_coord.html">get_tile_coord()</a></code> 
-        </dt>
-        <dd>Get lat/long coordinates from the tile XY coordinates.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="grid_to_polygon.html">grid_to_polygon()</a></code> 
-        </dt>
-        <dd>Convert a grid of QuadKeys to square polygons</dd>
-      </dl><dl><dt>
-          
-          <code><a href="ground_res.html">ground_res()</a></code> 
-        </dt>
-        <dd>Ground resolution at a specified latitude and zoom level</dd>
-      </dl><dl><dt>
-          
-          <code><a href="latlong_to_pixelXY.html">latlong_to_pixelXY()</a></code> 
-        </dt>
-        <dd>Converts lat/long coordinates to pixel XY coordinates</dd>
-      </dl><dl><dt>
-          
-          <code><a href="latlong_to_quadkey.html">latlong_to_quadkey()</a></code> 
-        </dt>
-        <dd>Convert latitude/longitude coordinates into QuadKeys</dd>
-      </dl><dl><dt>
-          
-          <code><a href="mapscale.html">mapscale()</a></code> 
-        </dt>
-        <dd>Map scale (1 : N)</dd>
-      </dl><dl><dt>
-          
-          <code><a href="mapsize.html">mapsize()</a></code> 
-        </dt>
-        <dd>Map size in pixels</dd>
-      </dl><dl><dt>
-          
-          <code><a href="missing_combinations.html">missing_combinations()</a></code> 
-        </dt>
-        <dd>Detects dates and times missing</dd>
-      </dl><dl><dt>
-          
-          <code><a href="pixelXY_to_latlong.html">pixelXY_to_latlong()</a></code> 
-        </dt>
-        <dd>Converts pixel XY coordinatess into lat/long coordinates.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="pixelXY_to_tileXY.html">pixelXY_to_tileXY()</a></code> 
-        </dt>
-        <dd>Converts pixel XY coordinates into tile XY coordinates</dd>
-      </dl><dl><dt>
-          
           <code><a href="polygon_to_raster.html">polygon_to_raster()</a></code> 
         </dt>
         <dd>Create and save raster images for different dates and times</dd>
       </dl><dl><dt>
           
+          <code><a href="apply_weekly_lag.html">apply_weekly_lag()</a></code> 
+        </dt>
+        <dd>Apply a 7 day lag to the variable <code>n_crisis</code></dd>
+      </dl></div><div class="section level2">
+      <h2 id="quadkey-visualization-app">QuadKey Visualization App<a class="anchor" aria-label="anchor" href="#quadkey-visualization-app"></a></h2>
+      
+      <p class="section-desc"></p><p>Introduce a QuadKey visualization application enabling users to validate function outcomes.</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
           <code><a href="qkmap_app.html">qkmap_app()</a></code> 
         </dt>
         <dd>Launches the Shiny App</dd>
-      </dl><dl><dt>
-          
-          <code><a href="quadkey_df_to_polygon.html">quadkey_df_to_polygon()</a></code> 
-        </dt>
-        <dd>Convert data.frame with <code>quadkey</code> column to a <code>sf</code> POLYGON data.frame</dd>
-      </dl><dl><dt>
-          
-          <code><a href="quadkey_to_latlong.html">quadkey_to_latlong()</a></code> 
-        </dt>
-        <dd>Convert a string of Quadkey numbers to lat/long coordinates</dd>
-      </dl><dl><dt>
-          
-          <code><a href="quadkey_to_polygon.html">quadkey_to_polygon()</a></code> 
-        </dt>
-        <dd>Convert a QuadKey into a square polygon</dd>
-      </dl><dl><dt>
-          
-          <code><a href="quadkey_to_tileXY.html">quadkey_to_tileXY()</a></code> 
-        </dt>
-        <dd>Converts a QuadKey into tile XY coordinates.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="read_fb_mobility_files.html">read_fb_mobility_files()</a></code> 
-        </dt>
-        <dd>Read all the .csv files in a folder and format the data.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="regular_qk_grid.html">regular_qk_grid()</a></code> 
-        </dt>
-        <dd>Converts a incomplete QuadKey <code>sf</code> POINT data.frame into a regular grid.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="result_read_fb_mobility_data.html">result_read_fb_mobility_data</a></code> 
-        </dt>
-        <dd>Dataset with (fake) Facebook mobility data</dd>
-      </dl><dl><dt>
-          
-          <code><a href="tileXY_to_pixelXY.html">tileXY_to_pixelXY()</a></code> 
-        </dt>
-        <dd>Convert tile XY coordinates into pixel XY coordinates</dd>
-      </dl><dl><dt>
-          
-          <code><a href="tileXY_to_quadkey.html">tileXY_to_quadkey()</a></code> 
-        </dt>
-        <dd>Converts tile XY coordinates into a QuadKey.</dd>
       </dl></div>
-  </main></div>
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">

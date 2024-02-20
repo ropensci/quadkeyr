@@ -20,4 +20,4 @@ data_provided
 \description{
 A data.frame simulating a QuadKey-identified dataset.
 }
-\keyword{datasets}
+\keyword{internal}

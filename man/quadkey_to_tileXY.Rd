@@ -2,7 +2,7 @@
 % Please edit documentation in R/qk_to_latlong_functions.R
 \name{quadkey_to_tileXY}
 \alias{quadkey_to_tileXY}
-\title{Converts a QuadKey into tile XY coordinates.}
+\title{Convert a QuadKey into tile XY coordinates.}
 \usage{
 quadkey_to_tileXY(quadkey)
 }

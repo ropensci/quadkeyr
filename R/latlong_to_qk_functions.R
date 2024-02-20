@@ -1,4 +1,4 @@
-#' Converts lat/long coordinates to pixel XY coordinates
+#' Convert lat/long coordinates to pixel XY coordinates
 #'
 #' @description Converts a point from latitude/longitude WGS-84 coordinates
 #' (in degrees) into pixel XY coordinates at a specified zoom level.
@@ -70,7 +70,7 @@ latlong_to_pixelXY <- function(lat, lon, zoom) {
   return(list(pixelX = pixelX, pixelY = pixelY))
 }
 
-#' Converts pixel XY coordinates into tile XY coordinates
+#' Convert pixel XY coordinates into tile XY coordinates
 #'
 #' @description Converts pixel XY coordinates into tile XY coordinates of the
 #' tile containing the specified pixel.
@@ -120,7 +120,7 @@ pixelXY_to_tileXY <- function(pixelX, pixelY) {
 }
 
 
-#' Converts tile XY coordinates into a QuadKey.
+#' Convert tile XY coordinates into a QuadKey.
 #'
 #' @description Converts tile XY coordinates into a QuadKey at a specified
 #' zoom level.

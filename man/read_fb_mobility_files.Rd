@@ -30,7 +30,8 @@ we can uniformly apply specific formatting to columns across these files.
 
 files <- read_fb_mobility_files(
   path_to_csvs = paste0(system.file("extdata",
-                                    package = "quadkeyr"), "/"),
+    package = "quadkeyr"
+  ), "/"),
   colnames = c( # The columns not listed here will be omitted
     "lat",
     "lon",
@@ -42,14 +43,14 @@ files <- read_fb_mobility_files(
     "hour"
   ),
   coltypes = list(
-    lat = 'd',
-    lon = 'd',
-    quadkey = 'c',
-    date_time = 'T',
-    n_crisis = 'c',
-    percent_change = 'c',
-    day = 'D',
-    hour = 'i'
+    lat = "d",
+    lon = "d",
+    quadkey = "c",
+    date_time = "T",
+    n_crisis = "c",
+    percent_change = "c",
+    day = "D",
+    hour = "i"
   )
 )
 

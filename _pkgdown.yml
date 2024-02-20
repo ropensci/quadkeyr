@@ -10,3 +10,55 @@ articles:
   - facebook_mobility_csvs_to_raster_files
   - quadkey_visualization_app
 
+reference:
+  - title: From a QuadKey to a Simple Features data.frame and other conversions
+    desc: >
+      Functions to convert a QuadKey to a sf POINT data.frame or 
+      `sf` POLYGON data.frame. 
+      Additionally, all the R functions described in the official documentation
+      to convert QuadKeys to and from tiles, pixels and geographic coordinates
+      are available.
+    contents:
+    - quadkey_to_polygon
+    - quadkey_to_latlong
+    - quadkey_to_tileXY
+    - tileXY_to_pixelXY
+    - pixelXY_to_latlong
+    - latlong_to_quadkey
+    - latlong_to_pixelXY
+    - pixelXY_to_tileXY
+    - tileXY_to_quadkey
+    - mapsize
+    - mapscale
+    - ground_res
+  - title: Generating a Raster Image from Quadkey-Identified Data
+    desc: >
+      Complete a grid of QuadKeys within a specified area and zoom level, 
+      and create a `stars` raster. 
+      You can also directly convert QuadKeys in a data.frame column 
+      into an `sf` POLYGON data.frame.
+    contents:
+    - add_regular_polygon_grid
+    - create_stars_raster
+    - quadkey_df_to_polygon
+    - create_qk_grid
+    - get_qk_coord
+    - regular_qk_grid
+    - grid_to_polygon
+  - title: Converting Facebook Mobility QuadKey-identified Datasets into Raster Files
+    desc: >
+      Convert Facebook mobility data `.csv` files into `.tif` files
+      by day and hour reported.
+    contents:
+    - read_fb_mobility_files
+    - format_fb_data
+    - missing_combinations
+    - get_regular_polygon_grid
+    - polygon_to_raster
+    - apply_weekly_lag
+  - title: QuadKey Visualization App
+    desc: >
+      Introduce a QuadKey visualization application enabling users 
+      to validate function outcomes.
+    contents:
+    - qkmap_app

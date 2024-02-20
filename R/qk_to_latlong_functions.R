@@ -1,4 +1,4 @@
-#' Converts a QuadKey into tile XY coordinates.
+#' Convert a QuadKey into tile XY coordinates.
 #'
 #' @description  For further information, refer to the
 #' Microsoft Bing Maps Tile System documentation.
@@ -122,7 +122,7 @@ tileXY_to_pixelXY <- function(tileX, tileY) {
 }
 
 
-#' Converts pixel XY coordinatess into lat/long coordinates.
+#' Convert pixel XY coordinatess into lat/long coordinates.
 #'
 #' @description Converts a pixel from pixel XY coordinates at a specified zoom
 #' level into latitude/longitude WGS-84 coordinates (in degrees).

@@ -40,6 +40,7 @@ read the the vignette:
 
 quadkey_to_latlong(quadkey_data = "213")
 quadkey_to_latlong(quadkey_data = c("213", "212", "210"))
+
 }
 \references{
 \url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}

@@ -114,7 +114,7 @@ grid_to_polygon <- function(data) {
   return(polydata)
 }
 
-#' Prepares the grid of QuadKeys for the conversion to square polygons
+#' Prepare the grid of QuadKeys for the conversion to square polygons
 #'
 #' @description The QuadKey's points of the grid represent
 #' the upper-left corner of the QuadKey.
@@ -154,8 +154,6 @@ complete_grid_for_polygons <- function(data) {
   if (!("sf" %in% class(data))) {
     stop("The dataset should be of class 'sf'")
   }
-
-  # ADD CHECK THAT TILES ARE PRESENT IN THE DATASET
 
   # I should add one row and one column to grid. To create the polygons
   # I am using other QuadKeys (4 in total). I must complete the grid to can

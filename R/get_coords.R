@@ -71,6 +71,7 @@ get_qk_coord <- function(data) {
 #' @return  A `sf` POINT data.frame containing the tiles XY coordinates
 #' (`tileX`, `tileY`), a `quadkey` and a `geometry` column.
 #'
+#' @keywords internal
 #' @export
 #'
 #' @examples

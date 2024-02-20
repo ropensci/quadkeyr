@@ -2,7 +2,7 @@
 % Please edit documentation in R/grid_to_polygon.R
 \name{complete_grid_for_polygons}
 \alias{complete_grid_for_polygons}
-\title{Prepares the grid of QuadKeys for the conversion to square polygons}
+\title{Prepare the grid of QuadKeys for the conversion to square polygons}
 \usage{
 complete_grid_for_polygons(data)
 }

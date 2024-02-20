@@ -67,7 +67,7 @@ if there are days or times missing among the provided dates in the files.
 - The columns `day` and `hour` were created internally.
 
 ```{r read}
-files <- read_fb_mobility_files(
+files <- quadkeyr::read_fb_mobility_files(
     path_to_csvs = paste0(system.file("extdata",
                                       package = "quadkeyr"), "/"),
     colnames = c( # The columns not listed here will be omitted
@@ -140,7 +140,7 @@ to learn more about this function.
 
 
 ```{r grid}
-regular_grid <- get_regular_polygon_grid(data = files)
+regular_grid <- quadkeyr::get_regular_polygon_grid(data = files)
 head(regular_grid$data)
 ```
 
@@ -179,7 +179,7 @@ Now that we have the polygons, let's create the raster files.
 
 ```{r rasterfiles}
 # Generate the raster files                       
-polygon_to_raster(data = files_polygons,
+quadkeyr::polygon_to_raster(data = files_polygons,
                   nx = regular_grid$num_cols,
                   ny = regular_grid$num_rows,
                   template = files_polygons,
@@ -191,7 +191,7 @@ polygon_to_raster(data = files_polygons,
 ```
 
 ```{r qkgrid, out.width= "70%", fig.align='center'}
-raster <- read_stars(paste0(system.file("extdata", 
+raster <- stars::read_stars(paste0(system.file("extdata", 
                                         package = "quadkeyr"),
                                  "/cityA_2020-04-15_16.tif"))  
 
@@ -221,6 +221,16 @@ the same that we have already used in the basic workflow:
 head(files)
 ```
 
+There are two functions wrapped inside `read_fb_mobility_files()`
+that you may want to use individually:
+
+* If you wish to correct the Facebook-provided format only, 
+you can utilize the `format_fb_data()` function.
+* If you need to retrieve the missing combinations of days and hours 
+in a temporal sequence of files, you can employ `missing_combinations()`.
+
+Please, refer to the examples in the functions' documentation
+to understand better their functionalities.
 
 ## Convert the QuadKeys to latitude/longitude coordinates
 
@@ -236,7 +246,7 @@ an `sf` POINT data.frame using `quadkey_to_latlong()`
 ```{r qtll1}
 quadkey_vector <-  unique(files$quadkey)
 
-qtll <- quadkey_to_latlong(quadkey = quadkey_vector)
+qtll <- quadkey_to_latlong(quadkey_data = quadkey_vector)
 head(qtll)
 ```
 Let's plot the QuadKey grid.
@@ -308,7 +318,7 @@ ggplot() +
 
 Now we can transform the QuadKeys into polygons.
 ```{r polygrid}
-polygrid <- grid_to_polygon(data = regular_grid$data)
+polygrid <- quadkeyr::grid_to_polygon(data = regular_grid$data)
 head(polygrid)
 ```
 
@@ -353,7 +363,7 @@ The function `polygon_to_raster()` will work
 even if there are gaps in days and hours reported in the files.
 
 ```{r poltoras, eval = FALSE, include = TRUE}
-polygon_to_raster(data = polyvar,
+quadkeyr::polygon_to_raster(data = polyvar,
                   nx = regular_grid$num_cols,
                   ny = regular_grid$num_rows,
                   template = polyvar,

@@ -46,9 +46,11 @@ latlong_to_quadkey(
   lon = 139.69116,
   zoom = 20
 )
-latlong_to_quadkey(lat = c(-4, -25.33, -25.66),
-                   lon = c(-53, -60.33, -70.66),
-                   zoom = 4)
+latlong_to_quadkey(
+  lat = c(-4, -25.33, -25.66),
+  lon = c(-53, -60.33, -70.66),
+  zoom = 4
+)
 }
 \references{
 \url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}

@@ -105,7 +105,7 @@ a separate <code>csv</code> file for each day and time.</p>
 <h2 id="basic-workflow">
 <span class="header-section-number">1</span> Basic workflow<a class="anchor" aria-label="anchor" href="#basic-workflow"></a>
 </h2>
-<p><img src="workflow_facebook.png" width="70%" style="display: block; margin: auto;"></p>
+<p><img src="workflow_facebook.png" width="80%" style="display: block; margin: auto;"></p>
 <div class="section level3" number="1.1">
 <h3 id="reading-and-formatting-multiple-csv-files">
 <span class="header-section-number">1.1</span> Reading and
@@ -122,7 +122,7 @@ files.</p></li>
 internally.</p></li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">files</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_fb_mobility_files.html">read_fb_mobility_files</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">files</span> <span class="op">&lt;-</span> <span class="fu">quadkeyr</span><span class="fu">::</span><span class="fu"><a href="../reference/read_fb_mobility_files.html">read_fb_mobility_files</a></span><span class="op">(</span></span>
 <span>    path_to_csvs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>,</span>
 <span>                                      package <span class="op">=</span> <span class="st">"quadkeyr"</span><span class="op">)</span>, <span class="st">"/"</span><span class="op">)</span>,</span>
 <span>    colnames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span> <span class="co"># The columns not listed here will be omitted</span></span>
@@ -196,7 +196,7 @@ the grid for the full area of analysis using the
 <code><a href="../reference/create_qk_grid.html">create_qk_grid()</a></code> function. Read the <a href="https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_identified_data_to_raster.html" class="external-link">the
 previous vignette</a> to learn more about this function.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">regular_grid</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_regular_polygon_grid.html">get_regular_polygon_grid</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">files</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">regular_grid</span> <span class="op">&lt;-</span> <span class="fu">quadkeyr</span><span class="fu">::</span><span class="fu"><a href="../reference/get_regular_polygon_grid.html">get_regular_polygon_grid</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">files</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">regular_grid</span><span class="op">$</span><span class="va">data</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Simple feature collection with 6 features and 3 fields</span></span>
 <span><span class="co">#&gt; Geometry type: POLYGON</span></span>
@@ -253,7 +253,7 @@ demonstrating it in this example.</p>
 <p>Now that we have the polygons, let’s create the raster files.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Generate the raster files                       </span></span>
-<span><span class="fu"><a href="../reference/polygon_to_raster.html">polygon_to_raster</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">files_polygons</span>,</span>
+<span><span class="fu">quadkeyr</span><span class="fu">::</span><span class="fu"><a href="../reference/polygon_to_raster.html">polygon_to_raster</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">files_polygons</span>,</span>
 <span>                  nx <span class="op">=</span> <span class="va">regular_grid</span><span class="op">$</span><span class="va">num_cols</span>,</span>
 <span>                  ny <span class="op">=</span> <span class="va">regular_grid</span><span class="op">$</span><span class="va">num_rows</span>,</span>
 <span>                  template <span class="op">=</span> <span class="va">files_polygons</span>,</span>
@@ -263,7 +263,7 @@ demonstrating it in this example.</p>
 <span>                                             package <span class="op">=</span> <span class="st">"quadkeyr"</span><span class="op">)</span>,</span>
 <span>                                 <span class="st">"/"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">raster</span> <span class="op">&lt;-</span> <span class="fu">read_stars</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, </span>
+<code class="sourceCode R"><span><span class="va">raster</span> <span class="op">&lt;-</span> <span class="fu">stars</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html" class="external-link">read_stars</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, </span>
 <span>                                        package <span class="op">=</span> <span class="st">"quadkeyr"</span><span class="op">)</span>,</span>
 <span>                                 <span class="st">"/cityA_2020-04-15_16.tif"</span><span class="op">)</span><span class="op">)</span>  </span>
 <span></span>
@@ -303,6 +303,18 @@ used in the basic workflow:</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> -<span style="color: #BB0000;">34.5</span> -<span style="color: #BB0000;">58.5</span> 2103213001… 2020-04-15 <span style="color: #949494;">00:00:00</span>       <span style="color: #BB0000;">NA</span>           3.24 2020-04-15</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> -<span style="color: #BB0000;">34.5</span> -<span style="color: #BB0000;">58.6</span> 2103213001… 2020-04-15 <span style="color: #949494;">00:00:00</span>       <span style="color: #BB0000;">NA</span>           1.17 2020-04-15</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: hour &lt;dbl&gt;</span></span></span></code></pre></div>
+<p>There are two functions wrapped inside
+<code><a href="../reference/read_fb_mobility_files.html">read_fb_mobility_files()</a></code> that you may want to use
+individually:</p>
+<ul>
+<li>If you wish to correct the Facebook-provided format only, you can
+utilize the <code><a href="../reference/format_fb_data.html">format_fb_data()</a></code> function.</li>
+<li>If you need to retrieve the missing combinations of days and hours
+in a temporal sequence of files, you can employ
+<code><a href="../reference/missing_combinations.html">missing_combinations()</a></code>.</li>
+</ul>
+<p>Please, refer to the examples in the functions’ documentation to
+understand better their functionalities.</p>
 <div class="section level3" number="2.1">
 <h3 id="convert-the-quadkeys-to-latitudelongitude-coordinates">
 <span class="header-section-number">2.1</span> Convert the QuadKeys
@@ -316,7 +328,7 @@ using <code><a href="../reference/quadkey_to_latlong.html">quadkey_to_latlong()<
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">quadkey_vector</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">files</span><span class="op">$</span><span class="va">quadkey</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">qtll</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quadkey_to_latlong.html">quadkey_to_latlong</a></span><span class="op">(</span>quadkey <span class="op">=</span> <span class="va">quadkey_vector</span><span class="op">)</span></span>
+<span><span class="va">qtll</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quadkey_to_latlong.html">quadkey_to_latlong</a></span><span class="op">(</span>quadkey_data <span class="op">=</span> <span class="va">quadkey_vector</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">qtll</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Simple feature collection with 6 features and 1 field</span></span>
 <span><span class="co">#&gt; Geometry type: POINT</span></span>
@@ -386,7 +398,7 @@ polygons<a class="anchor" aria-label="anchor" href="#create-the-polygons"></a>
 </h3>
 <p>Now we can transform the QuadKeys into polygons.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">polygrid</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/grid_to_polygon.html">grid_to_polygon</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">regular_grid</span><span class="op">$</span><span class="va">data</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">polygrid</span> <span class="op">&lt;-</span> <span class="fu">quadkeyr</span><span class="fu">::</span><span class="fu"><a href="../reference/grid_to_polygon.html">grid_to_polygon</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">regular_grid</span><span class="op">$</span><span class="va">data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">polygrid</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Simple feature collection with 6 features and 3 fields</span></span>
 <span><span class="co">#&gt; Geometry type: POLYGON</span></span>
@@ -436,7 +448,7 @@ time reported. Each raster will be created as
 function <code><a href="../reference/polygon_to_raster.html">polygon_to_raster()</a></code> will work even if there are
 gaps in days and hours reported in the files.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/polygon_to_raster.html">polygon_to_raster</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">polyvar</span>,</span>
+<code class="sourceCode R"><span><span class="fu">quadkeyr</span><span class="fu">::</span><span class="fu"><a href="../reference/polygon_to_raster.html">polygon_to_raster</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">polyvar</span>,</span>
 <span>                  nx <span class="op">=</span> <span class="va">regular_grid</span><span class="op">$</span><span class="va">num_cols</span>,</span>
 <span>                  ny <span class="op">=</span> <span class="va">regular_grid</span><span class="op">$</span><span class="va">num_rows</span>,</span>
 <span>                  template <span class="op">=</span> <span class="va">polyvar</span>,</span>

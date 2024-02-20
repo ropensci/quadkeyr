@@ -2,7 +2,7 @@
 % Please edit documentation in R/qk_to_latlong_functions.R
 \name{pixelXY_to_latlong}
 \alias{pixelXY_to_latlong}
-\title{Converts pixel XY coordinatess into lat/long coordinates.}
+\title{Convert pixel XY coordinatess into lat/long coordinates.}
 \usage{
 pixelXY_to_latlong(pixelX, pixelY, zoom)
 }

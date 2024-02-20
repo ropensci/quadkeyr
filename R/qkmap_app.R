@@ -1,4 +1,4 @@
-#' Launches the Shiny App
+#' Launch the Shiny App
 #'
 #' @description This function launches the Shiny app.
 #'

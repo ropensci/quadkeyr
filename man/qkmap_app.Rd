@@ -2,7 +2,7 @@
 % Please edit documentation in R/qkmap_app.R
 \name{qkmap_app}
 \alias{qkmap_app}
-\title{Launches the Shiny App}
+\title{Launch the Shiny App}
 \usage{
 qkmap_app()
 }

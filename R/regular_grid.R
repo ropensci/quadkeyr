@@ -1,4 +1,4 @@
-#' Converts a incomplete QuadKey `sf` POINT data.frame into a regular grid.
+#' Convert a incomplete QuadKey `sf` POINT data.frame into a regular grid.
 #'
 #' @description This function completes `sf` POINT data.frame grid of QuadKeys
 #' using the bounding box of the data provided.

@@ -32,8 +32,10 @@ read the the vignette:
 \examples{
 
 # data file
-path <- paste0(system.file("extdata", package = 'quadkeyr'),
-                             "/cityA_2020_04_15_0000.csv")
+path <- paste0(
+  system.file("extdata", package = "quadkeyr"),
+  "/cityA_2020_04_15_0000.csv"
+)
 data <- read.csv(path)
 data <- format_fb_data(data)
 

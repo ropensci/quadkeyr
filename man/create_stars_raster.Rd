@@ -31,18 +31,22 @@ raster, even in the presence of NAs.
 # Basic workflow
 
 # read the file with the data
-path <- paste0(system.file("extdata", package = 'quadkeyr'),
-               "/cityA_2020_04_15_0000.csv")
+path <- paste0(
+  system.file("extdata", package = "quadkeyr"),
+  "/cityA_2020_04_15_0000.csv"
+)
 data <- read.csv(path)
 data <- format_fb_data(data)
 
 complete_polygon_grid <- add_regular_polygon_grid(data = data)
 
-stars_object <- create_stars_raster(data = complete_polygon_grid$data,
-                                    template = complete_polygon_grid$data,
-                                    var = "percent_change",
-                                    nx = complete_polygon_grid$num_cols,
-                                    ny = complete_polygon_grid$num_rows)
+stars_object <- create_stars_raster(
+  data = complete_polygon_grid$data,
+  template = complete_polygon_grid$data,
+  var = "percent_change",
+  nx = complete_polygon_grid$num_cols,
+  ny = complete_polygon_grid$num_rows
+)
 stars_object
 
 # Other workflow
