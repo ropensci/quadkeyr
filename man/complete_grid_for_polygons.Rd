@@ -40,3 +40,4 @@ extragrid <- complete_grid_for_polygons(grid_coords)
 \seealso{
 \code{\link{grid_to_polygon}}
 }
+\keyword{internal}

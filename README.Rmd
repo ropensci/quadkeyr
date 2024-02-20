@@ -56,9 +56,9 @@ knitr::include_graphics("man/figures/quadkeys.jpg")
 
 The goal of `quadkeyr` is to:  
   
-1. [**Convert a QuadKey to a simple features data.frame (and more)**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html)
+1. [**Convert a QuadKey to a Simple Features data.frame (and more)**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html)
 `quadkeyr` provides functions to convert a QuadKey to
-a `sf POINT data.frame` or `sf POLYGON data.frame`.
+a `sf` POINT data.frame or `sf` POLYGON data.frame.
 Additionally, all the R functions described 
 in the [official documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system)  
 to convert QuadKeys to and from tiles, pixels and geographic coordinates 
@@ -72,7 +72,7 @@ knitr::include_graphics("man/figures/workflow_quadkey.png")
 Complete a grid of QuadKeys within a specified area and zoom level, 
 and create a `stars` raster. 
 You can also directly convert QuadKeys in a data.frame column
-into an `sf POLYGON data.frame`.
+into an `sf` POLYGON data.frame.
   
 ```{r w2, echo = FALSE, out.width= "90%", fig.align='center'}
 knitr::include_graphics("man/figures/workflow_raster.png")
@@ -85,7 +85,7 @@ by day and hour reported.
 knitr::include_graphics("man/figures/workflow_facebook.png")
 ```
 
-4. [**Offer an App for visualizing QuadKeys on a map.**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_visualization_app.html)
+4. [**Offer an App for visualizing QuadKeys on a map**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_visualization_app.html)
 Introduce a QuadKey visualization application enabling users 
 to validate function outcomes.
 
@@ -100,9 +100,16 @@ remotes::install_github("Fernandez-Lab-WSU/quadkeyr")
 
 ## Code of Conduct
 
-Please note that the `quadkeyr` project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
+Please, note that the `quadkeyr` project is released with a 
+[Contributor Code of Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html). 
+By contributing to this project, you agree to abide by its terms.
 
-### References
+## Contribute
+
+If you'd like to contribute to this project, please follow the 
+[contributing guidelines](https://github.com/Fernandez-Lab-WSU/quadkeyr/blob/main/.github/CONTRIBUTING.md)
+
+## Links of interest
 - [Bing Maps Tile Systems - Microsoft](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system)
 - [R - `slippymath`: Slippy Map Tile Tools](https://cran.r-project.org/web/packages/slippymath/index.html)
 - [Python - `pyquadkey2`](https://docs.muetsch.io/pyquadkey2/)

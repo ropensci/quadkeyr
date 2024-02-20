@@ -3,13 +3,13 @@
 \docType{data}
 \name{data_provided}
 \alias{data_provided}
-\title{data_provided: fake dataset}
+\title{QuadKey-identified Dataset}
 \format{
 \subsection{\code{data_provided}}{
 
-A data frame with 360 rows and 2 columns:
+A data.frame with 360 rows and 2 columns:
 \describe{
-\item{quadkey}{QuadKey as character}
+\item{quadkey}{QuadKey as a string}
 \item{variable}{Numeric variable}
 }
 }
@@ -18,6 +18,6 @@ A data frame with 360 rows and 2 columns:
 data_provided
 }
 \description{
-A data.frame simulating a variable asociated with QuadKeys.
+A data.frame simulating a QuadKey-identified dataset.
 }
 \keyword{datasets}

@@ -28,23 +28,32 @@ we can uniformly apply specific formatting to columns across these files.
 }
 \examples{
 
-read_fb_mobility_files(
+files <- read_fb_mobility_files(
   path_to_csvs = paste0(system.file("extdata",
-  package = "quadkeyr"), "/"),
-  colnames = c(
-    "lat", "lon",
-    "quadkey", "date_time",
-    "n_crisis", "percent_change"
+                                    package = "quadkeyr"), "/"),
+  colnames = c( # The columns not listed here will be omitted
+    "lat",
+    "lon",
+    "quadkey",
+    "date_time",
+    "n_crisis",
+    "percent_change",
+    "day",
+    "hour"
   ),
   coltypes = list(
-    lat = "d",
-    lon = "d",
-    quadkey = "d",
-    date_time = "T",
-    n_crisis = "c",
-    percent_change = "c"
+    lat = 'd',
+    lon = 'd',
+    quadkey = 'c',
+    date_time = 'T',
+    n_crisis = 'c',
+    percent_change = 'c',
+    day = 'D',
+    hour = 'i'
   )
 )
+
+head(files)
 
 }
 \seealso{

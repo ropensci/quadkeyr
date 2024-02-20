@@ -21,23 +21,32 @@
 #'
 #' @examples
 #' 
-#' read_fb_mobility_files(
+#' files <- read_fb_mobility_files(
 #'   path_to_csvs = paste0(system.file("extdata",
-#'   package = "quadkeyr"), "/"),
-#'   colnames = c(
-#'     "lat", "lon",
-#'     "quadkey", "date_time",
-#'     "n_crisis", "percent_change"
+#'                                     package = "quadkeyr"), "/"),
+#'   colnames = c( # The columns not listed here will be omitted
+#'     "lat",
+#'     "lon",
+#'     "quadkey",
+#'     "date_time",
+#'     "n_crisis",
+#'     "percent_change",
+#'     "day",
+#'     "hour"
 #'   ),
 #'   coltypes = list(
-#'     lat = "d",
-#'     lon = "d",
-#'     quadkey = "d",
-#'     date_time = "T",
-#'     n_crisis = "c",
-#'     percent_change = "c"
+#'     lat = 'd',
+#'     lon = 'd',
+#'     quadkey = 'c',
+#'     date_time = 'T',
+#'     n_crisis = 'c',
+#'     percent_change = 'c',
+#'     day = 'D',
+#'     hour = 'i'
 #'   )
 #' )
+#' 
+#' head(files)
 #'
 read_fb_mobility_files <- function(path_to_csvs,
                                    colnames,
@@ -61,12 +70,18 @@ read_fb_mobility_files <- function(path_to_csvs,
 
   # There could be empty files, let's remove them
   fnames <- fnames[file.info(fnames)$size != 0]
-
-  data <- purrr::map_dfr(fnames,
-    readr::read_csv,
-    col_select = dplyr::all_of(colnames), # tidyselect
-    col_names = TRUE, # header
-    col_types = coltypes
+  
+  data <- purrr::map_dfr(
+    .x = fnames,
+    .f = function(files) {
+      readr::read_csv(
+        files,
+        # Let's select the columns given by the user.
+        col_select = dplyr::all_of(colnames),
+        col_names = TRUE, # header
+        col_types = coltypes
+      )
+    }
   )
 
 

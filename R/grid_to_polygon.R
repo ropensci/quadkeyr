@@ -131,6 +131,7 @@ grid_to_polygon <- function(data) {
 #' QuadKeys appears as NAs as there are only kept to extend the grid.
 #' Their value is not necessary.
 #'
+#' @keywords internal
 #' @export
 #'
 #' @examples

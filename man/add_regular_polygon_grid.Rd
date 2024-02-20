@@ -39,7 +39,8 @@ All other columns for the introduced QuadKeys will be filled with NAs.
 For a detailed explanation on how to use this
 and other similar \code{quadkeyr} functions,
 read the the vignette:
-\url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_identified_data_to_raster.html}
+\url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/
+quadkey_identified_data_to_raster.html}
 }
 \examples{
 # read the file with the data

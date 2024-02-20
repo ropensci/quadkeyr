@@ -64,26 +64,31 @@ in the filenames: `cityA_2020_04_15_0800.csv`.
 
 - `read_fb_mobility_files()` produces a warning 
 if there are days or times missing among the provided dates in the files.
+- The columns `day` and `hour` were created internally.
 
 ```{r read}
 files <- read_fb_mobility_files(
     path_to_csvs = paste0(system.file("extdata",
                                       package = "quadkeyr"), "/"),
-    colnames = c(
+    colnames = c( # The columns not listed here will be omitted
       "lat",
       "lon",
       "quadkey",
       "date_time",
       "n_crisis",
-      "percent_change"
-    ),
+      "percent_change",
+      "day",
+      "hour"
+      ),
     coltypes = list(
       lat = 'd',
       lon = 'd',
       quadkey = 'c',
       date_time = 'T',
       n_crisis = 'c',
-      percent_change = 'c'
+      percent_change = 'c',
+      day = 'D',
+      hour = 'i'
     )
   )
 

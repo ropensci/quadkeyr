@@ -61,12 +61,19 @@ the QuadKeys' spatial information with any other reported variable.
 For example, let's read an example dataset:
 
 
-```{r readdata}
+```{r readdatahidden, echo = FALSE, include = FALSE}
 # read the file with the data
 path <- paste0(system.file("extdata", package = 'quadkeyr'), 
                "/cityA_2020_04_15_0000.csv")
-data <- read.csv(path)
+data <- read.csv(path,
+                 colClasses = c("character", "numeric",
+                                "numeric", "character", 
+                                "POSIXct",  "numeric", 
+                                "numeric", "Date", "numeric"))
 data <- format_fb_data(data)
+```
+
+```{r readdata}
 head(data)
 ```
 

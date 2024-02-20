@@ -3,7 +3,7 @@
 \docType{data}
 \name{result_read_fb_mobility_data}
 \alias{result_read_fb_mobility_data}
-\title{\code{result_read_fb_mobility_data}: Fake dataset}
+\title{Dataset with (fake) Facebook mobility data}
 \format{
 \subsection{\code{result_read_fb_mobility_data}}{
 
@@ -11,7 +11,7 @@ A data frame with 134,492 rows and 9 columns:
 \describe{
 \item{lat}{Latitude of the QuadKey centroid}
 \item{lon}{Longitude of the QuadKey centroid}
-\item{quadkey}{QuadKey as character}
+\item{quadkey}{QuadKey as a string}
 \item{country}{Country name}
 \item{date_time}{Date in format \%Y-\%m-\%d \%H\%M}
 \item{n_crisis}{Variable}
@@ -25,6 +25,6 @@ A data frame with 134,492 rows and 9 columns:
 result_read_fb_mobility_data
 }
 \description{
-A data frame similar to a the potential output of \code{read_fb_mobility_files}.
+A data.frame similar to a the potential output of \code{read_fb_mobility_files}.
 }
 \keyword{datasets}
