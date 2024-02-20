@@ -109,7 +109,8 @@ documentation.</p></dd>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">files</span> <span class="op">&lt;-</span> <span class="fu">read_fb_mobility_files</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  path_to_csvs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>,</span></span>
-<span class="r-in"><span>                                    package <span class="op">=</span> <span class="st">"quadkeyr"</span><span class="op">)</span>, <span class="st">"/"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    package <span class="op">=</span> <span class="st">"quadkeyr"</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span>, <span class="st">"/"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  colnames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span> <span class="co"># The columns not listed here will be omitted</span></span></span>
 <span class="r-in"><span>    <span class="st">"lat"</span>,</span></span>
 <span class="r-in"><span>    <span class="st">"lon"</span>,</span></span>
@@ -121,14 +122,14 @@ documentation.</p></dd>
 <span class="r-in"><span>    <span class="st">"hour"</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span>,</span></span>
 <span class="r-in"><span>  coltypes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>    lat <span class="op">=</span> <span class="st">'d'</span>,</span></span>
-<span class="r-in"><span>    lon <span class="op">=</span> <span class="st">'d'</span>,</span></span>
-<span class="r-in"><span>    quadkey <span class="op">=</span> <span class="st">'c'</span>,</span></span>
-<span class="r-in"><span>    date_time <span class="op">=</span> <span class="st">'T'</span>,</span></span>
-<span class="r-in"><span>    n_crisis <span class="op">=</span> <span class="st">'c'</span>,</span></span>
-<span class="r-in"><span>    percent_change <span class="op">=</span> <span class="st">'c'</span>,</span></span>
-<span class="r-in"><span>    day <span class="op">=</span> <span class="st">'D'</span>,</span></span>
-<span class="r-in"><span>    hour <span class="op">=</span> <span class="st">'i'</span></span></span>
+<span class="r-in"><span>    lat <span class="op">=</span> <span class="st">"d"</span>,</span></span>
+<span class="r-in"><span>    lon <span class="op">=</span> <span class="st">"d"</span>,</span></span>
+<span class="r-in"><span>    quadkey <span class="op">=</span> <span class="st">"c"</span>,</span></span>
+<span class="r-in"><span>    date_time <span class="op">=</span> <span class="st">"T"</span>,</span></span>
+<span class="r-in"><span>    n_crisis <span class="op">=</span> <span class="st">"c"</span>,</span></span>
+<span class="r-in"><span>    percent_change <span class="op">=</span> <span class="st">"c"</span>,</span></span>
+<span class="r-in"><span>    day <span class="op">=</span> <span class="st">"D"</span>,</span></span>
+<span class="r-in"><span>    hour <span class="op">=</span> <span class="st">"i"</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> New names:</span>

@@ -120,18 +120,24 @@ be included automatically in the name.</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">files</span> <span class="op">&lt;-</span> <span class="fu"><a href="read_fb_mobility_files.html">read_fb_mobility_files</a></span><span class="op">(</span>path_to_csvs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>,</span></span>
-<span class="r-in"><span>                                                package <span class="op">=</span> <span class="st">"quadkeyr"</span><span class="op">)</span>, <span class="st">"/"</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>                                colnames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lat"</span>, <span class="st">"lon"</span>, </span></span>
-<span class="r-in"><span>                                             <span class="st">"quadkey"</span>, <span class="st">"date_time"</span>, </span></span>
-<span class="r-in"><span>                                             <span class="st">"n_crisis"</span>, <span class="st">"percent_change"</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>                                coltypes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>                                             lat <span class="op">=</span> <span class="st">'d'</span>,</span></span>
-<span class="r-in"><span>                                             lon <span class="op">=</span> <span class="st">'d'</span>,</span></span>
-<span class="r-in"><span>                                             quadkey <span class="op">=</span> <span class="st">'c'</span>,</span></span>
-<span class="r-in"><span>                                             date_time <span class="op">=</span> <span class="st">'T'</span>,</span></span>
-<span class="r-in"><span>                                             n_crisis <span class="op">=</span> <span class="st">'c'</span>,</span></span>
-<span class="r-in"><span>                                             percent_change <span class="op">=</span> <span class="st">'c'</span><span class="op">)</span><span class="op">)</span> </span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">files</span> <span class="op">&lt;-</span> <span class="fu"><a href="read_fb_mobility_files.html">read_fb_mobility_files</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  path_to_csvs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>,</span></span>
+<span class="r-in"><span>    package <span class="op">=</span> <span class="st">"quadkeyr"</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span>, <span class="st">"/"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  colnames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="st">"lat"</span>, <span class="st">"lon"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"quadkey"</span>, <span class="st">"date_time"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"n_crisis"</span>, <span class="st">"percent_change"</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span>,</span></span>
+<span class="r-in"><span>  coltypes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    lat <span class="op">=</span> <span class="st">"d"</span>,</span></span>
+<span class="r-in"><span>    lon <span class="op">=</span> <span class="st">"d"</span>,</span></span>
+<span class="r-in"><span>    quadkey <span class="op">=</span> <span class="st">"c"</span>,</span></span>
+<span class="r-in"><span>    date_time <span class="op">=</span> <span class="st">"T"</span>,</span></span>
+<span class="r-in"><span>    n_crisis <span class="op">=</span> <span class="st">"c"</span>,</span></span>
+<span class="r-in"><span>    percent_change <span class="op">=</span> <span class="st">"c"</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> New names:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...1`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> New names:</span>
@@ -143,21 +149,27 @@ be included automatically in the name.</p></dd>
 <span class="r-in"><span><span class="va">regular_grid</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_regular_polygon_grid.html">get_regular_polygon_grid</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">files</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Keep only the QuadKeys reported</span></span></span>
-<span class="r-in"><span><span class="va">files_polygons</span> <span class="op">&lt;-</span> <span class="va">files</span> <span class="op">|&gt;</span> </span></span>
-<span class="r-in"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">inner_join</a></span><span class="op">(</span><span class="va">regular_grid</span><span class="op">$</span><span class="va">data</span>, </span></span>
-<span class="r-in"><span>                  by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"quadkey"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">files_polygons</span> <span class="op">&lt;-</span> <span class="va">files</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">inner_join</a></span><span class="op">(</span><span class="va">regular_grid</span><span class="op">$</span><span class="va">data</span>,</span></span>
+<span class="r-in"><span>    by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"quadkey"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span><span class="co"># Generate the raster files                       </span></span></span>
-<span class="r-in"><span><span class="fu">polygon_to_raster</span><span class="op">(</span>data <span class="op">=</span> <span class="va">files_polygons</span>,</span></span>
-<span class="r-in"><span>                 nx <span class="op">=</span> <span class="va">regular_grid</span><span class="op">$</span><span class="va">num_cols</span>,</span></span>
-<span class="r-in"><span>                 ny <span class="op">=</span> <span class="va">regular_grid</span><span class="op">$</span><span class="va">num_rows</span>,</span></span>
-<span class="r-in"><span>                 template <span class="op">=</span> <span class="va">files_polygons</span>,</span></span>
-<span class="r-in"><span>                 var <span class="op">=</span> <span class="st">'percent_change'</span>,</span></span>
-<span class="r-in"><span>                 filename <span class="op">=</span> <span class="st">'cityA'</span>,</span></span>
-<span class="r-in"><span>                 path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, </span></span>
-<span class="r-in"><span>                                            package <span class="op">=</span> <span class="st">"quadkeyr"</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>                                <span class="st">"/"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Generate the raster files</span></span></span>
+<span class="r-in"><span><span class="fu">polygon_to_raster</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data <span class="op">=</span> <span class="va">files_polygons</span>,</span></span>
+<span class="r-in"><span>  nx <span class="op">=</span> <span class="va">regular_grid</span><span class="op">$</span><span class="va">num_cols</span>,</span></span>
+<span class="r-in"><span>  ny <span class="op">=</span> <span class="va">regular_grid</span><span class="op">$</span><span class="va">num_rows</span>,</span></span>
+<span class="r-in"><span>  template <span class="op">=</span> <span class="va">files_polygons</span>,</span></span>
+<span class="r-in"><span>  var <span class="op">=</span> <span class="st">"percent_change"</span>,</span></span>
+<span class="r-in"><span>  filename <span class="op">=</span> <span class="st">"cityA"</span>,</span></span>
+<span class="r-in"><span>  path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>,</span></span>
+<span class="r-in"><span>      package <span class="op">=</span> <span class="st">"quadkeyr"</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"/"</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
