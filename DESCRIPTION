@@ -7,7 +7,7 @@ Authors@R:
            email = "florencia.dandrea@gmail.com", 
            role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-0041-097X"))
-Description: 'Quadkeyr'functins generate raster images based on QuadKey-identified data, facilitating efficient integration of Tile Maps data into R workflows. In particular, 'Quadkeyr' provides support to process and analyze Facebook mobility datasets within the R environment.
+Description: 'Quadkeyr' functions generate raster images based on QuadKey-identified data, facilitating efficient integration of Tile Maps data into R workflows. In particular, 'Quadkeyr' provides support to process and analyze Facebook mobility datasets within the R environment.
 License: MIT + file LICENSE
 URL: https://fernandez-lab-wsu.github.io/quadkeyr/, https://github.com/Fernandez-Lab-WSU/quadkeyr
 BugReports: https://github.com/Fernandez-Lab-WSU/quadkeyr/issues
