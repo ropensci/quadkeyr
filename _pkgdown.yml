@@ -13,7 +13,7 @@ articles:
 reference:
   - title: From a QuadKey to a Simple Features data.frame and other conversions
     desc: >
-      Functions to convert a QuadKey to a sf POINT data.frame or 
+      Functions to convert a QuadKey to a `sf` POINT data.frame or 
       `sf` POLYGON data.frame. 
       Additionally, all the R functions described in the official documentation
       to convert QuadKeys to and from tiles, pixels and geographic coordinates
