@@ -84,7 +84,6 @@ read_fb_mobility_files <- function(path_to_csvs,
     }
   )
 
-
   data <- format_fb_data(data)
 
   if (nrow(missing_combinations(data)) > 0) {
@@ -103,10 +102,16 @@ read_fb_mobility_files <- function(path_to_csvs,
 #' @description This function removes unnecessary characters such as `\\N`
 #' and ensures that the format of the date and QuadKeys is correct.
 #'
-#' @param data A data.frame with a `quadkey`, `date_time`, `country` columns
-#' and other numeric variables
+#' @param data A data.frame with a `quadkey` and `date_time` columns
+#' and other variables
+#' @param keep_format If there is any column 
+#' besides `date_time`, `day` and `quadkey` that you 
+#' don't want to convert to a number.
 #'
-#' @return A data.frame.
+#' @return A data.frame without `\\N`, 
+#' `quadkey` without scientific notation and
+#' a new column `day` and `hour`
+#' 
 #' @export
 #'
 #' @seealso \code{\link{read_fb_mobility_files}}
@@ -115,7 +120,8 @@ read_fb_mobility_files <- function(path_to_csvs,
 #'
 #' data(result_read_fb_mobility_data)
 #' format_fb_data(data = result_read_fb_mobility_data)
-format_fb_data <- function(data) {
+format_fb_data <- function(data,
+                           keep_format = NULL) {
 
   # remove scientific notation
   data$quadkey <- format(data$quadkey,
@@ -125,6 +131,7 @@ format_fb_data <- function(data) {
   # change date format
   data$day <- lubridate::date(data$date_time)
 
+  # get the hour
   data$hour <- as.numeric(format(as.POSIXct(data$date_time,
     format = "%Y-%m-%d %H%M"
   ),
@@ -138,7 +145,7 @@ format_fb_data <- function(data) {
       ~ ifelse(. == "\\N", NA, .)
     )) |>
     dplyr::mutate(dplyr::across(
-      -c("date_time", "day", "quadkey"), # tidyselect
+      -c("date_time", "day", "quadkey", keep_format), # tidyselect
       as.numeric
     ))
 
@@ -163,6 +170,7 @@ format_fb_data <- function(data) {
 #'
 #' # Sample dataset
 #' data <- data.frame(
+#'   country = c("US", "MX", "MX"), 
 #'   day = c("2023-01-01", "2023-01-03", "2023-01-05"),
 #'   hour = c(0, 8, 16)
 #' )
