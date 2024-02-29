@@ -12,6 +12,9 @@
 #' @param coltypes Column specifications (as strings).
 #' See vignette("readr", package = "readr") for more details.
 #' documentation.
+#' @param keep_format Vector of column names, 
+#' besides `date_time`, `day` and `quadkey`, that you 
+#' don't want to convert to a number.
 #'
 #' @seealso \code{\link{format_fb_data}}
 #' @seealso \code{\link[readr]{read_csv}}
@@ -50,7 +53,8 @@
 #' head(files)
 read_fb_mobility_files <- function(path_to_csvs,
                                    colnames,
-                                   coltypes) {
+                                   coltypes,
+                                   keep_format = NULL) {
 
   # This data always have the same format
   fnames <- list.files(
@@ -84,7 +88,8 @@ read_fb_mobility_files <- function(path_to_csvs,
     }
   )
 
-  data <- format_fb_data(data)
+  data <- format_fb_data(data,
+                         keep_format = keep_format)
 
   if (nrow(missing_combinations(data)) > 0) {
     message(paste(
@@ -104,11 +109,11 @@ read_fb_mobility_files <- function(path_to_csvs,
 #'
 #' @param data A data.frame with a `quadkey` and `date_time` columns
 #' and other variables
-#' @param keep_format If there is any column 
-#' besides `date_time`, `day` and `quadkey` that you 
+#' @param keep_format Vector of column names, 
+#' besides `date_time`, `day` and `quadkey`, that you 
 #' don't want to convert to a number.
 #'
-#' @return A data.frame without `\\N`, 
+#' @return A data.frame without `\N`, 
 #' `quadkey` without scientific notation and
 #' a new column `day` and `hour`
 #' 
@@ -195,6 +200,5 @@ missing_combinations <- function(data) {
     data,
     by = c("day", "hour")
   )
-
   return(missing_combinations)
 }

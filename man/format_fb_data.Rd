@@ -10,12 +10,12 @@ format_fb_data(data, keep_format = NULL)
 \item{data}{A data.frame with a \code{quadkey} and \code{date_time} columns
 and other variables}
 
-\item{keep_format}{If there is any column
-besides \code{date_time}, \code{day} and \code{quadkey} that you
+\item{keep_format}{Vector of column names,
+besides \code{date_time}, \code{day} and \code{quadkey}, that you
 don't want to convert to a number.}
 }
 \value{
-A data.frame without \verb{\\\\N},
+A data.frame without \verb{\\N},
 \code{quadkey} without scientific notation and
 a new column \code{day} and \code{hour}
 }
