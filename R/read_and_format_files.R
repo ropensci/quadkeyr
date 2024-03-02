@@ -150,7 +150,8 @@ format_fb_data <- function(data,
       ~ ifelse(. == "\\N", NA, .)
     )) |>
     dplyr::mutate(dplyr::across(
-      -c("date_time", "day", "quadkey", keep_format), # tidyselect
+      -c("date_time", "day", "quadkey", 
+         dplyr::all_of(keep_format)), # tidyselect
       as.numeric
     ))
 

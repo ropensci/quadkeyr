@@ -81,3 +81,37 @@ test_that("Test `missing_combinations()` function", {
 
   expect_equal(missing_combinations(data), expected_missing)
 })
+
+test_that("`read_fb_mobility_files()` passes keep_format arg correctly ", { 
+  
+  files <- read_fb_mobility_files(
+    path_to_csvs = paste0(system.file("extdata",
+                                      package = "quadkeyr"
+    ), "/"), 
+    keep_format = 'n_crisis',
+    colnames = c( # The columns not listed here will be omitted
+      "lat",
+      "lon",
+      "quadkey",
+      "date_time",
+      "n_crisis",
+      "percent_change",
+      "day",
+      "hour"
+    ),
+    coltypes = list(
+      lat = "d",
+      lon = "d",
+      quadkey = "c",
+      date_time = "T",
+      n_crisis = "c",
+      percent_change = "c",
+      day = "D",
+      hour = "i"
+    )
+  )
+expect_type(files$n_crisis, "character")
+})
+
+
+
