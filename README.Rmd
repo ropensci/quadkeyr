@@ -48,9 +48,11 @@ to address and retrieve specific map tiles,
 facilitating rapid display within 
 mapping applications.
 
-```{r qk, echo = FALSE, out.width= "50%", fig.align='center', fig.cap= "The QuadKey of any tile starts with the QuadKey of its parent tile (the containing tile at the previous level). Image extracted from Microsoft's Bing Maps Tile System webpage."}
-knitr::include_graphics("vignettes/quadkeys.jpg")
+
+```{r qks, echo = FALSE, out.width= "70%", fig.align='center'}
+knitr::include_graphics("vignettes/quadkeys.png")
 ```
+<p style="text-align: center">The QuadKey of any tile starts with the QuadKey of its parent tile (the containing tile at the previous level). Image extracted from Microsoft's Bing Maps Tile System webpage.</p>
 
 ---
 

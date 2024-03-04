@@ -135,7 +135,6 @@ grid_to_polygon <- function(data) {
 #' Their value is not necessary.
 #'
 #' @keywords internal
-#' @export
 #'
 #' @examples
 #'

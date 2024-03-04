@@ -39,7 +39,6 @@ regular_qk_grid <- function(data) {
     zoom = qk_zoom
   )
 
-
   if (nrow(grid$data) == nrow(data)) {
     warning("The grid is already complete, this function is not necessary")
     return(list(
@@ -123,7 +122,6 @@ add_regular_polygon_grid <- function(data) {
     num_rows = reggrid$num_rows
   ))
 }
-
 
 #' Get regular QuadKey polygon grid derived from
 #' the bounding box of the `quadkey` column of a data.frame.
