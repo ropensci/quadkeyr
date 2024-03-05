@@ -104,13 +104,17 @@ The QuadKey of any tile starts with the QuadKey of its parent tile (the containi
 <a href="https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html" class="external-link"><strong>Convert a QuadKey to a Simple Features data.frame (and more)</strong></a> <code>quadkeyr</code> provides functions to convert a QuadKey to a <code>sf</code> POINT data.frame or <code>sf</code> POLYGON data.frame. Additionally, all the R functions described in the <a href="https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system" class="external-link">official documentation</a><br>
 to convert QuadKeys to and from tiles, pixels and geographic coordinates are available.</li>
 </ol>
-<p><img src="articles/workflow_quadkey.png" width="70%" style="display: block; margin: auto;"></p>
+<p><img src="articles/workflow_quadkey.png" width="80%" style="display: block; margin: auto;"></p>
 <ol start="2" style="list-style-type: decimal">
 <li>
 <a href="https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_identified_data_to_raster.html" class="external-link"><strong>Generate Raster Images from Quadkey-Identified Data</strong></a> Complete a grid of QuadKeys within a specified area and zoom level, and create a <code>stars</code> raster. You can also directly convert QuadKeys in a data.frame column into an <code>sf</code> POLYGON data.frame.</li>
 </ol>
-<p><img src="articles/workflow_raster.png" width="70%" style="display: block; margin: auto;"> 3. <a href="https://fernandez-lab-wsu.github.io/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html" class="external-link"><strong>Convert Facebook Mobility QuadKey-identified Datasets into Raster Files</strong></a> Convert Facebook mobility data <code>.csv</code> files into <code>.tif</code> files by day and hour reported.</p>
-<p><img src="articles/workflow_facebook.png" width="70%" style="display: block; margin: auto;"></p>
+<p><img src="articles/workflow_raster.png" width="80%" style="display: block; margin: auto;"></p>
+<ol start="3" style="list-style-type: decimal">
+<li>
+<a href="https://fernandez-lab-wsu.github.io/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html" class="external-link"><strong>Convert Facebook Mobility QuadKey-identified Datasets into Raster Files</strong></a> Convert Facebook mobility data <code>.csv</code> files into <code>.tif</code> files by day and hour reported.</li>
+</ol>
+<p><img src="articles/workflow_facebook.png" width="80%" style="display: block; margin: auto;"></p>
 <ol start="4" style="list-style-type: decimal">
 <li>
 <a href="https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_visualization_app.html" class="external-link"><strong>Offer an App for visualizing QuadKeys on a map</strong></a> Introduce a QuadKey visualization application enabling users to validate function outcomes.</li>
@@ -193,7 +197,7 @@ to convert QuadKeys to and from tiles, pixels and geographic coordinates are ava
 <ul class="list-unstyled">
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
 <li><a href="https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/test-coverage.yaml" class="external-link"><img src="https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/test-coverage.yaml/badge.svg" alt="test-coverage"></a></li>
-<li><a href="https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-standard.yaml" class="external-link"><img src="https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-standard.yaml/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-release.yaml" class="external-link"><img src="https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-release.yaml/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://github.com/%3Corg%3E/%3Crepo%3E/actions?query=workflow%3Apkgcheck" class="external-link"><img src="https://github.com/Fernandez-Lab-WSU/quadkeyr/workflows/pkgcheck/badge.svg" alt="pkgcheck"></a></li>
 <li><a href="https://codecov.io/gh/Fernandez-Lab-WSU/quadkeyr" class="external-link"><img src="https://img.shields.io/codecov/c/github/Fernandez-Lab-WSU/quadkeyr" alt="Codecov"></a></li>
 <li><a href="https://github.com/ropensci/software-review/issues/619" class="external-link"><img src="https://badges.ropensci.org/619_status.svg" alt="Status at rOpenSci Software Peer Review"></a></li>

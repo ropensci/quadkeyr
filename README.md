@@ -8,7 +8,7 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![test-coverage](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/test-coverage.yaml)
-[![R-CMD-check](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-standard.yaml)
+[![R-CMD-check](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-release.yaml/badge.svg)](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-release.yaml)
 [![pkgcheck](https://github.com/Fernandez-Lab-WSU/quadkeyr/workflows/pkgcheck/badge.svg)](https://github.com/%3Corg%3E/%3Crepo%3E/actions?query=workflow%3Apkgcheck)
 [![Codecov](https://img.shields.io/codecov/c/github/Fernandez-Lab-WSU/quadkeyr)](https://codecov.io/gh/Fernandez-Lab-WSU/quadkeyr)
 [![Status at rOpenSci Software Peer
@@ -62,7 +62,7 @@ The goal of `quadkeyr` is to:
     to convert QuadKeys to and from tiles, pixels and geographic
     coordinates are available.
 
-<img src="vignettes/workflow_quadkey.png" width="70%" style="display: block; margin: auto;" />
+<img src="vignettes/workflow_quadkey.png" width="80%" style="display: block; margin: auto;" />
 
 2.  [**Generate Raster Images from Quadkey-Identified
     Data**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_identified_data_to_raster.html)
@@ -70,13 +70,14 @@ The goal of `quadkeyr` is to:
     and create a `stars` raster. You can also directly convert QuadKeys
     in a data.frame column into an `sf` POLYGON data.frame.
 
-<img src="vignettes/workflow_raster.png" width="70%" style="display: block; margin: auto;" />
-3. [**Convert Facebook Mobility QuadKey-identified Datasets into Raster
-Files**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html)
-Convert Facebook mobility data `.csv` files into `.tif` files by day and
-hour reported.
+<img src="vignettes/workflow_raster.png" width="80%" style="display: block; margin: auto;" />
 
-<img src="vignettes/workflow_facebook.png" width="70%" style="display: block; margin: auto;" />
+3.  [**Convert Facebook Mobility QuadKey-identified Datasets into Raster
+    Files**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html)
+    Convert Facebook mobility data `.csv` files into `.tif` files by day
+    and hour reported.
+
+<img src="vignettes/workflow_facebook.png" width="80%" style="display: block; margin: auto;" />
 
 4.  [**Offer an App for visualizing QuadKeys on a
     map**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_visualization_app.html)
