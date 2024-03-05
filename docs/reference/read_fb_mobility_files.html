@@ -72,7 +72,7 @@ we can uniformly apply specific formatting to columns across these files.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">read_fb_mobility_files</span><span class="op">(</span><span class="va">path_to_csvs</span>, <span class="va">colnames</span>, <span class="va">coltypes</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">read_fb_mobility_files</span><span class="op">(</span><span class="va">path_to_csvs</span>, <span class="va">colnames</span>, <span class="va">coltypes</span>, keep_format <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -90,6 +90,12 @@ For more information go to <code><a href="https://readr.tidyverse.org/reference/
 <dd><p>Column specifications (as strings).
 See vignette("readr", package = "readr") for more details.
 documentation.</p></dd>
+
+
+<dt>keep_format</dt>
+<dd><p>Vector of column names,
+besides <code>date_time</code>, <code>day</code> and <code>quadkey</code>, that you
+don't want to convert to a number.</p></dd>
 
 </dl></div>
     <div class="section level2">

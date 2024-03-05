@@ -4,7 +4,7 @@
 \alias{read_fb_mobility_files}
 \title{Read all the .csv files in a folder and format the data.}
 \usage{
-read_fb_mobility_files(path_to_csvs, colnames, coltypes)
+read_fb_mobility_files(path_to_csvs, colnames, coltypes, keep_format = NULL)
 }
 \arguments{
 \item{path_to_csvs}{Path to the folder where the \code{.csv} files are stored}
@@ -15,6 +15,10 @@ For more information go to \code{\link[readr:read_delim]{readr::read_csv()}}}
 \item{coltypes}{Column specifications (as strings).
 See vignette("readr", package = "readr") for more details.
 documentation.}
+
+\item{keep_format}{Vector of column names,
+besides \code{date_time}, \code{day} and \code{quadkey}, that you
+don't want to convert to a number.}
 }
 \value{
 A data.frame with the information of all the files read.

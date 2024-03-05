@@ -7,7 +7,8 @@
 apply_weekly_lag(data)
 }
 \arguments{
-\item{data}{A data.frame}
+\item{data}{A data.frame with the columns \code{quadkey},
+\code{day}, \code{hour} and \code{n_crisis}.}
 }
 \value{
 A data.frame with the extra columns \code{n_crisis_lag_7} and
@@ -22,7 +23,8 @@ the \code{n_crisis} value between weeks expressed as percentage.
 \description{
 Applying a week lag to the data will create raster images
 showing the mobility a week before the date of interest.
-This function works only for QuadKeys without NAs.
+This function works only for QuadKeys reported without NAs for
+\code{n_crisis} and \code{percent_change} variables .
 }
 \examples{
 
@@ -31,9 +33,12 @@ files <- read_fb_mobility_files(
     package = "quadkeyr"
   ), "/"),
   colnames = c(
-    "lat", "lon",
-    "quadkey", "date_time",
-    "n_crisis", "percent_change"
+    "lat",
+    "lon",
+    "quadkey",
+    "date_time",
+    "n_crisis",
+    "percent_change"
   ),
   coltypes = list(
     lat = "d",
@@ -45,5 +50,5 @@ files <- read_fb_mobility_files(
   )
 )
 
-apply_weekly_lag(files)
+apply_weekly_lag(data = files)
 }
