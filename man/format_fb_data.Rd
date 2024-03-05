@@ -4,14 +4,20 @@
 \alias{format_fb_data}
 \title{Format the Facebook mobility data}
 \usage{
-format_fb_data(data)
+format_fb_data(data, keep_format = NULL)
 }
 \arguments{
-\item{data}{A data.frame with a \code{quadkey}, \code{date_time}, \code{country} columns
-and other numeric variables}
+\item{data}{A data.frame with a \code{quadkey} and \code{date_time} columns
+and other variables}
+
+\item{keep_format}{Vector of column names,
+besides \code{date_time}, \code{day} and \code{quadkey}, that you
+don't want to convert to a number.}
 }
 \value{
-A data.frame.
+A data.frame without \verb{\\N},
+\code{quadkey} without scientific notation and
+a new column \code{day} and \code{hour}
 }
 \description{
 This function removes unnecessary characters such as \verb{\\\\N}

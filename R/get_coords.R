@@ -72,11 +72,7 @@ get_qk_coord <- function(data) {
 #' (`tileX`, `tileY`), a `quadkey` and a `geometry` column.
 #'
 #' @keywords internal
-#' @export
-#'
 #' @examples
-#'
-#'
 #' grid <- create_qk_grid(
 #'   xmin = -59,
 #'   xmax = -40,

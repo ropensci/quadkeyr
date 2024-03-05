@@ -22,6 +22,7 @@ if any file for a particular day or hour is missing.
 
 # Sample dataset
 data <- data.frame(
+  country = c("US", "MX", "MX"), 
   day = c("2023-01-01", "2023-01-03", "2023-01-05"),
   hour = c(0, 8, 16)
 )

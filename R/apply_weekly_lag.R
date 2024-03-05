@@ -2,9 +2,11 @@
 #'
 #' @description Applying a week lag to the data will create raster images
 #' showing the mobility a week before the date of interest.
-#' This function works only for QuadKeys without NAs.
+#' This function works only for QuadKeys reported without NAs for
+#' `n_crisis` and `percent_change` variables .
 #'
-#' @param data A data.frame
+#' @param data A data.frame with the columns `quadkey`,
+#' `day`, `hour` and `n_crisis`.
 #'
 #' @importFrom rlang .data
 #'
@@ -26,9 +28,12 @@
 #'     package = "quadkeyr"
 #'   ), "/"),
 #'   colnames = c(
-#'     "lat", "lon",
-#'     "quadkey", "date_time",
-#'     "n_crisis", "percent_change"
+#'     "lat",
+#'     "lon",
+#'     "quadkey",
+#'     "date_time",
+#'     "n_crisis",
+#'     "percent_change"
 #'   ),
 #'   coltypes = list(
 #'     lat = "d",
@@ -40,29 +45,62 @@
 #'   )
 #' )
 #'
-#' apply_weekly_lag(files)
+#' apply_weekly_lag(data = files)
 apply_weekly_lag <- function(data) {
-  out_data <- c()
-
-  for (i in unique(data$quadkey)) {
-    inter <- data |>
-      dplyr::filter(.data$quadkey == i)
-
-    # I am only considering cases where there aren't NAs
-    if (!is.na(sum(inter$n_crisis))) {
-      quadkey_lag <- inter |>
-        dplyr::group_by(.data$quadkey, .data$hour) |>
-        dplyr::mutate(n_crisis_lag_7 = dplyr::lag(as.numeric(.data$n_crisis),
-          n = 7
-        )) |>
-        dplyr::mutate(percent_change_7 = ((
-          .data$n_crisis_lag_7 - .data$n_crisis
-        ) /
-          .data$n_crisis) * 100)
-
-      out_data <- rbind(out_data, quadkey_lag)
-    }
+  # First I must check that we have all the days and months
+  if (nrow(missing_combinations(data)) != 0) {
+    mc <- missing_combinations(data)
+    # create the combination of QuadKeys,
+    # days and hours missing in a grid
+    missing_data <- expand.grid(
+      quadkey = unique(data$quadkey),
+      day = mc$day,
+      hour = mc$hour
+    )
+    
+    # Add the missing data to the original files
+    # Now I have quadkey, day and hour columns complete
+    data <- dplyr::bind_rows(data, missing_data) |>
+      dplyr::arrange(.data$day, .data$hour)
   }
-
-  return(out_data)
+  
+  # I am only considering cases where there aren't NAs
+  # Let's remove the QuadKeys with 100% NAs for n_crisis
+  qk_data_without_NA  <-  data |>
+    dplyr::group_by(.data$quadkey) |>
+    dplyr::summarise(empty = !is.na(sum(.data$n_crisis))) |>
+    dplyr::filter(.data$empty == FALSE) |>
+    dplyr::ungroup()
+  
+  data <- data |>
+    dplyr::filter(.data$quadkey %in% qk_data_without_NA$quadkey)
+  
+  # QuadKey that appears in all the combination of possible days and hours
+  # should occur `qk_rep` times.
+  # If a QuadKey is reported fewer times than that, we will remove it
+  # to avoid discontinuous sequences of days and subsequent gaps.
+  min_date <-  min(data$day)
+  max_date <- max(data$day)
+  days <- as.numeric(max_date - min_date)
+  qk_rep <- (days + 1) * 3
+  
+  qk_reg <- data |>
+    dplyr::count(.data$quadkey) |>
+    dplyr::filter(.data$n == qk_rep)
+  
+  data <- data |>
+    dplyr::filter(.data$quadkey %in% qk_reg$quadkey)
+  
+  # Now that this is all sorted,
+  # let's create the lag column
+  quadkey_lag <- data |>
+    dplyr::group_by(.data$quadkey) |>
+    dplyr::arrange(.data$day, .data$hour, .by_group = TRUE) |>
+    dplyr::mutate(n_crisis_lag_7 = dplyr::lag(.data$n_crisis,
+                               n = (7 * 3))) |>
+    dplyr::mutate(percent_change_7 = ((.data$n_crisis_lag_7 - .data$n_crisis) /
+                                        .data$n_crisis) * 100)
 }
+
+
+
