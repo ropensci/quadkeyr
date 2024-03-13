@@ -6,6 +6,8 @@
 \alias{quadkeyr-package}
 \title{quadkeyr: Tools for converting QuadKey-identified datasets (Microsoft's Bing Maps Tile System) into raster images}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 'Quadkeyr' functions generate raster images based on QuadKey-identified data, facilitating efficient integration of Tile Maps data into R workflows. In particular, 'Quadkeyr' provides support to process and analyze Facebook mobility datasets within the R environment.
 }
 \seealso{

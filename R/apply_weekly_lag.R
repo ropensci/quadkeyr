@@ -20,7 +20,6 @@
 #' the `n_crisis` value between weeks expressed as percentage.
 #'
 #' @export
-#'
 #' @examples
 #'
 #' files <- read_fb_mobility_files(

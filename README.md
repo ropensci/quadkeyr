@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# quadkeyr <img src="vignettes/logo.png" align="right" height="100"/>
+# quadkeyr <img src="vignettes/logo.png" align="right" height="150"/>
 
 <!-- badges: start -->
 
@@ -36,7 +36,7 @@ spatial position as a sequence of characters. They provide an efficient
 method to address and retrieve specific map tiles, facilitating rapid
 display within mapping applications.
 
-<img src="vignettes/quadkeys.png" width="70%" style="display: block; margin: auto;" />
+<img src="vignettes/bing_quadkeys.jpg" width="70%" style="display: block; margin: auto;" />
 <p style="text-align: center">
 The QuadKey of any tile starts with the QuadKey of its parent tile (the
 containing tile at the previous level). Image extracted from Microsoft’s

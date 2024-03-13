@@ -71,21 +71,7 @@ get_qk_coord <- function(data) {
 #' @return  A `sf` POINT data.frame containing the tiles XY coordinates
 #' (`tileX`, `tileY`), a `quadkey` and a `geometry` column.
 #'
-#' @keywords internal
-#' @examples
-#' grid <- create_qk_grid(
-#'   xmin = -59,
-#'   xmax = -40,
-#'   ymin = -38,
-#'   ymax = -20,
-#'   zoom = 6
-#' )
-#'
-#' # tileX and tileY columns in grid$data converted to geographic coordinates
-#' get_tile_coord(
-#'   data = grid$data,
-#'   zoom = 6
-#' )
+#' @noRd
 get_tile_coord <- function(data, zoom) {
   if (!any(c("tileX", "tileY") %in% colnames(data))) {
     stop(paste(

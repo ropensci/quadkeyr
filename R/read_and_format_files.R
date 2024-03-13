@@ -21,7 +21,6 @@
 #'
 #' @return A data.frame with the information of all the files read.
 #' @export
-#'
 #' @examples
 #'
 #' files <- read_fb_mobility_files(
@@ -171,7 +170,6 @@ format_fb_data <- function(data,
 #'
 #' @return A data.frame with the missing days and hours, if any.
 #' @export
-#'
 #' @examples
 #'
 #' # Sample dataset

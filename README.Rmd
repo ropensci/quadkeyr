@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# quadkeyr <img src="vignettes/logo.png" align="right" height="100"/>
+# quadkeyr <img src="vignettes/logo.png" align="right" height="150"/>
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental) [![test-coverage](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/test-coverage.yaml) [![R-CMD-check](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-release.yaml/badge.svg)](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-release.yaml)
@@ -45,7 +45,7 @@ mapping applications.
 
 
 ```{r qks, echo = FALSE, out.width= "70%", fig.align='center'}
-knitr::include_graphics("vignettes/quadkeys.png")
+knitr::include_graphics("vignettes/bing_quadkeys.jpg")
 ```
 <p style="text-align: center">The QuadKey of any tile starts with the QuadKey of its parent tile (the containing tile at the previous level). Image extracted from Microsoft's Bing Maps Tile System webpage.</p>
 

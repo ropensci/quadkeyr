@@ -15,7 +15,6 @@
 #'
 #' @return A `stars` object.
 #' @export
-#'
 #' @examples
 #'
 #' # Basic workflow

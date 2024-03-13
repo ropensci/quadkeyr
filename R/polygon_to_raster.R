@@ -20,7 +20,6 @@
 #'
 #' @return as many .tif files as dates and times in the dataset
 #' @export
-#'
 #' @examples
 #' files <- read_fb_mobility_files(
 #'   path_to_csvs = paste0(system.file("extdata",

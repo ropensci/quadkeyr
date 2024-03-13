@@ -41,17 +41,7 @@ mapsize <- function(zoom) {
 #' @param max_value Maximum allowable value.
 #'
 #' @return The clipped value.
-#' @keywords internal
-#'
-#' @examples
-#' \dontrun{
-#' quadkeyr::clip(
-#'   n = 1,
-#'   min_value = 3,
-#'   max_value = 5
-#' )
-#' }
-#'
+#' @noRd
 clip <- function(n, min_value, max_value) {
   return(min(max(n, min_value), max_value))
 }

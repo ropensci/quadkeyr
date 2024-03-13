@@ -26,7 +26,6 @@
 #' @return A list returning the tile X, tile Y coordinates and
 #' the zoom level.
 #' @export
-#'
 #' @examples
 #'
 #' quadkey_to_tileXY(quadkey = "213")

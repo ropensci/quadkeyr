@@ -43,12 +43,6 @@
     <loc>/reference/apply_weekly_lag.html</loc>
   </url>
   <url>
-    <loc>/reference/clip.html</loc>
-  </url>
-  <url>
-    <loc>/reference/complete_grid_for_polygons.html</loc>
-  </url>
-  <url>
     <loc>/reference/create_qk_grid.html</loc>
   </url>
   <url>
@@ -65,9 +59,6 @@
   </url>
   <url>
     <loc>/reference/get_regular_polygon_grid.html</loc>
-  </url>
-  <url>
-    <loc>/reference/get_tile_coord.html</loc>
   </url>
   <url>
     <loc>/reference/grid_to_polygon.html</loc>

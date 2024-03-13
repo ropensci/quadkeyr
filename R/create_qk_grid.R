@@ -19,7 +19,6 @@
 #' and columns (`num_cols`) of the grid.
 #'
 #' @export
-#'
 #' @examples
 #'
 #' grid <- create_qk_grid(

@@ -5,19 +5,16 @@
 #' corner of the QuadKey.
 #' To transform these coordinates into square polygons, the function
 #' supplements the grid by adding a row and column of tiles. These points
-#' introduce QuadKeys located at the border of the area
-#' [complete_grid_for_polygons()].
-#' The function constructs the polygons using all the points of the grid.
+#' introduce QuadKeys located at the border of the area using the internal 
+#' function `complete_grid_for_polygons()`.
+#' The function builds the polygons using all the points of the grid.
 #' Note that it's possible to associate each QuadKey with its square polygon.
 #'
 #' @param data A `sf` POINT data.frame with a `quadkey` and `geometry` column.
 #'
-#' @seealso \code{\link{complete_grid_for_polygons}}
-#'
 #' @return A sf POLYGON data.frame with a quadkey column.
 #'
 #' @export
-#'
 #' @examples
 #' grid <- create_qk_grid(
 #'   xmin = -59,
@@ -127,21 +124,7 @@ grid_to_polygon <- function(data) {
 #' QuadKeys appears as NAs as there are only kept to extend the grid.
 #' Their value is not necessary.
 #'
-#' @keywords internal
-#' @examples
-#'
-#' grid <- create_qk_grid(
-#'   xmin = -59,
-#'   xmax = -57,
-#'   ymin = -35,
-#'   ymax = -34,
-#'   zoom = 11
-#' )
-#'
-#' grid_coords <- get_qk_coord(data = grid$data)
-#'
-#' extragrid <- complete_grid_for_polygons(grid_coords)
-#' extragrid
+#' @noRd
 complete_grid_for_polygons <- function(data) {
   if (!("sf" %in% class(data))) {
     stop("The dataset should be of class 'sf'")

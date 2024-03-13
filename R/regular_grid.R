@@ -14,7 +14,6 @@
 #' * `num_cols` The number of rows of the regular grid.
 #'
 #' @export
-#'
 #' @examples
 #'
 #' quadkey_vector <- c("213", "210", "211")
@@ -101,7 +100,6 @@ regular_qk_grid <- function(data) {
 #' * `num_cols` The number of rows of the regular grid.
 #'
 #' @export
-#'
 #' @examples
 #' # read the file with the data
 #' path <- paste0(
@@ -145,7 +143,6 @@ add_regular_polygon_grid <- function(data) {
 #' * `num_cols` The number of rows of the regular grid.
 #'
 #' @export
-#'
 #' @examples
 #'
 #' # data file
