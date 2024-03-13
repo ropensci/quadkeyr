@@ -169,7 +169,7 @@ pixelXY_to_latlong <- function(pixelX, pixelY, zoom) {
   }
 
   # Check if pixelX and pixelY are within the valid range
-  max_pixel_value <- mapsize(zoom) - 1
+  max_pixel_value <- mapsize(zoom) 
   if (pixelX < 0 | pixelX > max_pixel_value |
     pixelY < 0 | pixelY > max_pixel_value) {
     stop(paste(

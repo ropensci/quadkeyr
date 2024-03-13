@@ -36,14 +36,6 @@ grid_to_polygon <- function(data) {
     stop("The dataset should be of class 'sf'")
   }
 
-  # Convert the QuadKeys to tile coordinates
-  # if that columns aren't present in the data
-  # if (!("tileX" %in% colnames(data) | "tileY" %in% colnames(data))) {
-  #   message(paste(
-  #     "The 'tileX' and 'tileY' columns have been generated",
-  #     "using the 'quadkey_to_tileXY' function."
-  #   ))
-
   # In the case that one of this columns is not present,
   # calculate both again.
   data$tileX <- NA

@@ -2,11 +2,28 @@ Package: quadkeyr
 Title: Tools for converting QuadKey-identified datasets (Microsoft's Bing Maps Tile System) into raster images
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "Florencia",
+    c(person(given = "Florencia",
            family = "D'Andrea", 
            email = "florencia.dandrea@gmail.com", 
            role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0002-0041-097X"))
+           comment = c(ORCID = "0000-0002-0041-097X")),
+    person(given = "Pilar",
+           family = "Fernandez", 
+           email = "pilar.fernandez@wsu.edu", 
+           role = c("aut"),
+           comment = c(ORCID = "0000-0001-8645-2267")),
+    person(given = "Maria Paula",
+           family = "Caldas",
+           role = c("rev"),
+           comment = c("Maria Paula Caldas reviewed the package (v. 0.0.99) for rOpenSci, see https://github.com/ropensci/software-review/issues/619")),
+    person(given = "Vincent",
+           family = "Van Hess",
+           role = c("rev"),
+           comment = c("Vincent Van Hess reviewed the package (v. 0.0.99) for rOpenSci, see https://github.com/ropensci/software-review/issues/619")),
+    person("CDC's Center for Forecasting and Outbreak Analytics",
+            comment = c("This project was made possible by cooperative agreement CDC-RFA-FT-23-0069 (grant # NU38FT000009-01-00) from the CDC's Center for Forecasting and Outbreak Analytics. Its contents are solely the responsibility of the authors and do not necessarily represent the official views of the Centers for Disease Control and Prevention."),  role = c("fnd")),
+    person("MIDAS-NIH COVID-19 urgent grant program",  role = c("fnd")),
+    person("Washington State University", role = c("cph")))
 Description: 'Quadkeyr' functions generate raster images based on QuadKey-identified data, facilitating efficient integration of Tile Maps data into R workflows. In particular, 'Quadkeyr' provides support to process and analyze Facebook mobility datasets within the R environment.
 License: MIT + file LICENSE
 URL: https://fernandez-lab-wsu.github.io/quadkeyr/, https://github.com/Fernandez-Lab-WSU/quadkeyr
