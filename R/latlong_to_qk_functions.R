@@ -38,7 +38,6 @@
 #'   lon = -50,
 #'   zoom = 6
 #' )
-#'
 latlong_to_pixelXY <- function(lat, lon, zoom) {
   if (zoom < 0 | zoom > 23 | (zoom %% 1) != 0) {
     stop("The zoom level should be an integer between 1 and 23")

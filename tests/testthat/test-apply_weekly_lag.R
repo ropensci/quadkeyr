@@ -22,7 +22,7 @@ data <-  data |>
                                   replace = TRUE))
 
 # Insert NAs into specific positions
-positions_to_insert_na <- sample(1:nrow(data), 50, replace = TRUE)
+positions_to_insert_na <- sample(seq_len(nrow(data)), 50, replace = TRUE)
 data$n_crisis[positions_to_insert_na] <- NA
 
 test_that("`apply_weekly_lag()` produces a 7 day lag in `n_crisis`", {

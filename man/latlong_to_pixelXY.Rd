@@ -45,7 +45,6 @@ latlong_to_pixelXY(
   lon = -50,
   zoom = 6
 )
-
 }
 \references{
 \url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}

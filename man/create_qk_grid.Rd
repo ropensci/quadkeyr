@@ -37,5 +37,4 @@ grid <- create_qk_grid(
   ymax = -34,
   zoom = 12
 )
-
 }

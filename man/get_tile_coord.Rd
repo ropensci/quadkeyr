@@ -21,8 +21,6 @@ Reads the tile XY coordinates and extracts the
 lat/long coordinates of the upper-left corner of the QuadKey.
 }
 \examples{
-
-
 grid <- create_qk_grid(
   xmin = -59,
   xmax = -40,
@@ -36,7 +34,6 @@ get_tile_coord(
   data = grid$data,
   zoom = 6
 )
-
 }
 \seealso{
 \code{\link{tileXY_to_pixelXY}}

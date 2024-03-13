@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# `quadkeyr` <img src="vignettes/logo.png" align="right" height="200" />
+# quadkeyr <img src="vignettes/logo.png" align="right" height="100"/>
 
 <!-- badges: start -->
 
@@ -14,8 +14,6 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![Status at rOpenSci Software Peer
 Review](https://badges.ropensci.org/619_status.svg)](https://github.com/ropensci/software-review/issues/619)
 <!-- badges: end -->
-
-⚠️ This package is under review
 
 ### What can this package do for you?
 

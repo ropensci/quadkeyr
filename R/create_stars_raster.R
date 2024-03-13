@@ -65,7 +65,6 @@
 #'   data = data_raster,
 #'   var = "variable"
 #' )
-#'
 create_stars_raster <- function(template,
                                 nx, ny,
                                 data,

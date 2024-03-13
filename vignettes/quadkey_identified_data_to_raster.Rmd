@@ -35,7 +35,7 @@ A detailed explanation of what
 tile coordinates (`tileX`, `tileY`) and 
 pixel coordinates (`pixelX`, `pixelY`) are
 can be found in `quadkeyr` vignette
-[From QuadKey to Simple Features data.frame and other conversions](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html)
+[`From QuadKey to Simple Features data.frame and other conversions`](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html)
 and in the [official documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system).
 
 # Basic workflow
@@ -81,7 +81,7 @@ head(data)
 To create the raster,
 it is preferable to work with a regular grid.
 That is why we need to ensure that we have all the QuadKeys 
-covering the bounding box we want to study.
+covering the bounding box of the area we want to study.
 
 The function `add_regular_polygon_grid()`
 retrieves all the QuadKeys required to fill the bounding box 
@@ -106,11 +106,14 @@ that are reported with values for the variable of interest are colored.
 
 The function `add_regular_polygon_grid()`
 returns three outputs in a list: 
- - `data`
- - `num_cols` and;
- - `num_rows`. 
+
+ * `data`. 
+ * `num_cols` and;  
+ * `num_rows`.   
  
-The number of columns and rows will be useful in the next step.
+The number of columns and rows will be useful information
+for the raster creation step.
+
 ```{r reggrid, out.width= "70%", fig.align='center'}
 ggplot() +
   geom_sf(data = complete_polygon_grid$data,
@@ -121,7 +124,7 @@ ggplot() +
 
 After obtaining the regular polygon grid,  
 we can create a [STARS object](https://r-spatial.github.io/stars/articles/stars1.html) 
-using the function `create_stars_raster`. 
+using `create_stars_raster()`. 
 
 ```{r startsobj}
 stars_object <- create_stars_raster(data = complete_polygon_grid$data,
@@ -167,11 +170,12 @@ The function `add_regular_polygon_grid()`
 serves as a wrapper for three functions:
 `get_qk_coords()`, `regular_qk_grid()`, and `grid_to_polygon()`.
 
-We will demostrate some of the uses of these functions in isolation:
+We will demonstrate some of the uses
+of these functions in isolation:
 
 ## Create a Quadkey-identified polygon regular grid
 The `regular_qk_grid()` function generates
-a regular grid by utilizing the `create_qk_grid()` function. 
+a regular grid by utilizing `create_qk_grid()`. 
 To accomplish this,
 it necessitates defining the bounding box,
 specified by `xmin`, `xmax`, `ymin`, and `ymax`,
@@ -183,10 +187,10 @@ However, if desired,
 you can manually input these arguments 
 and use the function by itself.
 
-For this example, we have selected 
-`xmin` = -59,
-`xmax` = -57 ,
-`ymin` = -35 and
+For this example, we have selected:  
+`xmin` = -59,  
+`xmax` = -57,  
+`ymin` = -35 and. 
 `ymax` = -34. 
 Let's plot them as points.
 
@@ -228,11 +232,13 @@ grid <-  create_qk_grid(
                ymax = -34,
                zoom = 12)
 head(grid$data)
+grid$num_rows
+grid$num_cols
 ```
 
 ### Get the grid coordinates from the QuadKeys
 
-The coordinates are extracted from the QuadKeys 
+The coordinates can be extracted from the QuadKeys 
 using the function `get_qk_coords()`. 
 
 ```{r grid}
@@ -309,7 +315,7 @@ a starting point for the bounding box
 are situated within the polygons, 
 but not at a specific position inside each polygon. 
 This was expected, you can read about 
-Quadkey conversion in the vignette [Bing Maps Tile System Functions](https://fernandez-lab-wsu.github.io/quadkeyr/articles/1_bing_map_tile_system_functions.html).
+Quadkey conversion in the vignette [`From a QuadKey to a Simple Features data.frame and other conversions`](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html#caveats-when-converting-coordinates).
 
 If you want to see the grid, you can also check the app:
 
@@ -376,7 +382,7 @@ raster <-  create_stars_raster(template = polygon_raster,
 
 raster
 
-# In case you want to save it:
+# If you want to save it:
 # write_stars(obj = raster,
 #             dsn = "raster.tif")
 

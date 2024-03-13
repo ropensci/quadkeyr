@@ -29,7 +29,6 @@
 #'   ymax = -34,
 #'   zoom = 12
 #' )
-#'
 create_qk_grid <- function(xmin, xmax, ymin, ymax, zoom) {
 
   # Values in Microsoft Bing Tile System Documentation

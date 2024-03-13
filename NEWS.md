@@ -1,3 +1,8 @@
-# quadkeyr 0.0.0.9000
+# quadkeyr 0.1.0
 
-* Added a `NEWS.md` file to track changes to the package.
+* All the changes in this first release have been extensively documented
+as part of the ROpenSci package review process.
+Please, check https://github.com/ropensci/software-review/issues/619
+
+Editor: @emilyriederer. 
+Reviewers: @mpaulacaldas, @vincentvanhees. 

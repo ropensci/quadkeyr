@@ -31,8 +31,10 @@ library(ggplot2)
 > Please, visit the [README](https://fernandez-lab-wsu.github.io/quadkeyr/) 
 > for general information about this package
 
-Most of the function and arguments names conserved from the documentation.
-`quadkeyr` functions are the R version of the ones described in [Bing Maps Tile System webpage](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system).
+`quadkeyr` functions are the R version of the ones described
+in the documentation at [Bing Maps Tile System webpage](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system).
+Most of the function and arguments names are preserved from the documentation,
+if not it will be indicated in the text.
 
 
 # Basic workflow
@@ -66,11 +68,11 @@ ggplot() +
   ggtitle(paste("QuadKey", qtll$quadkey)) +
   theme_minimal()
 ```
-If you want to convert a data.frame `quadkey` column 
-to a `sf` POLYGON data.frame.
+If you want to convert a data.frame with a `quadkey` column 
+into a `sf` POLYGON data.frame.
 you can use the function `quadkey_df_to_polygon()` 
 described in the
-['Generating a Raster Image from Quadkey-Identified Data' vignette](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_identified_data_to_raster.html)
+[`Generating a Raster Image from Quadkey-Identified Data` vignette](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_identified_data_to_raster.html)
 
 # Advanced use: intermediate functions
 
@@ -78,7 +80,8 @@ The conversion from QuadKey to geographic coordinates
 involves a series of smaller transformations that
 relate to the structure of Tile Maps. 
 All of these intermediary functions, 
-as well as those facilitating the reverse conversion,
+as well as those facilitating the reverse conversion
+from geographic coordinates to QuadKey,
 are available for use within the `quadkeyr` package.
 
 ## Tile Maps: QuadKeys, tiles, pixels and geographic coordinates
@@ -94,8 +97,8 @@ among other benefits described in detail in
 
 Pixels and tiles are expressed as two-dimensional coordinates 
 - (`pixelX`, `pixelY`) and (`tileX`, `tileY`) - 
-but Quadkeys are one-dimensional numeric strings.
-This is important to understand how the conversion works.
+but QuadKeys are one-dimensional numeric strings.
+This difference is important to understand how the conversion works.
 
 Each geographic pair of coordinates (latitude/longitude) 
 will belong to a specific pixel 
@@ -132,23 +135,28 @@ by comparing Fig. 1 and Fig. 2.
 knitr::include_graphics('bing_tiles.jpg')
 ```
 
-To convert from tile XY coordinates to QuadKeys for a particular
-zoom level, you can use the function `tileXY_to_quadkey()`. 
-The number of digits of the QuadKey will correspond to the zoom level
-of the map. For example, for the tile (4, 7) of zoom level 3, the
+To convert from tile XY coordinates to QuadKeys
+for a particular zoom level, 
+you can use the function `tileXY_to_quadkey()`. 
+The number of digits of the QuadKey
+will correspond to the zoom level
+of the map. For example,
+for the tile (4, 7) of zoom level 3, the
 QuadKey will be `322`.
 
-This pertains to the conversion from geographic coordinates (latitude/longitude)
-to QuadKeys. However, when converting in the opposite direction, 
-from QuadKeys to geographic coordinates (latitude/longitude), 
-the final pair of latitude/longitude corresponds to 
-the upper-left corner coordinates of the tile and pixel associated with
+This pertains to the conversion from
+geographic coordinates (latitude/longitude) to QuadKeys.
+However, when converting in the opposite direction, 
+from QuadKeys to geographic coordinates, 
+the latitude/longitude obtained correspond to 
+the upper-left corner coordinates
+of the tile and pixel associated with
 your original QuadKey.
 
-To understand this in more detail, have a look to the functions and then read
-section 3.
+To understand this in more detail, 
+have a look to the functions and then read section 3.
 
-## If you have a pair of geographic map coordinates, convert them to a QuadKey
+## If you have geographic map coordinates, convert them to QuadKeys
 
 **Geographic coordinates** <span>&#8594;</span> **pixel XY coordinates**
 <span>&#8594;</span> **tile XY coordinates** <span>&#8594;</span> **QuadKey**
@@ -177,7 +185,7 @@ ptt
 
 This function returns the QuadKey string. 
 Since we are estimating zoom level 4,
-the number consists of 4 digits.
+the QuadKey has 4 digits.
 
 ```{r ttq}
 tileXY_to_quadkey(tileX = ptt$tileX,
@@ -210,11 +218,11 @@ latlong_to_quadkey(lat = c(-4, -25.33, -25.66),
                    zoom = 4)
 ```
 
-## If you have a QuadKeys, convert them to a pair of map coordinates
+## If you have QuadKeys, convert them to map coordinates
 
 Let's attempt the reverse route.
 
-**QuadKey** <span>&#8594;</span>  **tile XY coordinates** <span>&#8594;</span> 
+**QuadKey** <span>&#8594;</span> **tile XY coordinates** <span>&#8594;</span> 
 **pixel XY coordinates** <span>&#8594;</span> **Geographic coordinates** 
 
 ### Convert a QuadKey into tile XY coordinates 

@@ -62,9 +62,10 @@ but dates and hours will change.
 This information will be evident
 in the filenames: `cityA_2020_04_15_0800.csv`.
 
-- `read_fb_mobility_files()` produces a warning 
-if there are days or times missing among the provided dates in the files.
-- The columns `day` and `hour` were created internally.
+- `read_fb_mobility_files()` prints a message with
+the days or hours missing among the provided files.
+
+- The columns `day` and `hour` are created internally.
 
 ```{r read}
 files <- quadkeyr::read_fb_mobility_files(
@@ -95,11 +96,10 @@ files <- quadkeyr::read_fb_mobility_files(
 head(files)
 ```
 > Note: The Facebook mobility data used in `quadkeyr` has been altered
-> and does not represent real values.
-> The examples in this vignette are only to demostrate how functions work,
-> not to extract results from this data.
-> Please, contact [Data for Good](https://dataforgood.facebook.com/) to
-> get datasets.
+> and doesn't represent real values.
+> The examples in this vignette are only to demostrate how functions work.
+> Please, contact [Data for Good](https://dataforgood.facebook.com/) 
+> to get datasets.
 
 ## Create a Quadkey polygon grid for your area of analysis
 
@@ -110,7 +110,7 @@ You might be wondering why we're not using
 the function we've already created, 
 `add_regular_polygon_grid()`, 
 which adds a column with QuadKey polygons,
-creating a regular grid, to an existing `data.frame`
+creating a regular grid, to an existing data.frame.
 
 There are two reasons for why we're using a different approach:
 
@@ -128,13 +128,16 @@ There are two reasons for why we're using a different approach:
   that you may be receiving new files in the future
   with QuadKeys that haven't been reported yet.
   
-That's why we create an `sf POLYGON data.frame`,
+That's why we create an `sf` POLYGON data.frame,
 retaining all the QuadKey polygons within the area of analysis,
 and then proceed to join the results.
 
-If creating the regular polygon grid using the bounding box of the provided
-QuadKeys may not work for your case, you can directly create the grid 
-for the full area of analysis using the `create_qk_grid()` function.
+If creating the regular polygon grid
+using the bounding box of the provided
+QuadKeys may not work for your case, 
+you can directly create the grid 
+for the full area of analysis using 
+`create_qk_grid()` function.
 Read the [the previous vignette](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_identified_data_to_raster.html)
 to learn more about this function.
 
@@ -154,7 +157,7 @@ ggplot() +
 ```
 
 Now, we can merge this grid with 
-the Facebook mobility data in the `files` dataframe.
+the Facebook mobility data in the `files` data.frame.
 We've chosen to use an `dplyr::inner_join()`
 that will retain only the polygons reported in the files.
 
@@ -230,12 +233,12 @@ you can utilize the `format_fb_data()` function.
 in a temporal sequence of files, you can employ `missing_combinations()`.
 
 Please, refer to the examples in the functions' documentation
-to understand better their functionalities.
+to understand better how they work.
 
 ## Convert the QuadKeys to latitude/longitude coordinates
 
 Even if these files correspond to the same location,
-the number of QuadKeys reported could vary.
+the amount of QuadKeys reported could vary.
 
 To start, we will select 
 from all the files 
@@ -277,9 +280,10 @@ we need to obtain a regular grid.
 We can do that with the function `regular_qk_grid()`.
 Pay attention that
 the output is a list with three elements:
-- `data`
-- `num_rows` and;
-- `num_cols`.
+
+- `data`. 
+- `num_rows` and;  
+- `num_cols`.  
 
 ```{r rgc}
 regular_grid <- regular_qk_grid(data = qtll)

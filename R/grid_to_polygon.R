@@ -111,7 +111,8 @@ grid_to_polygon <- function(data) {
 #' @description The QuadKey's points of the grid represent
 #' the upper-left corner of the QuadKey.
 #' This function creates an extra tile row and column needed to create
-#' the square polygons for the QuadKeys that are in the the borders of the area
+#' the square polygons for the QuadKeys 
+#' that are in the the borders of the area
 #' without adding explicitly new QuadKeys to the grid.
 #' This function is called internally by [grid_to_polygon()].
 #'
@@ -127,7 +128,6 @@ grid_to_polygon <- function(data) {
 #' Their value is not necessary.
 #'
 #' @keywords internal
-#'
 #' @examples
 #'
 #' grid <- create_qk_grid(
@@ -141,6 +141,7 @@ grid_to_polygon <- function(data) {
 #' grid_coords <- get_qk_coord(data = grid$data)
 #'
 #' extragrid <- complete_grid_for_polygons(grid_coords)
+#' extragrid
 complete_grid_for_polygons <- function(data) {
   if (!("sf" %in% class(data))) {
     stop("The dataset should be of class 'sf'")

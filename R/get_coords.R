@@ -86,7 +86,6 @@ get_qk_coord <- function(data) {
 #'   data = grid$data,
 #'   zoom = 6
 #' )
-#'
 get_tile_coord <- function(data, zoom) {
   if (!any(c("tileX", "tileY") %in% colnames(data))) {
     stop(paste(
