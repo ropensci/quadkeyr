@@ -36,7 +36,7 @@ spatial position as a sequence of characters. They provide an efficient
 method to address and retrieve specific map tiles, facilitating rapid
 display within mapping applications.
 
-<img src="vignettes/bing_quadkeys.jpg" width="70%" style="display: block; margin: auto;" />
+<img src="https://github.com/Fernandez-Lab-WSU/quadkeyr/blob/main/docs/articles/bing_quadkeys.jpg?raw=true" width="70%" style="display: block; margin: auto;" />
 <p style="text-align: center">
 The QuadKey of any tile starts with the QuadKey of its parent tile (the
 containing tile at the previous level). Image extracted from Microsoft’s

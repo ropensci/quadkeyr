@@ -177,13 +177,11 @@ variable of interest are colored.</p>
 <p>The function <code><a href="../reference/add_regular_polygon_grid.html">add_regular_polygon_grid()</a></code> returns three
 outputs in a list:</p>
 <ul>
-<li>
-<code>data</code>.</li>
+<li><code>data</code></li>
 <li>
 <code>num_cols</code> and;<br>
 </li>
-<li>
-<code>num_rows</code>.</li>
+<li><code>num_rows</code></li>
 </ul>
 <p>The number of columns and rows will be useful information for the
 raster creation step.</p>
@@ -296,8 +294,20 @@ delineates the area for QuadKey grid creation.
 <code><a href="../reference/create_qk_grid.html">create_qk_grid()</a></code> by estimating the bounding box from the
 QuadKeys provided as an argument. However, if desired, you can manually
 input these arguments and use the function by itself.</p>
-<p>For this example, we have selected:<br><code>xmin</code> = -59,<br><code>xmax</code> = -57,<br><code>ymin</code> = -35 and. <code>ymax</code> = -34. Let’s plot them as
-points.</p>
+<p>For this example, we have selected:</p>
+<ul>
+<li>
+<code>xmin</code> = -59<br>
+</li>
+<li>
+<code>xmax</code> = -57<br>
+</li>
+<li>
+<code>ymin</code> = -35</li>
+<li>
+<code>ymax</code> = -34</li>
+</ul>
+<p>Let’s plot them as points.</p>
 <p><img src="quadkey_identified_data_to_raster_files/figure-html/pointsplot-1.png" width="70%" style="display: block; margin: auto;"></p>
 <p>The QuadKey grid can have a zoom level between 1 (less detail) to 23
 (more detail).</p>

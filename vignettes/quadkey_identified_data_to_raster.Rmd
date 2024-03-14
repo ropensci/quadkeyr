@@ -107,9 +107,9 @@ that are reported with values for the variable of interest are colored.
 The function `add_regular_polygon_grid()`
 returns three outputs in a list: 
 
- * `data`. 
+ * `data`
  * `num_cols` and;  
- * `num_rows`.   
+ * `num_rows`
  
 The number of columns and rows will be useful information
 for the raster creation step.
@@ -187,11 +187,13 @@ However, if desired,
 you can manually input these arguments 
 and use the function by itself.
 
-For this example, we have selected:  
-`xmin` = -59,  
-`xmax` = -57,  
-`ymin` = -35 and. 
-`ymax` = -34. 
+For this example, we have selected: 
+
+* `xmin` = -59  
+* `xmax` = -57  
+* `ymin` = -35
+* `ymax` = -34
+
 Let's plot them as points.
 
 ```{r pointsplot, echo=FALSE, out.width= "70%", fig.align='center'}
