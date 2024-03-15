@@ -15,7 +15,8 @@ knitr::opts_chunk$set(
 # quadkeyr <img src="vignettes/logo.png" align="right" height="150"/>
 
 <!-- badges: start -->
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental) [![test-coverage](https://github.com/ropensci/quadkeyr/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/ropensci/quadkeyr/actions/workflows/test-coverage.yaml) [![R-CMD-check](https://github.com/ropensci/quadkeyr/actions/workflows/check-release.yaml/badge.svg)](https://github.com/ropensci/quadkeyr/actions/workflows/check-release.yaml)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/ropensci/quadkeyr/actions/workflows/check-release.yaml/badge.svg)](https://github.com/ropensci/quadkeyr/actions/workflows/check-release.yaml)
 [![pkgcheck](https://github.com/ropensci/quadkeyr/workflows/pkgcheck/badge.svg)](https://github.com/<org>/<repo>/actions?query=workflow%3Apkgcheck)
 [![Codecov](https://img.shields.io/codecov/c/github/ropensci/quadkeyr)](https://codecov.io/gh/Fernandez-Lab-WSU/quadkeyr)
 [![Status at rOpenSci Software Peer Review](https://badges.ropensci.org/619_status.svg)](https://github.com/ropensci/software-review/issues/619)

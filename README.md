@@ -7,10 +7,9 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![test-coverage](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/test-coverage.yaml)
-[![R-CMD-check](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-release.yaml/badge.svg)](https://github.com/Fernandez-Lab-WSU/quadkeyr/actions/workflows/check-release.yaml)
-[![pkgcheck](https://github.com/Fernandez-Lab-WSU/quadkeyr/workflows/pkgcheck/badge.svg)](https://github.com/%3Corg%3E/%3Crepo%3E/actions?query=workflow%3Apkgcheck)
-[![Codecov](https://img.shields.io/codecov/c/github/Fernandez-Lab-WSU/quadkeyr)](https://codecov.io/gh/Fernandez-Lab-WSU/quadkeyr)
+[![R-CMD-check](https://github.com/ropensci/quadkeyr/actions/workflows/check-release.yaml/badge.svg)](https://github.com/ropensci/quadkeyr/actions/workflows/check-release.yaml)
+[![pkgcheck](https://github.com/ropensci/quadkeyr/workflows/pkgcheck/badge.svg)](https://github.com/%3Corg%3E/%3Crepo%3E/actions?query=workflow%3Apkgcheck)
+[![Codecov](https://img.shields.io/codecov/c/github/ropensci/quadkeyr)](https://codecov.io/gh/Fernandez-Lab-WSU/quadkeyr)
 [![Status at rOpenSci Software Peer
 Review](https://badges.ropensci.org/619_status.svg)](https://github.com/ropensci/software-review/issues/619)
 <!-- badges: end -->
@@ -36,7 +35,7 @@ spatial position as a sequence of characters. They provide an efficient
 method to address and retrieve specific map tiles, facilitating rapid
 display within mapping applications.
 
-<img src="https://github.com/Fernandez-Lab-WSU/quadkeyr/blob/main/docs/articles/bing_quadkeys.jpg?raw=true" width="70%" style="display: block; margin: auto;" />
+<img src="https://github.com/ropensci/quadkeyr/blob/main/docs/articles/bing_quadkeys.jpg?raw=true" width="70%" style="display: block; margin: auto;" />
 <p style="text-align: center">
 The QuadKey of any tile starts with the QuadKey of its parent tile (the
 containing tile at the previous level). Image extracted from Microsoft’s
@@ -48,7 +47,7 @@ Bing Maps Tile System webpage.
 The goal of `quadkeyr` is to:
 
 1.  [**Convert a QuadKey to a Simple Features data.frame (and
-    more)**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html)
+    more)**](https://docs.ropensci.org/quadkeyr/articles/quadkey_to_sf_conversion.html)
     `quadkeyr` provides functions to convert a QuadKey to a `sf` POINT
     data.frame or `sf` POLYGON data.frame. Additionally, all the R
     functions described in the [official
@@ -59,7 +58,7 @@ The goal of `quadkeyr` is to:
 <img src="vignettes/workflow_quadkey.png" width="80%" style="display: block; margin: auto;" />
 
 2.  [**Generate Raster Images from Quadkey-Identified
-    Data**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_identified_data_to_raster.html)
+    Data**](https://docs.ropensci.org/quadkeyr/articles/quadkey_identified_data_to_raster.html)
     Complete a grid of QuadKeys within a specified area and zoom level,
     and create a `stars` raster. You can also directly convert QuadKeys
     in a data.frame column into an `sf` POLYGON data.frame.
@@ -67,18 +66,29 @@ The goal of `quadkeyr` is to:
 <img src="vignettes/workflow_raster.png" width="80%" style="display: block; margin: auto;" />
 
 3.  [**Convert Facebook Mobility QuadKey-identified Datasets into Raster
-    Files**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html)
+    Files**](https://docs.ropensci.org/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html)
     Convert Facebook mobility data `.csv` files into `.tif` files by day
     and hour reported.
 
 <img src="vignettes/workflow_facebook.png" width="80%" style="display: block; margin: auto;" />
 
 4.  [**Offer an App for visualizing QuadKeys on a
-    map**](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_visualization_app.html)
+    map**](https://docs.ropensci.org/quadkeyr/articles/quadkey_visualization_app.html)
     Introduce a QuadKey visualization application enabling users to
     validate function outcomes.
 
-## Install `quadkeyr` from GitHub
+## Install `quadkeyr`
+
+### R-Universe
+
+For the latest development version of `quadkeyr`:
+
+``` r
+install.packages("quadkeyr",
+                 repos = "https://ropensci.r-universe.dev")
+```
+
+### GitHub
 
 You can install the development version of `quadkeyr` from
 [GitHub](https://github.com/) with:
@@ -90,16 +100,15 @@ remotes::install_github("Fernandez-Lab-WSU/quadkeyr")
 
 ## Code of Conduct
 
-Please, note that the `quadkeyr` project is released with a [Contributor
-Code of
-Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html).
-By contributing to this project, you agree to abide by its terms.
+Please note that this package is released with a [Contributor Code of
+Conduct](https://ropensci.org/code-of-conduct/). By contributing to this
+project, you agree to abide by its terms.
 
 ## Contribute
 
 If you’d like to contribute to this project, please follow the
 [contributing
-guidelines](https://github.com/Fernandez-Lab-WSU/quadkeyr/blob/main/.github/CONTRIBUTING.md)
+guidelines](https://github.com/ropensci/quadkeyr/blob/main/.github/CONTRIBUTING.md)
 
 ## Links of interest
 
