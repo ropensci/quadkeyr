@@ -28,7 +28,7 @@ library(quadkeyr)
 library(ggplot2)
 ```
 
-> Please, visit the [README](https://fernandez-lab-wsu.github.io/quadkeyr/) 
+> Please, visit the [README](https://docs.ropensci.org/quadkeyr/) 
 > for general information about this package
 
 `quadkeyr` functions are the R version of the ones described
@@ -72,7 +72,7 @@ If you want to convert a data.frame with a `quadkey` column
 into a `sf` POLYGON data.frame.
 you can use the function `quadkey_df_to_polygon()` 
 described in the
-[`Generating a Raster Image from Quadkey-Identified Data` vignette](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_identified_data_to_raster.html)
+[`Generating a Raster Image from Quadkey-Identified Data` vignette](https://docs.ropensci.org/quadkeyr/articles/quadkey_identified_data_to_raster.html)
 
 # Advanced use: intermediate functions
 

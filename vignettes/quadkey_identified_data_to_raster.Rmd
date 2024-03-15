@@ -26,7 +26,7 @@ knitr::opts_chunk$set(
 ```
 
 
-> Please, visit the [README](https://fernandez-lab-wsu.github.io/quadkeyr/) 
+> Please, visit the [README](https://docs.ropensci.org/quadkeyr/) 
 > for general information about this package
 
 Create a raster from QuadKey-identified data 
@@ -35,7 +35,7 @@ A detailed explanation of what
 tile coordinates (`tileX`, `tileY`) and 
 pixel coordinates (`pixelX`, `pixelY`) are
 can be found in `quadkeyr` vignette
-[`From QuadKey to Simple Features data.frame and other conversions`](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html)
+[`From QuadKey to Simple Features data.frame and other conversions`](https://docs.ropensci.org/quadkeyr/articles/quadkey_to_sf_conversion.html)
 and in the [official documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system).
 
 # Basic workflow
@@ -317,7 +317,7 @@ a starting point for the bounding box
 are situated within the polygons, 
 but not at a specific position inside each polygon. 
 This was expected, you can read about 
-Quadkey conversion in the vignette [`From a QuadKey to a Simple Features data.frame and other conversions`](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html#caveats-when-converting-coordinates).
+Quadkey conversion in the vignette [`From a QuadKey to a Simple Features data.frame and other conversions`](https://docs.ropensci.org/quadkeyr/articles/quadkey_to_sf_conversion.html#caveats-when-converting-coordinates).
 
 If you want to see the grid, you can also check the app:
 

@@ -26,8 +26,8 @@ Authors@R:
     person("Washington State University", role = c("cph")))
 Description: 'Quadkeyr' functions generate raster images based on QuadKey-identified data, facilitating efficient integration of Tile Maps data into R workflows. In particular, 'Quadkeyr' provides support to process and analyze Facebook mobility datasets within the R environment.
 License: MIT + file LICENSE
-URL: https://fernandez-lab-wsu.github.io/quadkeyr/, https://github.com/Fernandez-Lab-WSU/quadkeyr
-BugReports: https://github.com/Fernandez-Lab-WSU/quadkeyr/issues
+URL: https://docs.ropensci.org/quadkeyr/, https://github.com/ropensci/quadkeyr
+BugReports: https://github.com/ropensci/quadkeyr/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3

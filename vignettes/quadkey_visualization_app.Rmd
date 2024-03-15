@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 library(quadkeyr)
 ```
 
-> Please, visit the [README](https://fernandez-lab-wsu.github.io/quadkeyr/) 
+> Please, visit the [README](https://docs.ropensci.org/quadkeyr/) 
 > for general information about this package
 
 To easily visualize:

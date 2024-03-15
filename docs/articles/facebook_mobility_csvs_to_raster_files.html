@@ -64,7 +64,7 @@
 
       <ul class="navbar-nav">
 <li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/Fernandez-Lab-WSU/quadkeyr/" aria-label="github">
+  <a class="external-link nav-link" href="https://github.com/ropensci/quadkeyr/" aria-label="github">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -83,22 +83,22 @@
                         <h4 data-toc-skip class="author">Florencia
 D’Andrea</h4>
             
-            <h4 data-toc-skip class="date">2024-03-14</h4>
+            <h4 data-toc-skip class="date">2024-03-15</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/Fernandez-Lab-WSU/quadkeyr/blob/HEAD/vignettes/facebook_mobility_csvs_to_raster_files.Rmd" class="external-link"><code>vignettes/facebook_mobility_csvs_to_raster_files.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ropensci/quadkeyr/blob/HEAD/vignettes/facebook_mobility_csvs_to_raster_files.Rmd" class="external-link"><code>vignettes/facebook_mobility_csvs_to_raster_files.Rmd</code></a></small>
       <div class="d-none name"><code>facebook_mobility_csvs_to_raster_files.Rmd</code></div>
     </div>
 
     
     
 <blockquote>
-<p>Please, visit the <a href="https://fernandez-lab-wsu.github.io/quadkeyr/" class="external-link">README</a> for
-general information about this package</p>
+<p>Please, visit the <a href="https://docs.ropensci.org/quadkeyr/" class="external-link">README</a> for general
+information about this package</p>
 </blockquote>
 <p>This section focuses on creating a raster from QuadKey data formatted
 as provided by <a href="https://dataforgood.facebook.com/" class="external-link">Facebook
 mobility data</a>. If you want to convert other QuadKey-identified
-datasets you can read <a href="https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_identified_data_to_raster.html" class="external-link">the
+datasets you can read <a href="https://docs.ropensci.org/quadkeyr/articles/quadkey_identified_data_to_raster.html" class="external-link">the
 previous vignette.</a></p>
 <p>Facebook mobility data for each location and zoom level is stored in
 a separate <code>csv</code> file for each day and time.</p>
@@ -192,7 +192,7 @@ to join the results.</p>
 <p>If creating the regular polygon grid using the bounding box of the
 provided QuadKeys may not work for your case, you can directly create
 the grid for the full area of analysis using
-<code><a href="../reference/create_qk_grid.html">create_qk_grid()</a></code> function. Read the <a href="https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_identified_data_to_raster.html" class="external-link">the
+<code><a href="../reference/create_qk_grid.html">create_qk_grid()</a></code> function. Read the <a href="https://docs.ropensci.org/quadkeyr/articles/quadkey_identified_data_to_raster.html" class="external-link">the
 previous vignette</a> to learn more about this function.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">regular_grid</span> <span class="op">&lt;-</span> <span class="fu">quadkeyr</span><span class="fu">::</span><span class="fu"><a href="../reference/get_regular_polygon_grid.html">get_regular_polygon_grid</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">files</span><span class="op">)</span></span>

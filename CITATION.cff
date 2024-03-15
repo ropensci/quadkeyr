@@ -23,8 +23,8 @@ authors:
   given-names: Pilar
   email: pilar.fernandez@wsu.edu
   orcid: https://orcid.org/0000-0001-8645-2267
-repository-code: https://github.com/Fernandez-Lab-WSU/quadkeyr
-url: https://fernandez-lab-wsu.github.io/quadkeyr/
+repository-code: https://github.com/ropensci/quadkeyr
+url: https://docs.ropensci.org/quadkeyr/
 contact:
 - family-names: D'Andrea
   given-names: Florencia

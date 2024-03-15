@@ -35,14 +35,14 @@ library(rnaturalearth)
 library(stars)
 ```
 
-> Please, visit the [README](https://fernandez-lab-wsu.github.io/quadkeyr/) 
+> Please, visit the [README](https://docs.ropensci.org/quadkeyr/) 
 > for general information about this package
 
 This section focuses on creating a raster from QuadKey data formatted as 
 provided by [Facebook mobility data](https://dataforgood.facebook.com/). 
 If you want to convert other QuadKey-identified datasets 
 you can read
-[the previous vignette.](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_identified_data_to_raster.html)
+[the previous vignette.](https://docs.ropensci.org/quadkeyr/articles/quadkey_identified_data_to_raster.html)
 
 Facebook mobility data for each location and zoom level is stored in
 a separate `csv` file for each day and time.
@@ -138,7 +138,7 @@ QuadKeys may not work for your case,
 you can directly create the grid 
 for the full area of analysis using 
 `create_qk_grid()` function.
-Read the [the previous vignette](https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_identified_data_to_raster.html)
+Read the [the previous vignette](https://docs.ropensci.org/quadkeyr/articles/quadkey_identified_data_to_raster.html)
 to learn more about this function.
 
 
