@@ -1,5 +1,5 @@
 ---
-title: "quadkeyr: Tools for converting QuadKey-identified datasets (Microsoft"'"s Bing Maps Tile system) into raster images"
+title: "quadkeyr: Tools for converting QuadKey-identified datasets (Microsoft's Bing Maps Tile system) into raster images"
 tags:
   - R
   - Microsoft's Bing Maps Tile System
