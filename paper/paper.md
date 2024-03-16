@@ -1,8 +1,5 @@
 ---
-title: 'quadkeyr: Tools for converting
-QuadKey-identified datasets 
-(Microsoft's Bing Maps Tile System)
-into raster images'
+title: "quadkeyr: Tools for converting QuadKey-identified datasets (Microsoft"'"s Bing Maps Tile system) into raster images"
 tags:
   - R
   - Microsoft's Bing Maps Tile System
@@ -47,10 +44,10 @@ Files**](https://docs.ropensci.org/quadkeyr/articles/facebook_mobility_csvs_to_r
 Convert Facebook mobility data `.csv` files into `.tif` files by day and
 hour reported.
 
-4.  [**Offer an App for visualizing QuadKeys on a
-    map**](https://docs.ropensci.org/quadkeyr/articles/quadkey_visualization_app.html)
-    Introduce a QuadKey visualization application enabling users to
-    validate function outcomes.
+4. [**Offer an App for visualizing QuadKeys on a
+   map**](https://docs.ropensci.org/quadkeyr/articles/quadkey_visualization_app.html)
+   Introduce a QuadKey visualization application enabling users to
+   validate function outcomes.
 
 # Statement of need
 
@@ -99,6 +96,6 @@ So far, we are not aware of any other package that provides this functionalities
 
 This project was made possible by the MIDAS-NIH COVID-19 urgent grant program and by the cooperative agreement CDC-RFA-FT-23-0069 from the CDC’s Center for Forecasting and Outbreak Analytics. Its contents are solely the responsibility of the authors and do not necessarily represent the official views of the Centers for Disease Control and Prevention.
 
-We want to acknowledge the ROpenSci community, specially to Maria Paula Caldas, Vincent van Hees and Miles McBain for their comments, which greatly contributed to the enhancement of this package.
+We want to acknowledge the ROpenSci community, specially Maria Paula Caldas, Vincent van Hees and Miles McBain for their comments, which greatly contributed to the enhancement of this package.
 
 # References
