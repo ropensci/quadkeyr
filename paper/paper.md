@@ -39,19 +39,13 @@ The goal of `quadkeyr` is to:
 
 1.  [**Convert a QuadKey to a Simple Features data.frame (and more)**](https://docs.ropensci.org/quadkeyr/articles/quadkey_to_sf_conversion.html)  `quadkeyr` provides functions to convert a QuadKey to a `sf` POINT data.frame or `sf` POLYGON data.frame [@sf]. Additionally, all the R functions described in the official documentation [@bing-maps] for converting QuadKeys to and from tiles, pixels, and geographic coordinates.
 
-<img src="vignettes/workflow_quadkey.png" width="70%" style="display: block; margin: auto;" />
-
 2.  [**Generate Raster Images from Quadkey-Identified
     Data**](https://docs.ropensci.org/quadkeyr/articles/quadkey_identified_data_to_raster.html)     Complete a grid of QuadKeys within a specified area and zoom level, and create a `stars` raster [@stars]. You can also directly convert QuadKeys in a data.frame column into an `sf` POLYGON data.frame.
-
-<img src="vignettes/workflow_raster.png" width="70%" style="display: block; margin: auto;" />
 
 3. [**Convert Facebook Mobility QuadKey-Identified Datasets into Raster
 Files**](https://docs.ropensci.org/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html)
 Convert Facebook mobility data `.csv` files into `.tif` files by day and
 hour reported.
-
-<img src="vignettes/workflow_facebook.png" width="70%" style="display: block; margin: auto;" />
 
 4.  [**Offer an App for visualizing QuadKeys on a
     map**](https://docs.ropensci.org/quadkeyr/articles/quadkey_visualization_app.html)
@@ -66,20 +60,20 @@ Tile maps divide the Earth’s surface into a grid of tiles, with each tile corr
 
 QuadKeys represent a location on a map by encoding its hierarchical spatial position as a sequence of characters \autoref{fig:fig1}. They provide an efficient method to address and retrieve specific map tiles, facilitating rapid display within mapping applications.
 
-![The QuadKey of any tile starts with the QuadKey of its parent tile (the containing tile at the previous level). Image extracted from Microsoft’s Bing Maps Tile System webpage. \label{fig:fig1}](vignettes/bing_quadkeys.jpg)
+![The QuadKey of any tile starts with the QuadKey of its parent tile (the containing tile at the previous level). Image extracted from Microsoft’s Bing Maps Tile System webpage. \label{fig:fig1}](bing_quadkeys.jpg)
 
 
 ## QuadKeys, tiles, pixels and geographic coordinates
 
 Tile maps are composed of pixels that are grouped into tiles. Later, the tiles are converted to QuadKeys to optimize map performance, among other benefits described in detail in the official documentation [@bing-maps].
 
-![Pixels (0, 0) and (2047, 2047) for a map with zoom level 3. Image extracted from Microsoft’s Bing Maps Tile System webpage \label{fig:fig2}](vignettes/bing_pixel.jpg)
+![Pixels (0, 0) and (2047, 2047) for a map with zoom level 3. Image extracted from Microsoft’s Bing Maps Tile System webpage \label{fig:fig2}](bing_pixel.jpg)
 
 Pixels and tiles are expressed as two-dimensional coordinates - (`pixelX`, `pixelY`) and (`tileX`, `tileY`), but QuadKeys are one-dimensional numeric strings. This is important to understand how the conversion works.
 
 Each geographic pair of coordinates (latitude/longitude) will belong to a specific pixel referenced by coordinates (`pixelX`, `pixelY`) for each zoom level. In \autoref{fig:fig2}, you can see pixels (0, 0) and (2047, 2047) for zoom level 3. 
 
-![Tile coordinates. Image extracted from Microsoft’s Bing Maps Tile System webpage. \label{fig:fig3}](vignettes/bing_tiles.jpg)
+![Tile coordinates. Image extracted from Microsoft’s Bing Maps Tile System webpage. \label{fig:fig3}](bing_tiles.jpg)
 
 For instance, a pixel for zoom level 3 represented by the coordinates `pixelX = 255` and `pixelY = 12` is part of the tile with coordinates `tileX = 0` and `tileY = 0`. The pixel with coordinates (0,0) belongs to tile (0,0), and the pixel (2047, 2047) is part of tile (7,7). You can verify this by comparing \autoref{fig:fig2} and \autoref{fig:fig3}.
 
