@@ -23,8 +23,9 @@ generating raster images from Quadkey-Identified data within
 System](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system).
 Designed to integrate Quadkey-Identified data into R workflows, this
 package facilitates the creation of QuadKey grids and raster images and
-introduces specialized functions for the processing of [Facebook
-Mobility data](https://dataforgood.facebook.com/).
+introduces specialized functions for the processing of [Meta Mobility
+data, previously referred to as Facebook mobility
+data](https://dataforgood.facebook.com/).
 
 ### What are QuadKeys in Tile Maps?
 
@@ -67,10 +68,11 @@ The goal of `quadkeyr` is to:
 
 <img src="vignettes/workflow_raster.png" width="80%" style="display: block; margin: auto;" />
 
-3.  [**Convert Facebook Mobility QuadKey-identified Datasets into Raster
+3.  [**Convert Meta (Facebook) Mobility QuadKey-identified Datasets into
+    Raster
     Files**](https://docs.ropensci.org/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html)
-    Convert Facebook mobility data `.csv` files into `.tif` files by day
-    and hour reported.
+    Convert Meta (Facebook) mobility data `.csv` files into `.tif` files
+    by day and hour reported.
 
 <img src="vignettes/workflow_facebook.png" width="80%" style="display: block; margin: auto;" />
 

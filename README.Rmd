@@ -76,8 +76,8 @@ into an `sf` POLYGON data.frame.
 knitr::include_graphics("vignettes/workflow_raster.png")
 ```
 
-3. [**Convert Facebook Mobility QuadKey-identified Datasets into Raster  Files**](https://docs.ropensci.org/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html)
-Convert Facebook mobility data `.csv` files into `.tif` files
+3. [**Convert Meta (Facebook) Mobility QuadKey-identified Datasets into Raster  Files**](https://docs.ropensci.org/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html)
+Convert Meta (Facebook) mobility data `.csv` files into `.tif` files
 by day and hour reported.
   
 ```{r w3, echo = FALSE, out.width= "80%", fig.align='center'}
