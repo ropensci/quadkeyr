@@ -30,7 +30,7 @@ within [Microsoft's Bing Maps Tile System](https://learn.microsoft.com/en-us/bin
 Designed to integrate Quadkey-Identified data into R workflows,
 this package facilitates the creation of QuadKey grids and raster images
 and introduces specialized functions for
-the processing of [Facebook Mobility data](https://dataforgood.facebook.com/).
+the processing of [Meta Mobility data, previously referred to as Facebook mobility data](https://dataforgood.facebook.com/).
 
 ### What are QuadKeys in Tile Maps?
 Tile maps divide the Earth's surface into a grid of tiles, 
@@ -76,7 +76,7 @@ into an `sf` POLYGON data.frame.
 knitr::include_graphics("vignettes/workflow_raster.png")
 ```
 
-3. [**Convert Facebook Mobility QuadKey-identified Datasets into Raster Files**](https://docs.ropensci.org/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html)
+3. [**Convert Facebook Mobility QuadKey-identified Datasets into Raster  Files**](https://docs.ropensci.org/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html)
 Convert Facebook mobility data `.csv` files into `.tif` files
 by day and hour reported.
   

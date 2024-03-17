@@ -1,5 +1,5 @@
 ---
-title: "Converting Facebook Mobility QuadKey-identified Datasets into Raster Files"
+title: "Converting Meta (Facebook) Mobility QuadKey-identified Datasets into Raster Files"
 author: "Florencia D'Andrea"
 date: "`r Sys.Date()`"
 output:
@@ -11,7 +11,7 @@ urlcolor: blue
 pkgdown:
   as_is: true
 vignette: >
-  %\VignetteIndexEntry{Converting Facebook Mobility QuadKey-identified Datasets into Raster Files}
+  %\VignetteIndexEntry{Converting Meta (Facebook) Mobility QuadKey-identified Datasets into Raster Files}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -39,12 +39,12 @@ library(stars)
 > for general information about this package
 
 This section focuses on creating a raster from QuadKey data formatted as 
-provided by [Facebook mobility data](https://dataforgood.facebook.com/). 
+provided by [Meta (formerly known as Facebook) mobility data](https://dataforgood.facebook.com/). 
 If you want to convert other QuadKey-identified datasets 
 you can read
 [the previous vignette.](https://docs.ropensci.org/quadkeyr/articles/quadkey_identified_data_to_raster.html)
 
-Facebook mobility data for each location and zoom level is stored in
+Meta (Facebook) mobility data for each location and zoom level is stored in
 a separate `csv` file for each day and time.
 
 # Basic workflow
@@ -95,7 +95,7 @@ files <- quadkeyr::read_fb_mobility_files(
 
 head(files)
 ```
-> Note: The Facebook mobility data used in `quadkeyr` has been altered
+> Note: The Meta (Facebook) mobility data used in `quadkeyr` has been altered
 > and doesn't represent real values.
 > The examples in this vignette are only to demostrate how functions work.
 > Please, contact [Data for Good](https://dataforgood.facebook.com/) 
@@ -120,7 +120,7 @@ There are two reasons for why we're using a different approach:
   Using a function that calculates each QuadKey by row
   would unnecessarily duplicate calculations.
 
-  2 - When you receive Facebook mobility data,
+  2 - When you receive Meta (Facebook) mobility data,
   you might not always get
   exactly the same QuadKeys in all the files,
   even if they all report the same area. 
@@ -157,7 +157,7 @@ ggplot() +
 ```
 
 Now, we can merge this grid with 
-the Facebook mobility data in the `files` data.frame.
+the Meta (Facebook) mobility data in the `files` data.frame.
 We've chosen to use an `dplyr::inner_join()`
 that will retain only the polygons reported in the files.
 

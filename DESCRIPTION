@@ -1,5 +1,5 @@
 Package: quadkeyr
-Title: Tools for converting QuadKey-identified datasets (Microsoft's Bing Maps Tile System) into raster images
+Title: Tools for converting QuadKey-identified datasets (Microsoft's Bing Maps Tile System) into raster images and analyzing Meta (Facebook) mobility data.
 Version: 0.1.0
 Authors@R: 
     c(person(given = "Florencia",
