@@ -124,7 +124,7 @@ The package `slippymath` [@slippymath] is the sole package
 in the R ecosystem dedicated to analyzing tile maps. 
 Despite some similarities 
 between `quadkeyr` and `slippymath`, 
-both packages were developed with different objectives.
+the packages were developed with different objectives.
 
 The goal of `quadkeyr` is 
 to provide a new tool to facilitate the analysis of Meta (Facebook) Mobility data, 
