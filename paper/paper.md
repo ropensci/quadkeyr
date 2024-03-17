@@ -40,25 +40,26 @@ The goal of `quadkeyr` is to:
 
 1.  [**Convert a QuadKey to a Simple Features data.frame (and more)**](https://docs.ropensci.org/quadkeyr/articles/quadkey_to_sf_conversion.html) 
 `quadkeyr` provides functions to convert QuadKeys
-to a `sf` POINT data.frame or `sf` POLYGON data.frame [@sf]. 
+to a `sf` POINT data.frame or `sf` POLYGON data.frame [@sf]. \autoref{fig:fig1}
 Additionally, it offers all the R functions 
 described in the [official documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system)
 for converting QuadKeys to and from tiles, pixels, and geographic coordinates.
 
-![](../vignettes/workflow-quadkey.png)
+![Convert a QuadKey to a Simple Features data.frame (and more) \label{fig:fig1}](../vignettes/workflow-quadkey.png){height="15pt"}
 
-2.  [**Generate Raster Images from Quadkey-Identified    Data**](https://docs.ropensci.org/quadkeyr/articles/quadkey_identified_data_to_raster.html)     Complete a grid of QuadKeys within a specified area and zoom level, 
+2.  [**Generate Raster Images from Quadkey-Identified    Data**](https://docs.ropensci.org/quadkeyr/articles/quadkey_identified_data_to_raster.html) 
+Complete a grid of QuadKeys within a specified area and zoom level, 
 and create a `stars` raster [@stars]. 
 You can also directly convert QuadKeys in a data.frame column 
-into an `sf` POLYGON data.frame.
+into an `sf` POLYGON data.frame. \autoref{fig:fig2}
 
-![](../vignettes/workflow-raster.png)
+![Generate Raster Images from Quadkey-Identified    Data \label{fig:fig2}](../vignettes/workflow-raster.png){height="15pt"}
 
-3. [**Convert Facebook Mobility QuadKey-Identified Datasets into RasterFiles**](https://docs.ropensci.org/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html)
+3. [**Convert Facebook Mobility QuadKey-Identified Datasets into Raster Images**](https://docs.ropensci.org/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html)
 Convert Facebook mobility data `.csv` files into `.tif` files by day and
-hour reported.
+hour reported. \autoref{fig:fig3}
 
-![](../vignettes/workflow-facebook.png)
+![Convert Facebook Mobility QuadKey-Identified Datasets into Raster Images \label{fig:fig3}](../vignettes/workflow-facebook.png){height="15pt"}
 
 4. [**Offer an App for visualizing QuadKeys on a   map**](https://docs.ropensci.org/quadkeyr/articles/quadkey_visualization_app.html)
 Introduce a QuadKey visualization application 
@@ -74,11 +75,11 @@ at various zoom levels.
 
 QuadKeys represent a location on a map by encoding
 its hierarchical spatial position
-as a sequence of characters \autoref{fig:fig1}. 
+as a sequence of characters \autoref{fig:fig3}. 
 They provide an efficient method to address and retrieve specific map tiles, 
 facilitating rapid display within mapping applications.
 
-![The QuadKey of any tile starts with the QuadKey of its parent tile (the containing tile at the previous level). Image extracted from Microsoft’s Bing Maps Tile System webpage. \label{fig:fig1}](../vignettes/bing_quadkeys.jpg)
+![The QuadKey of any tile starts with the QuadKey of its parent tile (the containing tile at the previous level). Image extracted from Microsoft’s Bing Maps Tile System webpage. \label{fig:fig4}](../vignettes/bing_quadkeys.jpg){height="15pt"}
 
 ## QuadKeys, tiles, pixels and geographic coordinates
 
@@ -87,7 +88,7 @@ Later, the tiles are converted to QuadKeys to optimize map performance,
 among other benefits described in detail 
 in the [official documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system).
 
-![Pixels (0, 0) and (2047, 2047) for a map with zoom level 3. Image extracted from Microsoft’s Bing Maps Tile System webpage \label{fig:fig2}](../vignettes/bing_pixel.jpg)
+![Pixels (0, 0) and (2047, 2047) for a map with zoom level 3. Image extracted from Microsoft’s Bing Maps Tile System webpage \label{fig:fig5}](../vignettes/bing_pixel.jpg){height="15pt"}
 
 Pixels and tiles are expressed as two-dimensional coordinates,
 (`pixelX`, `pixelY`) and (`tileX`, `tileY`),
@@ -97,17 +98,17 @@ This is important to understand how the conversion works.
 Each geographic pair of coordinates (latitude/longitude) 
 will belong to a specific pixel referenced by coordinates (`pixelX`, `pixelY`)
 for each zoom level. 
-In \autoref{fig:fig2}, you can see pixels (0, 0) and (2047, 2047) 
+In \autoref{fig:fig5}, you can see pixels (0, 0) and (2047, 2047) 
 for zoom level 3. 
 
-![Tile coordinates. Image extracted from Microsoft’s Bing Maps Tile System webpage. \label{fig:fig3}](../vignettes/bing_tiles.jpg)
+![Tile coordinates. Image extracted from Microsoft’s Bing Maps Tile System webpage. \label{fig:fig6}](../vignettes/bing_tiles.jpg){height="15pt"}
 
 For instance, a pixel for zoom level 3
 represented by the coordinates `pixelX = 255` and `pixelY = 12` 
 is part of the tile with coordinates `tileX = 0` and `tileY = 0`. 
 The pixel with coordinates (0,0) belongs to tile (0,0), 
 and the pixel (2047, 2047) is part of tile (7,7). 
-You can verify this by comparing \autoref{fig:fig2} and \autoref{fig:fig3}.
+You can verify this by comparing \autoref{fig:fig5} and \autoref{fig:fig6}.
 
 ## Converting QuadKeys to and from tiles, pixels, and geographic coordinates
 
