@@ -15,7 +15,9 @@ Authors@R:
     person(given = "Maria Paula",
            family = "Caldas",
            role = c("rev"),
-           comment = c("Maria Paula Caldas reviewed the package (v. 0.0.0.9000) for rOpenSci, see https://github.com/ropensci/software-review/issues/619")),
+           comment = c(
+             ORCID = "0000-0002-1938-6471",
+             "Maria Paula Caldas reviewed the package (v. 0.0.0.9000) for rOpenSci, see https://github.com/ropensci/software-review/issues/619")),
     person(given = "Vincent",
            family = "van Hees",
            role = c("rev"),
