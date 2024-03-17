@@ -54,7 +54,7 @@ The goal of `quadkeyr` is to:
     data.frame or `sf` POLYGON data.frame. Additionally, it offers all
     the R functions described in the official documentation in the
     [official
-    documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system)  
+    documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system)
     for converting QuadKeys to and from tiles, pixels, and geographic
     coordinates.
 
