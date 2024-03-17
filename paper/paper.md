@@ -42,23 +42,23 @@ The goal of `quadkeyr` is to:
 `quadkeyr` provides functions to convert QuadKeys
 to a `sf` POINT data.frame or `sf` POLYGON data.frame [@sf]. 
 Additionally, it offers all the R functions 
-described in the official documentation [@bing-maps]
+described in the [official documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system)
 for converting QuadKeys to and from tiles, pixels, and geographic coordinates.
 
-![](vignettes/workflow-quadkey.png)
+![](../vignettes/workflow-quadkey.png)
 
 2.  [**Generate Raster Images from Quadkey-Identified    Data**](https://docs.ropensci.org/quadkeyr/articles/quadkey_identified_data_to_raster.html)     Complete a grid of QuadKeys within a specified area and zoom level, 
 and create a `stars` raster [@stars]. 
 You can also directly convert QuadKeys in a data.frame column 
 into an `sf` POLYGON data.frame.
 
-![](vignettes/workflow-raster.png)
+![](../vignettes/workflow-raster.png)
 
 3. [**Convert Facebook Mobility QuadKey-Identified Datasets into RasterFiles**](https://docs.ropensci.org/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html)
 Convert Facebook mobility data `.csv` files into `.tif` files by day and
 hour reported.
 
-![](vignettes/workflow-facebook.png)
+![](../vignettes/workflow-facebook.png)
 
 4. [**Offer an App for visualizing QuadKeys on a   map**](https://docs.ropensci.org/quadkeyr/articles/quadkey_visualization_app.html)
 Introduce a QuadKey visualization application 
@@ -78,16 +78,16 @@ as a sequence of characters \autoref{fig:fig1}.
 They provide an efficient method to address and retrieve specific map tiles, 
 facilitating rapid display within mapping applications.
 
-![The QuadKey of any tile starts with the QuadKey of its parent tile (the containing tile at the previous level). Image extracted from Microsoft’s Bing Maps Tile System webpage. \label{fig:fig1}](vignettes/bing_quadkeys.jpg)
+![The QuadKey of any tile starts with the QuadKey of its parent tile (the containing tile at the previous level). Image extracted from Microsoft’s Bing Maps Tile System webpage. \label{fig:fig1}](../vignettes/bing_quadkeys.jpg)
 
 ## QuadKeys, tiles, pixels and geographic coordinates
 
 Tile maps are composed of pixels that are grouped into tiles. 
 Later, the tiles are converted to QuadKeys to optimize map performance, 
 among other benefits described in detail 
-in the official documentation [@bing-maps].
+in the [official documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system).
 
-![Pixels (0, 0) and (2047, 2047) for a map with zoom level 3. Image extracted from Microsoft’s Bing Maps Tile System webpage \label{fig:fig2}](vignettes/bing_pixel.jpg)
+![Pixels (0, 0) and (2047, 2047) for a map with zoom level 3. Image extracted from Microsoft’s Bing Maps Tile System webpage \label{fig:fig2}](../vignettes/bing_pixel.jpg)
 
 Pixels and tiles are expressed as two-dimensional coordinates,
 (`pixelX`, `pixelY`) and (`tileX`, `tileY`),
@@ -100,7 +100,7 @@ for each zoom level.
 In \autoref{fig:fig2}, you can see pixels (0, 0) and (2047, 2047) 
 for zoom level 3. 
 
-![Tile coordinates. Image extracted from Microsoft’s Bing Maps Tile System webpage. \label{fig:fig3}](vignettes/bing_tiles.jpg)
+![Tile coordinates. Image extracted from Microsoft’s Bing Maps Tile System webpage. \label{fig:fig3}](../vignettes/bing_tiles.jpg)
 
 For instance, a pixel for zoom level 3
 represented by the coordinates `pixelX = 255` and `pixelY = 12` 
@@ -137,14 +137,16 @@ dependency of higher-level tools.
 ## Raster Images
 
 Recent changes in the geospatial R ecosystem 
-such as the deprecation of [@rgdal], [@rgeos] and [@maptools],
-affected packages that relied on them, as [@sp] and [@raster],
+such as the retirement of `rgdal` [@rgdal], `rgeos` [@rgeos] and
+`maptools` [@maptools],
+affected packages that relied on them,
+as `sp` [@sp] and `raster` [@raster],
 which have recently ceased being updated. 
 [@rspatial-evolution-1;@rspatial-evolution-2]
 The `quadkeyr` package addresses this issue 
 by adopting the more modern R `stars` package [@stars], 
 which converts the `sf` POLYGON data.frame provided as input 
-to a `stars` object [@stars].
+to a `stars` object.
 This object can then be saved as a raster image.
 
 ## Facebook mobility data and Data for Good
@@ -171,7 +173,6 @@ the Centers for Disease Control and Prevention.
 
 We want to acknowledge the ROpenSci community, 
 specially Maria Paula Caldas, 
-Vincent van Hees and Miles McBain for their comments,
-which greatly contributed to the enhancement of this package.
+Vincent van Hees and Miles McBain for their review comments.
 
 # References

@@ -1,4 +1,9 @@
-@misc{bing_maps, title={Bing Maps Tile System - Bing Maps}, url={https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}, journal={Bing Maps | Microsoft Learn}, author={Schwartz, Joe}, year={2022}} 
+@misc{bing_maps, 
+   title={Bing Maps Tile System - Bing Maps},
+   url={https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}, 
+   journal={Bing Maps | Microsoft Learn Website}, 
+   author={Schwartz, Joe}, 
+   year={2022}} 
 @Manual{slippymath,
     title = {slippymath: Slippy Map Tile Tools},
     author = {Miles McBain and Michael Sumner},
@@ -27,7 +32,9 @@
   pages = {352},
   doi = {10.1201/9780429459016},
 }
-@misc{data4good, url={https://dataforgood.facebook.com/}, journal={Data For Good at Meta Website}} 
+@misc{data4good, 
+howpublished = {\url{https://dataforgood.facebook.com/}},
+title ={Data For Good at Meta Website}}
 @Book{sp,
     author = {Roger S. Bivand and Edzer Pebesma and Virgilio Gomez-Rubio},
     title = {Applied spatial data analysis with {R}, Second edition},
@@ -43,17 +50,39 @@
     url = {https://CRAN.R-project.org/package=raster},
 }
 @misc{rspatial-evolution-1,
-  author = {r-spatial},
+  author = {Roger Bivand and Edzer Pebesma and Jakub Nowosad and Jose A. Hernandez },
   title = {Preparing CRAN for the retirement of rgdal, rgeos and maptools},
   year = {2024},
   publisher = {GitHub},
   journal = {GitHub repository},
   howpublished = {\url{https://github.com/r-spatial/evolution}},
+  commit = 03612f987016d320687e002992d7e62599fe89d0
 }
 @misc{rspatial-evolution-2,
-  title={Edzer Pebesma, Roger Bivand},
+  title={R-spatial evolution: retirement of rgdal, rgeos and maptools},
   url={https://r-spatial.org/r/2022/04/12/evolution.html#packages-depending-on-sp-and-raster}, 
-  journal={R-spatial evolution: retirement of rgdal, rgeos and maptools}, 
+  journal={r-spatial.org}, 
   author={Pebesma, Edzer and Bivand, Roger}, 
   year={2022}, 
   month={Apr}} 
+@Manual{rgdal,
+  title = {rgdal: Bindings for the 'Geospatial' Data Abstraction Library},
+  author = {Roger Bivand and Tim Keitt and Barry Rowlingson},
+  year = {2023},
+  note = {R package version 1.6-7},
+  url = {https://CRAN.R-project.org/package=rgdal},
+}
+@Manual{rgeos,
+  title = {rgeos: Interface to Geometry Engine - Open Source ('GEOS')},
+  author = {Roger Bivand and Colin Rundel},
+  year = {2022},
+  note = {R package version 0.6-1},
+  url = {https://CRAN.R-project.org/package=rgeos},
+}
+@Manual{maptools,
+  title = {maptools: Tools for Handling Spatial Objects},
+  author = {Roger Bivand and Nicholas Lewin-Koh},
+  year = {2022},
+  note = {R package version 1.1-6},
+  url = {https://CRAN.R-project.org/package=maptools},
+}
