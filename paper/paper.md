@@ -42,7 +42,7 @@ The goal of `quadkeyr` is to:
 `quadkeyr` provides functions to convert QuadKeys
 to a `sf` POINT data.frame or `sf` POLYGON data.frame [@sf]. 
 Additionally, it offers all the R functions 
-described in the official documentation [@bing-maps]
+described in the official documentation [@bing_maps]
 for converting QuadKeys to and from tiles, pixels, and geographic coordinates.
 
 ![](vignettes/workflow-quadkey.png)
@@ -85,7 +85,7 @@ facilitating rapid display within mapping applications.
 Tile maps are composed of pixels that are grouped into tiles. 
 Later, the tiles are converted to QuadKeys to optimize map performance, 
 among other benefits described in detail 
-in the official documentation [@bing-maps].
+in the official documentation [@bing_maps].
 
 ![Pixels (0, 0) and (2047, 2047) for a map with zoom level 3. Image extracted from Microsoft’s Bing Maps Tile System webpage \label{fig:fig2}](vignettes/bing_pixel.jpg)
 
