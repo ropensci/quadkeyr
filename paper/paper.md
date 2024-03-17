@@ -30,7 +30,7 @@ bibliography: paper.bib
 
 The `quadkeyr` R package presents a comprehensive toolkit for 
 generating raster images from Quadkey-Identified data 
-within Microsoft’s Bing Maps Tile System [@bing-maps].
+within Microsoft’s Bing Maps Tile System [@bing_maps].
 Designed to integrate Quadkey-Identified data into R workflows,
 this package facilitates the creation of QuadKey grids and raster images and
 introduces specialized functions for 
