@@ -40,26 +40,26 @@ The goal of `quadkeyr` is to:
 
 1.  [**Convert a QuadKey to a Simple Features data.frame (and more)**](https://docs.ropensci.org/quadkeyr/articles/quadkey_to_sf_conversion.html) 
 `quadkeyr` provides functions to convert QuadKeys
-to a `sf` POINT data.frame or `sf` POLYGON data.frame [@sf]. \autoref{fig:fig1}
+to a `sf` POINT data.frame or `sf` POLYGON data.frame [@sf] (\autoref{fig:fig1}).
 Additionally, it offers all the R functions 
 described in the [official documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system)
 for converting QuadKeys to and from tiles, pixels, and geographic coordinates.
 
-![Convert a QuadKey to a Simple Features data.frame (and more) \label{fig:fig1}](../vignettes/workflow-quadkey.png){height="15pt"}
+![Convert a QuadKey to a Simple Features data.frame (and more) \label{fig:fig1}](../vignettes/workflow_quadkey.png){height="200pt"}
 
 2.  [**Generate Raster Images from Quadkey-Identified    Data**](https://docs.ropensci.org/quadkeyr/articles/quadkey_identified_data_to_raster.html) 
 Complete a grid of QuadKeys within a specified area and zoom level, 
 and create a `stars` raster [@stars]. 
 You can also directly convert QuadKeys in a data.frame column 
-into an `sf` POLYGON data.frame. \autoref{fig:fig2}
+into an `sf` POLYGON data.frame (\autoref{fig:fig2}).
 
-![Generate Raster Images from Quadkey-Identified    Data \label{fig:fig2}](../vignettes/workflow-raster.png){height="15pt"}
+![Generate Raster Images from Quadkey-Identified    Data \label{fig:fig2}](../vignettes/workflow_raster.png){height="200pt"}
 
 3. [**Convert Facebook Mobility QuadKey-Identified Datasets into Raster Images**](https://docs.ropensci.org/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html)
 Convert Facebook mobility data `.csv` files into `.tif` files by day and
-hour reported. \autoref{fig:fig3}
+hour reported (\autoref{fig:fig3}).
 
-![Convert Facebook Mobility QuadKey-Identified Datasets into Raster Images \label{fig:fig3}](../vignettes/workflow-facebook.png){height="15pt"}
+![Convert Facebook Mobility QuadKey-Identified Datasets into Raster Images \label{fig:fig3}](../vignettes/workflow_facebook.png){height="200pt"}
 
 4. [**Offer an App for visualizing QuadKeys on a   map**](https://docs.ropensci.org/quadkeyr/articles/quadkey_visualization_app.html)
 Introduce a QuadKey visualization application 
@@ -79,7 +79,7 @@ as a sequence of characters \autoref{fig:fig3}.
 They provide an efficient method to address and retrieve specific map tiles, 
 facilitating rapid display within mapping applications.
 
-![The QuadKey of any tile starts with the QuadKey of its parent tile (the containing tile at the previous level). Image extracted from Microsoft’s Bing Maps Tile System webpage. \label{fig:fig4}](../vignettes/bing_quadkeys.jpg){height="15pt"}
+![The QuadKey of any tile starts with the QuadKey of its parent tile (the containing tile at the previous level). Image extracted from Microsoft’s Bing Maps Tile System webpage. \label{fig:fig4}](../vignettes/bing_quadkeys.jpg){height="200pt"}
 
 ## QuadKeys, tiles, pixels and geographic coordinates
 
@@ -88,7 +88,7 @@ Later, the tiles are converted to QuadKeys to optimize map performance,
 among other benefits described in detail 
 in the [official documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system).
 
-![Pixels (0, 0) and (2047, 2047) for a map with zoom level 3. Image extracted from Microsoft’s Bing Maps Tile System webpage \label{fig:fig5}](../vignettes/bing_pixel.jpg){height="15pt"}
+![Pixels (0, 0) and (2047, 2047) for a map with zoom level 3. Image extracted from Microsoft’s Bing Maps Tile System webpage \label{fig:fig5}](../vignettes/bing_pixel.jpg){height="200pt"}
 
 Pixels and tiles are expressed as two-dimensional coordinates,
 (`pixelX`, `pixelY`) and (`tileX`, `tileY`),
@@ -101,7 +101,7 @@ for each zoom level.
 In \autoref{fig:fig5}, you can see pixels (0, 0) and (2047, 2047) 
 for zoom level 3. 
 
-![Tile coordinates. Image extracted from Microsoft’s Bing Maps Tile System webpage. \label{fig:fig6}](../vignettes/bing_tiles.jpg){height="15pt"}
+![Tile coordinates. Image extracted from Microsoft’s Bing Maps Tile System webpage. \label{fig:fig6}](../vignettes/bing_tiles.jpg){height="200pt"}
 
 For instance, a pixel for zoom level 3
 represented by the coordinates `pixelX = 255` and `pixelY = 12` 
