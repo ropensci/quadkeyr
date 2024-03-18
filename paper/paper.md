@@ -38,16 +38,16 @@ the processing of Meta (also known as Facebook) Mobility data [@data4good].
 
 The goal of `quadkeyr` is to:
 
-1.  [**Convert a QuadKey to a Simple Features data.frame (and more)**](https://docs.ropensci.org/quadkeyr/articles/quadkey_to_sf_conversion.html) 
+1.  [**Convert a QuadKey to a Simple Features data.frame (and more):**](https://docs.ropensci.org/quadkeyr/articles/quadkey_to_sf_conversion.html) 
 `quadkeyr` provides functions to convert QuadKeys
-to a `sf` POINT data.frame or `sf` POLYGON data.frame [@sf] (\autoref{fig:fig1}).
+to an `sf` POINT data.frame or `sf` POLYGON data.frame [@sf] (\autoref{fig:fig1}).
 Additionally, it offers all the R functions 
 described in the [official documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system) [@bing_maps]
 for converting QuadKeys to and from tiles, pixels, and geographic coordinates.
 
 ![Convert a QuadKey to a Simple Features data.frame \label{fig:fig1}](../vignettes/workflow_quadkey.png){height="200pt"}
 
-2.  [**Generate Raster Images from Quadkey-Identified    Data**](https://docs.ropensci.org/quadkeyr/articles/quadkey_identified_data_to_raster.html) 
+2.  [**Generate Raster Images from Quadkey-Identified    Data:**](https://docs.ropensci.org/quadkeyr/articles/quadkey_identified_data_to_raster.html) 
 Complete a grid of QuadKeys within a specified area and zoom level, 
 and create a `stars` raster [@stars]. 
 You can also directly convert QuadKeys in a data.frame column 
@@ -55,13 +55,13 @@ into an `sf` POLYGON data.frame (\autoref{fig:fig2}).
 
 ![Generate a `sf` POLYGON data.frame or a `stars` object from Quadkey-Identified datasets \label{fig:fig2}](../vignettes/workflow_raster.png){height="200pt"}
 
-3. [**Convert Meta (Facebook) Mobility QuadKey-Identified Datasets into Raster Files**](https://docs.ropensci.org/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html)
+3. [**Convert Meta (Facebook) Mobility QuadKey-Identified Datasets into Raster Files:**](https://docs.ropensci.org/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html)
 Convert Meta (Facebook) mobility data `.csv` files into `.tif` files by day and
 hour reported (\autoref{fig:fig3}).
 
 ![Convert Meta (Facebook) Mobility QuadKey-Identified Datasets into Raster Files \label{fig:fig3}](../vignettes/workflow_facebook.png){height="200pt"}
 
-4. [**Offer an App for visualizing QuadKeys on a   map**](https://docs.ropensci.org/quadkeyr/articles/quadkey_visualization_app.html)
+4. [**Offer an App for visualizing QuadKeys on a   map:**](https://docs.ropensci.org/quadkeyr/articles/quadkey_visualization_app.html)
 Introduce a QuadKey visualization application 
 enabling users to validate function outcomes.
 
@@ -75,7 +75,7 @@ at various zoom levels.
 
 QuadKeys represent a location on a map by encoding
 its hierarchical spatial position
-as a sequence of characters \autoref{fig:fig3}. 
+as a sequence of characters (\autoref{fig:fig3}). 
 They provide an efficient method to address and retrieve specific map tiles, 
 facilitating rapid display within mapping applications.
 
@@ -124,7 +124,7 @@ The package `slippymath` [@slippymath] is the sole package
 in the R ecosystem dedicated to analyzing tile maps. 
 Despite some similarities 
 between `quadkeyr` and `slippymath`, 
-both packages were developed with different objectives.
+the packages were developed with different objectives.
 
 The goal of `quadkeyr` is 
 to provide a new tool to facilitate the analysis of Meta (Facebook) Mobility data, 
