@@ -1,14 +1,14 @@
 ---
-title: "quadkeyr: Tools for converting QuadKey-identified datasets into raster images and analyzing Meta (Facebook) Mobility Data."
+title: "quadkeyr: Tools for converting QuadKey-identified datasets (Microsoft's Bing Maps Tile System) into raster images and analyzing Meta (Facebook) Mobility Data"
 tags:
   - R
   - Microsoft's Bing Maps Tile System
   - QuadKey
   - Tile maps
   - Geospatial
-  - Raster
-  - Meta mobility data
-  - Meta (Facebook) Mobility data
+  - Raster Image
+  - Meta Mobility Data
+  - Facebook Mobility Data
 authors:
   - name: "Florencia D'Andrea"
     orcid: 0000-0002-0041-097X
@@ -23,7 +23,7 @@ affiliations:
    index: 1
  - name: Washington State University, USA
    index: 2
-date: 13 February 2024
+date: 18 March 2024
 bibliography: paper.bib
 ---
 
@@ -77,7 +77,8 @@ at various zoom levels.
 QuadKeys represent a location on a map by encoding
 its hierarchical spatial position
 as a sequence of characters (\autoref{fig:fig4}). 
-They provide an efficient method to address and retrieve specific map tiles, 
+They provide an efficient method 
+to address and retrieve specific map tiles, 
 facilitating rapid display within mapping applications.
 
 ![The QuadKey of any tile starts with the QuadKey of its parent tile (the containing tile at the previous level). Image extracted from Microsoft’s Bing Maps Tile System webpage. \label{fig:fig4}](../vignettes/bing_quadkeys.jpg){height="200pt"}
@@ -177,6 +178,7 @@ the Centers for Disease Control and Prevention.
 We want to acknowledge the ROpenSci community, 
 especially Emily Riederer, Maria Paula Caldas,
 Vincent van Hees, and Miles McBain, 
-for their valuable comments and support during the review process.
+for their valuable comments and support
+during the review process.
 
 # References
