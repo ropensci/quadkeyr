@@ -46,7 +46,7 @@ Additionally, it offers all the R functions
 described in the [official documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system) [@bing_maps]
 for converting QuadKeys to and from tiles, pixels, and geographic coordinates.
 
-![Convert a QuadKey to a Simple Features data.frame \label{fig:fig1}](../vignettes/workflow_quadkey.png){height="200pt"}
+![Convert a QuadKey to a Simple Features data.frame. \label{fig:fig1}](../vignettes/workflow_quadkey.png){height="200pt"}
 
 2.  [**Generate Raster Images from Quadkey-Identified    Data:**](https://docs.ropensci.org/quadkeyr/articles/quadkey_identified_data_to_raster.html) 
 Complete a grid of QuadKeys within a specified area and zoom level, 
@@ -54,13 +54,13 @@ and create a `stars` raster [@stars].
 You can also directly convert QuadKeys in a data.frame column 
 into an `sf` POLYGON data.frame (\autoref{fig:fig2}).
 
-![Generate a `sf` POLYGON data.frame or a `stars` object from Quadkey-Identified datasets \label{fig:fig2}](../vignettes/workflow_raster.png){height="200pt"}
+![Generate a `sf` POLYGON data.frame or a `stars` object from Quadkey-Identified datasets. \label{fig:fig2}](../vignettes/workflow_raster.png){height="200pt"}
 
 3. [**Convert Meta (Facebook) Mobility QuadKey-Identified Datasets into Raster Files:**](https://docs.ropensci.org/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html)
 Convert Meta (Facebook) mobility data `.csv` files into `.tif` files by day and
 hour reported (\autoref{fig:fig3}).
 
-![Convert Meta (Facebook) Mobility QuadKey-Identified Datasets into Raster Files \label{fig:fig3}](../vignettes/workflow_facebook.png){height="200pt"}
+![Convert Meta (Facebook) Mobility QuadKey-Identified Datasets into Raster Files. \label{fig:fig3}](../vignettes/workflow_facebook.png){height="200pt"}
 
 4. [**Offer an App for visualizing QuadKeys on a   map:**](https://docs.ropensci.org/quadkeyr/articles/quadkey_visualization_app.html)
 Introduce a QuadKey visualization application 
@@ -90,7 +90,7 @@ Later, the tiles are converted to QuadKeys to optimize map performance,
 among other benefits described in detail 
 in the [official documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system) [@bing_maps].
 
-![Pixels (0, 0) and (2047, 2047) for a map with zoom level 3. Image extracted from Microsoft’s Bing Maps Tile System webpage \label{fig:fig5}](../vignettes/bing_pixel.jpg){height="170pt"}
+![Pixels (0, 0) and (2047, 2047) for a map with zoom level 3. Image extracted from Microsoft’s Bing Maps Tile System webpage. \label{fig:fig5}](../vignettes/bing_pixel.jpg){height="170pt"}
 
 Pixels and tiles are expressed as two-dimensional coordinates,
 (`pixelX`, `pixelY`) and (`tileX`, `tileY`),
