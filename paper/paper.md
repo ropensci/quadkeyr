@@ -17,8 +17,9 @@ authors:
   - name: "Pilar Fernandez"
     orcid: 0000-0001-8645-2267
     affiliation: 2
+    corresponding: true
 affiliations:
- - name: Contract - Washington State University, USA
+ - name: Contractor - Washington State University, USA
    index: 1
  - name: Washington State University, USA
    index: 2
@@ -142,8 +143,8 @@ such as the retirement of `rgdal` [@rgdal], `rgeos` [@rgeos] and
 `maptools` [@maptools],
 affected packages that relied on them,
 as `sp` [@sp] and `raster` [@raster],
-which have recently ceased being updated. 
-[@rspatial-evolution-1;@rspatial-evolution-2]
+which have recently ceased being updated 
+[@rspatial-evolution-1;@rspatial-evolution-2].
 The `quadkeyr` package addresses this issue 
 by adopting the more modern R `stars` package [@stars], 
 which converts the `sf` POLYGON data.frame provided as input 
@@ -161,7 +162,7 @@ To facilitate the processing of these data,
 designed to analyze the `.csv` files 
 by date and hour provided and generate `.tif` raster images 
 using no more than three functions.
-So far, we are not aware of any other package
+So far, we are not aware of any other open-source package
 that provides these functionalities.
 
 # Acknowledgements
