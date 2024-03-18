@@ -19,9 +19,9 @@ authors:
     affiliation: 2
     corresponding: true
 affiliations:
- - name: Independent Researcher. Contractor - Washington State University, USA
+ - name: Independent Researcher
    index: 1
- - name: Washington State University, USA
+ - name: Paul G. Allen School for Global Health, Washington State University, USA
    index: 2
 date: 18 March 2024
 bibliography: paper.bib
