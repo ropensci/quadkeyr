@@ -54,7 +54,7 @@ and create a `stars` raster [@stars].
 You can also directly convert QuadKeys in a data.frame column 
 into an `sf` POLYGON data.frame (\autoref{fig:fig2}).
 
-![Generate a `sf` POLYGON data.frame or a `stars` object from Quadkey-Identified datasets \label{fig:fig2}](../vignettes/workflow_raster.png){height="200pt"}
+![Generate an `sf` POLYGON data.frame or a `stars` object from Quadkey-Identified datasets \label{fig:fig2}](../vignettes/workflow_raster.png){height="200pt"}
 
 3. [**Convert Meta (Facebook) Mobility QuadKey-Identified Datasets into Raster Files:**](https://docs.ropensci.org/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html)
 Convert Meta (Facebook) mobility data `.csv` files into `.tif` files by day and
