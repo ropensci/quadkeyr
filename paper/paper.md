@@ -1,5 +1,5 @@
 ---
-title: "quadkeyr: Tools for converting QuadKey-identified datasets (Microsoft's Bing Maps Tile system) into raster images and analyzing Meta (Facebook) Mobility Data."
+title: "quadkeyr: Tools for converting QuadKey-identified datasets into raster images and analyzing Meta (Facebook) Mobility Data."
 tags:
   - R
   - Microsoft's Bing Maps Tile System
@@ -19,7 +19,7 @@ authors:
     affiliation: 2
     corresponding: true
 affiliations:
- - name: Contractor - Washington State University, USA
+ - name: Independent Researcher. Contractor - Washington State University, USA
    index: 1
  - name: Washington State University, USA
    index: 2
