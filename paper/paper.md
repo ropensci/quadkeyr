@@ -4,7 +4,7 @@ tags:
   - R
   - Microsoft's Bing Maps Tile System
   - QuadKey
-  - Tile map
+  - Tile maps
   - Geospatial
   - Raster
   - Meta mobility data
@@ -76,7 +76,7 @@ at various zoom levels.
 
 QuadKeys represent a location on a map by encoding
 its hierarchical spatial position
-as a sequence of characters (\autoref{fig:fig3}). 
+as a sequence of characters (\autoref{fig:fig4}). 
 They provide an efficient method to address and retrieve specific map tiles, 
 facilitating rapid display within mapping applications.
 
