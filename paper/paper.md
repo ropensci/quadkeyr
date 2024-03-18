@@ -46,9 +46,9 @@ Additionally, it offers all the R functions
 described in the [official documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system) [@bing_maps]
 for converting QuadKeys to and from tiles, pixels, and geographic coordinates.
 
-![Convert a QuadKey to a Simple Features data.frame \label{fig:fig1}](../vignettes/workflow_quadkey.png){height="200pt"}
+![Convert a QuadKey to a Simple Features data.frame. \label{fig:fig1}](../vignettes/workflow_quadkey.png){height="200pt"}
 
-2.  [**Generate Raster Images from Quadkey-Identified    Data:**](https://docs.ropensci.org/quadkeyr/articles/quadkey_identified_data_to_raster.html) 
+2.  [**Generate Raster Images from Quadkey-Identified Data:**](https://docs.ropensci.org/quadkeyr/articles/quadkey_identified_data_to_raster.html) 
 Complete a grid of QuadKeys within a specified area and zoom level, 
 and create a `stars` raster [@stars]. 
 You can also directly convert QuadKeys in a data.frame column 
@@ -60,9 +60,9 @@ into an `sf` POLYGON data.frame (\autoref{fig:fig2}).
 Convert Meta (Facebook) mobility data `.csv` files into `.tif` files by day and
 hour reported (\autoref{fig:fig3}).
 
-![Convert Meta (Facebook) Mobility QuadKey-Identified Datasets into Raster Files \label{fig:fig3}](../vignettes/workflow_facebook.png){height="200pt"}
+![Convert Meta (Facebook) Mobility QuadKey-Identified Datasets into Raster Files. \label{fig:fig3}](../vignettes/workflow_facebook.png){height="200pt"}
 
-4. [**Offer an App for visualizing QuadKeys on a   map:**](https://docs.ropensci.org/quadkeyr/articles/quadkey_visualization_app.html)
+4. [**Offer an App for visualizing QuadKeys on a map:**](https://docs.ropensci.org/quadkeyr/articles/quadkey_visualization_app.html)
 Introduce a QuadKey visualization application 
 enabling users to validate function outcomes.
 
@@ -90,7 +90,7 @@ Later, the tiles are converted to QuadKeys to optimize map performance,
 among other benefits described in detail 
 in the [official documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system) [@bing_maps].
 
-![Pixels (0, 0) and (2047, 2047) for a map with zoom level 3. Image extracted from Microsoft’s Bing Maps Tile System webpage \label{fig:fig5}](../vignettes/bing_pixel.jpg){height="170pt"}
+![Pixels (0, 0) and (2047, 2047) for a map with zoom level 3. Image extracted from Microsoft’s Bing Maps Tile System webpage. \label{fig:fig5}](../vignettes/bing_pixel.jpg){height="170pt"}
 
 Pixels and tiles are expressed as two-dimensional coordinates,
 (`pixelX`, `pixelY`) and (`tileX`, `tileY`),
@@ -120,8 +120,10 @@ the structure of Tile Maps. All of these intermediary functions,
 as well as those facilitating the reverse conversion, 
 are available for use within the `quadkeyr` package.
 
-There are different tools in Python, R and other programming languages 
-that help to convert Quadkeys to tiles, pixel or geographic coordinates as well. 
+There are different tools in Python, 
+R and other programming languages 
+that help to convert Quadkeys to 
+tiles, pixel or geographic coordinates as well. 
 The package `slippymath` [@slippymath] is the sole package
 in the R ecosystem dedicated to analyzing tile maps. 
 Despite some similarities 
@@ -129,11 +131,12 @@ between `quadkeyr` and `slippymath`,
 the packages were developed with different objectives.
 
 The goal of `quadkeyr` is 
-to provide a new tool to facilitate the analysis of Meta (Facebook) Mobility data, 
+to provide a new tool to facilitate 
+the analysis of Meta (Facebook) Mobility Data, 
 so it has specific functions tailored for this purpose
-and is based solely on the Microsoft's Bing Tile Maps documentation.
+and is based solely on Microsoft's Bing Tile Maps documentation.
 On the other hand, `slippymath` is a mature and smaller package 
-with general tools for analyzing tile maps.
+featuring general functions for processing tile maps.
 It was designed to be easily incorporated as a 
 dependency of higher-level tools.
 
@@ -152,7 +155,7 @@ which converts the `sf` POLYGON data.frame provided as input
 to a `stars` object.
 This object can then be saved as a raster image.
 
-## Meta (Facebook) mobility data and Data for Good
+## Meta (Facebook) Mobility Data and Data for Good
 
 Meta (formerly Facebook) provides datasets
 in their program Data for good 
@@ -179,6 +182,8 @@ We want to acknowledge the ROpenSci community,
 especially Emily Riederer, Maria Paula Caldas,
 Vincent van Hees, and Miles McBain, 
 for their valuable comments and support
-during the review process.
+during the review process, 
+and also Øystein Sørensen
+for proofreading of this manuscript.
 
 # References
