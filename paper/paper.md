@@ -45,7 +45,7 @@ Additionally, it offers all the R functions
 described in the [official documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system) [@bing_maps]
 for converting QuadKeys to and from tiles, pixels, and geographic coordinates.
 
-![Convert a QuadKey to a Simple Features data.frame (and more) \label{fig:fig1}](../vignettes/workflow_quadkey.png){height="200pt"}
+![Convert a QuadKey to a Simple Features data.frame \label{fig:fig1}](../vignettes/workflow_quadkey.png){height="200pt"}
 
 2.  [**Generate Raster Images from Quadkey-Identified    Data**](https://docs.ropensci.org/quadkeyr/articles/quadkey_identified_data_to_raster.html) 
 Complete a grid of QuadKeys within a specified area and zoom level, 
@@ -79,7 +79,7 @@ as a sequence of characters \autoref{fig:fig3}.
 They provide an efficient method to address and retrieve specific map tiles, 
 facilitating rapid display within mapping applications.
 
-![The QuadKey of any tile starts with the QuadKey of its parent tile (the containing tile at the previous level). Image extracted from Microsoft’s Bing Maps Tile System webpage. \label{fig:fig4}](../vignettes/bing_quadkeys.jpg){height="170pt"}
+![The QuadKey of any tile starts with the QuadKey of its parent tile (the containing tile at the previous level). Image extracted from Microsoft’s Bing Maps Tile System webpage. \label{fig:fig4}](../vignettes/bing_quadkeys.jpg){height="200pt"}
 
 ## QuadKeys, tiles, pixels and geographic coordinates
 
@@ -174,7 +174,8 @@ do not necessarily represent the official views of
 the Centers for Disease Control and Prevention.
 
 We want to acknowledge the ROpenSci community, 
-specially Maria Paula Caldas, 
-Vincent van Hees and Miles McBain for their review comments.
+especially Emily Riederer, Maria Paula Caldas,
+Vincent van Hees, and Miles McBain, 
+for their valuable comments and support during the review process.
 
 # References
