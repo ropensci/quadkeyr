@@ -13,6 +13,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![Status at rOpenSci Software Peer
 Review](https://badges.ropensci.org/619_status.svg)](https://github.com/ropensci/software-review/issues/619)
 [![status](https://joss.theoj.org/papers/3301002821465f4f160e7ce272c00c6f/status.svg)](https://joss.theoj.org/papers/3301002821465f4f160e7ce272c00c6f)
+[![DOI](https://zenodo.org/badge/727433503.svg)](https://zenodo.org/doi/10.5281/zenodo.10835287)
 <!-- badges: end -->
 
 ### What can this package do for you?
