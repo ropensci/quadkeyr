@@ -53,8 +53,7 @@ The goal of `quadkeyr` is to:
     more)**](https://docs.ropensci.org/quadkeyr/articles/quadkey_to_sf_conversion.html)
     `quadkeyr` provides functions to convert a QuadKey to a `sf` POINT
     data.frame or `sf` POLYGON data.frame. Additionally, it offers all
-    the R functions described in the official documentation in the
-    [official
+    the R functions described in the [official
     documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system)
     for converting QuadKeys to and from tiles, pixels, and geographic
     coordinates.
