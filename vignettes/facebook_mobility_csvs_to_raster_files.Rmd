@@ -11,7 +11,7 @@ urlcolor: blue
 pkgdown:
   as_is: true
 vignette: >
-  %\VignetteIndexEntry{Converting Meta (Facebook) Mobility QuadKey-identified Datasets into Raster Files}
+  %\VignetteIndexEntry{Meta (Facebook) Mobility Data into Raster Files}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
