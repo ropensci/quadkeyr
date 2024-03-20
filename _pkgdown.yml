@@ -1,6 +1,10 @@
 url: ~
 template:
   bootstrap: 5
+navbar:
+  structure:
+    right: [search]
+    left: [reference, articles, news, github]
 articles:
 - title: Articles
   navbar: ~
@@ -9,7 +13,6 @@ articles:
   - quadkey_identified_data_to_raster
   - facebook_mobility_csvs_to_raster_files
   - quadkey_visualization_app
-
 reference:
   - title: From a QuadKey to a Simple Features data.frame and other conversions
     desc: >

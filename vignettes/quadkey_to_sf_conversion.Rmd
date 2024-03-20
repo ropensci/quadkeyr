@@ -11,7 +11,7 @@ urlcolor: blue
 pkgdown:
   as_is: true
 vignette: >
-  %\VignetteIndexEntry{Conversions}
+  %\VignetteIndexEntry{From a QuadKey to a Simple Features data.frame and other conversions}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

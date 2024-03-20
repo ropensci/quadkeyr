@@ -9,7 +9,7 @@ urlcolor: blue
 pkgdown:
   as_is: true
 vignette: >
-  %\VignetteIndexEntry{Generating a Raster Image}
+  %\VignetteIndexEntry{Generating a Raster Image from Quadkey-Identified Data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
