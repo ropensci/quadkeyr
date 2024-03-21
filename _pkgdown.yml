@@ -5,14 +5,18 @@ navbar:
   structure:
     right: [search]
     left: [reference, articles, news, github]
-articles:
-- title: Articles
-  navbar: ~
-  contents:
-  - quadkey_to_sf_conversion
-  - quadkey_identified_data_to_raster
-  - facebook_mobility_csvs_to_raster_files
-  - quadkey_visualization_app
+  components:
+    articles:
+      text: Articles
+      menu:
+      - text: Conversions
+        href: articles/quadkey_to_sf_conversion.html
+      - text: Raster creation
+        href: articles/quadkey_identified_data_to_raster.html
+      - text: Facebook Mobility Data
+        href: articles/facebook_mobility_csvs_to_raster_files.html
+      - text: App
+        href: articles/quadkey_visualization_app.html
 reference:
   - title: From a QuadKey to a Simple Features data.frame and other conversions
     desc: >
