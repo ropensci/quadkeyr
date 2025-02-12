@@ -98,7 +98,7 @@ You can install the development version of `quadkeyr` from
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("Fernandez-Lab-WSU/quadkeyr")
+remotes::install_github("ropensci/quadkeyr")
 ```
 
 ## Code of Conduct
