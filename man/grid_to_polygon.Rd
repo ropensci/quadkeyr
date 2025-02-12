@@ -20,7 +20,7 @@ To transform these coordinates into square polygons, the function
 supplements the grid by adding a row and column of tiles. These points
 introduce QuadKeys located at the border of the area using the internal
 function \code{complete_grid_for_polygons()}.
-The function constructs the polygons using all the points of the grid.
+The function builds the polygons using all the points of the grid.
 Note that it's possible to associate each QuadKey with its square polygon.
 }
 \examples{

@@ -1,5 +1,5 @@
 Package: quadkeyr
-Title: Tools for converting QuadKey-identified datasets (Microsoft's Bing Maps Tile System) into raster images and analyzing Meta (Facebook) Mobility Data.
+Title: Tools for converting QuadKey-identified datasets (Microsoft's Bing Maps Tile System) into raster images and analyzing Meta (Facebook) Mobility Data
 Version: 0.1.0
 Authors@R: 
     c(person(given = "Florencia",
@@ -34,7 +34,7 @@ URL: https://docs.ropensci.org/quadkeyr/, https://github.com/ropensci/quadkeyr
 BugReports: https://github.com/ropensci/quadkeyr/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 Suggests: 
     bslib (>= 0.6.1),
     DT (>= 0.31),

@@ -4,10 +4,16 @@
 \alias{missing_combinations}
 \title{Detect dates and hours missing in filenames}
 \usage{
-missing_combinations(data)
+missing_combinations(data, hour_col = "hour", date_col = "day")
 }
 \arguments{
-\item{data}{A data.frame with a \code{day} and hour column.}
+\item{data}{A data.frame with one column for the raster's date
+and another for the hour. If not explicitly specified
+in the function's arguments, the column names are \code{day} and \code{hour}.}
+
+\item{hour_col}{The name of the column with the hour information.}
+
+\item{date_col}{The name of the column with the date information.}
 }
 \value{
 A data.frame with the missing days and hours, if any.
