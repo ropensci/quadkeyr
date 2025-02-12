@@ -44,44 +44,22 @@ data <- data.frame(
 test_that("Test `missing_combinations()` function", {
 
   # Test if output is a data frame
-  expect_is(missing_combinations(data), "data.frame")
+  expect_s3_class(missing_combinations(data), "data.frame")
 
-  # Test if output columns match expected columns
+  # Test if output columns match expected columns 
+  # if not other arguments are passed
   expect_true(all(c("day", "hour") %in% names(missing_combinations(data))))
 
   # Test if all missing combinations are identified
-  expected_missing <- structure(list(
-    day = structure(c(
-      19359, 19360,
-      19361, 19362,
-      19358, 19359,
-      19361, 19362,
-      19358, 19359,
-      19360, 19361
-    ),
-    class = "Date"
-    ),
-    hour = c(
-      0, 0, 0, 0, 8, 8, 8, 8,
-      16, 16, 16, 16
-    )
-  ),
-  out.attrs = list(
-    dim = c(day = 5L, hour = 3L),
-    dimnames = list(day = c(
-      "day=2023-01-01",
-      "day=2023-01-02",
-      "day=2023-01-03",
-      "day=2023-01-04",
-      "day=2023-01-05"
-    ), hour = c("hour= 0", "hour= 8", "hour=16"))
-  ),
-  class = "data.frame", row.names = c(NA, -12L)
+  expected_missing <- data.frame(
+    day = as.Date(c("2023-01-01", "2023-01-01", "2023-01-02", "2023-01-02", 
+                    "2023-01-02", "2023-01-03", "2023-01-03", "2023-01-04", 
+                    "2023-01-04", "2023-01-04", "2023-01-05", "2023-01-05")),
+    hour = c(8, 16, 0, 8, 16, 0, 16, 0, 8, 16, 0, 8)
   )
-
+  
   expect_equal(missing_combinations(data), expected_missing)
 })
-
 test_that("`read_fb_mobility_files()` passes keep_format arg correctly ", { 
   
   files <- read_fb_mobility_files(
@@ -111,6 +89,47 @@ test_that("`read_fb_mobility_files()` passes keep_format arg correctly ", {
     )
   )
 expect_type(files$n_crisis, "character")
+})
+
+test_that("missing_combinations() works when all combinations are present", {
+  data <- expand.grid(
+    day = as.Date("2023-01-01"),
+    hour = c(0, 8, 16)
+  )
+  
+  result <- missing_combinations(data)
+  expect_true(nrow(result) == 0)
+})
+
+# This are the column names we use for GeoCovidApp
+test_that("missing_combinations() works with 'hora' and 'fecha' as col names", {
+  data <- data.frame(
+    fecha = as.Date(c("2023-01-01", "2023-01-02")),
+    hora = c(0, 8)
+  )
+  
+  expected <- data.frame(
+    fecha = as.Date(c("2023-01-01", "2023-01-01", "2023-01-02", "2023-01-02")),
+    hora = c(8, 16, 0, 16)
+  )
+  
+  result <- missing_combinations(data, hour_col = "hora", date_col = "fecha")
+  expect_equal(result, expected)
+})
+
+test_that("missing_combinations() works with single-day input", {
+  data <- data.frame(
+    fecha = as.Date("2023-01-01"),
+    hora = c(0, 8)
+  )
+  
+  expected <- data.frame(
+    fecha = as.Date("2023-01-01"),
+    hora = c(16)
+  )
+  
+  result <- missing_combinations(data, hour_col = "hora", date_col = "fecha")
+  expect_equal(result, expected)
 })
 
 

@@ -164,10 +164,15 @@ format_fb_data <- function(data,
 #' This function reads the data extracted from the current files and detects
 #' if any file for a particular day or hour is missing.
 #'
-#' @param data A data.frame with a `day` and hour column.
-#'
-#' @importFrom rlang .data
-#'
+#' @param data A data.frame with one column for the raster's date 
+#' and another for the hour. If not explicitly specified
+#'in the function's arguments, the column names are `day` and `hour`.
+#' @param hour_col The name of the column with the hour information.
+#' @param date_col The name of the column with the date information.
+#' 
+#' @importFrom rlang .data `:=`
+#' @importFrom dplyr anti_join
+#' 
 #' @return A data.frame with the missing days and hours, if any.
 #' @export
 #' @examples
@@ -180,24 +185,27 @@ format_fb_data <- function(data,
 #' )
 #'
 #' missing_combinations(data)
-missing_combinations <- function(data) {
+missing_combinations <- function(data, hour_col = "hour", date_col = "day") {
   data <- data |>
-    dplyr::mutate(day = as.Date(.data$day))
-
+    dplyr::mutate("{date_col}" := as.Date(.data[[date_col]]))
+  
+  # Create a sequence of dates, ensuring no NA issues
+  all_dates <- seq(as.Date(min(data[[date_col]])), 
+                   as.Date(max(data[[date_col]])), 
+                   by = "days")
+  
   # Generate all combinations of days and times
-  all_combinations <- expand.grid(
-    day = seq(
-      from = min(data$day),
-      to = max(data$day),
-      by = "days"
-    ),
-    hour = c(0, 8, 16)
+  # I have to remove expand.grid because of the attributes
+  all_combinations <- tidyr::crossing(
+    "{date_col}" := all_dates,
+    "{hour_col}" := c(0, 8, 16)
   )
-
+  
   # Select the dates not present on the dataset
   missing_combinations <- dplyr::anti_join(all_combinations,
-    data,
-    by = c("day", "hour")
-  )
+                                           data,
+                                           by = c(date_col, hour_col)) |> 
+                                as.data.frame()
+  
   return(missing_combinations)
 }
