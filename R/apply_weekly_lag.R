@@ -51,14 +51,14 @@ apply_weekly_lag <- function(data) {
     mc <- missing_combinations(data)
     # create the combination of QuadKeys,
     # days and hours missing in a grid
-    missing_data <- expand.grid(
+    missing_data <- expand.grid(  # this should be a function!!!
       quadkey = unique(data$quadkey),
       day = mc$day,
       hour = mc$hour
     )
     
     # Add the missing data to the original files
-    # Now I have quadkey, day and hour columns complete
+    # Now I have QuadKey, day and hour columns complete
     data <- dplyr::bind_rows(data, missing_data) |>
       dplyr::arrange(.data$day, .data$hour)
   }
@@ -70,6 +70,15 @@ apply_weekly_lag <- function(data) {
     dplyr::summarise(empty = !is.na(sum(.data$n_crisis))) |>
     dplyr::filter(.data$empty == FALSE) |>
     dplyr::ungroup()
+  
+  # What percentage of the database is being removed?
+  message(paste0(
+    "QuadKeys with 100% NAs for n_crisis: ",
+    nrow(data) - nrow(qk_data_without_NA),
+    " (",
+    round((nrow(data) - nrow(qk_data_without_NA)) / nrow(data) * 100, 2),
+    "% of total)"
+  ))
   
   data <- data |>
     dplyr::filter(.data$quadkey %in% qk_data_without_NA$quadkey)
@@ -99,6 +108,8 @@ apply_weekly_lag <- function(data) {
                                n = (7 * 3))) |>
     dplyr::mutate(percent_change_7 = ((.data$n_crisis_lag_7 - .data$n_crisis) /
                                         .data$n_crisis) * 100)
+  
+  return(quadkey_lag)
 }
 
 
