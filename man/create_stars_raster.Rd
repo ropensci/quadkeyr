@@ -77,5 +77,5 @@ raster <- create_stars_raster(
 )
 }
 \seealso{
-\code{\link{st_as_stars}}, \code{\link{st_rasterize}}
+\code{\link[stars]{st_as_stars}}, \code{\link[stars]{st_rasterize}}
 }
