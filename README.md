@@ -103,6 +103,14 @@ You can install the development version of `quadkeyr` from
 remotes::install_github("ropensci/quadkeyr")
 ```
 
+### CRAN
+
+You can install the latest version of `quadkeyr` from CRAN with:
+
+``` r
+install.packages("quadkeyr")
+```
+
 ## Code of Conduct
 
 Please note that this package is released with a [Contributor Code of
