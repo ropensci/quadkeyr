@@ -1,5 +1,5 @@
 Package: quadkeyr
-Title: Tools for converting QuadKey-identified datasets (Microsoft's Bing Maps Tile System) into raster images and analyzing Meta (Facebook) Mobility Data
+Title: Generate raster images from QuadKey-identified datasets (Microsoft Bing Maps Tile System), including Meta (Facebook) Human Mobility dataset format.
 Version: 0.1.0
 Authors@R: 
     c(person(given = "Florencia",
@@ -17,18 +17,26 @@ Authors@R:
            role = c("rev"),
            comment = c(
            ORCID = "0000-0002-1938-6471",
-           "Maria Paula Caldas reviewed the package (v. 0.0.0.9000) for rOpenSci, see https://github.com/ropensci/software-review/issues/619")),
+           "Maria Paula Caldas reviewed the package (v. 0.0.0.9000) for rOpenSci,
+           see https://github.com/ropensci/software-review/issues/619")),
     person(given = "Vincent",
            family = "van Hees",
            role = c("rev"),
            comment = c(
            ORCID = "0000-0003-0182-9008",
-           "Vincent van Hees reviewed the package (v. 0.0.0.9000) for rOpenSci, see https://github.com/ropensci/software-review/issues/619")),
+           "Vincent van Hees reviewed the package (v. 0.0.0.9000) for rOpenSci, 
+           see https://github.com/ropensci/software-review/issues/619")),
     person("CDC's Center for Forecasting and Outbreak Analytics",
             comment = c("This project was made possible by cooperative agreement CDC-RFA-FT-23-0069 (grant # NU38FT000009-01-00) from the CDC's Center for Forecasting and Outbreak Analytics. Its contents are solely the responsibility of the authors and do not necessarily represent the official views of the Centers for Disease Control and Prevention."),  role = c("fnd")),
     person("MIDAS-NIH COVID-19 urgent grant program", role = c("fnd")),
     person("Paul G. Allen School for Global Health, Washington State University", role = c("cph")))
-Description: 'Quadkeyr' functions generate raster images based on QuadKey-identified data, facilitating efficient integration of Tile Maps data into R workflows. In particular, 'Quadkeyr' provides support to process and analyze Facebook mobility datasets within the R environment.
+Description: 'QuadkeyR' includes a set of functions of increasing complexity 
+  that allow users to (1) convert QuadKey-identified datasets, 
+  based on Microsoft's Bing Maps Tile System, into Simple Features data frames,
+  (2) transform Simple Features data frames into rasters, and 
+  (3) process multiple Meta (Facebook) QuadKey-identified human mobility files
+  directly into raster files.
+  For more details, see D’Andrea et al. (2024) <doi:10.21105/joss.06500>.  
 License: MIT + file LICENSE
 URL: https://docs.ropensci.org/quadkeyr/, https://github.com/ropensci/quadkeyr
 BugReports: https://github.com/ropensci/quadkeyr/issues
