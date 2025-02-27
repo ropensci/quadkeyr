@@ -11,7 +11,7 @@
 #' we want to represent in the raster.
 #' @param var The column name of the variable to plot.
 #'
-#' @seealso \code{\link{st_as_stars}}, \code{\link{st_rasterize}}
+#' @seealso \code{\link[stars]{st_as_stars}}, \code{\link[stars]{st_rasterize}}
 #'
 #' @return A `stars` object.
 #' @export

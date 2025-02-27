@@ -13,7 +13,7 @@
 #'  be included automatically in the name.
 #' @param path Path where the files should be stored.
 #'
-#' @seealso \code{\link{st_as_stars}}, \code{\link{st_rasterize}}
+#' @seealso \code{\link[stars]{st_as_stars}}, \code{\link[stars]{st_rasterize}}
 #' @seealso \code{\link{missing_combinations}}
 #'
 #' @importFrom rlang .data
