@@ -205,7 +205,7 @@ missing_combinations <- function(data, hour_col = "hour", date_col = "day") {
   missing_combinations <- dplyr::anti_join(all_combinations,
                                            data,
                                            by = c(date_col, hour_col)) |> 
-                                as.data.frame()
+    as.data.frame()
   
   return(missing_combinations)
 }

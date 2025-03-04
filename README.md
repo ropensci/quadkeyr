@@ -8,8 +8,8 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/ropensci/quadkeyr/actions/workflows/check-release.yaml/badge.svg)](https://github.com/ropensci/quadkeyr/actions/workflows/check-release.yaml)
-[![pkgcheck](https://github.com/ropensci/quadkeyr/workflows/pkgcheck/badge.svg)](https://github.com/%3Corg%3E/%3Crepo%3E/actions?query=workflow%3Apkgcheck)
-[![Codecov](https://img.shields.io/codecov/c/github/ropensci/quadkeyr)](https://codecov.io/gh/Fernandez-Lab-WSU/quadkeyr)
+[![pkgcheck](https://github.com/ropensci/quadkeyr/workflows/pkgcheck/badge.svg)](https://github.com/ropensci/quadkeyr/actions/workflows/pkgcheck.yaml)
+[![Codecov](https://img.shields.io/codecov/c/github/ropensci/quadkeyr)](https://app.codecov.io/gh/ropensci/quadkeyr)
 [![Status at rOpenSci Software Peer
 Review](https://badges.ropensci.org/619_status.svg)](https://github.com/ropensci/software-review/issues/619)
 [![status](https://joss.theoj.org/papers/3301002821465f4f160e7ce272c00c6f/status.svg)](https://joss.theoj.org/papers/3301002821465f4f160e7ce272c00c6f)

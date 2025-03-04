@@ -16,7 +16,7 @@
 #' For a detailed explanation on how to use this
 #' and other similar `quadkeyr` functions,
 #' read the the vignette:
-#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html}
+#' \url{https://docs.ropensci.org/quadkeyr/articles/quadkey_to_sf_conversion.html}
 #'
 #' @references
 #' \url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}
@@ -87,7 +87,7 @@ quadkey_to_tileXY <- function(quadkey) {
 #' For a detailed explanation on how to use this
 #' and other similar `quadkeyr` functions,
 #' read the the vignette:
-#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html}
+#' \url{https://docs.ropensci.org/quadkeyr/articles/quadkey_to_sf_conversion.html}
 #'
 #' @references
 #' \url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}
@@ -141,7 +141,7 @@ tileXY_to_pixelXY <- function(tileX, tileY) {
 #' For a detailed explanation on how to use this
 #' and other similar `quadkeyr` functions,
 #' read the the vignette:
-#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html}
+#' \url{https://docs.ropensci.org/quadkeyr/articles/quadkey_to_sf_conversion.html}
 #'
 #' @references
 #' \url{https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system}
@@ -219,7 +219,7 @@ pixelXY_to_latlong <- function(pixelX, pixelY, zoom) {
 #' For a detailed explanation on how to use this
 #' and other similar `quadkeyr` functions,
 #' read the the vignette:
-#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_to_sf_conversion.html}
+#' \url{https://docs.ropensci.org/quadkeyr/articles/quadkey_to_sf_conversion.html}
 #'
 #' @param quadkey_data A single QuadKey as a string or
 #' a vector with unique QuadKeys.

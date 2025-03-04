@@ -85,7 +85,7 @@ regular_qk_grid <- function(data) {
 #' For a detailed explanation on how to use this
 #' and other similar `quadkeyr` functions,
 #' read the the vignette:
-#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/quadkey_identified_data_to_raster.html}
+#' \url{https://docs.ropensci.org/quadkeyr/articles/quadkey_identified_data_to_raster.html}
 #'
 #' @param data A data.frame with a `quadkey` column.
 #'
@@ -131,7 +131,7 @@ add_regular_polygon_grid <- function(data) {
 #' For a detailed explanation on how to use this
 #' and other similar `quadkeyr` functions,
 #' read the the vignette:
-#' \url{https://fernandez-lab-wsu.github.io/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html}
+#' \url{https://docs.ropensci.org/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html}
 #'
 #' @param data A data.frame with a `quadkey` column.
 #'

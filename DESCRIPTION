@@ -1,5 +1,5 @@
 Package: quadkeyr
-Title: Generate raster images from QuadKey-identified datasets
+Title: Generate Raster Images From QuadKey-Identified Datasets
 Version: 0.1.0
 Authors@R: 
     c(person(given = "Florencia",
@@ -30,8 +30,8 @@ Authors@R:
             comment = c("This project was made possible by cooperative agreement CDC-RFA-FT-23-0069 (grant # NU38FT000009-01-00) from the CDC's Center for Forecasting and Outbreak Analytics. Its contents are solely the responsibility of the authors and do not necessarily represent the official views of the Centers for Disease Control and Prevention."),  role = c("fnd")),
     person("MIDAS-NIH COVID-19 urgent grant program", role = c("fnd")),
     person("Paul G. Allen School for Global Health, Washington State University", role = c("cph")))
-Description: 'quadkeyr' includes a set of functions of increasing complexity 
-  that allow users to (1) convert QuadKey-identified datasets, 
+Description: A set of functions of increasing complexity allows users to
+  (1) convert QuadKey-identified datasets, 
   based on Microsoft's Bing Maps Tile System, into Simple Features data frames,
   (2) transform Simple Features data frames into rasters, and 
   (3) process multiple Meta (Facebook) QuadKey-identified human mobility files

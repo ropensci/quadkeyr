@@ -158,7 +158,7 @@ complete_grid_for_polygons <- function(data) {
     # duplicating the the point in the corner
     dplyr::mutate(quadkey = NA)
   # I am adding these points to fill the grid,
-  # the quadkey value is not important here
+  # the QuadKey value is not important here
 
   return(extragrid)
 }
