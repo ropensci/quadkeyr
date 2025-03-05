@@ -30,8 +30,8 @@ read the the vignette:
 \url{https://docs.ropensci.org/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html}
 }
 \examples{
-
-# data file
+\dontrun{
+# Data File
 path <- paste0(
   system.file("extdata", package = "quadkeyr"),
   "/cityA_2020_04_15_0000.csv"
@@ -40,4 +40,5 @@ data <- read.csv(path)
 data <- format_fb_data(data)
 
 get_regular_polygon_grid(data = data)
+}
 }

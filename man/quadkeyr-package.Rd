@@ -4,7 +4,7 @@
 \name{quadkeyr-package}
 \alias{quadkeyr}
 \alias{quadkeyr-package}
-\title{quadkeyr: Generate Raster Images From QuadKey-Identified Datasets}
+\title{quadkeyr: Generate Raster Images from QuadKey-Identified Datasets}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 

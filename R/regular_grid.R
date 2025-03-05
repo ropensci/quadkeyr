@@ -101,7 +101,8 @@ regular_qk_grid <- function(data) {
 #'
 #' @export
 #' @examples
-#' # read the file with the data
+#' \dontrun{
+#' # Read the file with the data
 #' path <- paste0(
 #'   system.file("extdata", package = "quadkeyr"),
 #'   "/cityA_2020_04_15_0000.csv"
@@ -110,6 +111,7 @@ regular_qk_grid <- function(data) {
 #' data <- format_fb_data(data)
 #'
 #' add_regular_polygon_grid(data = data)
+#' }
 add_regular_polygon_grid <- function(data) {
   sf_grid <- get_qk_coord(data)
   reggrid <- regular_qk_grid(sf_grid)
@@ -144,8 +146,8 @@ add_regular_polygon_grid <- function(data) {
 #'
 #' @export
 #' @examples
-#'
-#' # data file
+#' \dontrun{
+#' # Data File
 #' path <- paste0(
 #'   system.file("extdata", package = "quadkeyr"),
 #'   "/cityA_2020_04_15_0000.csv"
@@ -154,6 +156,7 @@ add_regular_polygon_grid <- function(data) {
 #' data <- format_fb_data(data)
 #'
 #' get_regular_polygon_grid(data = data)
+#' }
 get_regular_polygon_grid <- function(data) {
 
   # I convert the QuadKeys to points and not polygons directly

@@ -16,10 +16,9 @@
 #' @return A `stars` object.
 #' @export
 #' @examples
-#'
+#' \dontrun{
 #' # Basic workflow
-#'
-#' # read the file with the data
+#' # Read the data
 #' path <- paste0(
 #'   system.file("extdata", package = "quadkeyr"),
 #'   "/cityA_2020_04_15_0000.csv"
@@ -64,6 +63,7 @@
 #'   data = data_raster,
 #'   var = "variable"
 #' )
+#' }
 create_stars_raster <- function(template,
                                 nx, ny,
                                 data,

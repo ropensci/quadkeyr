@@ -27,10 +27,9 @@ The use of a template enables the creation of an accurate
 raster, even in the presence of NAs.
 }
 \examples{
-
+\dontrun{
 # Basic workflow
-
-# read the file with the data
+# Read the data
 path <- paste0(
   system.file("extdata", package = "quadkeyr"),
   "/cityA_2020_04_15_0000.csv"
@@ -75,6 +74,7 @@ raster <- create_stars_raster(
   data = data_raster,
   var = "variable"
 )
+}
 }
 \seealso{
 \code{\link[stars]{st_as_stars}}, \code{\link[stars]{st_rasterize}}

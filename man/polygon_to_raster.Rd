@@ -39,6 +39,7 @@ Creates one raster by each date and time reported and
 saves it as a \code{.tif}.
 }
 \examples{
+\dontrun{
 files <- read_fb_mobility_files(
   path_to_csvs = paste0(system.file("extdata",
     package = "quadkeyr"
@@ -67,7 +68,6 @@ files_polygons <- files |>
     by = c("quadkey")
   )
 
-\dontrun{
 # Generate the raster files
 polygon_to_raster(
   data = files_polygons,

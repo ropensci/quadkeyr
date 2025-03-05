@@ -35,7 +35,8 @@ read the the vignette:
 \url{https://docs.ropensci.org/quadkeyr/articles/quadkey_identified_data_to_raster.html}
 }
 \examples{
-# read the file with the data
+\dontrun{
+# Read the file with the data
 path <- paste0(
   system.file("extdata", package = "quadkeyr"),
   "/cityA_2020_04_15_0000.csv"
@@ -44,4 +45,5 @@ data <- read.csv(path)
 data <- format_fb_data(data)
 
 add_regular_polygon_grid(data = data)
+}
 }

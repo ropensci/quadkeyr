@@ -21,6 +21,7 @@
 #' @return as many .tif files as dates and times in the dataset
 #' @export
 #' @examples
+#' \dontrun{
 #' files <- read_fb_mobility_files(
 #'   path_to_csvs = paste0(system.file("extdata",
 #'     package = "quadkeyr"
@@ -49,7 +50,6 @@
 #'     by = c("quadkey")
 #'   )
 #'
-#' \dontrun{
 #' # Generate the raster files
 #' polygon_to_raster(
 #'   data = files_polygons,
