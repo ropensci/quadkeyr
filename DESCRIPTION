@@ -1,5 +1,5 @@
 Package: quadkeyr
-Title: Generate Raster Images From QuadKey-Identified Datasets
+Title: Generate Raster Images from QuadKey-Identified Datasets
 Version: 0.1.0
 Authors@R: 
     c(person(given = "Florencia",
