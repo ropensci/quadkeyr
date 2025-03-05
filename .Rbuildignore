@@ -14,3 +14,4 @@
 _\.new\.png$
 ^codemeta\.json$
 ^paper$
+^cran-comments\.md$

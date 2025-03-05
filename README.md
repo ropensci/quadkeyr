@@ -12,7 +12,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![Codecov](https://img.shields.io/codecov/c/github/ropensci/quadkeyr)](https://app.codecov.io/gh/ropensci/quadkeyr)
 [![Status at rOpenSci Software Peer
 Review](https://badges.ropensci.org/619_status.svg)](https://github.com/ropensci/software-review/issues/619)
-[![status](https://joss.theoj.org/papers/3301002821465f4f160e7ce272c00c6f/status.svg)](https://joss.theoj.org/papers/3301002821465f4f160e7ce272c00c6f)
+[![status](https://joss.theoj.org/papers/3301002821465f4f160e7ce272c00c6f/status.svg)](https://joss.theoj.org/papers/10.21105/joss.06500)
 [![ForeSITE
 Group](https://github.com/EpiForeSITE/software/blob/e82ed88f75e0fe5c0a1a3b38c2b94509f122019c/docs/assets/foresite-software-badge.svg)](https://github.com/EpiForeSITE)
 <!-- badges: end -->
@@ -128,11 +128,11 @@ guidelines](https://github.com/ropensci/quadkeyr/blob/main/.github/CONTRIBUTING.
 - [Bing Maps Tile Systems -
   Microsoft](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system)
 - [R - `slippymath`: Slippy Map Tile
-  Tools](https://cran.r-project.org/web/packages/slippymath/index.html)
+  Tools](https://CRAN.R-project.org/package=slippymath)
 - [Python - `pyquadkey2`](https://docs.muetsch.io/pyquadkey2/)
 - [Python - `python-quadkey`](https://github.com/CartoDB/python-quadkey)
 - [Python - `mercantile`](https://pypi.org/project/mercantile/)
 - [Rust - `geo-quadkey-rs`](https://lib.rs/crates/geo-quadkey-rs)
 - [TypeScript -
   `quadkey-tilemath`](https://github.com/glassonion1/quadkey-tilemath)
-- [GeoCode Map viewer](https://tools.9revolution9.com/geo/geocode/)
+- [GeoCode Map viewer](https://9revolution9.com/tools/geo/geocode/)
