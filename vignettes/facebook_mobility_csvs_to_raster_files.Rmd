@@ -3,7 +3,7 @@ title: "Converting Meta (Facebook) Mobility QuadKey-identified Datasets into Ras
 author: "Florencia D'Andrea"
 date: "`r Sys.Date()`"
 output:
-   html_document:
+   html_vignette:
     toc : true
     number_sections: true
     toc_depth: 3
