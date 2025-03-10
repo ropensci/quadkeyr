@@ -31,6 +31,7 @@ Other contributors:
 \itemize{
   \item Maria Paula Caldas (\href{https://orcid.org/0000-0002-1938-6471}{ORCID}) (Maria Paula Caldas reviewed the package (v. 0.0.0.9000) for rOpenSci, see https://github.com/ropensci/software-review/issues/619) [reviewer]
   \item Vincent van Hees (\href{https://orcid.org/0000-0003-0182-9008}{ORCID}) (Vincent van Hees reviewed the package (v. 0.0.0.9000) for rOpenSci, see https://github.com/ropensci/software-review/issues/619) [reviewer]
+  \item Andrew Pulsipher (\href{https://orcid.org/0000-0002-0773-3210}{ORCID}) [contributor]
   \item CDC's Center for Forecasting and Outbreak Analytics (This project was made possible by cooperative agreement CDC-RFA-FT-23-0069 (grant # NU38FT000009-01-00) from the CDC's Center for Forecasting and Outbreak Analytics. Its contents are solely the responsibility of the authors and do not necessarily represent the official views of the Centers for Disease Control and Prevention.) [funder]
   \item MIDAS-NIH COVID-19 urgent grant program [funder]
   \item Paul G. Allen School for Global Health, Washington State University [copyright holder]
