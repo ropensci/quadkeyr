@@ -3,7 +3,7 @@ title: "Converting Meta (Facebook) Mobility QuadKey-identified Datasets into Ras
 author: "Florencia D'Andrea"
 date: "`r Sys.Date()`"
 output:
-   html_document:
+   html_vignette:
     toc : true
     number_sections: true
     toc_depth: 3
@@ -51,7 +51,7 @@ a separate `csv` file for each day and time.
 
 
 ```{r w3, echo = FALSE, out.width= "80%", fig.align='center'}
-knitr::include_graphics("workflow_facebook.png")
+magick::image_read("workflow_facebook.webp")
 ```
 
 
@@ -147,7 +147,7 @@ regular_grid <- quadkeyr::get_regular_polygon_grid(data = files)
 head(regular_grid$data)
 ```
 
-```{r reg_grid, out.width= "70%", fig.align='center'}
+```{r reg_grid, fig.width = 5, fig.height = 3.5, fig.align='center'}
 ggplot() +
   geom_sf(data = regular_grid$data, 
           color = 'red', 
@@ -193,7 +193,7 @@ quadkeyr::polygon_to_raster(data = files_polygons,
                                  "/"))
 ```
 
-```{r qkgrid, out.width= "70%", fig.align='center'}
+```{r qkgrid, fig.width = 5, fig.height = 3.5, fig.align='center'}
 raster <- stars::read_stars(paste0(system.file("extdata", 
                                         package = "quadkeyr"),
                                  "/cityA_2020-04-15_16.tif"))  
@@ -254,7 +254,7 @@ head(qtll)
 ```
 Let's plot the QuadKey grid.
 
-```{r plotqtll, echo= FALSE, fig.align='center'}
+```{r plotqtll, echo= FALSE, fig.width = 5, fig.height = 3.5, fig.align='center'}
 
 ggplot() + 
   geom_sf(data = ne_countries(returnclass = 'sf'),
@@ -300,7 +300,7 @@ resulting in a complete grid of 369 points,
 as depicted in the plot.
 The additional points are highlighted in orange:
 
-```{r echo = FALSE, fig.align='center'}
+```{r echo = FALSE, fig.width = 5, fig.height = 3.5, fig.align='center'}
 
 ggplot() + 
   geom_sf(data = ne_countries(returnclass = 'sf'),
@@ -327,7 +327,7 @@ head(polygrid)
 ```
 
 
-```{r plotpolygrid, echo = FALSE, fig.align='center'}
+```{r plotpolygrid, fig.width = 5, fig.height = 3.5, echo = FALSE, fig.align='center'}
 ggplot() + 
   geom_sf(data = ne_countries(returnclass = 'sf'),
           fill = 'beige') +
@@ -380,7 +380,7 @@ quadkeyr::polygon_to_raster(data = polyvar,
 Let's plot one of the rasters, `"cityA_2020-04-15_8.tif"`.
 As you can see, the overlapping with the polygon grid is perfect:
 
-```{r plotploytoras, echo=FALSE, fig.align='center'}
+```{r plotploytoras, fig.width = 5, fig.height = 3.5, echo=FALSE, fig.align='center'}
 
 filename <- "cityA_2020-04-15_16.tif"
 output_raster <-  stars::read_stars(system.file("extdata",

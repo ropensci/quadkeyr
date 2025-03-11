@@ -3,7 +3,7 @@ title: "From a QuadKey to a Simple Features data.frame and other conversions"
 author: "Florencia D'Andrea"
 date: "`r Sys.Date()`"
 output:
-   html_document:
+   html_vignette:
     toc : true
     number_sections: true
     toc_depth: 3
@@ -40,7 +40,7 @@ if not it will be indicated in the text.
 # Basic workflow
 
 ```{r w1, echo = FALSE, out.width= "80%", fig.align='center'}
-knitr::include_graphics("workflow_quadkey.png")
+magick::image_read("workflow_quadkey.webp")
 ```
 
 You can convert any QuadKey to
@@ -112,7 +112,7 @@ in pixel coordinates for each zoom level.
 
 
 ```{r pixels, echo = FALSE, out.width= "50%", fig.align='center', fig.cap= "Fig 1. Pixels (0, 0) and (2047, 2047) for a map with zoom level 3. Image extracted from Microsoft's Bing Maps Tile System webpage."}
-knitr::include_graphics('bing_pixel.jpg')
+magick::image_read('bing_pixel.webp')
 ```
 
 
@@ -132,7 +132,7 @@ the function `pixelXY_to_tileXY()` and
 by comparing Fig. 1 and Fig. 2.
 
 ```{r tiles, echo = FALSE, out.width= "50%", fig.align='center', fig.cap= "Fig 2. Tile coordinates. Image extracted from Microsoft's Bing Maps Tile System webpage."}
-knitr::include_graphics('bing_tiles.jpg')
+magick::image_read('bing_tiles.webp')
 ```
 
 To convert from tile XY coordinates to QuadKeys
@@ -196,7 +196,7 @@ tileXY_to_quadkey(tileX = ptt$tileX,
 ### Direct conversion from geographic coordinates to one or more QuadKeys
 
 ```{r lltqd, echo = FALSE, out.width= "60%", fig.align='center'}
-knitr::include_graphics("latlong_to_qk.png")
+magick::image_read("latlong_to_qk.webp")
 ```
 
 The function `latlong_to_quadkey()` 
@@ -256,7 +256,7 @@ ptll
 ### Direct conversion from one or more QuadKeys to geographic coordinates
 
 ```{r qtlld, echo = FALSE, out.width= "60%", fig.align='center'}
-knitr::include_graphics("qk_to_latlong.png")
+magick::image_read("qk_to_latlong.webp")
 ```
 
 You can also use the function `quadkey_to_latlong()` 
@@ -336,6 +336,6 @@ qkmap_app()
 ```
 
 ```{r qkmap_qk, echo = FALSE, out.width= "70%", fig.align='center'}
-knitr::include_graphics("qkmap_qk.png")
+magick::image_read("qkmap_qk.webp")
 ```
 
