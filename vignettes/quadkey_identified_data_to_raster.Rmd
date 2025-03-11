@@ -1,7 +1,7 @@
 ---
 title: "Generating a Raster Image from Quadkey-Identified Data"
 output:
-   html_document:
+   html_vignette:
     toc : true
     number_sections: true
     toc_depth: 3
