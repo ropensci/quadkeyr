@@ -61,7 +61,7 @@ Suggests:
     withr
 VignetteBuilder: knitr
 Depends: 
-    R (>= 4.0)
+    R (>= 4.1.0)
 LazyData: true
 Imports: 
     dplyr (>= 1.1.2),
