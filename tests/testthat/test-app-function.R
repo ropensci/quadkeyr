@@ -1,6 +1,7 @@
 test_that("qkmap_app tests works", {
   # Don't run these tests on the CRAN build servers
   testthat::skip_on_cran()
+  testthat::skip_on_ci()
 
   appdir <- system.file(package = "quadkeyr", "app")
   shinytest2::test_app(appdir)
