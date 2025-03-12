@@ -49,7 +49,7 @@ and discover its zoomlevel,
 as well as the associated tile and pixel coordinates.
 
 ```{r qkmap_qk_app, echo = FALSE, out.width= "90%", fig.align='center'}
-knitr::include_graphics("qkmap_qk.png")
+magick::image_read("qkmap_qk.webp")
 ```
 
 ## Creating a QuadKey grid tab
@@ -58,7 +58,7 @@ The second tab allows you to visualize the grid created using
 the `grid_to_polygon` function and locate specific QuadKeys.
 
 ```{r qkmap_grid_app, echo = FALSE, out.width= "90%", fig.align='center'}
-knitr::include_graphics("qkmap_grid.png")
+magick::image_read("qkmap_grid.webp")
 ```
 
 # Performance

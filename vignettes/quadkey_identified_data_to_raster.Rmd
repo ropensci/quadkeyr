@@ -1,7 +1,7 @@
 ---
 title: "Generating a Raster Image from Quadkey-Identified Data"
 output:
-   html_document:
+   html_vignette:
     toc : true
     number_sections: true
     toc_depth: 3
@@ -41,7 +41,7 @@ and in the [official documentation](https://learn.microsoft.com/en-us/bingmaps/a
 # Basic workflow
 
 ```{r w2, echo = FALSE, out.width= "80%", fig.align='center'}
-knitr::include_graphics("workflow_raster.png")
+magick::image_read("workflow_raster.webp")
 ```
 
 
@@ -326,7 +326,7 @@ qkmap_app()
 ```
 
 ```{r qkmap_grid, echo = FALSE, out.width= "70%", fig.align='center'}
-knitr::include_graphics("qkmap_grid.png")
+magick::image_read("qkmap_grid.webp")
 ```
 
 ## Raster creation

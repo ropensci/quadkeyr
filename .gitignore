@@ -8,3 +8,4 @@
 # {shinytest2}: Ignore new debug snapshots for `$expect_values()`
 *_.new.png
 inst/doc
+vignettes/reduce_image_size.R

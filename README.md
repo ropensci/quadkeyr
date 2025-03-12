@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# quadkeyr <img src="vignettes/logo.png" align="right" height="150"/>
+# quadkeyr <img src="vignettes/logo.webp" align="right" height="150"/>
 
 <!-- badges: start -->
 
@@ -39,7 +39,7 @@ spatial position as a sequence of characters. They provide an efficient
 method to address and retrieve specific map tiles, facilitating rapid
 display within mapping applications.
 
-<img src="https://github.com/ropensci/quadkeyr/blob/main/docs/articles/bing_quadkeys.jpg?raw=true" width="70%" style="display: block; margin: auto;" />
+<img src="man/figures/README-qks-1.png" width="70%" style="display: block; margin: auto;" />
 <p style="text-align: center">
 The QuadKey of any tile starts with the QuadKey of its parent tile (the
 containing tile at the previous level). Image extracted from Microsoft’s
@@ -59,7 +59,7 @@ The goal of `quadkeyr` is to:
     for converting QuadKeys to and from tiles, pixels, and geographic
     coordinates.
 
-<img src="vignettes/workflow_quadkey.png" width="80%" style="display: block; margin: auto;" />
+<img src="man/figures/README-w1-1.png" width="80%" style="display: block; margin: auto;" />
 
 2.  [**Generate Raster Images from Quadkey-Identified
     Data**](https://docs.ropensci.org/quadkeyr/articles/quadkey_identified_data_to_raster.html)
@@ -67,7 +67,7 @@ The goal of `quadkeyr` is to:
     and create a `stars` raster. You can also directly convert QuadKeys
     in a data.frame column into an `sf` POLYGON data.frame.
 
-<img src="vignettes/workflow_raster.png" width="80%" style="display: block; margin: auto;" />
+<img src="man/figures/README-w2-1.png" width="80%" style="display: block; margin: auto;" />
 
 3.  [**Convert Meta (Facebook) Mobility QuadKey-identified Datasets into
     Raster
@@ -75,7 +75,7 @@ The goal of `quadkeyr` is to:
     Convert Meta (Facebook) mobility data `.csv` files into `.tif` files
     by day and hour reported.
 
-<img src="vignettes/workflow_facebook.png" width="80%" style="display: block; margin: auto;" />
+<img src="man/figures/README-w3-1.png" width="80%" style="display: block; margin: auto;" />
 
 4.  [**Offer an App for visualizing QuadKeys on a
     map**](https://docs.ropensci.org/quadkeyr/articles/quadkey_visualization_app.html)

@@ -51,6 +51,7 @@ Suggests:
     ggplot2 (>= 3.4.4),
     knitr,
     leaflet (>= 2.2.1),
+    magick (>= 2.8.5),
     rmarkdown,
     rnaturalearth (>= 1.0.0),
     shinytest2,
@@ -60,7 +61,7 @@ Suggests:
     withr
 VignetteBuilder: knitr
 Depends: 
-    R (>= 4.0)
+    R (>= 4.1.0)
 LazyData: true
 Imports: 
     dplyr (>= 1.1.2),
