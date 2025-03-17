@@ -1,0 +1,12 @@
+---
+title: "quadkeyr"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{quadkeyr}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+Please see the `quadkeyr` package website for full documentation, which includes general package information, function-specific help, and several article: 
+
+* https://docs.ropensci.org/quadkeyr/
