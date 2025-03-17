@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>QuadKey Visualization App • quadkeyr</title>
+<title>quadkeyr • quadkeyr</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -16,7 +16,7 @@
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="QuadKey Visualization App">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="quadkeyr">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -36,7 +36,7 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
-<li class="active nav-item dropdown">
+<li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/quadkey_to_sf_conversion.html">Conversions</a></li>
@@ -60,72 +60,25 @@
 </nav><div class="container template-article">
 
 
+
+
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="../logo.png" class="logo" alt=""><h1>QuadKey Visualization App</h1>
-                        <h4 data-toc-skip class="author">Florencia
-D’Andrea</h4>
+      <img src="../logo.png" class="logo" alt=""><h1>quadkeyr</h1>
             
-            <h4 data-toc-skip class="date">2025-03-17</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/ropensci/quadkeyr/blob/HEAD/vignettes/articles/quadkey_visualization_app.Rmd" class="external-link"><code>vignettes/articles/quadkey_visualization_app.Rmd</code></a></small>
-      <div class="d-none name"><code>quadkey_visualization_app.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/ropensci/quadkeyr/blob/HEAD/vignettes/quadkeyr.Rmd" class="external-link"><code>vignettes/quadkeyr.Rmd</code></a></small>
+      <div class="d-none name"><code>quadkeyr.Rmd</code></div>
     </div>
 
     
     
-<blockquote>
-<p>Please, visit the <a href="https://docs.ropensci.org/quadkeyr/">README</a> for general
-information about this package</p>
-</blockquote>
-<p>To easily visualize:</p>
-<ol style="list-style-type: decimal">
-<li>The QuadKey location based on provided geographic coordinates,
-and</li>
-<li>The grid for the area delimited by two pairs of geographic
-coordinates, you can utilize the internal app provided by
-<code>quadkeyr</code>.</li>
-</ol>
-<div class="section level2" number="1">
-<h2 id="run-the-app">
-<span class="header-section-number">1</span> Run the app<a class="anchor" aria-label="anchor" href="#run-the-app"></a>
-</h2>
-<p>You can open the app running:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">quadkeyr</span><span class="fu">::</span><span class="fu"><a href="../reference/qkmap_app.html">qkmap_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level2" number="2">
-<h2 id="tabs">
-<span class="header-section-number">2</span> Tabs<a class="anchor" aria-label="anchor" href="#tabs"></a>
-</h2>
-<div class="section level3" number="2.1">
-<h3 id="quadkey-tab">
-<span class="header-section-number">2.1</span> QuadKey tab<a class="anchor" aria-label="anchor" href="#quadkey-tab"></a>
-</h3>
-<p>On the first tab, you can locate the upper corner of the QuadKey on
-the map and discover its zoomlevel, as well as the associated tile and
-pixel coordinates.</p>
-<p><img src="quadkey_visualization_app_files/figure-html/qkmap_qk_app-1.png" width="90%" style="display: block; margin: auto;"></p>
-</div>
-<div class="section level3" number="2.2">
-<h3 id="creating-a-quadkey-grid-tab">
-<span class="header-section-number">2.2</span> Creating a QuadKey
-grid tab<a class="anchor" aria-label="anchor" href="#creating-a-quadkey-grid-tab"></a>
-</h3>
-<p>The second tab allows you to visualize the grid created using the
-<code>grid_to_polygon</code> function and locate specific QuadKeys.</p>
-<p><img src="quadkey_visualization_app_files/figure-html/qkmap_grid_app-1.png" width="90%" style="display: block; margin: auto;"></p>
-</div>
-</div>
-<div class="section level2" number="3">
-<h2 id="performance">
-<span class="header-section-number">3</span> Performance<a class="anchor" aria-label="anchor" href="#performance"></a>
-</h2>
-<p>Note that for higher levels of detail, it is preferable to use
-smaller areas (&lt; 2000 QuadKeys) to prevent long processing times.</p>
-</div>
-  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
-    </nav></aside>
+<p>Please see the <code>quadkeyr</code> package website for full
+documentation, which includes general package information,
+function-specific help, and several article:</p>
+<ul>
+<li><a href="https://docs.ropensci.org/quadkeyr/" class="uri">https://docs.ropensci.org/quadkeyr/</a></li>
+</ul></main>
 </div>
 
 

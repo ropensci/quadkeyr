@@ -2,8 +2,12 @@ pandoc: '3.2'
 pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
-  facebook_mobility_csvs_to_raster_files: facebook_mobility_csvs_to_raster_files.html
-  quadkey_identified_data_to_raster: quadkey_identified_data_to_raster.html
-  quadkey_to_sf_conversion: quadkey_to_sf_conversion.html
-  quadkey_visualization_app: quadkey_visualization_app.html
-last_built: 2025-03-11T19:11Z
+  articles/facebook_mobility_csvs_to_raster_files: facebook_mobility_csvs_to_raster_files.html
+  articles/quadkey_identified_data_to_raster: quadkey_identified_data_to_raster.html
+  articles/quadkey_to_sf_conversion: quadkey_to_sf_conversion.html
+  articles/quadkey_visualization_app: quadkey_visualization_app.html
+  quadkeyr: quadkeyr.html
+last_built: 2025-03-17T17:54Z
+urls:
+  reference: https://docs.ropensci.org/quadkeyr/reference
+  article: https://docs.ropensci.org/quadkeyr/articles
