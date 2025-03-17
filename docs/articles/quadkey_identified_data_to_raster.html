@@ -14,8 +14,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Generating a Raster Image from Quadkey-Identified Data">
 </head>
 <body>
@@ -65,21 +65,21 @@
       <img src="../logo.png" class="logo" alt=""><h1>Generating a Raster Image from Quadkey-Identified Data</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/ropensci/quadkeyr/blob/HEAD/vignettes/quadkey_identified_data_to_raster.Rmd" class="external-link"><code>vignettes/quadkey_identified_data_to_raster.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ropensci/quadkeyr/blob/HEAD/vignettes/articles/quadkey_identified_data_to_raster.Rmd" class="external-link"><code>vignettes/articles/quadkey_identified_data_to_raster.Rmd</code></a></small>
       <div class="d-none name"><code>quadkey_identified_data_to_raster.Rmd</code></div>
     </div>
 
     
     
 <blockquote>
-<p>Please, visit the <a href="https://docs.ropensci.org/quadkeyr/" class="external-link">README</a> for general
+<p>Please, visit the <a href="https://docs.ropensci.org/quadkeyr/">README</a> for general
 information about this package</p>
 </blockquote>
 <p>Create a raster from QuadKey-identified data for a specified map area
 and zoom level. A detailed explanation of what tile coordinates
 (<code>tileX</code>, <code>tileY</code>) and pixel coordinates
 (<code>pixelX</code>, <code>pixelY</code>) are can be found in
-<code>quadkeyr</code> vignette <a href="https://docs.ropensci.org/quadkeyr/articles/quadkey_to_sf_conversion.html" class="external-link"><code>From QuadKey to Simple Features data.frame and other conversions</code></a>
+<code>quadkeyr</code> vignette <a href="https://docs.ropensci.org/quadkeyr/articles/quadkey_to_sf_conversion.html"><code>From QuadKey to Simple Features data.frame and other conversions</code></a>
 and in the <a href="https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system" class="external-link">official
 documentation</a>.</p>
 <div class="section level2" number="1">
@@ -391,7 +391,7 @@ data.frame we can use <code><a href="../reference/grid_to_polygon.html">grid_to_
 <p>It worked! As you can see here, the coordinates we randomly selected
 as a starting point for the bounding box are situated within the
 polygons, but not at a specific position inside each polygon. This was
-expected, you can read about Quadkey conversion in the vignette <a href="https://docs.ropensci.org/quadkeyr/articles/quadkey_to_sf_conversion.html#caveats-when-converting-coordinates" class="external-link"><code>From a QuadKey to a Simple Features data.frame and other conversions</code></a>.</p>
+expected, you can read about Quadkey conversion in the vignette <a href="https://docs.ropensci.org/quadkeyr/articles/quadkey_to_sf_conversion.html#caveats-when-converting-coordinates"><code>From a QuadKey to a Simple Features data.frame and other conversions</code></a>.</p>
 <p>If you want to see the grid, you can also check the app:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/qkmap_app.html">qkmap_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
