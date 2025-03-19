@@ -34,9 +34,9 @@ Authors@R:
     person("Paul G. Allen School for Global Health, Washington State University", role = c("cph")))
 Description: A set of functions of increasing complexity allows users to
   (1) convert QuadKey-identified datasets, 
-  based on Microsoft's Bing Maps Tile System, into Simple Features data frames,
+  based on 'Microsoft's Bing Maps Tile System', into Simple Features data frames,
   (2) transform Simple Features data frames into rasters, and 
-  (3) process multiple Meta (Facebook) QuadKey-identified human mobility files
+  (3) process multiple 'Meta' ('Facebook') QuadKey-identified human mobility files
   directly into raster files.
   For more details, see D’Andrea et al. (2024) <doi:10.21105/joss.06500>.  
 License: MIT + file LICENSE
