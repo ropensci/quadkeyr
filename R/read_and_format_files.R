@@ -121,9 +121,10 @@ read_fb_mobility_files <- function(path_to_csvs,
 #' @seealso \code{\link{read_fb_mobility_files}}
 #'
 #' @examples
-#'
+#' \dontrun{
 #' data(result_read_fb_mobility_data)
 #' format_fb_data(data = result_read_fb_mobility_data)
+#' }
 format_fb_data <- function(data,
                            keep_format = NULL) {
 
