@@ -76,7 +76,7 @@ polygon_to_raster <- function(data,
   # detect and reposrt combination of dates and times missing
   if (nrow(missing_combinations(data)) > 0) {
     warning("These combinations of days and times are missing in the dataset")
-    message(capture.output(missing_combinations(data), type = 'message'))
+    message(utils::capture.output(missing_combinations(data), type = 'message'))
   }
 
 

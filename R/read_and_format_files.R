@@ -95,7 +95,7 @@ read_fb_mobility_files <- function(path_to_csvs,
       "The files with the following combinations of",
       "days and times are not present or have 0KB"
     ))
-    message(capture.output(df, type = 'message'))
+    message(utils::capture.output(data, type = 'message'))
   }
   data
 }
