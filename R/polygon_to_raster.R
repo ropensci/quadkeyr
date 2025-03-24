@@ -21,7 +21,7 @@
 #' @return as many .tif files as dates and times in the dataset
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' files <- read_fb_mobility_files(
 #'   path_to_csvs = paste0(system.file("extdata",
 #'     package = "quadkeyr"
@@ -76,7 +76,7 @@ polygon_to_raster <- function(data,
   # detect and reposrt combination of dates and times missing
   if (nrow(missing_combinations(data)) > 0) {
     warning("These combinations of days and times are missing in the dataset")
-    print(missing_combinations(data))
+    message(capture.output(missing_combinations(data), type = 'message'))
   }
 
 

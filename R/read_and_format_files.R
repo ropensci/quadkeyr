@@ -95,7 +95,7 @@ read_fb_mobility_files <- function(path_to_csvs,
       "The files with the following combinations of",
       "days and times are not present or have 0KB"
     ))
-    print(missing_combinations(data))
+    message(capture.output(df, type = 'message'))
   }
   data
 }
@@ -121,7 +121,7 @@ read_fb_mobility_files <- function(path_to_csvs,
 #' @seealso \code{\link{read_fb_mobility_files}}
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' data(result_read_fb_mobility_data)
 #' format_fb_data(data = result_read_fb_mobility_data)
 #' }

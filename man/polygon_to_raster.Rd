@@ -39,7 +39,7 @@ Creates one raster by each date and time reported and
 saves it as a \code{.tif}.
 }
 \examples{
-\dontrun{
+\donttest{
 files <- read_fb_mobility_files(
   path_to_csvs = paste0(system.file("extdata",
     package = "quadkeyr"

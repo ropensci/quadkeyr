@@ -27,7 +27,7 @@ The use of a template enables the creation of an accurate
 raster, even in the presence of NAs.
 }
 \examples{
-\dontrun{
+\donttest{
 # Basic workflow
 # Read the data
 path <- paste0(

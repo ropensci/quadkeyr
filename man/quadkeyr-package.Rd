@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-A set of functions of increasing complexity allows users to (1) convert QuadKey-identified datasets, based on Microsoft's Bing Maps Tile System, into Simple Features data frames, (2) transform Simple Features data frames into rasters, and (3) process multiple Meta (Facebook) QuadKey-identified human mobility files directly into raster files. For more details, see D’Andrea et al. (2024) \doi{10.21105/joss.06500}.
+A set of functions of increasing complexity allows users to (1) convert QuadKey-identified datasets, based on 'Microsoft's Bing Maps Tile System', into Simple Features data frames, (2) transform Simple Features data frames into rasters, and (3) process multiple 'Meta' ('Facebook') QuadKey-identified human mobility files directly into raster files. For more details, see D’Andrea et al. (2024) \doi{10.21105/joss.06500}.
 }
 \seealso{
 Useful links:

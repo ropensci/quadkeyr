@@ -35,7 +35,7 @@ read the the vignette:
 \url{https://docs.ropensci.org/quadkeyr/articles/quadkey_identified_data_to_raster.html}
 }
 \examples{
-\dontrun{
+\donttest{
 # Read the file with the data
 path <- paste0(
   system.file("extdata", package = "quadkeyr"),

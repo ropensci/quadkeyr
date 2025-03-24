@@ -16,7 +16,7 @@
 #' @return A `stars` object.
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Basic workflow
 #' # Read the data
 #' path <- paste0(

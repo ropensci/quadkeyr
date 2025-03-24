@@ -24,9 +24,10 @@ This function removes unnecessary characters such as \verb{\\\\N}
 and ensures that the format of the date and QuadKeys is correct.
 }
 \examples{
-
+\donttest{
 data(result_read_fb_mobility_data)
 format_fb_data(data = result_read_fb_mobility_data)
+}
 }
 \seealso{
 \code{\link{read_fb_mobility_files}}

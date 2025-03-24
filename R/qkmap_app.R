@@ -7,7 +7,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' if(interactive()){
 #' qkmap_app()
 #' }
 qkmap_app <- function() {

@@ -13,7 +13,7 @@ This function does not return any value. It launches the Shiny app.
 This function launches the Shiny app.
 }
 \examples{
-\dontrun{
+if(interactive()){
 qkmap_app()
 }
 }
