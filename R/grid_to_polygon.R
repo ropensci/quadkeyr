@@ -91,12 +91,6 @@ grid_to_polygon <- function(data) {
       dplyr::mutate(geometry = sf::st_sfc(polygon)) |>
       sf::st_set_geometry("geometry")
 
-    # grid_px <- sf::st_sf(
-    #   quadkey = subdata[i, ]$quadkey,
-    #   geometry = polygon,
-    #   sf_column_name = "geometry"
-    # )
-
     polydata <- rbind(subdata_row, polydata)
   }
 

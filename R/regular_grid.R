@@ -101,7 +101,7 @@ regular_qk_grid <- function(data) {
 #'
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Read the file with the data
 #' path <- paste0(
 #'   system.file("extdata", package = "quadkeyr"),
@@ -146,7 +146,7 @@ add_regular_polygon_grid <- function(data) {
 #'
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Data File
 #' path <- paste0(
 #'   system.file("extdata", package = "quadkeyr"),

@@ -30,7 +30,7 @@ read the the vignette:
 \url{https://docs.ropensci.org/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html}
 }
 \examples{
-\dontrun{
+\donttest{
 # Data File
 path <- paste0(
   system.file("extdata", package = "quadkeyr"),
